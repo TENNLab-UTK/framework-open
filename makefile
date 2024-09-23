@@ -10,6 +10,10 @@
 # bin/network_tool is a command-line tool for creating and manipulating networks.
 # bin/processor_tool_risp is a command-line tool for loading networks onto the RISP
 #                         simulator and then running the simulator.
+#
+# You'll note that the processor_tool code is agnostic as to the processor, using
+# the processor interface from include/framework.hpp.  It should be clear how to
+# compile this for a different processor.
 
 CXX ?= g++
 
@@ -28,6 +32,7 @@ all: lib/libframework.a \
 clean:
 	rm -f bin/* obj/* lib/*
 
+# ------------------------------------------------------------ 
 # The library and two programs.  You should see how to compile the processor_tool
 # for a different processor.
 
@@ -41,6 +46,7 @@ bin/network_tool: src/network_tool.cpp $(FR_INC) $(FR_LIB)
 bin/processor_tool_risp: src/processor_tool.cpp $(FR_INC) $(RISP_INC) $(RISP_OBJ) $(FR_LIB)
 	$(CXX) $(FR_CFLAGS) -o bin/processor_tool_risp src/processor_tool.cpp $(RISP_OBJ) $(FR_LIB)
 
+# ------------------------------------------------------------ 
 # Object files
 
 obj/risp.o: src/risp.cpp $(FR_INC) $(RISP_INC)
