@@ -4,6 +4,10 @@ Open-source part of the TENNLab Exploratory Neuromorphic Framework
 
 Points of Contact: James S. Plank, Catherine D. Schuman, Charles P. Rizzo.
 
+# Mon Sep 23 11:50:04 EDT 2024
+
+JSP: This is in progress.
+
 -----------------
 # What This Repo Contains
 
