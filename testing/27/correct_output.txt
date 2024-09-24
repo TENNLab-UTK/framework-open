@@ -1,0 +1,10 @@
+0(Main) INPUT  : 
+1(On)   INPUT  : 
+2(Off)  INPUT  : 
+3(Out)  OUTPUT : 
+4(Bias) OUTPUT : 
+Node 0(Main) charge: 0.5
+Node   1(On) charge: 0
+Node  2(Off) charge: 0
+Node  3(Out) charge: 0
+Node 4(Bias) charge: 0

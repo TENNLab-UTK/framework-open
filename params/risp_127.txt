@@ -1,0 +1,10 @@
+{ 
+  "min_weight": -127,
+  "max_weight": 127,
+  "leak_mode": "none",
+  "min_threshold": 0,
+  "max_threshold": 127,
+  "min_potential": -127,
+  "max_delay": 127,
+  "discrete": true
+}

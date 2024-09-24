@@ -21,8 +21,8 @@ framework=..
 fr=$framework
 cpp=$framework/cpp-apps
 
-pt=$cpp/bin/processor_tool_$processor         # Processor tool executable
-nt=$fr/bin/network_tool                       # Network tool executable
+pt=bin/processor_tool_$processor         # Processor tool executable
+nt=bin/network_tool                       # Network tool executable
 
 # Make sure you have the executables that you need.
 

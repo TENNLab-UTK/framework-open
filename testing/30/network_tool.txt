@@ -1,0 +1,13 @@
+FJ tmp_empty_network.txt
+
+AN 0 1 2 3
+AI 0 1 2
+AE 0 3  1 3   2 3
+SEP_ALL Delay 1
+SEP 0 3 Weight 0
+SEP 1 3 Weight 1
+SEP 2 3 Weight 2
+
+# Store
+
+TJ tmp_network.txt

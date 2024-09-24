@@ -1,0 +1,4 @@
+Node 3 charge: 0.102837
+Node 3 charge: 0.574937
+Node 3 charge: 0.551412
+Node 3 charge: 0.105962

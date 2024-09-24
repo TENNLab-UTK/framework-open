@@ -1,0 +1,15 @@
+ML tmp_network.txt
+AS 0 0 1
+RUN 2
+GSR
+NCH
+
+AS 1 0 1
+RUN 2
+GSR
+NCH
+
+AS 2 0 1
+RUN 2
+GSR
+NCH

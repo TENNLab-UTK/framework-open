@@ -1,0 +1,7 @@
+0(Main) INPUT  : 111111
+1(On)   INPUT  : 000000
+2(Off)  INPUT  : 000000
+3(Out)  OUTPUT : 011111
+4(Bias) OUTPUT : 011111
+time: 6.0
+time: 12.0

@@ -1,0 +1,18 @@
+ML tmp_network.txt
+AS 0 0 1
+RUN 10
+GSR
+
+RUN 5
+GSR
+
+GT
+AS 2 0 1
+AS 1 5 1
+RUN 10 
+GSR
+
+GT
+AS 1 0 1   2 0 1
+RUN 5
+GSR
