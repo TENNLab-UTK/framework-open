@@ -150,7 +150,7 @@ void spike_validation(const Spike &s, const Network *n, bool normalize)
 
   try {
     if (normalize) {
-      if (s.value < 1 || s.value > 1) throw "spike val must be >= 1 and <= 1";
+      if (s.value < -1 || s.value > 1) throw "spike val must be >= -1 and <= 1";
     }
     if (s.time < 0) throw "spike time must be > 0";
     node = n->get_node(s.id);

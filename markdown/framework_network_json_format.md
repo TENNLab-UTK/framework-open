@@ -143,6 +143,68 @@ inside the network.  Here are some popular keys and vals that are stored here:
 # Examples
 
 Here are a few simple examples.  First, here's a binary AND network, from the
-paper (https://neuromorphic.eecs.utk.edu/publications/2021-07-29-spiking-neuromorphic-networks-for-binary-tasks).  Here's a picture of the network:
+paper (https://neuromorphic.eecs.utk.edu/publications/2021-07-29-spiking-neuromorphic-networks-for-binary-tasks).  Here's ASCII art of the network:
 
-![images/binary_and.jpg](images/binary_and.jpg)
+```
+      W=0.5, D=1
+   A -------------|
+                  v
+                 A&B: Threshold=1
+                  ^
+   B -------------|
+      W=0.5, D=1
+```
+
+We can create this network with testing code:
+
+```
+UNIX> sh scripts/test_risp.sh 1 yes
+Passed Test 01 - AND network from [Plank2021], Figure 3.
+UNIX> cat tmp_network.txt
+{ "Properties":
+  { "node_properties": [
+      { "name":"Threshold", "type":68, "index":0, "size":1, "min_value":0.0, "max_value":1.0 }],
+    "edge_properties": [
+      { "name":"Delay", "type":73, "index":1, "size":1, "min_value":1.0, "max_value":15.0 },
+      { "name":"Weight", "type":68, "index":0, "size":1, "min_value":0.0, "max_value":1.0 }],
+    "network_properties": [] },
+ "Nodes":
+  [ {"id":0,"name":"A","values":[1.0]},
+    {"id":2,"name":"A&B","values":[1.0]},
+    {"id":1,"name":"B","values":[1.0]} ],
+ "Edges":
+  [ {"from":1,"to":2,"values":[0.5,1.0]},
+    {"from":0,"to":2,"values":[0.5,1.0]} ],
+ "Inputs": [0,1],
+ "Outputs": [2],
+ "Network_Values": [],
+ "Associated_Data":
+   { "other": {"proc_name":"risp"},
+     "proc_params": 
+      { "discrete": false,
+        "fire_like_ravens": false,
+        "leak_mode": "all",
+        "max_delay": 15,
+        "max_threshold": 1.0,
+        "max_weight": 1.0,
+        "min_potential": 0.0,
+        "min_threshold": 0.0,
+        "min_weight": 0.0,
+        "run_time_inclusive": false,
+        "spike_value_factor": 1.0,
+        "threshold_inclusive": true}}}
+UNIX> 
+```
+
+The nodes, edges, inputs and outputs are straightforward.  You can see in the `Associated_Data`
+that the processor name is `"risp"`, and all of the RISP parameters are stored in `proc_params`.
+In particular, the `"leak_mode"` is `"all"`, which means that all neurons leak their values at
+the end of every timestep.
+
+You can also see in the `Properties` what the node and edge `values` mean.  The node `values`
+are the Thresholds.  The edge `values` are arrays, where the first element is the
+Weight and the second is the Delay.  That's because in the `edge_properties`, "Weight" is index 0,
+and "Delay" is index 1.  
+
+You can live a productive life without ever having to "read" a network, but it never hurts
+to have a little knowledge...

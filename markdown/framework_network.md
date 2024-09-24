@@ -125,15 +125,7 @@ network.
 --------
 # The JSON of a Network
 
-The JSON of a network has the following keys:
-
-- "Nodes" -- this is a vector of Node JSON.  It is not sorted by node id.
-- "Edges" -- this is a vector of Edge JSON.  It is not sorted in any way.
-- "Inputs" -- this is a vector of the ids of the input neurons.
-- "Outputs" -- this is a vector of the ids of the input neurons.
-- "Network_Values" -- this is a vector of values defined by the `PropertyPack`
-- "Properties" -- this is the `PropertyPack`
-- "Associated_Data" -- the associated data JSON (see above)
+This is described in [framework_network_json_format.md] (framework_network_json_format.md).
 
 --------
 # Network Methods
@@ -193,15 +185,10 @@ three methods that help produce more readable JSON:
 ## Input and output nodes
 
 - `add_input(id)` - This creates a new input and assigns it to the given node.
-- `set_input(input_id, node_id)` - This sets the given input node to the node with `node_id`.
-   This allows you to replace an input node with another node.  If the input doesn't exist
-   it creates it. This is a little dangerous because that means that there may be some
-   unassigned input nodes.  
 - `get_input(input_id)` returns a `Node` pointer to the given input node.
 - `num_inputs()` returns the number of input nodes.
 
 - `add_output()` is analogous to `add_input()`.
-- `set_output()` is analogous to `set_input()`.
 - `get_output()` is analogous to `get_input()`.
 - `num_outputs()` is analogous to `num_outputs()`.
 
