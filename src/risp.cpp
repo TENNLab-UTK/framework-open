@@ -345,16 +345,17 @@ void Network::clear_activity() {
   overall_run_time = 0;
 }
 
-void Network::apply_spike(const Spike& s) 
+void Network::apply_spike(const Spike& s, bool normalized) 
 {
   Neuron *n;
   double v;
   char buf[24];
   size_t index;
+  string es;
 
-  if (s.value < 0 || s.value > 1) {
+  if (normalized && (s.value < 1 || s.value > 1)) {
     snprintf(buf, 24, "%lg", s.value);
-    throw SRE((string) "risp::Network::apply_spike() - value (" + buf + ") must be in [0,1].");
+    throw SRE((string) "risp::Network::apply_spike() - value (" + buf + ") must be in [-1,1].");
   }
 
   if (!is_valid_input_id(s.id)) {
@@ -365,15 +366,32 @@ void Network::apply_spike(const Spike& s)
   n = get_neuron(inputs[s.id]);
   if (s.time >= events.size()) events.resize(s.time + 1);
   if (inputs_from_weights) {
-    index = (s.value * weights.size());
-    if (index >= weights.size()) index = weights.size()-1;
+    if (!normalized) {
+      index = s.value;
+      if (index < 0 || index >= weights.size()) {
+        snprintf(buf, 24, "%d", ((int) weights.size()) - 1);
+        es = "risp::Network::apply_spike() - value must be between 0 and ";
+        es += buf;
+        snprintf(buf, 24, "%d", (int) index);
+        es += ". Value given: ";
+        es += buf;
+        throw SRE(buf);
+      }
+    } else {
+      index = (s.value * weights.size());
+      if (index >= weights.size()) index = weights.size()-1;
+    }
     if (stds.size() != 0) {
       v = rng.Random_Normal(weights[index], stds[index]);
     } else {
       v = weights[index];
     }
   } else {
-    v = (discrete) ? floor(s.value * spike_value_factor) : s.value * spike_value_factor;
+    if (normalized) {
+      v = (discrete) ? floor(s.value * spike_value_factor) : s.value * spike_value_factor;
+    } else {
+      v = s.value;
+    }
   }
   if (noisy_stddev != 0) v = rng.Random_Normal(v, noisy_stddev);
   events[s.time].push_back(std::make_pair(n,v));
@@ -886,33 +904,36 @@ void Processor::clear(int network_id) {
   
  
 
-void Processor::apply_spike(const Spike& s, int network_id) {
-  get_risp_network(network_id)->apply_spike(s);
+void Processor::apply_spike(const Spike& s, bool normalize, int network_id) {
+  get_risp_network(network_id)->apply_spike(s, normalize);
 }
 
-
-
-void Processor::apply_spike(const Spike& s, const vector<int>& network_ids) {
+void Processor::apply_spike(const Spike& s, 
+                            const vector<int>& network_ids,
+                            bool normalize) {
   size_t i;
+
   for (i = 0; i < network_ids.size(); i++) {
-    apply_spike(s, network_ids[i]);
+    apply_spike(s, normalize, network_ids[i]);
   }
 }
 
-void Processor::apply_spikes(const vector<Spike>& s, int network_id) {
+void Processor::apply_spikes(const vector<Spike>& s, bool normalize, int network_id) {
   size_t i;
   risp::Network *risp_net = get_risp_network(network_id);
 
   for (i = 0; i < s.size(); i++) {
-    risp_net->apply_spike(s[i]);
+    risp_net->apply_spike(s[i], normalize);
   }
 }
 
 
-void Processor::apply_spikes(const vector<Spike>& s, const vector<int>& network_ids) {
+void Processor::apply_spikes(const vector<Spike>& s, 
+                             const vector<int>& network_ids,
+                             bool normalize) {
   size_t i;
   for (i = 0; i < network_ids.size(); i++) {
-    apply_spikes(s, network_ids[i]);
+    apply_spikes(s, normalize, network_ids[i]);
   }
 }
 

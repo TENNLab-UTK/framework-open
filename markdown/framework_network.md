@@ -3,7 +3,8 @@
 Point of Contact: James S. Plank
 
 The framework defines a class called `Network`, which holds spiking neural networks.  These
-may be created in a variety of ways; however, whenever you create a network, you should use
+may be created in a variety of ways; however, whenever you create a network inside your
+C++/python programs, you should use
 the methods defined in the `Network` class.  The `Network` class is defined to be very general,
 so that the same class may be used by multiple different neuroprocessors.
 
@@ -37,7 +38,7 @@ simple, with the following public fields:
 - A vector of `incoming` edges.
 - A vector of `outgoing` edges.
 - A vector of doubles called `values`.  These are defined by the `PropertyPack` (see above,
-  and see the [documentation for `PropertyPack`](framework_properties.md).
+  and see the [documentation for `PropertyPack`](framework_properties.md)).
 - A vector of doubles called `coordinates`.  Using this vector is optional, but if you want
   to specify coordinates for nodes, for a visualization, then this is where you do it.
 - A pointer to the network that contains the node.
@@ -51,6 +52,7 @@ Here are the methods of the of the `Node` class:
 - `set(name,val)` allows you to set a value by its name in the network's `PropertyPack`.
    That assumes that there is only one value associated with the name (the property's count
    is one).  This error checks the value to make sure it is in the proper range defined by
+   the `PropertyPack`.
 - `get(index)` returns the value at the index, in case you don't want to access it directly.
 - `get(name)` returns the value associated with the `name` in the `PropertyPack`.
 - `is_hidden()` returns `true` if the node is neither an input nor an output.

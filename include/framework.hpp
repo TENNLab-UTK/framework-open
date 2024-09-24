@@ -348,12 +348,10 @@ public:
     /* Input and output nodes */
 
     int add_input(uint32_t idx);                    /**< Add the next input */
-    void set_input(int input_id, uint32_t nid);     /**< Set the given input node  */
     Node* get_input(int input_id) const;            /**< Return a pointer to the given input */
     int num_inputs() const;                         /**< The number of input nodes */
 
     int add_output(uint32_t idx);                    /**< Add the next output */
-    void set_output(int output_id, uint32_t nid);    /**< Set the given output node  */
     Node* get_output(int output_id) const;           /**< Return a pointer to the given output */
     int num_outputs() const;                         /**< The number of output nodes */
 
@@ -420,8 +418,8 @@ protected:
     void randomize_h(const json& params);
 
     /* inputs/outputs -- index = input/output id, value = node id */
-    vector<int> m_inputs;
-    vector<int> m_outputs;
+    vector<uint32_t> m_inputs;
+    vector<uint32_t> m_outputs;
 
     /* Nodes and Edges for the network stored centrally */
 
@@ -474,14 +472,22 @@ public:
     virtual void clear(int network_id = 0) = 0;
     
     /* Queue spike(s) as input to a network or to multiple networks.
-       Spike values should be between 0 and 1, and then the processor can
-       convert its value to the proper range. */
+       When normalized == true (the default), spike values should be between 
+       -1 and 1, and then the processor can convert its value to the proper range. 
 
-    virtual void apply_spike(const Spike& s, int network_id = 0) = 0;
-    virtual void apply_spike(const Spike& s, const vector<int>& network_ids) = 0;
+       When normalized == false, the value is simply passed to the neuroprocessor. */
 
-    virtual void apply_spikes(const vector<Spike>& s, int network_id = 0) = 0;
-    virtual void apply_spikes(const vector<Spike>& s, const vector<int>& network_ids) = 0;
+    virtual void apply_spike(const Spike& s, bool normalized = true, int network_id = 0) = 0;
+    virtual void apply_spike(const Spike& s, 
+                             const vector<int>& network_ids, 
+                             bool normalized = true) = 0;
+
+    virtual void apply_spikes(const vector<Spike>& s, 
+                              bool normalized = true, 
+                              int network_id = 0) = 0;
+    virtual void apply_spikes(const vector<Spike>& s, 
+                              const vector<int>& network_ids,
+                              bool normalized = true) = 0;
 
     /* Run the network(s) for the desired time with queued input(s) */
 

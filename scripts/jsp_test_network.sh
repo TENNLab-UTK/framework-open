@@ -15,12 +15,6 @@ t=$7
 processor=$8
 params=$9
 
-# Framework directories -- you can change them if you have a weird configuration
-
-framework=..
-fr=$framework
-cpp=$framework/cpp-apps
-
 pt=bin/processor_tool_$processor         # Processor tool executable
 nt=bin/network_tool                       # Network tool executable
 

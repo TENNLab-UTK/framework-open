@@ -61,7 +61,7 @@ public:
   ~Network();
 
   /* Similar calls from Processor API */
-  void apply_spike(const Spike& s);
+  void apply_spike(const Spike& s, bool normalized = true);
   void run(double duration);
   double get_time();
   bool track_output_events(int output_id, bool track);
@@ -150,11 +150,11 @@ public:
   
   /* Queue spike(s) as input to a network or to multiple networks */
 
-  void apply_spike(const Spike& s, int network_id = 0);
-  void apply_spike(const Spike& s, const vector<int>& network_ids);
+  void apply_spike(const Spike& s, bool normalized = true, int network_id = 0);
+  void apply_spike(const Spike& s, const vector<int>& network_ids, bool normalized = true);
 
-  void apply_spikes(const vector<Spike>& s, int network_id = 0);
-  void apply_spikes(const vector<Spike>& s, const vector<int>& network_ids);
+  void apply_spikes(const vector<Spike>& s, bool normalized = true, int network_id = 0);
+  void apply_spikes(const vector<Spike>& s, const vector<int>& network_ids, bool normalized = true);
 
   /* Run the network(s) for the desired time with queued input(s) */
 

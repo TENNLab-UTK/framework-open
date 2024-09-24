@@ -23,7 +23,7 @@ void print_commands(FILE *f);
 void to_uppercase(string &s);
 
 /** Make sure the spike has the legal id, time, and value. **/
-void spike_validation(const Spike &s, const Network *n);
+void spike_validation(const Spike &s, const Network *n, bool normalize);
 
 /** Make sure the node "node_id" is an output node in the network */
 void output_node_id_validation(const int node_id, const Network *n);
@@ -53,7 +53,8 @@ void print_commands(FILE *f)
   fprintf(f, "LOAD/L network_json                 - Load a network on the processor\n");
   fprintf(f, "ML network_json                     - Make a new processor from the network & load the network.\n");
 
-  fprintf(f, "AS node_id spike_time spike_val ... - Apply spikes to the network (note: node_id, not input_id)\n");
+  fprintf(f, "AS node_id spike_time spike_val ... - Apply normalized spikes to the network (note: node_id, not input_id)\n");
+  fprintf(f, "ASV node_id spike_time spike_val .. - Apply unnormalized spikes to the network (note: node_id, not input_id)\n");
   fprintf(f, "ASR node_id spike_raster_string     - Apply spike raster to the network (note: node_id, not input_id)\n");
   fprintf(f, "RUN simulation_time                 - Run the network for \"simulation_time\" cycles\n");
   fprintf(f, "RSC/RUN_SR_CH sim_time [node] [...] - Run, and then print spike raster and charge information in columns\n");
@@ -142,13 +143,15 @@ int node_validation(const Network *n, const string &node_id)
   return nid;
 }
 
-void spike_validation(const Spike &s, const Network *n) 
+void spike_validation(const Spike &s, const Network *n, bool normalize) 
 {
   Node *node;
   char buf[20];
 
   try {
-    if (s.value < 0 || s.value > 1) throw "spike val must be >= 0 and <= 1";
+    if (normalize) {
+      if (s.value < 1 || s.value > 1) throw "spike val must be >= 1 and <= 1";
+    }
     if (s.time < 0) throw "spike time must be > 0";
     node = n->get_node(s.id);
     if (!node->is_input()) {
@@ -297,6 +300,7 @@ int main(int argc, char **argv)
   map <int, string> aliases; // Aliases for input/output nodes.
   map <int, string>::iterator ait;
   bool gsr_hidden_nodes;
+  bool normalize;
   unordered_set <int> gsr_nodes;
   
   json proc_params, network_json;
@@ -415,13 +419,14 @@ int main(int argc, char **argv)
           }
         }
   
-      } else if (sv[0] == "AS") { // apply_spike()
+      } else if (sv[0] == "AS" || sv[0] == "ASV") { // apply_spike()
        
         if (network_processor_validation(net, p)) {
           if (sv.size() < 2 || (sv.size() - 1) % 3 != 0) {
-            printf("usage: AS node_id spike_time spike_value node_id1 spike_time1 spike_value1 ...\n");
+            printf("usage: %s node_id spike_time spike_value node_id1 spike_time1 spike_value1 ...\n", sv[0].c_str());
           } else {
   
+            normalize = (sv[0].size() == 2);
             for (i = 0; i < (sv.size() - 1) / 3; i++) {
               try {
   
@@ -432,9 +437,9 @@ int main(int argc, char **argv)
                   throw SRE((string) "Invalid spike [ " + sv[i*3 + 1] + "," + sv[i*3 + 2] + "," +
                                        sv[i*3 + 3] + "]\n");
                 } 
-                spike_validation(Spike(spike_id, spike_time, spike_val), net);
+                spike_validation(Spike(spike_id, spike_time, spike_val), net, normalize);
                 
-                p->apply_spike(Spike(net->get_node(spike_id)->input_id, spike_time, spike_val));
+                p->apply_spike(Spike(net->get_node(spike_id)->input_id, spike_time, spike_val), normalize);
                 spikes_array.push_back(Spike(spike_id, spike_time, spike_val));
   
               } catch (const SRE &e) {
@@ -462,7 +467,7 @@ int main(int argc, char **argv)
               if (sscanf(sv[1].c_str(), "%d", &spike_id) != 1) {
                 throw SRE((string) "Bad neuron id: " + sv[1]);
               }
-              spike_validation(Spike(spike_id, 0, 0), net);
+              spike_validation(Spike(spike_id, 0, 0), net, true);
               apply_spike_raster(p, net->get_node(spike_id)->input_id, sr);
   
             } catch (const SRE &e) {

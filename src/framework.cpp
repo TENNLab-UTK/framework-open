@@ -16,9 +16,6 @@ using std::make_pair;
 using nlohmann::json;
 
 static json network_specs = {
-   { "Node_Properties", "A" },
-   { "Edge_Properties", "A" },
-   { "Network_Properties", "A" },
    { "Properties", "J" },
    { "Associated_Data", "J" },
    { "Nodes", "A" },
@@ -26,7 +23,13 @@ static json network_specs = {
    { "Inputs", "A" },
    { "Outputs", "A" },
    { "Network_Values", "A" },
-     { "Necessary", { "Nodes", "Edges", "Inputs", "Outputs", "Network_Values" } } };
+     { "Necessary", { "Properties", 
+                      "Associated_Data", 
+                      "Nodes", 
+                      "Edges", 
+                      "Inputs", 
+                      "Outputs", 
+                      "Network_Values" } } };
 
 static json node_specs = {
    { "id", "I" },
@@ -294,6 +297,8 @@ json Network::as_json() const
 void Network::to_json(json& j) const
 {
     // Dump all the properties
+    // If the properties aren't empty, save them into the JSON
+
     j["Properties"] = m_properties.as_json();
 
     j["Nodes"] = json::array();
@@ -319,90 +324,47 @@ void Network::to_json(json& j) const
 
     // Keep all associated data together as a dictionary entry in the network json
 
-    j["Associated_Data"] = (m_associated_data.empty()) ? json::object() : m_associated_data;
+    j["Associated_Data"] = (m_associated_data == nullptr) ? json::object() : m_associated_data;
 }
 
 void Network::from_json(const json &j)
 {
-    int old_specs;
     json tmp_properties;
     Node *n;
     Edge *e;
     string estring;
+    size_t i;
+    char buf[128];
+    uint32_t id;
 
-    /* Check parameters -- this should still be done more thoroughly. */
+    /* Check parameters. */
 
     Parameter_Check_Json_T(j, network_specs);
 
-
-   
-    old_specs = 0;
-    /*  CHZ - comment out old-school conversion */
-    
-    if (j.contains("Node_Properties")) old_specs++;
-    if (j.contains("Edge_Properties")) old_specs++;
-    if (j.contains("Network_Properties")) old_specs++;
-
-    if (old_specs != 0) throw SRE("Sorry we don't support old school properties anymore");
-    /*
-    if (old_specs == 0) {
-      if (!j.contains("Properties")) {
-        throw SRE("Error in network JSON, no properties specified");
-      }
-    } else if (j.contains("Properties")) {
-      throw SRE("Error in network JSON, both old and new property specs in JSON.\n");
-    } else if (old_specs != 3) {
-      throw SRE("Error in network JSON, incomplete old property specs.\n");
-    } 
-    */
-    
-    /* At this point, things are relatively safe, so go ahead and clear the network */
-
     clear(true);
 
-    /* Grab the properties -- both old style and new style, so old networks
-       don't break everything. */
+    /* Grab the properties. */
    
-    if (old_specs == 0) {
-      m_properties.from_json(j["Properties"]);
-    } /* else {
-      tmp_properties = json::object();
-      tmp_properties["node_properties"] = j["Node_Properties"];
-      tmp_properties["edge_properties"] = j["Edge_Properties"];
-      tmp_properties["network_properties"] = j["Network_Properties"];
-      m_properties.from_json(tmp_properties);
-    } */ 
+    m_properties.from_json(j["Properties"]);
 
     // Add the Network values
-    
 
     values = j["Network_Values"].get<vector <double>>();
     if (values.size() != m_properties.net_vec_size) {
-      throw SRE("Error in network JSON: Network_Value's array's size doesn't match the network Propery Pack");
+      throw SRE((string) "Error in network JSON: " +
+                "Network_Value's array's size doesn't match the network Propery Pack");
     }
 
     // Get any associated data
-    if(j.contains("Associated_Data"))
-    {   
-        if (j["Associated_Data"] == nullptr ||  j["Associated_Data"].empty()) m_associated_data = json::object();
-        else m_associated_data = j["Associated_Data"];
-    }
 
-
-    // Add the inputs & outputs
-    m_inputs = j["Inputs"].get<vector<int>>();
-    m_outputs = j["Outputs"].get<vector<int>>();
+    m_associated_data = json::object();
+    if (j["Associated_Data"] != nullptr) m_associated_data = j["Associated_Data"];
 
     // Add nodes /w values
     // CHZ I didn't pass as reference because we may need to modify jn
+
     for(auto jn : j["Nodes"])
     {   
-        if (jn.contains("x") && jn.contains("y")) {
-            jn["coords"] = {jn["x"], jn["y"]};
-            jn.erase("x");
-            jn.erase("y");
-        }
-
         Parameter_Check_Json_T(jn, node_specs);
         n = add_node(jn["id"]);
         n->values = jn["values"].get<vector<double>>();
@@ -433,13 +395,28 @@ void Network::from_json(const json &j)
     }
 
     // Set inputs & outputs
-    for(int i = 0; i < int(m_inputs.size()); ++i)
-        if(m_inputs[i] != -1)
-            get_node(m_inputs[i])->input_id = i;
+
+    // Add the inputs & outputs
+
+    for (i = 0; i < j["Inputs"].size(); i++) {
+      if (j["Inputs"][i].get<double>() < 0) {
+        snprintf(buf, 128, "%d", (int) i);
+        estring = (string) "Bad Network JSON - Input[" + (string) buf + "] is < 0.";
+        throw SRE(estring);
+      }
+      id = j["Inputs"][i].get<uint32_t>();
+      add_input(id);
+    }
     
-    for(int i = 0; i < int(m_outputs.size()); ++i)
-        if(m_outputs[i] != -1)
-            get_node(m_outputs[i])->output_id = i;
+    for (i = 0; i < j["Outputs"].size(); i++) {
+      if (j["Outputs"][i].get<double>() < 0) {
+        snprintf(buf, 128, "%d", (int) i);
+        estring = (string) "Bad Network JSON - Output[" + (string) buf + "] is < 0.";
+        throw SRE(estring);
+      }
+      id = j["Outputs"][i].get<uint32_t>();
+      add_output(id);
+    }
 }
 
 Node* Network::add_node(uint32_t idx)
@@ -629,7 +606,7 @@ Node* Network::get_node(uint32_t idx) const
 
     if (n == m_nodes.end()) {
       snprintf(buf, 100, "Node %u does not exist.", idx);
-      throw SRE(buf);
+      throw SRE((string) buf);
     }
 
     return n->second.get();
@@ -642,7 +619,7 @@ Edge* Network::get_edge(uint32_t fr, uint32_t to) const
 
     if (e == m_edges.end()) {
       snprintf(buf, 100, "Edge %u -> %u does not exist.", fr, to);
-      throw SRE(buf);
+      throw SRE((string) buf);
     }
 
     return e->second.get();
@@ -745,37 +722,6 @@ int Network::add_output(uint32_t idx)
     n->output_id = m_outputs.size();
     m_outputs.push_back(idx);
     return n->output_id;
-}
-
-void Network::set_input(int input_id, uint32_t nid)
-{
-    Node *n;
-    char buf[100];
-
-    n = get_node(nid);
-    if (n->input_id >= 0) {
-      snprintf(buf, 100, "Node %u was already set as an input (%u).", nid, n->input_id);
-      throw SRE(buf);
-    }
-    if(input_id > int(m_inputs.size())-1) m_inputs.resize(input_id+1, -1);
-    m_inputs[input_id] = nid;
-    n->input_id = input_id;
-}
-
-void Network::set_output(int output_id, uint32_t nid)
-{
-    Node *n;
-    char buf[100];
-
-    n = get_node(nid);
-    if (n->output_id >= 0) {
-      snprintf(buf, 100, "Node %u was already set as an output (%d).", nid, n->output_id);
-      throw SRE(buf);
-    }
-
-    if(output_id > int(m_outputs.size())-1) m_outputs.resize(output_id+1, -1);
-    m_outputs[output_id] = nid;
-    n->output_id = output_id;
 }
 
 Node* Network::get_input(int input_id) const
