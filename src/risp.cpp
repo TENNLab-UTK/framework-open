@@ -368,7 +368,7 @@ void Network::apply_spike(const Spike& s, bool normalized)
   if (inputs_from_weights) {
     if (!normalized) {
       index = s.value;
-      if (index < 0 || index >= weights.size()) {
+      if (index >= weights.size()) {
         snprintf(buf, 24, "%d", ((int) weights.size()) - 1);
         es = "risp::Network::apply_spike() - value must be between 0 and ";
         es += buf;
