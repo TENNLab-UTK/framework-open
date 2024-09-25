@@ -353,7 +353,7 @@ void Network::apply_spike(const Spike& s, bool normalized)
   size_t index;
   string es;
 
-  if (normalized && (s.value < 1 || s.value > 1)) {
+  if (normalized && (s.value < 0 || s.value > 1)) {
     snprintf(buf, 24, "%lg", s.value);
     throw SRE((string) "risp::Network::apply_spike() - value (" + buf + ") must be in [-1,1].");
   }
