@@ -47,7 +47,7 @@ network/processor combination in the application, you do the following:
 - Load the network onto the processor.
 - Go into the apply-spikes / run / read-output loop.
 
-Please see [`framework_network_json_format.md`](framework_network_json_format.md) 
+Please see [`network_json_format.md`](network_json_format.md) 
 for more information on this.
 
 When a processor instance is created, it internally stores a `Property_Pack`.
@@ -72,7 +72,7 @@ To help disambuiguate this process, here's how it works:
   the network.
 
 To read more about `Property_Packs`, please see
-Please see [`framework_properties_format.md`](framework_properties_format.md).
+Please see [`properties_format.md`](properties_format.md).
 
   
 

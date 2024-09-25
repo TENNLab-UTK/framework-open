@@ -9,7 +9,7 @@ There is flexibility in that nodes, edges and networks may each store an array o
 called `"values"` (well, the network one is called `"Network_Values"`).  The identities of
 these arrays is held in the `"Properties"`.   When EONS does optimization, it optimizes network
 structure and all of the `"values"`.
-Please see the [markdown on properties](framework_properties.md) for more detailed explanation.
+Please see the [markdown on properties](properties.md) for more detailed explanation.
 
 ----------------------------------------
 # Required Keys
@@ -77,7 +77,7 @@ This is an array of doubles, which stores values that correspond to the network'
 ## "Properties"
 
 This is the "PropertyPack" that defines the `values` arrays in nodes, edges and networks.
-This has its own [markdown page](framework_properties.md).
+This has its own [markdown page](properties.md).
 
 ----------------------------------------
 ## "Associated_Data"
@@ -143,7 +143,7 @@ inside the network.  Here are some popular keys and vals that are stored here:
 # Examples
 
 Here are a few simple examples.  First, here's a binary AND network, from the
-paper (https://neuromorphic.eecs.utk.edu/publications/2021-07-29-spiking-neuromorphic-networks-for-binary-tasks).  Here's ASCII art of the network:
+paper [Spiking Neuromorphic Networks for Binary Tasks](https://neuromorphic.eecs.utk.edu/publications/2021-07-29-spiking-neuromorphic-networks-for-binary-tasks).  Here's ASCII art of the network:
 
 ```
       W=0.5, D=1

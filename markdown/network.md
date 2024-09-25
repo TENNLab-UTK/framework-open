@@ -17,7 +17,7 @@ Networks are composed of a few components, which I will go over here.
 ## A PropertyPack
 
 This defines what values are stored in nodes, edges and the network.  Please read
-the [documentation for `PropertyPack`](framework_properties.md) for a description of the
+the [documentation for `PropertyPack`](properties.md) for a description of the
 `PropertyPack` and what it does.
 
 ----------
@@ -38,7 +38,7 @@ simple, with the following public fields:
 - A vector of `incoming` edges.
 - A vector of `outgoing` edges.
 - A vector of doubles called `values`.  These are defined by the `PropertyPack` (see above,
-  and see the [documentation for `PropertyPack`](framework_properties.md)).
+  and see the [documentation for `PropertyPack`](properties.md)).
 - A vector of doubles called `coordinates`.  Using this vector is optional, but if you want
   to specify coordinates for nodes, for a visualization, then this is where you do it.
 - A pointer to the network that contains the node.
@@ -88,7 +88,7 @@ by its property pack.
 The network stores a JSON object called its `associated data`.  This contains additional information
 about the network, and often about the processor and application for which the network is being
 used.  This is used by the `app_agent` so that it knows how to run the network after it has
-been trained.  Documentation of the associated data is in [`framework_network_json_format.md`](framework_network_json_format.md).
+been trained.  Documentation of the associated data is in [`network_json_format.md`](network_json_format.md).
 
 --------
 # Internal Structure of Networks / Workflow to Create and Use a Network
@@ -125,7 +125,7 @@ network.
 --------
 # The JSON of a Network
 
-This is described in [framework_network_json_format.md] (framework_network_json_format.md).
+This is described in [network_json_format.md] (network_json_format.md).
 
 --------
 # Network Methods
