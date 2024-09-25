@@ -7,7 +7,7 @@ This is implemented as an include-only header.  To use this, put the following i
 ```
 
 When you compile, make sure you have `-Iframework/include` in your compilation line, where
-`framework` is the directory of the framework.
+`framework` is the directory of the framework.  You'll also have to compile with `--std=c++11'.
 
 The header defines a class `neuro::MOA`, which implements the "Mother of All"
 random number generator.  I grabbed the code for this in 2016 from

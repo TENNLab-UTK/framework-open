@@ -147,6 +147,9 @@ or developing within TENNLab, here's when you may want to care about these data 
 ------------
 ## The property_tool utility program.
 
+To compile the `property_tool` and `property_pack_tool`, do `make utils` in the main framework
+directory.
+
 The program `bin/property_tool` lets you test and use all of the methods in the `Property` class.
 It maintains one instance of a `Property`, which you can manipulate on the command line.  It's
 pretty bare bones:

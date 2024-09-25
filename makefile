@@ -29,6 +29,9 @@ all: lib/libframework.a \
      bin/network_tool \
      bin/processor_tool_risp
 
+utils: bin/property_pack_tool \
+       bin/property_tool
+
 clean:
 	rm -f bin/* obj/* lib/*
 
@@ -45,6 +48,15 @@ bin/network_tool: src/network_tool.cpp $(FR_INC) $(FR_LIB)
 
 bin/processor_tool_risp: src/processor_tool.cpp $(FR_INC) $(RISP_INC) $(RISP_OBJ) $(FR_LIB)
 	$(CXX) $(FR_CFLAGS) -o bin/processor_tool_risp src/processor_tool.cpp $(RISP_OBJ) $(FR_LIB)
+
+# ------------------------------------------------------------ 
+# Utilities.
+
+bin/property_tool: src/property_tool.cpp $(FR_INC) $(FR_LIB)
+	$(CXX) $(FR_CFLAGS) -o bin/property_tool src/property_tool.cpp $(FR_LIB)
+
+bin/property_pack_tool: src/property_pack_tool.cpp $(FR_INC) $(FR_LIB)
+	$(CXX) $(FR_CFLAGS) -o bin/property_pack_tool src/property_pack_tool.cpp $(FR_LIB)
 
 # ------------------------------------------------------------ 
 # Object files

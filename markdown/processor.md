@@ -33,16 +33,16 @@ You can view the PDF of the flowchart [here](images/processor_flowchart.pdf).
 ## Parameterization and customization of processors, and the Property_Pack.
 
 When you create an instance of a processor, you will very likely want to set
-some parameters.  For example, when you create an instance of the GNP processor,
-you may want to set up how neurons leak.  You do that by passing a JSON string
+some parameters.  For example, when you create an instance of the RISP processor,
+you'll want to set things like its leak mode or whether it stores discrete or floating
+poitn values.  You do that by passing a JSON string
 to the processor's constructor or to the processor's `make()` method (C++ only).
 
-In most of our applications, when they store a network, they store the JSON used
-to create the processor that runs the network.  This is stored in "Associated_Data"
+When most of our applications store a network, they store the JSON used
+to create the processor that runs the network.  This is stored in `"Associated_Data"`
 of the network, under the key `proc_params`.  Then when you want to use that 
 network/processor combination in the application, you do the following:
 
-- Create an instance of the network from the network file.
 - Create an instance of the processor using the JSON stored in the network file.
 - Load the network onto the processor.
 - Go into the apply-spikes / run / read-output loop.
@@ -72,7 +72,7 @@ To help disambuiguate this process, here's how it works:
   the network.
 
 To read more about `Property_Packs`, please see
-Please see [`properties_format.md`](properties_format.md).
+Please see [`properties.md`](properties.md).
 
   
 
@@ -96,7 +96,7 @@ namespace::Processor(nlohmann::json &_settings)
 ```
 
 When you're using python, you'll call the constructor.  In most of our C++ apps, you'll
-call the processor's `make()` method, which you'll implement in a subdirectory of `../cpp-apps/processors`.  Please see [placeholder](placeholder) for more information.
+call the processor's `make()` method, which you'll implement in a subdirectory of `../cpp-apps/processors`.  Probably best to look at the `processor_tool` code if you want an example of this.
 
 ----
 ### Loading a network and clearing the current network.
@@ -125,9 +125,14 @@ call the processor's `make()` method, which you'll implement in a subdirectory o
   contains a neuron id, time and value.  The id is the input number of the neuron (not
   the neuron's id, but the input number).  The time is relative to the current time.
 
-  The spike's value should be between 0 and 1. It is up to the processor implementation
-  to convert this value to the proper value for the neuroprocessor.  For example, Caspian
-  converts this value to a number between 0 and 127.
+  An optional parameter to `apply_spikes` is a boolean `normalize`.  Its default is `true`.
+  When it is `true`, then the values of spikes should be between -1 and 1.
+  It is up to the processor implementation
+  to convert this value to the proper value for the neuroprocessor.  Typically 0 maps to
+  0, and 1 maps to the maximum synapse weight.  Everything in between is calculated linearly.
+
+  When `normalize` is `false`, then the spike may have any value.  Typically, the neuroprocessor
+  simply spikes in that value.
 
 - `apply_spikes()` allows you to specify a vector of spikes rather than a single spike.
 
