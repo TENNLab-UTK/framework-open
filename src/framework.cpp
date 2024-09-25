@@ -941,9 +941,7 @@ void Network::prune()
     };
 
     // Traverse from each input
-    for(auto c : m_inputs)
-        if(c >= 0)
-            traverse_outputs(m_nodes.at(c).get());
+    for(auto c : m_inputs) traverse_outputs(m_nodes.at(c).get());
 
     // Check which nodes were visited
     for(auto& elm : m_nodes)
@@ -959,9 +957,7 @@ void Network::prune()
     to_remove.clear();
 
     // Traverse from each output
-    for(auto c : m_outputs)
-        if(c >= 0)
-            traverse_inputs(m_nodes.at(c).get());
+    for(auto c : m_outputs) traverse_inputs(m_nodes.at(c).get());
 
     // Check which nodes were visited
     for(auto& elm : m_nodes)
