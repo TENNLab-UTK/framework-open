@@ -68,4 +68,5 @@ To get started with this repo, please do one or both of:
   the steps of learning this software with me explaining as we go.
 
 By the end of this exercise, you should be equipped with the know-how and tools to start creating
-and running your own RISP networks!
+and running your own RISP networks, and to start exploring embedded applications with the
+[Open-Source FPGA Implementation of RISP](https://github.com/TENNLab-UTK/fpga).
