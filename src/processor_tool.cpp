@@ -254,6 +254,12 @@ Network *load_network(Processor **pp,
 }
 
 
+void safe_exit(Processor *p, Network *n)
+{
+  if (p != nullptr) delete p;
+  if (n != nullptr) delete n;
+  exit(0);
+}
 
 int main(int argc, char **argv) 
 {
@@ -327,7 +333,7 @@ int main(int argc, char **argv)
   while(1) {
     try {
       if (prompt != "") printf("%s", prompt.c_str());
-      if (!getline(cin, l)) return 0;
+      if (!getline(cin, l)) safe_exit(p, net);
       sv.clear();
       ss.clear();
       ss.str(l);
@@ -341,7 +347,8 @@ int main(int argc, char **argv)
       } else if (sv[0] == "?") {
         print_commands(stdout);
       } else if (sv[0] == "Q") {
-        exit(0);
+        safe_exit(p, net);
+
       } else if (sv[0] == "ML") { // make() and load_network()
         
         if (!read_json(sv, 1, network_json)) {
