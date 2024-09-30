@@ -138,7 +138,7 @@ You can specify the following parameters:
 You can go through each of these examples with `scripts/test_risp.sh`.  
 
 ----------------------------------------
-## Test 1 (script 17): RISP with defaults.
+## Test 1 (Script 17): RISP with defaults.
 
 For this test, we use RISP-F and the network pictured below:
 In this and later pictures, all weights, delays and thresholds are one unless otherwise
@@ -146,12 +146,14 @@ specified.
 
 ![images/network_1_all_ones.jpg](images/network_1_all_ones.jpg)
 
-Let's use the network tool to see the neuron id numbers that correspond to the various
-neurons:
+Let's create the network with `scripts/test_risp.sh`, and then look at it with the
+`network_tool`:
 
 ```
-UNIX> ../bin/network_tool -
-- FJ tmp.txt
+UNIX> sh scripts/test_risp.sh 17 yes
+Passed Test 17 - Test 1 from the RISP README.
+UNIX> bin/network_tool -
+- FJ tmp_network.txt
 - NODES  
 [ {"id":0,"name":"Main","values":[1.0]},           # Main is neuron 0
   {"id":4,"name":"Bias","values":[1.0]},           # Bias is neuron 4
@@ -167,7 +169,7 @@ network runs.  Please read the commentary that is inline:
 
 ```
 UNIX> bin/processor_tool_risp -                     # Our prompt will be a single dash.
-- ML tmp.txt                                        # Create the processor and load our network.
+- ML tmp_network.txt                                        # Create the processor and load our network.
 - AS 0 0 1                                          # Send an input spike at time zero to the Main neuron
 - RUN 10                                            # Run for ten timesteps.
 - GSR
@@ -227,25 +229,23 @@ time: 25.0
 
 
 ----------------------------------------
-## Test 2: Setting some different delays to see neurons "in flight"
+## Test 2 (Script 18): Setting some different delays to see neurons "in flight"
 
 This is a trivial test, but I want you to see that spikes can be "in flight" when
 the *RUN* call terminates, and they'll be delivered at the proper timestep in a 
 subsequent *RUN* call.  We use the following network:
 
-```
-UNIX> sh ../scripts/jsp_test_network.sh 4 5  1 1 1 1 1 risp params/risp.json > tmp.txt
-```
-
 ![images/network_2_delays.jpg](images/network_2_delays.jpg)
 
 Again, please read the commentary inline:
 ```
+UNIX> sh scripts/test_risp.sh 18 yes
+Passed Test 18 - Test 2 from the RISP README.
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1   2 0 1               # We apply spikes to the Main and Off neurons at time zero.
 - RUN 10                         # This "turns on" the Main and Bias neurons, and then turns the
-- GSR                          # Main neuron off at timestep 5.  One quirk of the "GSR" command
+- GSR                            # Main neuron off at timestep 5.  One quirk of the "GSR" command
 0(Main) INPUT  : 1111100000      # is that if no neurons spike in the last timesteps, then it won't
 1(On)   INPUT  : 0000000000      # show those timesteps.  That's why I have the Bias neuron, so that
 2(Off)  INPUT  : 1000000000      # you can see all of the timesteps, even when there's no activity
@@ -271,14 +271,10 @@ UNIX> bin/processor_tool_risp -
 ```
 
 ----------------------------------------
-## Test 3: Putting an extra delay on Main's self-loop synapse
+## Test 3 (Script 19): Putting an extra delay on Main's self-loop synapse
 
 We next set all parameters to 1, except we put a delay of two on the synapse from
 *Main* to itself:
-
-```
-UNIX> sh ../scripts/jsp_test_network.sh 1 1   2   1 1 1 1 risp params/risp.json > tmp.txt
-```
 
 ![images/network_3_self_synapse.jpg](images/network_3_self_synapse.jpg)
 
@@ -286,8 +282,10 @@ The end result here is to have the *Main* neuron fire every other cycle, which i
 the *Out* neuron fire every other cycle:
 
 ```
+UNIX> sh scripts/test_risp.sh 19 yes
+Passed Test 19 - Test 3 from the RISP README.
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1
 - RUN 10
 - GSR
@@ -331,13 +329,10 @@ UNIX>
 ```
 
 ----------------------------------------
-## Test 4: Setting The Weight of the Synapse to the Out neuron to 0.5
+## Test 4 (Script 20): Setting The Weight of the Synapse to the Out neuron to 0.5
 
 Now we put all of the delays back to 1, and set the weight of the synapse from *Main*
 to *Out* to 0.5:
-```
-UNIX> sh ../scripts/jsp_test_network.sh 1 1 1 1 1   0.5   1 risp params/risp.json > tmp.txt
-```
 
 ![images/network_4_half_weight.jpg](images/network_4_half_weight.jpg)
 
@@ -345,8 +340,10 @@ Now, it takes two spikes from *Main* to cause *Out* to spike.  Thus, it spikes e
 other timestep:
 
 ```
+UNIX> sh scripts/test_risp.sh 20 yes
+Passed Test 20 - Test 4 from the RISP README.
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1
 - RUN 10
 - GSR
@@ -398,7 +395,7 @@ UNIX>
 ```
 
 ----------------------------------------
-## Test 5: Turning On Leak
+## Test 5 (Script 21): Turning On Leak
 
 RISP has a parameter setting called `leak_mode`.  It can have three values:
 
@@ -407,31 +404,43 @@ RISP has a parameter setting called `leak_mode`.  It can have three values:
 3. `"configurable"` - You can set each neuron's leak to `true', meaning it leaks its
     potential every timestep, or `false`, meaning it doesn't leak.
 
-I have set `leak_mode` to `"all"` in the 
-parameter file [`params/risp_leak.json`](params/risp_leak.json):
+
+When we run test script 21, it creates the same network as in the last test, but now
+leak is turned on:
 
 ```
-UNIX> cat params/risp_leak.json
-{
+UNIX> sh scripts/test_risp.sh 21 yes
+Passed Test 21 - Test 5 from the RISP README.
+UNIX> grep leak tmp_network.txt
+        "leak_mode": "all",
+UNIX> 
+```
+
+In these scripts, the RISP parameter files are stored in the file `tmp_proc_params.txt`, so
+you can see that here, where the `"leak_mode"` is set to `"all"`:
+
+```
+UNIX> cat tmp_proc_params.txt
+{ 
   "min_weight": -1,
-  "max_weight": 1, 
+  "max_weight": 1,
+  "leak_mode": "all",
   "min_threshold": -1,
   "max_threshold": 1,
   "min_potential": -1,
-  "max_delay": 5,
-  "discrete": false,
-  "leak_mode": "all"
+  "max_delay": 15,
+  "discrete": false
 }
+UNIX> 
 ```
 
-Now, let's create the same network as in the last test, but
+Again, this is the same network as in the last test, but
 now our neurons leak their charge at the end of each timestep.  As such, the *Out* neuron
 never gets enough charge, and it never fires:
 
 ```
-UNIX> sh ../scripts/jsp_test_network.sh 1 1 1 1 1   0.5   1 risp params/risp_leak.json > tmp.txt
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1
 - RUN 10
 - GSR
@@ -450,7 +459,7 @@ put the full amount of charge into the input neurons, they won't fire:
 
 ```
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1  2 0 1          # Start up the Bias, and turn the Main neuron off:
 - RUN 5
 - GSR
@@ -478,168 +487,117 @@ UNIX>
 ```
 
 ----------------------------------------
-## Test 6: Using Configurable Leak in RISP
+## Test 6 (Script 22): Using Configurable Leak in RISP
 
 RISP allows you to set leak on individual neurons.  To do that, you set the `leak_mode`
-to `"configurable"`.  I've done that
-in [`params/risp_prog_leak.json`](params/risp_prog_leak.json):
-
-```
-UNIX> cat params/risp_prog_leak.json
-{ 
-  "min_weight": -1,
-  "max_weight": 1, 
-  "min_threshold": -1,
-  "max_threshold": 1,
-  "max_delay": 5,
-  "min_potential": -1,
-  "discrete": false,
-  "leak_mode": "configurable"                    # Here is the setting
-}
-
-UNIX> 
-```
-
-We'll set up the same network as before, but use the programmable leak parameter file:
-
-```
-UNIX> sh ../scripts/jsp_test_network.sh 1 1 1 1 1  0.5  1 risp params/risp_prog_leak.json > tmp.txt
-```
+to `"configurable"`.  Script 22 creates such a network -- it looks the same as the previous
+network, but you can configure each neuron's leak individually:
 
 ![images/network_4_half_weight.jpg](images/network_4_half_weight.jpg)
 
-When we run this below, you'll see that the neurons still leak all of
-their charge.  That is because the `network_tool` sets all parameters to their maximum values
-when it creates neurons and synapses.  When `leak_mode` is `"configurable"`, each neuron
-has a `"Leak"` property which is a boolean.  0 is false and 1 is true, so the `network_tool`
-sets all neurons `"Leak"` properties to 1 -- true.
-
 ```
-UNIX> bin/processor_tool_risp -
-- ML tmp.txt
-- AS 0 0 1
-- RUN 10
-- GSR
-0(Main) INPUT  : 1111111111
-1(On)   INPUT  : 0000000000
-2(Off)  INPUT  : 0000000000
-3(Out)  OUTPUT : 0000000000    # Out doesn't spike, because it leaks away its charge
-4(Bias) OUTPUT : 0111111111
-- Q
+UNIX> sh scripts/test_risp.sh 22 yes
+Passed Test 22 - Test 6 from the RISP README.
+UNIX> grep leak tmp_proc_params.txt
+  "leak_mode": "configurable",
+UNIX> grep leak tmp_network.txt
+        "leak_mode": "configurable",
 UNIX> 
 ```
 
-We can use the `network_tool` to confirm the leak values:
+Let's look at the neurons:
 
 ```
-UNIX> ../bin/network_tool -
-- FJ tmp.txt
-- P                      # You can see the Leak is the second property of a node (because index=1).
+UNIX> ( echo FJ tmp_network.txt ; echo NODES ) | bin/network_tool
+[ {"id":0,"name":"Main","values":[1.0,1.0]},
+  {"id":4,"name":"Bias","values":[1.0,1.0]},
+  {"id":1,"name":"On","values":[1.0,1.0]},
+  {"id":2,"name":"Off","values":[1.0,1.0]},
+  {"id":3,"name":"Out","values":[1.0,0.0]} ]
+UNIX> 
+```
+
+You'll see that each neuron now has two values -- Threshold and Leak.  How do we know that?
+Look at the "Properties" in the network file:
+
+```
+UNIX> ( echo FJ tmp_network.txt ; echo PROPERTIES ) | bin/network_tool
 { "node_properties": [
     { "name":"Leak", "type":66, "index":1, "size":1, "min_value":0.0, "max_value":1.0 },
     { "name":"Threshold", "type":68, "index":0, "size":1, "min_value":-1.0, "max_value":1.0 }],
   "edge_properties": [
-    { "name":"Delay", "type":73, "index":1, "size":1, "min_value":1.0, "max_value":5.0 },
+    { "name":"Delay", "type":73, "index":1, "size":1, "min_value":1.0, "max_value":15.0 },
     { "name":"Weight", "type":68, "index":0, "size":1, "min_value":-1.0, "max_value":1.0 }],
   "network_properties": [] }
-- NODES
-[ {"id":0,"name":"Main","values":[1.0,1.0]},       # All nodes have thresholds of 1, and leaks of 1
-  {"id":4,"name":"Bias","values":[1.0,1.0]},
-  {"id":1,"name":"On","values":[1.0,1.0]},
-  {"id":2,"name":"Off","values":[1.0,1.0]},
-  {"id":3,"name":"Out","values":[1.0,1.0]} ]
-- Q
 UNIX> 
-```
+``
 
-Let's now use the network tool to set the *Out* neuron's Leak to `false`.  
-
-```
-UNIX> ../bin/network_tool -
-- FJ tmp.txt
-- NODES
-[ {"id":0,"name":"Main","values":[1.0,1.0]},
-  {"id":4,"name":"Bias","values":[1.0,1.0]},
-  {"id":1,"name":"On","values":[1.0,1.0]},
-  {"id":2,"name":"Off","values":[1.0,1.0]},
-  {"id":3,"name":"Out","values":[1.0,1.0]} ]            # The Out neuron is neuron #3
-- SNP 3 Leak 0                                          # SNP stands for Set Neuron Property
-- NODES
-[ {"id":0,"name":"Main","values":[1.0,1.0]},
-  {"id":4,"name":"Bias","values":[1.0,1.0]},
-  {"id":1,"name":"On","values":[1.0,1.0]},
-  {"id":2,"name":"Off","values":[1.0,1.0]},
-  {"id":3,"name":"Out","values":[1.0,0.0]} ]            # You can see its value has been changed.
-- TJ tmp.txt
-- Q
-UNIX> 
-```
-
-Here's the network pictorally:
-
-![images/network_5_prog_leak.jpg](images/network_5_prog_leak.jpg)
-
-When we run this, the *Out* neuron goes back to firing every other timestep, because
-it retains its potential from timestep to timestep:
+You can see that "Threshold" is index 0, and "Leak" is index 1.  You can also see that the "Out"
+neuron has leak set to 0 (don't leak), while the others all have it set to 1 (leak).
+For that reason, when we run this network, *Out* fires every other timestep.  
 
 ```
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1
 - RUN 10
 - GSR
 0(Main) INPUT  : 1111111111
 1(On)   INPUT  : 0000000000
 2(Off)  INPUT  : 0000000000
-3(Out)  OUTPUT : 0010101010              # Out now fires every other timestep
+3(Out)  OUTPUT : 0010101010
 4(Bias) OUTPUT : 0111111111
-- NCH
-Node 0(Main) charge: 0
-Node   1(On) charge: 0
-Node  2(Off) charge: 0
-Node  3(Out) charge: 0.5                 # You can see that at this point, Out has non-zero charge.
-Node 4(Bias) charge: 0
+- Q
+UNIX> 
+```
+
+Let's set the "Leak" for the *Out* neuron to 1 with the network tool.  Now *Out* never fires:
+
+```
+UNIX> bin/network_tool -
+- FJ tmp_network.txt
+- SNP 3 Leak 1
+- TJ tmp_network.txt
+- Q
+UNIX> bin/processor_tool_risp -
+- ML tmp_network.txt
+- AS 0 0 1
+- RUN 10
+- GSR
+0(Main) INPUT  : 1111111111
+1(On)   INPUT  : 0000000000
+2(Off)  INPUT  : 0000000000
+3(Out)  OUTPUT : 0000000000
+4(Bias) OUTPUT : 0111111111
 - Q
 UNIX> 
 ```
 
 --------------------------------------------------
-## Test 7: Run_time_inclusive
+## Test 7 (Script 23): Run_time_inclusive
 
 RISP has a parameter `run_time_inclusive`.  By default, it is set to `false`.  If you
 set it to `true`, then each `RUN` call goes for an extra timestep.  Why do we have this?
 Well, some processors (e.g. RAVENS) do this in hardware, 
 so we thought it would be a good thing to match it.
 
-Below, we'll simply use a `sed` script to set it from its default to `true` and create
-our base network:
-
-```
-UNIX> sed '/discrete/s/$/, "run_time_inclusive": true/' params/risp.json > tmp-params.txt
-UNIX> cat tmp-params.txt
-{
-  "min_weight": -1,
-  "max_weight": 1,
-  "min_threshold": -1,
-  "max_threshold": 1,
-  "max_delay": 5,
-  "discrete": false, "run_time_inclusive": true          # Here's the new setting.
-}
-UNIX> sh ../scripts/jsp_test_network.sh 1 1 1 1 1 1 1 risp tmp-params.txt > tmp.txt
-UNIX> 
-UNIX> 
-```
-
-Here's the network:
+Test script 23 creates the following network, but sets `run_time_inclusive` to `true`:
 
 ![images/network_1_all_ones.jpg](images/network_1_all_ones.jpg)
+
+```
+UNIX> sh scripts/test_risp.sh 23 yes
+Passed Test 23 - Test 7 from the RISP README.
+UNIX> grep run_time_inclusive tmp_network.txt
+        "run_time_inclusive": true,
+UNIX> 
+```
 
 When we call `RUN 5`, you'll see that it actually runs for 6 timesteps:
 
 ```
 UNIX> bin/processor_tool_risp -
-UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1
 - RUN 5
 - GSR
@@ -666,11 +624,16 @@ potential exceeds the threshold.  The default is `true`, which means they fire w
 potential meets or exceeds the threshold.  You can see that pretty easily in the examples
 above.  
 
-Let's demonstrate this by creating our base network with `threshold_inclusive` set to `false`:
+Script 24 shows what happens when we set `threshold_inclusive` set to `false`.  It's the
+same network as before:
+
+![images/network_1_all_ones.jpg](images/network_1_all_ones.jpg)
 
 ```
-UNIX> sed '/discrete/s/$/, "threshold_inclusive": false/' params/risp.json > tmp-params.txt
-UNIX> sh ../scripts/jsp_test_network.sh 1 1 1 1 1 1 1 risp tmp-params.txt > tmp.txt
+UNIX> sh scripts/test_risp.sh 24 yes
+Passed Test 24 - Test 8 from the RISP README.
+UNIX> grep threshold_inclusive tmp_network.txt
+        "threshold_inclusive": false}}}
 UNIX> 
 ```
 
@@ -678,7 +641,7 @@ When we run it and apply a spike with a value of 1, the *Main* neuron doesn't fi
 
 ```
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1
 - RUN 5
 - GSR
@@ -710,8 +673,8 @@ If we want our network to work like it did before, we can change all of the neur
 potentials to 0.99:
 
 ```
-UNIX> ../bin/network_tool -
-- FJ tmp.txt
+UNIX> bin/network_tool -
+- FJ tmp_network.txt
 - SNP 0 1 2 3 4 Threshold 0.99               # This sets all thresholds to 0.99
 - NODES
 [ {"id":0,"name":"Main","values":[0.99]},
@@ -719,10 +682,10 @@ UNIX> ../bin/network_tool -
   {"id":1,"name":"On","values":[0.99]},
   {"id":2,"name":"Off","values":[0.99]},
   {"id":3,"name":"Out","values":[0.99]} ]
-- TJ tmp.txt
+- TJ tmp_network.txt
 - Q
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1
 - RUN 5
 - GSR
@@ -737,40 +700,41 @@ UNIX>
 
 
 --------------------------------------------------
-## Test 9: Discrete = true
+## Test 9 (Script 25): Discrete = true, a RISP-n network
 
 The RISP parameter `discrete` is a necessary parameter.  If `true`, then all parameters -- 
-thresholds, delays and weights -- must be integers.  Let's take a look at 
-a parameter file where `discrete` is set to `true`:
+thresholds, delays and weights -- must be integers.  As described above the `RISP-n`
+and `RISP-n+` settings are discrete, where `RISP-n` sets minimum and maximum parameters to
+*n* and *-n*, and `RISP-n+` sets minimum parameters to 0/1, and maximum parameters to *n*.
 
-```
-UNIX> cat params/risp_discrete.json
-{ 
-  "min_weight": -10,                      # You'll note that weights and thresholds are larger,
-  "max_weight": 10,                       # since they are taking on discrete values.
-  "min_threshold": 0,
-  "max_threshold": 10,
-  "min_potential": -10,
-  "max_delay": 5,
-  "discrete": true
-}
-UNIX> 
-```
-
-And we'll set up our default network where the threshold of the *Out* neuron is three:
-
-```
-UNIX> sh ../scripts/jsp_test_network.sh  1 1 1 1 1 1 3 risp params/risp_discrete.json > tmp.txt
-```
+Script 25 creates the following network for `RISP-7`:
 
 ![images/network_6_discrete.jpg](images/network_6_discrete.jpg)
+
+```
+UNIX> sh scripts/test_risp.sh 25 yes
+Passed Test 25 - Test 9 from the RISP README.
+UNIX> cat tmp_proc_params.txt 
+{ 
+  "min_weight": -7,
+  "max_weight": 7,
+  "leak_mode": "none",
+  "min_threshold": 0,
+  "max_threshold": 7,
+  "min_potential": -7,
+  "max_delay": 15,
+  "discrete": true
+}
+UNIX> diff tmp_proc_params.txt params/risp_7.txt         # It's the same as params/risp_7.txt
+UNIX> 
+```
 
 When we put a spike into the main neuron, as expected, the *Out* neuron fires every third
 timestep:
 
 ```
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1
 - RUN 12
 - GSR
@@ -790,33 +754,47 @@ UNIX>
 ```
 
 --------------------------------------------------
-## Test 10: spike_value_factor
+## Test 10 (Scripts 26 and 27): spike_value_factor
 
 As mentioned several times already in this README, the framework's `apply_spikes()` method
-specifies spike values between 0 and 1.  It is up to each neuroprocessor to convert these
+typically specifies spike values between 0 and 1.  It is up to each neuroprocessor to convert these
 values correctly.  What RISP does is use the parameter `spike_value_factor`, which it
 multiplies by the spike value from `apply_spikes()`.  If `discrete` is `true`, then the
 floor of this value is taken, and that is the value of the spike.
 
 If `spike_value_factor` is not specified, then it is set to the maximum synapse
 weight (the parameter `max_weight`).  Let's explore this a little.  We'll use the
-same network as above: 
+same network as above, but we'll use RISP-10, just because it makes the math a little
+clearer:
 
 ```
-UNIX> sh ../scripts/jsp_test_network.sh  1 1 1 1 1 1 3 risp params/risp_discrete.json > tmp.txt
-```
+UNIX> sh scripts/test_risp.sh 26 yes
+Passed Test 26 - Test 10 (first part) from the RISP README.
+UNIX> cat tmp_proc_params.txt 
+{ 
+  "min_weight": -10,
+  "max_weight": 10,
+  "leak_mode": "none",
+  "min_threshold": 0,
+  "max_threshold": 10,
+  "min_potential": -10,
+  "max_delay": 15,
+  "discrete": true
+}
+UNIX> 
+
+To remind you, here is the network.
 
 ![images/network_6_discrete.jpg](images/network_6_discrete.jpg)
 
-When I called 
-`AS 0 0 1` above in the `processor_tool`, it really put a value of 10 into the input neuron.  
-Of course,
-the neuron spiked.  However, if we call `AS 0 0 0.1`, it will still spike, because the
-`spike_value_factor` is 10:
+When I call 
+`AS 0 0 1` in the `processor_tool`, it really puts a value of 10 into the input neuron.  
+Of course, that will cause the neuron to spike.  
+However, if we call `AS 0 0 0.1`, it will still spike, because the `spike_value_factor` is 10:
 
 ```
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 0.1
 - RUN 12
 - GSR
@@ -828,12 +806,11 @@ UNIX> bin/processor_tool_risp -
 - Q
 UNIX> 
 ```
-
-If you call `AS 0 0 0.09`, then `floor(10*0.09) = 0` and the input neuron won't spike:
+If we call `AS 0 0 0.09`, then `floor(10*0.09) = 0` and the input neuron won't spike:
 
 ```
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 0.09
 - RUN 12
 - GSR
@@ -852,23 +829,27 @@ Node 4(Bias) charge: 0
 UNIX> 
 ```
 
-Let's go back to the RISP default, where `discrete` is `false`, and set `spike_value_factor`
-to 0.5.  We'll set up a network where all of the synapse weights are 1 or -1:
+Let's go back to the RISP default, where `discrete` is `false`, but set `spike_value_factor`
+to 0.5:
 
 ```
-UNIX> sed '/min_weight/s/$/ "spike_value_factor": 0.5,/' params/risp.json > tmp-risp.json
-UNIX> cat tmp-risp.json
-{
+UNIX> sh scripts/test_risp.sh 27 yes
+Passed Test 27 - Test 10 (second part) from the RISP README.
+UNIX> cat tmp_proc_params.txt 
+{ 
   "min_weight": -1, "spike_value_factor": 0.5,
   "max_weight": 1,
+  "leak_mode": "none",
   "min_threshold": -1,
   "max_threshold": 1,
   "min_potential": -1,
-  "max_delay": 5,
+  "max_delay": 15,
   "discrete": false
 }
-UNIX> sh ../scripts/jsp_test_network.sh 1 1 1 1 1 1 1 risp tmp-risp.json > tmp.txt
+UNIX> 
 ```
+
+The test has set up a network where all of the synapse weights are 1 or -1:
 
 ![images/network_1_all_ones.jpg](images/network_1_all_ones.jpg)
 
@@ -876,7 +857,7 @@ And now when we apply a spike whose value is one, it really spikes with a value 
 
 ```
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1
 - RUN 10
 - GSR
@@ -896,64 +877,35 @@ UNIX>
 ```
 
 --------------------------------------------------
-## Test 11:  min_potential
+## Test 11 (Script 28):  min_potential
 
 This parameter specifies the minimum potential value that a neuron may store.  You'll note that
 while integrating (processing spikes), the potential may go below this value, but at the end of 
 integration, if the potential is less than this value, then it is set to the value.
 
-I'm going to use the default RISP settings, where `min_potential` is zero, and we'll set up
-the following network, where all delays and thresholds are one:
-
-![images/network_B_min_potential.jpg](images/network_B_min_potential.jpg)
-
-You can ignore this if you want, but here's how I make the network the the `network_tool`
-and `processor_tool`:
+I'm going to use RISP-F, where `min_potential` is equal to -1:
 
 ```
-UNIX> cat params/risp.json
-{
+UNIX> sh scripts/test_risp.sh 28 yes
+Passed Test 28 - Test 11 from the RISP README.
+UNIX> cat tmp_proc_params.txt
+{ 
   "min_weight": -1,
   "max_weight": 1,
+  "leak_mode": "none",
   "min_threshold": -1,
   "max_threshold": 1,
   "min_potential": -1,
-  "max_delay": 5,
+  "max_delay": 15,
   "discrete": false
 }
-UNIX> bin/processor_tool_risp -
-- M risp params/risp.json                # First, create an empty network with the processor_tool
-- EMPTYNET tmp.txt
-- Q
-UNIX> ../bin/network_tool -              # Now set nodes and edges with the network_tool:
-- FJ tmp.txt                             # Start with the empty network
-- AN 0 1 2 3 4                           # Add nodes 0 through 4
-- AI 0 1 2 3 4                           # Set the nodes as input nodes.
-- AE 0 4  1 4  2 4  3 4                  # Add the four edges, all to node 4
-- SEP 1 4 Weight -0.6                    # Set the weights as in the picture
-- SEP 2 4 Weight -0.5
-- SEP 3 4 Weight -0.2
-- SEP 0 4 Delay 1                        # Set the edge delays to one (they would be 5 otherwise)
-- SEP 1 4 Delay 1
-- SEP 2 4 Delay 1
-- SEP 3 4 Delay 1
-- SORT
-0 1 2 3 4
-- NODES                                  # Confirm that everything is as in the picture.
-[ {"id":0,"values":[1.0]},
-  {"id":1,"values":[1.0]},
-  {"id":2,"values":[1.0]},
-  {"id":3,"values":[1.0]},
-  {"id":4,"values":[1.0]} ]
-- EDGES
-[ {"from":0,"to":4,"values":[1.0,1.0]},
-  {"from":1,"to":4,"values":[-0.6,1.0]},
-  {"from":2,"to":4,"values":[-0.5,1.0]},
-  {"from":3,"to":4,"values":[-0.2,1.0]} ]
-- TJ tmp.txt
-- Q
 UNIX> 
 ```
+
+The script sets up the following network, where all delays and thresholds are one:
+
+![images/network_B_min_potential.jpg](images/network_B_min_potential.jpg)
+
 
 Now, let's run it in a variety of ways.  First, let's cause neuron 1 to spike twice.  Although
 the two weights are -0.6, neuron 4's potential is set to its minimum value, -1, rather than
@@ -961,7 +913,7 @@ the sum of the weights, -1.2:
 
 ```
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 1 0 1   1 1 1   
 - RUN 5
 - NCH
@@ -981,7 +933,7 @@ that matters is its value at the end of the integration cycle:
 
 ```
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1   1 0 1   2 0 1
 - RUN 3
 - NCH
@@ -1001,7 +953,7 @@ the spikes.
 
 ```
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 3 0 1  3 1 1  3 2 1  3 3 1   
 - AS 0 4 1  1 4 1  2 4 1
 - RUN 6
@@ -1016,7 +968,7 @@ UNIX>
 ```
 
 --------------------------------------------------
-## Test 12: noisy_stddev
+## Test 12 (Script 29): noisy_stddev
 
 With `noisy_stddev`, you can add noise to every synapse fire.  To demonstrate this, I'm going
 to set up the following network: 
@@ -1024,19 +976,21 @@ to set up the following network:
 ![images/network_C_noisy_stddev.jpg](images/network_C_noisy_stddev.jpg)
 
 I'll start neuron 0 firing at time 0 and neuron 1 firing at time 1.  That way, neuron 0 fires
-on the even cycles and neuron 1 fires on the odd cycles.  I'll set up RISP so that a random
+on the even cycles and neuron 1 fires on the odd cycles.  The script
+sets up RISP-F so that a random
 number with standard deviation 0.01 gets added to the synapse weights:
 
 ```
-UNIX> sed '/min_weight/s/$/ "noisy_stddev": 0.01,/' params/risp.json > tmp-risp.json
-UNIX> cat tmp-risp.json
-{
+UNIX> sed '/min_weight/s/$/ "noisy_stddev": 0.01,/' params/risp_f.txt > tmp_risp.txt
+UNIX> cat tmp_risp.txt
+{ 
   "min_weight": -1, "noisy_stddev": 0.01,
   "max_weight": 1,
+  "leak_mode": "none",
   "min_threshold": -1,
   "max_threshold": 1,
   "min_potential": -1,
-  "max_delay": 5,
+  "max_delay": 15,
   "discrete": false
 }
 UNIX>
@@ -1045,11 +999,11 @@ And I'll create the network with the `processor_tool` and `network_tool`:
 
 ```
 UNIX> bin/processor_tool_risp -
-- M risp tmp-risp.json
-- EMPTYNET tmp.txt
+- M risp tmp_risp.txt
+- EMPTYNET tmp_network.txt
 - Q
-UNIX> ../bin/network_tool -
-- FJ tmp.txt
+UNIX> bin/network_tool -
+- FJ tmp_network.txt
 - AN 0 1 2
 - AI 0 1
 - AE 0 0   1 1   0 2   1 2
@@ -1067,7 +1021,7 @@ UNIX> ../bin/network_tool -
   {"from":1,"to":1,"values":[1.0,2.0]},
   {"from":1,"to":2,"values":[1.0,1.0]},
   {"from":0,"to":2,"values":[0.1,1.0]} ]
-- TJ tmp.txt
+- TJ tmp_network.txt
 - Q
 UNIX> 
 ```
@@ -1081,7 +1035,7 @@ enough to make node 2 spike.  Hence the alternation:
 
 ```
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1   1 1 1
 - RUN 20
 - GSR
@@ -1096,7 +1050,7 @@ Now, let's see those random numbers.  What I'll do is print node 2's charge valu
 
 ```
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1   1 1 1
 - RUN 1
 - NCH 2
@@ -1118,7 +1072,7 @@ Can we prove to ourselves that the random numbers are indeed normals with a stan
 of 0.01?  Sure -- the following shell command will record 10,000 spike values from node zero:
 
 ```
-UNIX> ( echo ML tmp.txt ; echo AS 0 0 1 1 1 1; i=0; while [ $i -lt 10000 ]; do echo RUN 2; echo NCH 2; i=$(($i+1)); done ) | bin/processor_tool_risp > tmp-spikes.txt
+UNIX> ( echo ML tmp_network.txt ; echo AS 0 0 1 1 1 1; i=0; while [ $i -lt 10000 ]; do echo RUN 2; echo NCH 2; i=$(($i+1)); done ) | bin/processor_tool_risp > tmp-spikes.txt
 UNIX> head tmp-spikes.txt
 Node 2 charge: 0.0984676
 Node 2 charge: 0.0872493
@@ -1140,11 +1094,11 @@ We'll graph a histogram -- looks good enough for me!
 You'll note that during each run, the random charge values are different:
 
 ```
-UNIX> ( echo ML tmp.txt ; echo AS 0 0 1 1 1 1; echo RUN 2 ; echo NCH 2) | bin/processor_tool_risp 
+UNIX> ( echo ML tmp_network.txt ; echo AS 0 0 1 1 1 1; echo RUN 2 ; echo NCH 2) | bin/processor_tool_risp 
 Node 2 charge: 0.103169
-UNIX> ( echo ML tmp.txt ; echo AS 0 0 1 1 1 1; echo RUN 2 ; echo NCH 2) | bin/processor_tool_risp 
+UNIX> ( echo ML tmp_network.txt ; echo AS 0 0 1 1 1 1; echo RUN 2 ; echo NCH 2) | bin/processor_tool_risp 
 Node 2 charge: 0.0869593
-UNIX> ( echo ML tmp.txt ; echo AS 0 0 1 1 1 1; echo RUN 2 ; echo NCH 2) | bin/processor_tool_risp 
+UNIX> ( echo ML tmp_network.txt ; echo AS 0 0 1 1 1 1; echo RUN 2 ; echo NCH 2) | bin/processor_tool_risp 
 Node 2 charge: 0.0963038
 UNIX> 
 ```
@@ -1155,7 +1109,7 @@ the `proc_params` in the network file, and then you'll see that the charge value
 generated in the same way:
 
 ```
-UNIX> ed tmp.txt                       # I'm adding "noisy_seed": 1 to the processor parameters in the network
+UNIX> ed tmp_network.txt                       # I'm adding "noisy_seed": 1 to the processor parameters in the network
 1199
 /noisy_std
         "noisy_stddev": 0.01,
@@ -1166,23 +1120,25 @@ w
 q
 UNIX>      # Now you'll see the same random charge values generated:
 UNIX>
-UNIX> ( echo ML tmp.txt ; echo AS 0 0 1 1 1 1; echo RUN 2 ; echo NCH 2) | bin/processor_tool_risp 
+UNIX> ( echo ML tmp_network.txt ; echo AS 0 0 1 1 1 1; echo RUN 2 ; echo NCH 2) | bin/processor_tool_risp 
 Node 2 charge: 0.104594
-UNIX> ( echo ML tmp.txt ; echo AS 0 0 1 1 1 1; echo RUN 2 ; echo NCH 2) | bin/processor_tool_risp 
+UNIX> ( echo ML tmp_network.txt ; echo AS 0 0 1 1 1 1; echo RUN 2 ; echo NCH 2) | bin/processor_tool_risp 
 Node 2 charge: 0.104594
-UNIX> ( echo ML tmp.txt ; echo AS 0 0 1 1 1 1; echo RUN 2 ; echo NCH 2) | bin/processor_tool_risp 
+UNIX> ( echo ML tmp_network.txt ; echo AS 0 0 1 1 1 1; echo RUN 2 ; echo NCH 2) | bin/processor_tool_risp 
 Node 2 charge: 0.104594
 UNIX> 
 ```
 
 --------------------------------------------------
-## Test 13: Weights, inputs_from_weights = false
+## Test 13 (Script 30): Weights, inputs_from_weights = false
 
-In `params/risp_weights.json`, there is a parameter file that restricts the synapse
-weights to 0.1, 0.5 and 1.0:
+Script 30 creates a RISP parameter file
+that restricts the synapse weights to 0.1, 0.5 and 1.0:
 
 ```
-UNIX> cat params/risp_weights.json
+UNIX> sh scripts/test_risp.sh 30 yes
+Passed Test 30 - Test 13 from the RISP README.
+UNIX> cat tmp_proc_params.txt 
 {
   "weights": [ 0.1, 0.5, 1.0 ],
   "inputs_from_weights": false,
@@ -1206,11 +1162,11 @@ are specified:
 
 ```
 UNIX> bin/processor_tool_risp -
-- M risp params/risp_weights.json
-- EMPTYNET tmp.txt
+- M risp tmp_proc_params
+- EMPTYNET tmp_network.txt
 - Q
-UNIX> ../bin/network_tool -
-- FJ tmp.txt
+UNIX> bin/network_tool -
+- FJ tmp_network.txt
 - AN 0 1 2 3                     # Add neurons 0-3
 - AI 0 1 2                       # Specify that neurons 0-2 are input neurons
 - AE 0 3  1 3   2 3              # Add the three synapses
@@ -1229,7 +1185,7 @@ UNIX> ../bin/network_tool -
 [ {"from":0,"to":3,"values":[0.0,1.0]},    # Again, you'll note that the weight values are indices to the weights array.
   {"from":1,"to":3,"values":[1.0,1.0]},
   {"from":2,"to":3,"values":[2.0,1.0]} ]
-- TJ tmp.txt
+- TJ tmp_network.txt
 - Q
 UNIX>
 ```
@@ -1240,7 +1196,7 @@ neurons 0, 1, and 2 spike individually, and we'll look at neuron 3's potential:
 
 ```
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1                  # Make neuron 0 spike
 - RUN 2
 - GSR
@@ -1284,13 +1240,13 @@ UNIX>
 ```
 
 --------------------------------------------------
-## Test 14: Weights, inputs_from_weights = true
+## Test 14 (Script 31): Weights, inputs_from_weights = true
 
-Let's modify the network so that the RISP parameter `inputs_from_weights` is `true`, and
+Let's modify the previous network so that the RISP parameter `inputs_from_weights` is `true`, and
 `spike_value_factor` is deleted:
 
 ```
-UNIX> ed tmp.txt
+UNIX> ed tmp_network.txt
 1174
 /input
         "inputs_from_weights": false,
@@ -1302,46 +1258,52 @@ q
 UNIX> 
 ```
 
-Now, the input values are restricted to the three synapse weights:
+By default, when you call `apply_spikes()` (`AS` in the `processor_tool`), the values
+are normalized between 0 and 1, and the neuroprocessor scales them.  There is a flag
+to use non-normalized values, where you simply send the values you want sent to the
+input neuron.  The processor tool command for that is `ASV`.  We're going to call that
+so that:
 
-- Calling `apply_spikes()` with a value from 0 to 0.33333 results in a weight of 0.1.  
-- Calling `apply_spikes()` with a value from 0.33333 to 0.66667 results in a weight of 0.5.  
-- Calling `apply_spikes()` with a value from 0.66667 to 1 results in a weight of 1.0.  
+- `ASV` with a value of 0 uses weight 0, which is 0.1.
+- `ASV` with a value of 1 uses weight 0, which is 0.5.
+- `ASV` with a value of 2 uses weight 0, which is 1.0.
 
-I know that's kind of confusing and convoluted.  We'll probably make some framework changes to make
-this better, but it's what you have for now.  Let's illustrate:
+Here we go:
 
 ```
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
-- AS 0 0 0                # Calling `apply_spikes()` with a value from 0 to 0.33333 results in a weight of 0.1.
+- ML tmp_network.txt
+- ASV 0 0 0               # This will put 0.1 into the neuron:
 - RUN 1
 - NCH 0
 Node 0 charge: 0.1        # There it is.
 
-- AS 0 0 0.4              # Calling `apply_spikes()` with a value from 0.33333 to 0.66667 results in a weight of 0.5.  
+- AS 0 0 1                # This will add 0.5 to the neuron:
 - RUN 1
 - NCH 0
-Node 0 charge: 0.6        # Accordingly, 0.5 has been added to neuron 0's potential.
+Node 0 charge: 0.6        # There it is.
 - Q
 UNIX> 
 ```
 
 --------------------------------------------------
-## Test 15: Stds
+## Test 15 (Script 32): Stds
 
 Finally, you can specify a standard deviation for noise for each of the weights in `weights`.  
-To demonstrate, I'll set up the following network:
+To demonstrate, script 32 sets up the following network:
 
 ![images/network_F_stds.jpg](images/network_F_stds.jpg)
 
-We'll use the RISP parameter file in `params/risp_stds.json`
+With the following parameter file:
 
 ```
-UNIX> cat params/risp_stds.json
+UNIX> sh scripts/test_risp.sh 32 yes
+Passed Test 32 - Test 15 from the RISP README.
+UNIX> cat tmp_proc_params.txt 
 {
   "weights": [ 0.1, 0.5, 1.0 ],
   "stds": [ 0.01, 0.1, 0.0 ],
+  "noisy_seed": 1,
   "inputs_from_weights": false,
   "spike_value_factor": 1,
   "min_threshold": -1,
@@ -1353,64 +1315,32 @@ UNIX> cat params/risp_stds.json
 UNIX> 
 ```
 
-We create the network in the exact same manner as above:
-
-```
-UNIX> bin/processor_tool_risp -
-- M risp params/risp_stds.json
-- EMPTYNET tmp.txt
-- Q
-UNIX> ../bin/network_tool -
-- FJ tmp.txt
-- AN 0 1 2 3
-- AI 0 1 2
-- AE 0 3   1 3   2 3
-- SEP_ALL Delay 1
-- SEP 0 3 Weight 0
-- SEP 1 3 Weight 1
-- SEP 2 3 Weight 2
-- SORT
-0 1 2 3
-- NODES
-[ {"id":0,"values":[1.0]},
-  {"id":1,"values":[1.0]},
-  {"id":2,"values":[1.0]},
-  {"id":3,"values":[1.0]} ]
-- EDGES
-[ {"from":0,"to":3,"values":[0.0,1.0]},
-  {"from":1,"to":3,"values":[1.0,1.0]},
-  {"from":2,"to":3,"values":[2.0,1.0]} ]
-- TJ tmp.txt
-- Q
-UNIX> 
-```
-
 Now, when we run it and make neurons 0 and 1 spike, you can see the random values
 applied to neuron 3.  I spike neuron 2 in the middle to force neuron 3 to spike, so 
 you can see those random values better:
 
 ```
 UNIX> bin/processor_tool_risp -
-- ML tmp.txt
+- ML tmp_network.txt
 - AS 0 0 1                       # Make neuron 0 spike
 - RUN 2
 - NCH 3
-Node 3 charge: 0.0990382         # You can see the random value applied.
+Node 3 charge: 0.1028372         # You can see the random value applied.
 - AS 2 0 1                       # This will force neuron 3 to spike.
 - AS 1 1 1                       # And neuron 1 will spike one timestep later
 - RUN 3
 - NCH 3
-Node 3 charge: 0.477438          # Here's the value from neuron 2.
+Node 3 charge: 0.574937          # Here's the value from neuron 1.
 - AS 2 0 1
 - AS 1 1 1
 - RUN 3
 - NCH 3
-Node 3 charge: 0.411362          # When we repeat the process, we get a different value.
+Node 3 charge: 0.551412          # When we repeat the process, we get a different value.
 - AS 2 0 1
 - AS 0 1 1
 - RUN 3
 - NCH 3
-Node 3 charge: 0.10076           # Ditto from neuron 0.
+Node 3 charge: 0.105962          # Ditto from neuron 0.
 - Q
 UNIX> 
 ```

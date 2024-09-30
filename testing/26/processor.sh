@@ -1,1 +1,1 @@
-cat params/risp_7.txt | sed '/max_weight/s/7/10/'
+cat params/risp_7.txt | sed 's/7/10/g'
