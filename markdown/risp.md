@@ -46,7 +46,7 @@ You can find that in
 [The Embedded Neuromorphic Repository](https://bitbucket.org/neuromorphic-utk/embedded-neuromorphic), but you'll need bitbucket access from TENNLab, because this implementation is not open-source.
 It may be someday, but not yet.
 
-# ------------------------------------------------------------
+------------------------------------------------------------
 # Default RISP Parameter Settings
 
 There are three main classes of RISP:
@@ -135,37 +135,16 @@ You can specify the following parameters:
 ------------------------------------------------------------
 # Examples of Use
 
-I'm going to use the `jsp_test_network.sh` script to generate network that we'll walk
-through with the `processor_tool`.  You may read about the script
-[here](../../markdown/scripts_jsp_test_network.md).  
-
-You should be in the `cpp-apps` directory, and you should have `network_tool`
-and `processor_tool_risp` compiled:
-
-```
-UNIX> pwd
-/Users/plank/src/repos/framework/cpp-apps
-UNIX> ( cd .. ; make bin/network_tool )
-...
-UNIX> make app=processor_tool proc=risp
-...
-UNIX> 
-```
+You can go through each of these examples with `scripts/test_risp.sh`.  
 
 ----------------------------------------
-## Test 1: RISP with defaults.
+## Test 1 (script 17): RISP with defaults.
 
-For this test, we use RISP defaults and set all of the values to 1:
-
-```
-UNIX> sh ../scripts/jsp_test_network.sh 1 1 1 1 1 1 1 risp params/risp.json > tmp.txt
-```
-
-Our network is the one pictured below.
+For this test, we use RISP-F and the network pictured below:
 In this and later pictures, all weights, delays and thresholds are one unless otherwise
 specified.  
 
-![jpg/network_1_all_ones.jpg](jpg/network_1_all_ones.jpg)
+![images/network_1_all_ones.jpg](images/network_1_all_ones.jpg)
 
 Let's use the network tool to see the neuron id numbers that correspond to the various
 neurons:
@@ -258,7 +237,7 @@ subsequent *RUN* call.  We use the following network:
 UNIX> sh ../scripts/jsp_test_network.sh 4 5  1 1 1 1 1 risp params/risp.json > tmp.txt
 ```
 
-![jpg/network_2_delays.jpg](jpg/network_2_delays.jpg)
+![images/network_2_delays.jpg](images/network_2_delays.jpg)
 
 Again, please read the commentary inline:
 ```
@@ -301,7 +280,7 @@ We next set all parameters to 1, except we put a delay of two on the synapse fro
 UNIX> sh ../scripts/jsp_test_network.sh 1 1   2   1 1 1 1 risp params/risp.json > tmp.txt
 ```
 
-![jpg/network_3_self_synapse.jpg](jpg/network_3_self_synapse.jpg)
+![images/network_3_self_synapse.jpg](images/network_3_self_synapse.jpg)
 
 The end result here is to have the *Main* neuron fire every other cycle, which in turn has
 the *Out* neuron fire every other cycle:
@@ -360,7 +339,7 @@ to *Out* to 0.5:
 UNIX> sh ../scripts/jsp_test_network.sh 1 1 1 1 1   0.5   1 risp params/risp.json > tmp.txt
 ```
 
-![jpg/network_4_half_weight.jpg](jpg/network_4_half_weight.jpg)
+![images/network_4_half_weight.jpg](images/network_4_half_weight.jpg)
 
 Now, it takes two spikes from *Main* to cause *Out* to spike.  Thus, it spikes every
 other timestep:
@@ -527,7 +506,7 @@ We'll set up the same network as before, but use the programmable leak parameter
 UNIX> sh ../scripts/jsp_test_network.sh 1 1 1 1 1  0.5  1 risp params/risp_prog_leak.json > tmp.txt
 ```
 
-![jpg/network_4_half_weight.jpg](jpg/network_4_half_weight.jpg)
+![images/network_4_half_weight.jpg](images/network_4_half_weight.jpg)
 
 When we run this below, you'll see that the neurons still leak all of
 their charge.  That is because the `network_tool` sets all parameters to their maximum values
@@ -598,7 +577,7 @@ UNIX>
 
 Here's the network pictorally:
 
-![jpg/network_5_prog_leak.jpg](jpg/network_5_prog_leak.jpg)
+![images/network_5_prog_leak.jpg](images/network_5_prog_leak.jpg)
 
 When we run this, the *Out* neuron goes back to firing every other timestep, because
 it retains its potential from timestep to timestep:
@@ -653,7 +632,7 @@ UNIX>
 
 Here's the network:
 
-![jpg/network_1_all_ones.jpg](jpg/network_1_all_ones.jpg)
+![images/network_1_all_ones.jpg](images/network_1_all_ones.jpg)
 
 When we call `RUN 5`, you'll see that it actually runs for 6 timesteps:
 
@@ -784,7 +763,7 @@ And we'll set up our default network where the threshold of the *Out* neuron is 
 UNIX> sh ../scripts/jsp_test_network.sh  1 1 1 1 1 1 3 risp params/risp_discrete.json > tmp.txt
 ```
 
-![jpg/network_6_discrete.jpg](jpg/network_6_discrete.jpg)
+![images/network_6_discrete.jpg](images/network_6_discrete.jpg)
 
 When we put a spike into the main neuron, as expected, the *Out* neuron fires every third
 timestep:
@@ -827,7 +806,7 @@ same network as above:
 UNIX> sh ../scripts/jsp_test_network.sh  1 1 1 1 1 1 3 risp params/risp_discrete.json > tmp.txt
 ```
 
-![jpg/network_6_discrete.jpg](jpg/network_6_discrete.jpg)
+![images/network_6_discrete.jpg](images/network_6_discrete.jpg)
 
 When I called 
 `AS 0 0 1` above in the `processor_tool`, it really put a value of 10 into the input neuron.  
@@ -891,7 +870,7 @@ UNIX> cat tmp-risp.json
 UNIX> sh ../scripts/jsp_test_network.sh 1 1 1 1 1 1 1 risp tmp-risp.json > tmp.txt
 ```
 
-![jpg/network_1_all_ones.jpg](jpg/network_1_all_ones.jpg)
+![images/network_1_all_ones.jpg](images/network_1_all_ones.jpg)
 
 And now when we apply a spike whose value is one, it really spikes with a value of 0.5:
 
@@ -926,7 +905,7 @@ integration, if the potential is less than this value, then it is set to the val
 I'm going to use the default RISP settings, where `min_potential` is zero, and we'll set up
 the following network, where all delays and thresholds are one:
 
-![jpg/network_B_min_potential.jpg](jpg/network_B_min_potential.jpg)
+![images/network_B_min_potential.jpg](images/network_B_min_potential.jpg)
 
 You can ignore this if you want, but here's how I make the network the the `network_tool`
 and `processor_tool`:
@@ -1042,7 +1021,7 @@ UNIX>
 With `noisy_stddev`, you can add noise to every synapse fire.  To demonstrate this, I'm going
 to set up the following network: 
 
-![jpg/network_C_noisy_stddev.jpg](jpg/network_C_noisy_stddev.jpg)
+![images/network_C_noisy_stddev.jpg](images/network_C_noisy_stddev.jpg)
 
 I'll start neuron 0 firing at time 0 and neuron 1 firing at time 1.  That way, neuron 0 fires
 on the even cycles and neuron 1 fires on the odd cycles.  I'll set up RISP so that a random
@@ -1156,7 +1135,7 @@ UNIX>
 
 We'll graph a histogram -- looks good enough for me!
 
-![jpg/histo.jpg](jpg/histo.jpg)
+![images/histo.jpg](images/histo.jpg)
 
 You'll note that during each run, the random charge values are different:
 
@@ -1220,7 +1199,7 @@ UNIX>
 You'll note that I have to specify `inputs_from_weights`, and since it is false, I also
 have to specify `spike_value_factor`.  I'm going to create the following network:
 
-![jpg/network_D_weights.jpg](jpg/network_D_weights.jpg)
+![images/network_D_weights.jpg](images/network_D_weights.jpg)
 
 Here are the commands to create the graph -- pay special attention to how the weights
 are specified:
@@ -1354,7 +1333,7 @@ UNIX>
 Finally, you can specify a standard deviation for noise for each of the weights in `weights`.  
 To demonstrate, I'll set up the following network:
 
-![jpg/network_F_stds.jpg](jpg/network_F_stds.jpg)
+![images/network_F_stds.jpg](images/network_F_stds.jpg)
 
 We'll use the RISP parameter file in `params/risp_stds.json`
 
