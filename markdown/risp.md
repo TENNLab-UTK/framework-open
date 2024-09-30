@@ -530,7 +530,7 @@ UNIX> ( echo FJ tmp_network.txt ; echo PROPERTIES ) | bin/network_tool
     { "name":"Weight", "type":68, "index":0, "size":1, "min_value":-1.0, "max_value":1.0 }],
   "network_properties": [] }
 UNIX> 
-``
+```
 
 You can see that "Threshold" is index 0, and "Leak" is index 1.  You can also see that the "Out"
 neuron has leak set to 0 (don't leak), while the others all have it set to 1 (leak).
