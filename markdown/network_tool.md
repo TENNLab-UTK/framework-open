@@ -264,6 +264,7 @@ UNIX>
 
 Now we can use the `network_tool` to create our neurons and synapses for this processor:
 
+```
 UNIX> bin/network_tool -
 - FJ tmp-empty.txt                     # Start with the empty network we just created.
 - P                                    # Take a look at the properties -- we see Threshold, Delay and Weight.
