@@ -7,7 +7,7 @@ You may find it useful to watch [this video](XXX) and type along as
 you do so, to help you learn what we go over in this markdown file.
 
 ------------------------------
-## The intended environment
+## The Intended Environment
 
 I will go through the activities of this markdown by typing into a Unix shell.  My machine
 is a Macbook, but all flavors of Unix work.  We have tested on MacOS, Ubuntu, Red-Hat, 
