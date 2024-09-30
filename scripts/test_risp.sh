@@ -56,7 +56,9 @@ for i in $t ; do
     exit 1
   fi
 
-  bin/processor_tool_risp < testing/$i/processor_tool.txt > tmp_output.txt 2> tmp_pt_error.txt
+  cp testing/$i/processor_tool.txt tmp_pt_input.txt
+
+  bin/processor_tool_risp < testing/$i/processor_tool.txt > tmp_pt_output.txt 2> tmp_pt_error.txt
   if [ `wc tmp_pt_error.txt | awk '{ print $1 }'` != 0 ]; then
     echo "Test $i - $l" >&2
     echo "There was an error in the processor_tool_risp command when I ran:" >&2
@@ -67,11 +69,11 @@ for i in $t ; do
     exit 1
   fi
 
-  d=`diff tmp_output.txt testing/$i/correct_output.txt | wc | awk '{ print $1 }'`
+  d=`diff tmp_pt_output.txt testing/$i/correct_output.txt | wc | awk '{ print $1 }'`
   if [ $d != 0 ]; then
     echo "Test $i - $l" >&2
     echo "Error: Output does not match the correct output." >&2
-    echo "       Output file is tmp_output.txt" >&2
+    echo "       Output file is tmp_pt_output.txt" >&2
     echo "       Correct output file is testing/$i/correct_output.txt" >&2
     exit 1
   fi
@@ -80,9 +82,9 @@ for i in $t ; do
   if [ $keep = no ]; then
     rm -f tmp_proc_params.txt \
           tmp_network.txt \
-          tmp_output.txt \
           tmp_nt_output.txt \
           tmp_pt_output.txt \
+          tmp_pt_input.txt \
           tmp_pt_error.txt \
           tmp_empty_network.txt
   fi

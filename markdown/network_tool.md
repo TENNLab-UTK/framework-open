@@ -181,6 +181,7 @@ Let's suppose that we want to change the network above to an OR network:
 
 We can do it with some `network_tool` commands:
 
+```
 UNIX> mv tmp_network.txt AND.txt
 UNIX> bin/network_tool -
 - FJ AND.txt

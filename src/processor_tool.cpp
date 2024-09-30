@@ -586,7 +586,6 @@ int main(int argc, char **argv)
             if (output_times[i] != -1.0 || sv[1][0] == 'T') {
               printf("Node %*s last fire: %.1lf\n", max_name_len, node_name(node).c_str(), output_times[i]);
             }
-            printf("\n");
           }
         }
   
