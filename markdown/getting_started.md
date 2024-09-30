@@ -370,4 +370,10 @@ Time      0(A)      1(B) 2(H_A&~B) 3(H_B&~A)    4(A^B) |      0(A)      1(B) 2(H
 UNIX> 
 ```
 
+------------------------------------------------------------
+# Next steps
 
+Your next steps should be to go through the
+[network tool markdown](network_tool.md), and the
+[RISP markdown](risp.md).  At that point, you should be fluent in these tools and can
+start working on your own networks and projects!
