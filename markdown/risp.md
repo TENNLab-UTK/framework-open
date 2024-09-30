@@ -43,8 +43,69 @@ There is an open-source FPGA implementation of RISP at
 
 There is a version of RISP that compiles networks onto a RP2040 Pico microcontroller.
 You can find that in 
-[The Embedded Neuromorphic Repository](https://bitbucket.org/neuromorphic-utk/embedded-neuromorphic).
+[The Embedded Neuromorphic Repository](https://bitbucket.org/neuromorphic-utk/embedded-neuromorphic), but you'll need bitbucket access from TENNLab, because this implementation is not open-source.
+It may be someday, but not yet.
 
+# ------------------------------------------------------------
+# Default RISP Parameter Settings
+
+There are three main classes of RISP:
+
+1. Floating point: `RISP-F` and `RISP-F+`.
+2. Discrete with positive and negative weights: `RISP-n`
+3. Discrete with positive weights only: `RISP-n+`
+
+In the `params` directory, there are parameter files for many of these RISP defaults:
+
+```
+UNIX> ls params | cat
+risp_1.txt
+risp_127.txt
+risp_15_plus.txt
+risp_1_plus.txt
+risp_255_plus.txt
+risp_7.txt
+risp_f.txt
+risp_f_plus.txt
+UNIX> 
+```
+
+All of these parameter settings have `"leak_mode"` set to `"none"`.  If you want to enable leak,
+then copy the file you want, edit it so that `"leak_mode"` is `"all"` or `"configurable"`, and
+you're ready to go.
+
+`RISP-F` and `RISP-F+` are straightforward.  You can just look at the JSON to see the settings.
+
+Our RISP FPGA and microcontrollers do not implement floating point, 
+so RISP-F and RISP-F+ networks cannot run on the FPGA or microcontroller.  For those, you should
+use a `RISP-n` or `RISP-n+` setting.
+`RISP-n` means that:
+
+- Maximum synapse weight is *n*.
+- Minimun synapse weight is *-n*.
+- Maximum neuron threshold is *n*.
+- Minimum neuron threshold is *0*.
+- Minimum neuron potential is *-n*.
+- Maximum synapse delay is *max(n,15)*.
+
+`RISP-n+1` means that:
+
+- Maximum synapse weight is *n*.
+- Minimun synapse weight is *1*.
+- Maximum neuron threshold is *n*.
+- Minimum neuron threshold is *1*.
+- Minimum neuron potential is *0*.
+- Maximum synapse delay is *max(n,15)*.
+
+Now you should understand all of the files in the `params` directory, and you can select the one
+to use for your task.  The smaller values of *n* are more efficiently implemented on FPGA.
+
+
+
+
+
+
+------------------------------------------------------------
 # Params
 
 You can specify the following parameters:
@@ -70,144 +131,6 @@ You can specify the following parameters:
 | noisy_stddev        | double | 0            | A random normal with this standard deviation is added to the weight on each synapse fire. ||
 | stds                | vector | []           | Each time a synapse with `weights[i]` fires, a random normal with `stds[i]` is added to/subtracted from the weight. |
 | log                 | JSON   | {}           | IO_Stream to log events (for debugging) | 
-
-Here is the default parameter file that is in `framework/processors/risp/params/risp.json` and
-`framework/processors/cpp-apps/params/risp.json`.
-
-```
-{
-  "min_weight": -1,
-  "max_weight": 1,
-  "min_threshold": -1,
-  "max_threshold": 1,
-  "min_potential": -1,
-  "max_delay": 5,
-  "discrete": false
-}
-```
-
-------------------------------------------------------------
-# Changes in August, 2024
-
-We made some significant changes to RISP in August, 2024.  The rationale was
-to facilitate the FPGA implementation, and to help with our research with the 
-Army Research Lab.  Here are the changes, and their implications:
-
-1. *Added `spike_value_factor`*.  Applications in the framework call `apply_spikes()`,
-where each spike has an id, time and value.  The value is between 0 and 1, and it
-is up to the neuroprocessor to scale it appropriately.  Previously, RISP had scaled
-it by `max_threshold` (adding 1 if `threshold_inclusive` was false).  As it turns out,
-it's much better for the FPGA implementation if this value defaults to `max_weight`.
-So, I've made the value an explicit parameter that defaults to `max_weight`.  This
-can be problematic for networks created before 8/2024 where `max_weight` is less
-that `max_threshold` (e.g. the Ravens setting of RISP).  To help with this, please
-see *Converting Old Networks* below.
-
-2. *Got rid of `non_negative_charge` and added `min_potential`*.  This parameter is also
-necessary.  With the FPGA implementation,
-you don't want to waste resources on potential values that can keep getting more and more
-negative.  So we cap it.  During integration, the potential can dip below this value, but
-at the end of integration, if its value is below `min_potential`, it is set to
-`min_potential`.   To help with migration of network created before 8/2024, 
-please see *Converting Old Networks* below.
-
-3. *Got rid of `specific_weights`.*  This was a boolean that said whether or not you
-were specifying `weights`.  Now, you simply specify `weights`.  
-
-4. *Got rid of `noisy_weights`.*  This was a boolean that said whether or not you
-were specifying `stds`.  Now, you simply specify `stds`.  
-
-5. *Added `noisy_stddev`.*  You can use this to add noise to every synapse fire, without
-having to specify `weights` and `stds`.
-
-------------------------------------------------------------
-# Notes
-
-Note that:
-
-1. The framework uses input spike values between 0 and 1, but RISP potentials, thresholds
-   and weights can be much bigger.  This is why we have `spike_value_factor`, which is
-   multiplied by the input spike value to get the actual value spiked into the neuron.
-   If `discrete` is `true`, then the floor of that product is used as the input weight.
-
-2. If `discrete` is false and `threshold_inclusive` is `false` (not the default), then
-   we simply add 0.0000001 to each neuron's threshold and treat it as `threshold_inclusive`.
-   It shouldn't make a practical difference, but I want to document it.
-
-3. If you are using noise, the default `noisy_seed` is 0, which means the seed is calculated from
-   the current time (in microseconds).  That means you'll get nondeterministic behavior.
-   If you want deterministic behavior (for repeatability or debugging), then specify
-   a different seed.
-
-4. If you specify `inputs_from_weights`, then you multiply the value from `apply_spikes()` by
-   the size of the weights array.  Take the floor of that, and that is the index of the weight
-   that is used.  There's an example below.
-
-------------------------------------------------------------
-# Using RISP to train for RAVENS
-
-You can use the RISP simulator to train networks for RAVENS by using the parameter
-file `params/risp_for_ravens.json`.  The program in `utils/risp_to_ravens.cpp`, 
-which gets compiled to `bin/risp_to_ravens`, converts the networks.  Here's an
-example:
-
-```
-UNIX> cat params/risp_for_ravens.json 
-{
-  "min_weight": -8,
-  "max_weight": 7,
-  "min_threshold": 0,
-  "max_threshold": 15,
-  "max_delay": 8,
-  "spike_value_factor": 16,
-  "discrete": true,
-  "run_time_inclusive": false,
-  "threshold_inclusive": false,
-  "fire_like_ravens": true,
-  "min_potential": 0
-}
-UNIX> echo $fred                          # You should set fred if you don't have it in your .bashrc
-{"spikes":{"flip_flop":2,"ignore_extremes":false,"ignore_min":false,"max_spikes":8,"min":0.0,"max":0.5}}
-UNIX>                                     # Here's how you set fred -- put it in your .bashrc.
-UNIX> fred='{"spikes":{"flip_flop":2,"ignore_extremes":false,"ignore_min":false,"max_spikes":8,"min":0.0,"max":0.5}}' ; export fred
-UNIX> bin/polebalance_risp -a train --threads 4 --episodes 10 --proc_params params/risp_for_ravens.json --encoder $fred --max_fitness 15000 --epochs 100
-Epoch:   0     Time:    0.1      Best: 36.9         # This was a lucky run.
-Epoch:   1     Time:    0.1      Best: 36.9         # Sometimes you have to try it a few times
-Epoch:   2     Time:    0.1      Best: 196.5
-Epoch:   3     Time:    0.3      Best: 1637.2
-Epoch:   4     Time:    0.6      Best: 4592.2
-Epoch:   5     Time:    2.1      Best: 11087.3
-Epoch:   6     Time:    4.9      Best: 12114.3
-Epoch:   7     Time:    9.9      Best: 12114.3
-Epoch:   8     Time:   11.6      Best: 13825.2
-Epoch:   9     Time:   13.0      Best: 13825.2
-Epoch:  10     Time:   16.2      Best: 13825.2
-Epoch:  11     Time:   18.3      Best: 13825.2
-Epoch:  12     Time:   18.2      Best: 13825.2
-Epoch:  13     Time:   18.8      Best: 14907.8
-Epoch:  14     Time:   17.8      Best: 14907.8
-Epoch:  15     Time:   18.3      Best: 15000
-UNIX> mv networks/polebalance_risp_train.txt tmp-pole-fred-risp.txt
-UNIX>
-UNIX> # Create a RAVENS network for the app.  Just do one epoch, because you don't care if the
-UNIX> # network is good -- you just want its app parameters and inputs/outputs to match the RISP network
-UNIX> bin/polebalance_ravens -a train --proc_params params/ravens_as_risp.json --encoder $fred --epochs 1
-Epoch:   0     Time:    0.1      Best: 131
-UNIX> mv networks/polebalance_ravens_train.txt tmp-pole-fred-ravens.txt
-UNIX> ( cd .. ; make bin/risp_to_ravens )
-c++ -std=c++14  -Wall -Wextra -Iinclude -Iinclude/utils -Icpp-apps/include  utils/risp_to_ravens.cpp -o bin/risp_to_ravens lib/libframework.a
-UNIX>
-UNIX> # Convert the risp network to a RAVENS network
-UNIX>
-UNIX> ../bin/risp_to_ravens tmp-pole-fred-risp.txt tmp-pole-fred-ravens.txt > tmp-pole-fred-converted.txt
-UNIX> bin/polebalance_risp -a test --seed 100 --episodes 100 --network tmp-pole-fred-risp.txt 
-Fitness 8991.21
-UNIX> bin/polebalance_ravens -a test --seed 100 --episodes 100 --network tmp-pole-fred-converted.txt 
-Fitness 8991.21
-UNIX> 
-```
-
-How awesome is that?
 
 ------------------------------------------------------------
 # Examples of Use
