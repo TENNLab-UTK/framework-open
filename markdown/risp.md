@@ -616,7 +616,7 @@ UNIX>
 ```
 
 --------------------------------------------------
-## Test 8: threshold_inclusive
+## Test 8 (Script 24): threshold_inclusive
 
 Another optional parameter is `threshold_inclusive`, which specifies whether neurons fire
 when their potential meets/exceeds the threshold, or whether they only fire when their
