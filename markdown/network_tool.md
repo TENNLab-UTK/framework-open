@@ -1,9 +1,8 @@
 ---------
-## utils/network_tool.cpp
+## The network_tool
 
 This is a network tool program that gives you a command-line interface to access, modify,
-view and create networks.  Create this with `make bin/network_tool` in the main framework
-directory.  If you want to know the commands, simply run it and enter a question mark:
+view and create networks.  If you want to know the commands, simply run it and enter a question mark:
 
 ```
 UNIX> echo '?' | bin/network_tool
@@ -396,4 +395,4 @@ If you want more information about the JSON specs of networks, please see
 By now, I hope that you can see that the `network_tool` lends itself very nicely to
 shell scripting and python.  It's a very simple matter to write programs that output `network_tool`
 commands so you can create networks.  This is exactly how the 
-[DBSCAN rep](https://github.com/TENNLab-UTK/dbscan) generates its networks.
+[DBSCAN repo](https://github.com/TENNLab-UTK/dbscan) generates its networks.
