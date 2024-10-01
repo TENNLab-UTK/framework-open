@@ -142,16 +142,16 @@ UNIX> cat tmp_network.txt
     "network_properties": [] },
  "Nodes":
   [ {"id":0,"name":"A","values":[1.0]},
-    {"id":4,"name":"A^B","values":[1.0]},
     {"id":1,"name":"B","values":[1.0]},
     {"id":2,"name":"H_A&~B","values":[1.0]},
-    {"id":3,"name":"H_B&~A","values":[1.0]} ],
+    {"id":3,"name":"H_B&~A","values":[1.0]},
+    {"id":4,"name":"A^B","values":[1.0]} ],
  "Edges":
-  [ {"from":1,"to":3,"values":[1.0,1.0]},
-    {"from":1,"to":2,"values":[-1.0,1.0]},
-    {"from":0,"to":2,"values":[1.0,1.0]},
-    {"from":2,"to":4,"values":[1.0,1.0]},
+  [ {"from":0,"to":2,"values":[1.0,1.0]},
     {"from":0,"to":3,"values":[-1.0,1.0]},
+    {"from":1,"to":2,"values":[-1.0,1.0]},
+    {"from":1,"to":3,"values":[1.0,1.0]},
+    {"from":2,"to":4,"values":[1.0,1.0]},
     {"from":3,"to":4,"values":[1.0,1.0]} ],
  "Inputs": [0,1],
  "Outputs": [4],
@@ -226,8 +226,9 @@ Node  4 fire times: 2.0
 UNIX> 
 ```
 
-When you run the testing script, it also creates the files `pt_input.txt` and `pt_output.txt`,
-which show you the input to the `processor_tool` and the output from the `processor_tool`:
+When you run the testing script, it also creates the files
+`tmp_pt_input.txt` and `tmp_pt_output.txt`, which show you the input
+to the `processor_tool` and the output from the `processor_tool`:
 
 ```
 UNIX> cat tmp_pt_input.txt

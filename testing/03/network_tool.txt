@@ -25,4 +25,5 @@ SEP 1 2 Weight -1
 
 # Store
 
+SORT Q
 TJ tmp_network.txt
