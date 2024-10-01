@@ -38,7 +38,7 @@ To get started with this repo, please do one or both of:
 
 - Go through the [Getting Started](markdown/getting_started.md) markdown file.  This has
   a step-by-step walkthrough of using the various tools in this repo.
-- Watch the [Getting Started](XX) video.  This is a video where I go through the 
+- Watch the [Getting Started](https://youtu.be/xDIwA5ie15E) video.  This is a video where I go through the 
   [Getting Started](markdown/getting_started.md) markdown file.  This allows you to go through
   the steps of learning this software with me explaining as we go.
 

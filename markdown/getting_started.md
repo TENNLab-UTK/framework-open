@@ -3,7 +3,7 @@
 James S. Plank
 
 This is a walk-through for getting started with our open-source software.
-You may find it useful to watch [this video](XXX) and type along as 
+You may find it useful to watch [this video](https://youtu.be/xDIwA5ie15E) and type along as 
 you do so, to help you learn what we go over in this markdown file.
 
 ------------------------------
