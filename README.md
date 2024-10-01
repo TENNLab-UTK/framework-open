@@ -4,12 +4,6 @@ Open-source part of the TENNLab Exploratory Neuromorphic Framework
 
 Points of Contact: James S. Plank, Catherine D. Schuman, Charles P. Rizzo.
 
-# Mon Sep 23 11:50:04 EDT 2024
-
-JSP: This is in progress, although you can compile `bin/network_tool` and `bin/processor_tool_risp`,
-and run `scripts/test_risp.sh` to make sure that everything is working.
-I'm shoring up the documentation, and it will be ready for prime time.
-
 -----------------
 # What This Repo Contains
 
@@ -38,10 +32,32 @@ Here are some links about RISP:
 - [Open-Source FPGA Implementation of RISP](https://github.com/TENNLab-UTK/fpga).
 
 -----------------
+# Getting Started
+
+To get started with this repo, please do one or both of:
+
+- Go through the [Getting Started](markdown/getting_started.md) markdown file.  This has
+  a step-by-step walkthrough of using the various tools in this repo.
+- Watch the [Getting Started](XX) video.  This is a video where I go through the 
+  [Getting Started](markdown/getting_started.md) markdown file.  This allows you to go through
+  the steps of learning this software with me explaining as we go.
+
+After that, you should:
+
+- Go through the [Network Tool](markdown/network_tool.md) markdown file.  
+- Go through the [RISP](markdown/risp.md) markdown file.  
+
+By the end of this exercise, you should be equipped with the know-how and tools to start creating
+and running your own RISP networks, and to start exploring embedded applications with the
+[Open-Source FPGA Implementation of RISP](https://github.com/TENNLab-UTK/fpga).
+
+-----------------
 # Documentation
 
-Documentation of everything in this repo is in the [markdown](markdown) directory.
-You can typically find what you want there.
+In addition to the material above, 
+documentation of everything in this repo is in the [markdown](markdown) directory.
+You can typically find what you want there, including information on C++ support if you
+want to leverage this software from C++.
 
 -----------------
 # "I don't want to touch C++"
@@ -57,16 +73,9 @@ Now, there is C++ support for network manipulation and for the RISP neuroprocess
 the users for this support are rare, but it is there, and we have it documented.
 
 -----------------
-# Getting Started
+# Support for Python
 
-To get started with this repo, please do one or both of:
-
-- Go through the [Getting Started](markdown/getting_started.md) markdown file.  This has
-  a step-by-step walkthrough of using the various tools in this repo.
-- Watch the [Getting Started](XX) video.  This is a video where I go through the 
-  [Getting Started](markdown/getting_started.md) markdown file.  This allows you to go through
-  the steps of learning this software with me explaining as we go.
-
-By the end of this exercise, you should be equipped with the know-how and tools to start creating
-and running your own RISP networks, and to start exploring embedded applications with the
-[Open-Source FPGA Implementation of RISP](https://github.com/TENNLab-UTK/fpga).
+We would welcome a contribution of python support for this software.
+With the rest of our software corpus, we use python bindings so that our researchers may
+do work in either python or C++.  Over time, we will provide that here, but we would also
+very much welcome that contribution from the community.
