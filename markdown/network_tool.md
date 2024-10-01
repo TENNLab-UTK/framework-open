@@ -2,7 +2,10 @@
 ## The network_tool
 
 This is a network tool program that gives you a command-line interface to access, modify,
-view and create networks.  If you want to know the commands, simply run it and enter a question mark:
+view and create networks.  The video to accompany this markdown file is
+[here](https://youtu.be/dUGVrZ_m8Qo).
+
+If you want to know the commands, simply run the tool and enter a question mark:
 
 ```
 UNIX> echo '?' | bin/network_tool
