@@ -44,8 +44,8 @@ To get started with this repo, please do one or both of:
 
 After that, you should:
 
-- Go through the [Network Tool](markdown/network_tool.md) markdown file.  
-- Go through the [RISP](markdown/risp.md) markdown file.  
+- Go through the [Network Tool](markdown/network_tool.md) markdown file (which has its own video).
+- Go through the [RISP](markdown/risp.md) markdown file (which also has its own video). 
 
 By the end of this exercise, you should be equipped with the know-how and tools to start creating
 and running your own RISP networks, and to start exploring embedded applications with the
