@@ -1,24 +1,14 @@
-/* This code was pulled from 
-   http://web.eecs.utk.edu/~plank/plank/classes/cs494/494/notes/Bloom-Filter/MOAC.c
-   on July 29, 2016 */
-
-/* These are wrappers around the 
-   "Mother of All" random number generator from http://www.agner.org/random/.
-
-   3/2024 -- Seed takes a number and a string.  It calculates a hash from the string
-   and XOR's it with the seed.  If you use a seed of 0, it calculates a seed from the
-   current time (in microseconds). 
-
-   This is documented in the markdown directory.
- */
+/* JSP: 10/2024 -- Just using Mersenne Twister from the C++ standard library.  */
 
 #pragma once
 #include <stdio.h>
 #include <cmath>
 #include <stdlib.h>
 #include <string.h>
+#include <cstring>
 #include <sys/time.h>
 #include <cstdint>
+#include <random>
 
 namespace neuro
 {
@@ -57,7 +47,8 @@ class MOA {
     void     Set_State(void *buffer, uint64_t counter);  /* Resets the state to a saved place. */
 
   protected:
-    uint32_t X[5];
+    std::mt19937 gen; 
+    std::uniform_int_distribution<unsigned int> distrib;
     uint64_t Counter;
     bool Use_Second_Normal = false;
     double Second_Normal;
@@ -98,18 +89,12 @@ inline double MOA::Random_Normal(double mean, double stddev)
   return u * s * stddev + mean;
 }
 
-inline uint32_t MOA::Random_32() {
-  uint64_t sum;
-  sum = (uint64_t)2111111111UL * (uint64_t)X[3] +
-     (uint64_t)1492 * (uint64_t)(X[2]) +
-     (uint64_t)1776 * (uint64_t)(X[1]) +
-     (uint64_t)5115 * (uint64_t)(X[0]) +
-     (uint64_t)X[4];
-  X[3] = X[2];  X[2] = X[1];  X[1] = X[0];
-  X[4] = (uint32_t)(sum >> 32);
-  X[0] = (uint32_t)sum;
-  Counter++;
-  return X[0];
+inline uint32_t MOA::Random_32() 
+{
+  uint32_t rv;
+
+  rv = distrib(gen);
+  return rv;
 }
 
 inline int MOA::Random_Integer() {
@@ -182,10 +167,7 @@ inline void MOA::Seed_XOR(uint32_t seed, uint32_t hash) {
   s = (seed == 0) ? Seed_From_Time() : seed;
   s ^= hash;
 
-  for (i = 0; i < 5; i++) {
-    s = s * 29943829 - 1;
-    X[i] = s;
-  }
+  gen.seed(s);
   Counter = 0;
   for (i=0; i<19; i++) Random_32();
   Use_Second_Normal = false;
@@ -222,8 +204,7 @@ inline void MOA::Fill_Random_Region (void *reg, int size)
 
 inline void MOA::Get_State(void *buffer)
 {
-  memcpy(buffer, X, sizeof(uint32_t) * 5);
-  Counter = 0;
+  bzero(buffer, sizeof(uint32_t) * 5);
   Use_Second_Normal = false;
 }
 
@@ -234,7 +215,7 @@ inline uint64_t MOA::Get_Counter()
 
 inline void MOA::Set_State(void *buffer, uint64_t counter)
 {
-  memcpy(X, buffer, sizeof(uint32_t) * 5);
+  (void) buffer;
   Counter = 0;
   while (Counter < counter) (void) Random_32();
   Use_Second_Normal = false;

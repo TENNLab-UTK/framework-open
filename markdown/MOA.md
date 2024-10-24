@@ -9,13 +9,10 @@ This is implemented as an include-only header.  To use this, put the following i
 When you compile, make sure you have `-Iframework/include` in your compilation line, where
 `framework` is the directory of the framework.  You'll also have to compile with `--std=c++11'.
 
-The header defines a class `neuro::MOA`, which implements the "Mother of All"
-random number generator.  I grabbed the code for this in 2016 from
-[http://www.agner.org/random](http://www.agner.org/random).    
-
-The goal with the RNG is that it does a good job generating uniformly distributed random
-numbers, it is open-source, and it is reliable, meaning it works the same across all
-architectures.
+The header defines a class `neuro::MOA`, which is a random number generator
+based on Mersenne Twister, from the C++ standard library.  The initials "MOA" come from
+an earlier version of the library, where we rolled our own.  Now, we're just using C++'s
+RNG.
 
 # Basic Use
 
@@ -78,5 +75,4 @@ Here are other methods that relate to seeding, etc:
 # Thread Safety
 
 The MOA rng is not thread safe.  If your program uses multiple threads, then use a
-different RNG for each thread.
-This is how the `app_agent` works.  
+different RNG for each thread.  This is how the `app_agent` works.  
