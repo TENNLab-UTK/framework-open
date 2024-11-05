@@ -45,6 +45,8 @@ for i in $t ; do
   ( echo M risp tmp_proc_params.txt
     echo EMPTYNET tmp_empty_network.txt ) | bin/processor_tool_risp
 
+  # Use network_tool.txt to create the network.
+
   bin/network_tool < testing/$i/network_tool.txt > tmp_nt_output.txt 2>&1
   if [ `wc tmp_nt_output.txt | awk '{ print $1 }'` != 0 ]; then
     echo "Test $i - $l" >&2
@@ -55,6 +57,9 @@ for i in $t ; do
     cat tmp_nt_output.txt >&2
     exit 1
   fi
+
+  # Now, you'll execute the commands in processor_tool.txt and compare the output
+  # against known output.
 
   cp testing/$i/processor_tool.txt tmp_pt_input.txt
 

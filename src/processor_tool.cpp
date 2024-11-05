@@ -343,7 +343,7 @@ int main(int argc, char **argv)
       // convert cmd to uppercase
       if (sv.size() != 0) to_uppercase(sv[0]); 
       
-      if (sv.size() == 0) {
+      if (sv.size() == 0 || sv[0][0] == '#') {
       } else if (sv[0] == "?") {
         print_commands(stdout);
       } else if (sv[0] == "Q") {
