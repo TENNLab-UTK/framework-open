@@ -1,0 +1,403 @@
+FJ tmp_empty_network.txt
+
+# Add 3 input neurons and 1 output neuron
+
+AN 0 1 2 3
+AI 0 1 2
+AO 3
+
+# Add hidden neurons
+
+AN 4 5 6 7 8 9 10 11 12 13 15 16 17 18 20 22 26 30 32 33 34 41 42 51 
+AN 60 62 64 67 68 77 80 88 93 95 101 102
+
+# Set neuron thresholds.
+
+SNP 0 Threshold 3
+SNP 1 Threshold 1
+SNP 2 Threshold 6
+SNP 3 Threshold 0
+SNP 4 Threshold 6
+SNP 5 Threshold 7
+SNP 6 Threshold 0
+SNP 7 Threshold 3
+SNP 8 Threshold 3
+SNP 9 Threshold 0
+SNP 10 Threshold 6
+SNP 11 Threshold 2
+SNP 12 Threshold 0
+SNP 13 Threshold 0
+SNP 15 Threshold 4
+SNP 16 Threshold 7
+SNP 17 Threshold 7
+SNP 18 Threshold 3
+SNP 20 Threshold 7
+SNP 22 Threshold 6
+SNP 26 Threshold 4
+SNP 30 Threshold 3
+SNP 32 Threshold 2
+SNP 33 Threshold 4
+SNP 34 Threshold 6
+SNP 41 Threshold 5
+SNP 42 Threshold 7
+SNP 51 Threshold 3
+SNP 60 Threshold 4
+SNP 62 Threshold 2
+SNP 64 Threshold 2
+SNP 67 Threshold 5
+SNP 68 Threshold 7
+SNP 77 Threshold 3
+SNP 80 Threshold 4
+SNP 88 Threshold 3
+SNP 93 Threshold 3
+SNP 95 Threshold 5
+SNP 101 Threshold 3
+SNP 102 Threshold 5
+
+# Add edges.
+
+AE 0 1
+SEP 0 1 Weight -4
+SEP 0 1 Delay 3
+AE 0 13
+SEP 0 13 Weight 3
+SEP 0 13 Delay 8
+AE 0 18
+SEP 0 18 Weight 4
+SEP 0 18 Delay 14
+AE 0 22
+SEP 0 22 Weight -5
+SEP 0 22 Delay 15
+AE 0 26
+SEP 0 26 Weight 7
+SEP 0 26 Delay 1
+AE 0 95
+SEP 0 95 Weight -2
+SEP 0 95 Delay 14
+AE 1 2
+SEP 1 2 Weight -1
+SEP 1 2 Delay 6
+AE 1 3
+SEP 1 3 Weight 1
+SEP 1 3 Delay 3
+AE 1 11
+SEP 1 11 Weight -6
+SEP 1 11 Delay 12
+AE 1 17
+SEP 1 17 Weight -3
+SEP 1 17 Delay 14
+AE 1 30
+SEP 1 30 Weight 1
+SEP 1 30 Delay 13
+AE 2 3
+SEP 2 3 Weight 2
+SEP 2 3 Delay 9
+AE 2 6
+SEP 2 6 Weight 3
+SEP 2 6 Delay 14
+AE 2 8
+SEP 2 8 Weight 3
+SEP 2 8 Delay 7
+AE 2 42
+SEP 2 42 Weight 1
+SEP 2 42 Delay 2
+AE 2 67
+SEP 2 67 Weight 2
+SEP 2 67 Delay 14
+AE 2 77
+SEP 2 77 Weight 6
+SEP 2 77 Delay 7
+AE 3 16
+SEP 3 16 Weight -7
+SEP 3 16 Delay 13
+AE 4 0
+SEP 4 0 Weight 2
+SEP 4 0 Delay 15
+AE 4 4
+SEP 4 4 Weight 5
+SEP 4 4 Delay 3
+AE 4 33
+SEP 4 33 Weight 1
+SEP 4 33 Delay 6
+AE 4 93
+SEP 4 93 Weight 1
+SEP 4 93 Delay 4
+AE 5 13
+SEP 5 13 Weight 2
+SEP 5 13 Delay 1
+AE 5 93
+SEP 5 93 Weight 7
+SEP 5 93 Delay 12
+AE 5 95
+SEP 5 95 Weight 4
+SEP 5 95 Delay 9
+AE 6 8
+SEP 6 8 Weight 3
+SEP 6 8 Delay 12
+AE 6 9
+SEP 6 9 Weight 2
+SEP 6 9 Delay 3
+AE 6 10
+SEP 6 10 Weight 0
+SEP 6 10 Delay 3
+AE 6 26
+SEP 6 26 Weight 6
+SEP 6 26 Delay 2
+AE 6 51
+SEP 6 51 Weight -1
+SEP 6 51 Delay 10
+AE 6 88
+SEP 6 88 Weight -6
+SEP 6 88 Delay 15
+AE 7 32
+SEP 7 32 Weight 1
+SEP 7 32 Delay 11
+AE 8 0
+SEP 8 0 Weight 0
+SEP 8 0 Delay 4
+AE 8 2
+SEP 8 2 Weight -2
+SEP 8 2 Delay 1
+AE 8 9
+SEP 8 9 Weight -2
+SEP 8 9 Delay 14
+AE 8 15
+SEP 8 15 Weight -3
+SEP 8 15 Delay 6
+AE 8 34
+SEP 8 34 Weight 5
+SEP 8 34 Delay 3
+AE 8 51
+SEP 8 51 Weight 7
+SEP 8 51 Delay 5
+AE 9 2
+SEP 9 2 Weight 0
+SEP 9 2 Delay 4
+AE 9 4
+SEP 9 4 Weight -1
+SEP 9 4 Delay 7
+AE 9 20
+SEP 9 20 Weight 6
+SEP 9 20 Delay 9
+AE 9 26
+SEP 9 26 Weight 5
+SEP 9 26 Delay 4
+AE 9 51
+SEP 9 51 Weight -5
+SEP 9 51 Delay 12
+AE 9 67
+SEP 9 67 Weight -5
+SEP 9 67 Delay 3
+AE 9 77
+SEP 9 77 Weight -2
+SEP 9 77 Delay 15
+AE 10 1
+SEP 10 1 Weight -2
+SEP 10 1 Delay 3
+AE 10 41
+SEP 10 41 Weight -7
+SEP 10 41 Delay 15
+AE 10 68
+SEP 10 68 Weight 1
+SEP 10 68 Delay 4
+AE 11 6
+SEP 11 6 Weight 3
+SEP 11 6 Delay 14
+AE 11 7
+SEP 11 7 Weight -2
+SEP 11 7 Delay 5
+AE 11 8
+SEP 11 8 Weight -7
+SEP 11 8 Delay 8
+AE 11 41
+SEP 11 41 Weight 2
+SEP 11 41 Delay 12
+AE 11 102
+SEP 11 102 Weight -7
+SEP 11 102 Delay 9
+AE 12 8
+SEP 12 8 Weight 0
+SEP 12 8 Delay 12
+AE 12 17
+SEP 12 17 Weight 3
+SEP 12 17 Delay 10
+AE 12 80
+SEP 12 80 Weight -4
+SEP 12 80 Delay 3
+AE 13 1
+SEP 13 1 Weight 4
+SEP 13 1 Delay 2
+AE 13 3
+SEP 13 3 Weight 5
+SEP 13 3 Delay 3
+AE 13 4
+SEP 13 4 Weight 3
+SEP 13 4 Delay 15
+AE 13 26
+SEP 13 26 Weight -6
+SEP 13 26 Delay 4
+AE 15 10
+SEP 15 10 Weight 1
+SEP 15 10 Delay 10
+AE 16 13
+SEP 16 13 Weight 3
+SEP 16 13 Delay 8
+AE 16 62
+SEP 16 62 Weight 0
+SEP 16 62 Delay 1
+AE 17 0
+SEP 17 0 Weight 2
+SEP 17 0 Delay 10
+AE 17 102
+SEP 17 102 Weight 4
+SEP 17 102 Delay 1
+AE 18 41
+SEP 18 41 Weight -3
+SEP 18 41 Delay 8
+AE 20 15
+SEP 20 15 Weight 3
+SEP 20 15 Delay 7
+AE 20 95
+SEP 20 95 Weight 2
+SEP 20 95 Delay 8
+AE 22 64
+SEP 22 64 Weight -1
+SEP 22 64 Delay 13
+AE 26 11
+SEP 26 11 Weight 2
+SEP 26 11 Delay 1
+AE 26 77
+SEP 26 77 Weight 1
+SEP 26 77 Delay 15
+AE 30 32
+SEP 30 32 Weight 0
+SEP 30 32 Delay 9
+AE 30 80
+SEP 30 80 Weight 5
+SEP 30 80 Delay 5
+AE 30 101
+SEP 30 101 Weight -5
+SEP 30 101 Delay 14
+AE 32 2
+SEP 32 2 Weight -4
+SEP 32 2 Delay 14
+AE 32 34
+SEP 32 34 Weight 1
+SEP 32 34 Delay 1
+AE 32 60
+SEP 32 60 Weight -2
+SEP 32 60 Delay 14
+AE 33 30
+SEP 33 30 Weight 4
+SEP 33 30 Delay 9
+AE 33 51
+SEP 33 51 Weight -5
+SEP 33 51 Delay 15
+AE 34 7
+SEP 34 7 Weight 1
+SEP 34 7 Delay 10
+AE 41 77
+SEP 41 77 Weight 6
+SEP 41 77 Delay 6
+AE 42 5
+SEP 42 5 Weight 4
+SEP 42 5 Delay 6
+AE 51 1
+SEP 51 1 Weight -7
+SEP 51 1 Delay 1
+AE 51 8
+SEP 51 8 Weight 1
+SEP 51 8 Delay 15
+AE 51 11
+SEP 51 11 Weight 0
+SEP 51 11 Delay 14
+AE 51 34
+SEP 51 34 Weight -4
+SEP 51 34 Delay 14
+AE 51 60
+SEP 51 60 Weight 0
+SEP 51 60 Delay 12
+AE 60 0
+SEP 60 0 Weight -5
+SEP 60 0 Delay 9
+AE 60 10
+SEP 60 10 Weight 6
+SEP 60 10 Delay 9
+AE 60 17
+SEP 60 17 Weight -4
+SEP 60 17 Delay 8
+AE 60 26
+SEP 60 26 Weight 2
+SEP 60 26 Delay 11
+AE 60 93
+SEP 60 93 Weight -6
+SEP 60 93 Delay 12
+AE 62 4
+SEP 62 4 Weight 7
+SEP 62 4 Delay 5
+AE 64 3
+SEP 64 3 Weight 4
+SEP 64 3 Delay 14
+AE 64 13
+SEP 64 13 Weight -2
+SEP 64 13 Delay 12
+AE 64 95
+SEP 64 95 Weight -1
+SEP 64 95 Delay 6
+AE 67 9
+SEP 67 9 Weight 5
+SEP 67 9 Delay 13
+AE 67 102
+SEP 67 102 Weight 3
+SEP 67 102 Delay 10
+AE 68 11
+SEP 68 11 Weight 6
+SEP 68 11 Delay 7
+AE 68 12
+SEP 68 12 Weight -2
+SEP 68 12 Delay 13
+AE 77 95
+SEP 77 95 Weight 3
+SEP 77 95 Delay 8
+AE 77 101
+SEP 77 101 Weight 2
+SEP 77 101 Delay 14
+AE 80 10
+SEP 80 10 Weight 3
+SEP 80 10 Delay 6
+AE 80 26
+SEP 80 26 Weight -3
+SEP 80 26 Delay 6
+AE 80 32
+SEP 80 32 Weight 1
+SEP 80 32 Delay 11
+AE 80 34
+SEP 80 34 Weight 0
+SEP 80 34 Delay 9
+AE 88 10
+SEP 88 10 Weight 2
+SEP 88 10 Delay 14
+AE 93 12
+SEP 93 12 Weight 1
+SEP 93 12 Delay 1
+AE 95 60
+SEP 95 60 Weight 6
+SEP 95 60 Delay 8
+AE 101 10
+SEP 101 10 Weight 1
+SEP 101 10 Delay 4
+AE 101 26
+SEP 101 26 Weight 2
+SEP 101 26 Delay 2
+AE 102 1
+SEP 102 1 Weight 7
+SEP 102 1 Delay 8
+AE 102 30
+SEP 102 30 Weight -3
+SEP 102 30 Delay 11
+
+# Store
+
+SORT Q
+TJ tmp_network.txt
+

@@ -1,0 +1,20 @@
+newgraph xaxis min 0 max 120 no_auto_hash_marks no_auto_hash_labels size 4.5
+hash_at 0 hash_label at 0 : 0
+hash_at 120 hash_label at 120 : 2p
+hash_at 60 hash_label at 60 : p
+hash_labels font Symbol
+yaxis min 0 max 61 size 1.5 label : # Spikes
+legend top
+
+newcurve marktype xbar marksize 10 cfill 1 .5 .5 label : Neuron 0
+copycurve cfill 1 1 0 label : Neuron 1
+copycurve cfill .5 .5 1 label : Neuron 2
+
+newcurve marktype xbar marksize 1 cfill 1 1 0 pts
+  shell : echo "" | awk '{ for (i = 0; i < 60; i++) printf("%g %g %g %g\n", i+.5, 61, 120-i-.5, 61) }'
+
+newcurve marktype xbar marksize 1 cfill 1 .5 .5 pts
+  shell : echo "" | awk '{ for (i = 0; i < 60; i++) printf("%g %g\n", i+.5, 60-i) }'
+
+newcurve marktype xbar marksize 1 cfill .5 .5 1 pts
+  shell : echo "" | awk '{ for (i = 0; i < 60; i++) printf("%g %g\n", 120-i-.5, 60-i) }'
