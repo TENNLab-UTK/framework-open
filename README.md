@@ -51,6 +51,11 @@ By the end of this exercise, you should be equipped with the know-how and tools 
 and running your own RISP networks, and to start exploring embedded applications with the
 [Open-Source FPGA Implementation of RISP](https://github.com/TENNLab-UTK/fpga).
 
+There are additional examples:
+
+- [Using RISP to calculate the sine function](markdown/sine_example.md)
+- [DBSCAN](https://github.com/TENNLab-UTK/dbscan)
+
 -----------------
 # Documentation
 
