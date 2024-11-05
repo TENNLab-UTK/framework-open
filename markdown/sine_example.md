@@ -55,7 +55,7 @@ When you have an input, identify its region as a number between 0 and 119.  So, 
 The cool thing about the argyle encoder is that there are always exactly 61 spikes sent to the
 input neurons.  Here's a figure of how the spikes work:
 
-![img/argyle_encoder.jpg](../img/argyle_encoder.jpg)
+![img/argyle_encoder.png](../img/argyle_encoder.png)
 
 - We apply the input spikes every third timestep.  
 
