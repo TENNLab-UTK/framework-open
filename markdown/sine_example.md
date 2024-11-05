@@ -68,3 +68,82 @@ So, to be precise:
 ```
 value = (output_spikes) / 120 * 3.0 - 1.5
 ```
+
+## Script to generate input and test output
+
+The script in [../scripts/sine_input.sh](../scripts/sine_input.sh) helps you out.
+You give it a value of *x* and an optional network to use, and it emits the `processor_tool`
+commands, and what output to expect.  For example:
+
+
+```
+UNIX> sh scripts/sine_input.sh
+usage: sh scripts/sine_input.sh value(0 to 2pi) [network]
+This emits processor tool commands to calculate sine(value) neuromorphically
+UNIX> sh scripts/sine_input.sh 3.14 tmp_network.txt > tmp.txt
+UNIX> head tmp.txt
+ML tmp_network.txt                     # These the processor_tool commands.
+CA
+AS 0 0 1
+AS 1 0 1
+AS 1 3 1
+AS 1 6 1
+AS 1 9 1
+AS 1 12 1
+AS 1 15 1
+AS 1 18 1
+UNIX> tail tmp.txt
+RUN 240
+OC
+
+# Value is 3.14                            # At the end, it shows you information:
+# sin(x) is 0.00159265
+# Spikes on input neuron 0: 1
+# Spikes on input neuron 1: 60
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 60
+
+UNIX> bin/processor_tool_risp < tmp.txt    # When we run it, we get 62 spikes instead of 60.  Life isn't perfect
+node 3 spike counts: 62
+UNIX> 
+```
+
+## Testing all inputs
+
+When you run the testing script and do not delete the output files, the file `tmp_pt_input.txt`
+contains `processor_tool` commands to run 240 equally spaced values of *x* from 0 to *2pi*.
+
+When you run it, you'll see output spike counts for each of these:
+
+```
+UNIX> bin/processor_tool_risp < tmp_pt_input.txt > tmp.txt
+UNIX> head tmp.txt
+node 3 spike counts: 60
+node 3 spike counts: 60
+node 3 spike counts: 60
+node 3 spike counts: 61
+node 3 spike counts: 61
+node 3 spike counts: 61
+node 3 spike counts: 61
+node 3 spike counts: 64
+node 3 spike counts: 64
+node 3 spike counts: 68
+UNIX> tail tmp.txt
+node 3 spike counts: 50
+node 3 spike counts: 50
+node 3 spike counts: 53
+node 3 spike counts: 53
+node 3 spike counts: 54
+node 3 spike counts: 54
+node 3 spike counts: 56
+node 3 spike counts: 56
+node 3 spike counts: 58
+node 3 spike counts: 58
+UNIX> 
+```
+
+And if we graph those counts, evenly spaced, we get a nice approximation of a sine
+function -- how cool is that?
+
+![img/sine_output.jpg](../img/sine_output.jpg)
+
