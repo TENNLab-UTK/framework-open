@@ -1,0 +1,2 @@
+node 0(O-Bar) spike times:
+node 1(O-Stripe) spike times:

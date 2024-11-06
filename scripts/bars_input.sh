@@ -1,5 +1,5 @@
 if [ $# -ne 4 ]; then
-  echo 'usage: sh scripts/bs_input.sh network rows cols starting_neuron < pixels' >&2
+  echo 'usage: sh scripts/bars_input.sh network rows cols starting_neuron < pixels' >&2
   exit 1
 fi
 

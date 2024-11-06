@@ -17,7 +17,8 @@ each output neuron spikes if there is a bar or stripe.
 
 There is a shell script, `scripts/bars_stripes.sh`, that creates a RISP network for the
 bars and stripes problem.  You give it the number of rows and columns as command line arguments,
-and it outputs the RISP network (which is a RISP-1+ network) that solves the problem.
+and it outputs the RISP network (which is a RISP-1+ network modified so that thresholds
+are higher, and leak is on) that solves the problem.
 
 Here's an example of creating a 2x3 network:
 
@@ -84,7 +85,7 @@ I have the four examples from above in the files `txt/7x7-bar.txt`, `txt/7x7-str
 
 ```
 UNIX> sh !$ sh scripts/bars_input.sh
-usage: sh scripts/bs_input.sh network rows cols starting_neuron < pixels
+usage: sh scripts/bars_input.sh network rows cols starting_neuron < pixels
 UNIX> sh scripts/bars_stripes.sh 7 7 > tmp_network.txt                          # Create the network
 UNIX> ( echo FJ tmp_network.txt ; echo INFO ) | bin/network_tool
 Nodes:         65
