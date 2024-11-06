@@ -82,7 +82,7 @@ usage: sh scripts/sine_input.sh value(0 to 2pi) [network]
 This emits processor tool commands to calculate sine(value) neuromorphically
 UNIX> sh scripts/sine_input.sh 3.14 tmp_network.txt > tmp.txt
 UNIX> head tmp.txt
-ML tmp_network.txt                     # These the processor_tool commands.
+ML tmp_network.txt                     # These are the processor_tool commands.
 CA
 AS 0 0 1
 AS 1 0 1
