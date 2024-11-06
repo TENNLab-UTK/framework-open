@@ -1,11 +1,11 @@
-if [ $# -ne 3 ]; then
-  echo 'usage: sh scripts/bars_stripes.sh rows cols framework-open-directory' >&2
+if [ $# -ne 2 ]; then
+  echo 'usage: sh scripts/bars_stripes.sh rows cols' >&2
   exit 1
 fi
 
 r=$1
 c=$2
-fro=$3
+fro=.
 
 if [ ! -f $fro/params/risp_1_plus.txt ]; then
   echo no file $fro/params/risp_1_plus.txt >&2
@@ -88,4 +88,3 @@ n=0
   echo SORT Q
   echo TJ 
 ) | $fro/bin/network_tool
-  
