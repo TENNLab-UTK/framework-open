@@ -54,6 +54,7 @@ and running your own RISP networks, and to start exploring embedded applications
 There are additional examples:
 
 - [Using RISP to calculate the sine function](markdown/sine_example.md)
+- [The Bars and Stripes problem, and a RISP solution](markdown/bars_strips.md)
 - [DBSCAN](https://github.com/TENNLab-UTK/dbscan)
 
 -----------------
