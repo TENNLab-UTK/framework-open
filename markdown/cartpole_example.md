@@ -2,12 +2,16 @@
 
 Cart Pole (also known as the inverted pendulum problem) is arguably **the** quintessential control theory problem. It is a problem that has been solved by numerous algorithms in the literature over the past few decades. It features a pole that must be balanced upright on a cart that can only move along the x axis where failure occurs if the pole's angle *theta* falls outside of some user defined range. The Cart Pole environment we will use in this example comes from Gymnasium and can be found here: https://gymnasium.farama.org/environments/classic_control/cart_pole/.
 
-We use the same RISP-1+ network that is discussed in the paper "The RISP Neuroprocessor - Open Source Support for Embedded Neuromorphic Computing". The network was trained with the genetic algorithm EONS on an internal application that we call Polebalance. The Polebalance application is nearly identical to Cart Pole, and we show how to run this network on the Cart Pole problem later.
+We use the same RISP-1+ network that is discussed in the paper "The RISP Neuroprocessor - Open Source Support for Embedded Neuromorphic Computing" (params file in [params/risp_1_plus.txt](params/risp_1_plus.txt). The network was trained with the genetic algorithm EONS on an internal application that we call Polebalance. The Polebalance application is nearly identical to Cart Pole, and we show how to run this network on the Cart Pole problem later.
 
-The network is in `pole_network.txt`, and we can use the `network_tool` to show us basic information about the network:
+We can create the network by running testing script 40 or 41.  The network will be in
+`tmp_network.txt`.
+We can use the `network_tool` to show us basic information about the network:
 
 ```
-UNIX> ( echo FJ pole_network.txt ; echo INFO ) | bin/network_tool 
+UNIX> sh scripts/test_risp.sh 40 yes
+Passed Test 40 - Cart-pole example on the observations: [x=0.852, dx=-0.007, t=0.018, dt=-0.659].
+UNIX> ( echo FJ tmp_network.txt ; echo INFO ) | bin/network_tool
 Nodes:         10
 Edges:          7
 Inputs:         8
@@ -15,8 +19,8 @@ Outputs:        2
 
 Input nodes:  0 1 2 3 4 5 6 7 
 Hidden nodes: 
-Output nodes: 8 9
-UNIX>
+Output nodes: 8 9 
+UNIX> 
 ```
 
 The network is very small: it is only 10 neurons and 7 synapses. It was created using EONS, and it works in the following way:
@@ -34,15 +38,83 @@ The network is very small: it is only 10 neurons and 7 synapses. It was created 
     | 3            | Pole Angular Velocity | -Inf                | Inf               |                 | -2.0              | 2.0             |
 
 - The inputs are encoded using a "flip-flop" encoder where there are two neurons per input and up to 8 spikes per neuron. Negative values are spiked into one neuron and positive values are spiked into the other neuron for each input. The more negative the value, the greater the amount of spikes (up to a maximum of 8 spikes) that is applied to the "negative" neuron. The greater the positive value, the greater the amount of spikes that is applied to the "positive" neuron (again, up to a maximum of 8 spikes).
-- We apply spikes every third timestep
+- We apply spikes every third timestep.
 
 ## Running the neural network and converting the output spikes to a value ##
 
-There is only one output for the Cart Pole and Polebalance applications: move the cart along the x axis. This output is split into two neurons, one for push the cart left and the other for push the cart right. The spiking neural network runs on an observation for 24 timesteps, and then the counts of the two output neurons are compared. Whichever output neuron fires the most determines whether the cart will be pushed to the right or to the left. If there is a tie between the output neurons' fires, the action of the neuron with the lowest id will be chosen -- in this case, that is "move left". This is also popularly known as the "Winner-takes-all" (WTA) decoder.
+There is only one output for the Cart Pole and Polebalance applications: move the cart along the x axis. This output is split into two neurons, one for "push the cart left" and the other for "push the cart right." The spiking neural network runs on an observation for 24 timesteps, and then the counts of the two output neurons are compared. Whichever output neuron fires the most determines whether the cart will be pushed to the right or to the left. If there is a tie between the output neurons' fires, the action of the neuron with the lowest id will be chosen -- in this case, that is "move left". This is also popularly known as the "Winner-takes-all" (WTA) decoder.
+
+## Two examples
+
+These examples are in testing scripts 40 and 41.  Let's run test 40 again to see how it
+works:
+
+```
+UNIX> sh scripts/test_risp.sh 40 yes
+Passed Test 40 - Cart-pole example on the observations: [x=0.852, dx=-0.007, t=0.018, dt=-0.659].
+UNIX> ( echo FJ tmp_network.txt ; echo INFO ) | bin/network_tool
+Nodes:         10
+Edges:          7
+Inputs:         8
+Outputs:        2
+
+Input nodes:  0 1 2 3 4 5 6 7 
+Hidden nodes: 
+Output nodes: 8 9 
+UNIX> 
+```
+
+We convert the inputs to spikes as follows:
+
+- 0.852/2.4*8 = 0.355, which maps to three spikes on neuron 1 (neuron 0 is for negative 
+  values of *x*).
+- 0.007/2*8 = 0.027, which maps to one spike on neuron 2 (neuron 3 is for positive values of *dx*).
+- 0.018/0.209*8 = 0.069, which maps to one spike on neuron 5 (neuron 4 is for negative values of *theta*).
+- 0.659/2*8 = 2.639, which maps to three spikes on neuron 6 (neuron 7 is for positive values of *d-theta*).
+
+Accordingly, the processor_tool commands for the example are in `tmp_pt_input.txt`:
+
+```
+UNIX> cat tmp_pt_input.txt 
+ML tmp_network.txt
+AS 1 0 1
+AS 1 3 1
+AS 1 6 1
+AS 2 0 1
+AS 5 0 1
+AS 6 0 1
+AS 6 3 1
+AS 6 6 1
+RUN 24
+GSR
+OC
+UNIX> 
+```
+
+When we run it, we see 4 spikes on each of neurons 8 and 9.  The tie goes to "push left":
+
+```
+UNIX> bin/processor_tool_risp < tmp_pt_input.txt
+0 INPUT  : 000000000000000000
+1 INPUT  : 100100100000000000
+2 INPUT  : 100000000000000000
+3 INPUT  : 000000000000000000
+4 INPUT  : 010001001001000000
+5 INPUT  : 100000000000000000
+6 INPUT  : 100100100000000000
+7 INPUT  : 000000000000000000
+8 OUTPUT : 000000010001001001
+9 OUTPUT : 000000001001101000
+node 8 spike counts: 4
+node 9 spike counts: 4
+UNIX> 
+```
+
+You can run through test 41 similarly.
 
 ## Making the Polebalance-trained network play Cart Pole ##
 
-Fortunately, using the Polebalance-trained network to play Cart Pole is pretty straightforward. We use `processor_tool_risp` to run `pole_network.txt` alongside an instance of Cart Pole. In this way, we can use a Python program to launch the Cart Pole instance and pass spikes to the `processor_tool_risp` instance in real time using pipes. We can then poll the output of the network from `processor_tool_risp`, perform the WTA decoding, and communicate the appropriate action back to the Cart Pole instance. We show some Python code to accomplish this below:
+Fortunately, using the Polebalance-trained network to play Cart Pole is pretty straightforward. We use `processor_tool_risp` to run `tmp_network.txt` alongside an instance of Cart Pole. In this way, we can use a Python program to launch the Cart Pole instance and pass spikes to the `processor_tool_risp` instance in real time using pipes. We can then poll the output of the network from `processor_tool_risp`, perform the WTA decoding, and communicate the appropriate action back to the Cart Pole instance. We show some Python code to accomplish this below:
 
 ```python
 import re
@@ -54,9 +126,9 @@ import math
 env = gym.make('CartPole-v1')
 env.reset()
 
-# Launch processor_tool_risp subprocess and load into it the pole_network.txt network
+# Launch processor_tool_risp subprocess and load into it the tmp_network.txt network
 Prog = subprocess.Popen(['/.../framework-open/bin/processor_tool_risp'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
-Prog.stdin.write("ML pole_network.txt\n")
+Prog.stdin.write("ML tmp_network.txt\n")
 Prog.stdin.flush()
 Prog.stdin.write("INFO\n")
 Prog.stdin.flush()
@@ -68,7 +140,7 @@ for line in Prog.stdout:
         break
 
 # Extract "sim_time" from the network file
-with open("pole_network.txt", "r") as network_file:
+with open("tmp_network.txt", "r") as network_file:
     buf = network_file.readlines()
     subbuf = buf[0].split("sim_time")
     sim_time = re.findall('[0-9]+', subbuf[1])[0]
@@ -145,6 +217,6 @@ while env.steps_beyond_terminated == None and timesteps <= 15000:
 print("Fitness " + str(timesteps-1))
 ```
 
-## Visualization of pole_network.txt playing Cart Pole ##
+## Visualization of tmp_network.txt playing Cart Pole ##
 
-A 30 second clip of the `pole_network.txt` file playing Cart Pole as shown above can be found [here](https://youtu.be/cGYg4RSb5Pw). 
+A 30 second clip of the `tmp_network.txt` file playing Cart Pole as shown above can be found [here](https://youtu.be/cGYg4RSb5Pw). 
