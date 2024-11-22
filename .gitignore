@@ -4,3 +4,6 @@ obj/*
 !obj/.keep
 lib/*
 !lib/.keep
+build/*
+!build/.keep
+pyframework/*
