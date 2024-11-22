@@ -43,23 +43,4 @@ echo "Python Version: $PYVER"
 pip install --upgrade pip
 pip install -r requirements.txt
 
-declare -a Repos=("caspian" "eons")
-
-if [ -d .git ]; then
-    # Get the correct root URL from the Framework's url.
-    FRAMEWORK_URL=`git remote get-url origin`
-    if [[ "$FRAMEWORK_URL" == *"code.ornl.gov"* ]]; then
-        REPO_ROOT_URL=git@code.ornl.gov:neuromorphic-computing
-    else
-        REPO_ROOT_URL=git@bitbucket.org:neuromorphic-utk
-    fi
-    [ -d "eons/include" ] || git clone ${REPO_ROOT_URL}/eons.git
-    if [[ "$FRAMEWORK_URL" == *"code.ornl.gov"* ]]; then
-        [ -d "./processors/caspian" ] || git clone git@code.ornl.gov:neuromorphic-computing/caspian.git ./processors/caspian
-    fi
-#[ -d "./processors/gnp" ] || git clone git@code.ornl.gov:neuromorphic-computing/gnp.git ./processors/gnp
-fi
-
-# git clone git@bitbucket.org:neuromorphic-utk/fw6gnp.git gnp
-
 . scripts/update_env.sh
