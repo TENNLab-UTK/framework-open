@@ -1,6 +1,9 @@
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+
 #include "pybind_json.hpp"
 #include "framework.hpp"
+#include "nlohmann/json.hpp"
 
 // change includes to match your code
 #include "risp.hpp" 

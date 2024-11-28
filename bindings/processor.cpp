@@ -1,10 +1,10 @@
-#include "framework.hpp"
-
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/stl_bind.h>
-#include <fmt/format.h>
 #include "pybind_json.hpp"
+
+#include "framework.hpp"
+#include "nlohmann/json.hpp"
 
 namespace neuro
 {
@@ -29,44 +29,24 @@ namespace neuro
             PYBIND11_OVERLOAD_PURE(bool, Processor, load_networks, n);
         }
 
-        void apply_spike(const Spike& s, int network_id = 0) override
+        void apply_spike(const Spike& s, bool normalized = true, int network_id = 0) override
         {
-            PYBIND11_OVERLOAD_PURE(void, Processor, apply_spike, s, network_id);
+            PYBIND11_OVERLOAD_PURE(void, Processor, apply_spike, s, normalized, network_id);
         }
 
-        void apply_spikes(const vector<Spike>& s, int network_id = 0) override
+        void apply_spikes(const vector<Spike>& s, bool normalized = true, int network_id = 0) override
         {
-            PYBIND11_OVERLOAD_PURE(void, Processor, apply_spikes, s, network_id);
+            PYBIND11_OVERLOAD_PURE(void, Processor, apply_spikes, s, normalized, network_id);
         }
 
-        void apply_spike(const Spike& s, const vector<int>& network_ids) override
+        void apply_spike(const Spike& s, const vector<int>& network_ids, bool normalized = true) override
         {
-            PYBIND11_OVERLOAD_PURE(void, Processor, apply_spike, s, network_ids);
+            PYBIND11_OVERLOAD_PURE(void, Processor, apply_spike, s, network_ids, normalized);
         }
 
-        void apply_spikes(const vector<Spike>& s, const vector<int>& network_ids) override
+        void apply_spikes(const vector<Spike>& s, const vector<int>& network_ids, bool normalized = true) override
         {
-            PYBIND11_OVERLOAD_PURE(void, Processor, apply_spikes, s, network_ids);
-        }
-
-        void apply_periodic(const Period &p, int network_id = 0) override
-        {
-            PYBIND11_OVERLOAD_PURE(void, Processor, apply_periodic, p, network_id);
-        }
-
-        void apply_periodic(const Period &p, const vector<int>& network_ids) override
-        {
-            PYBIND11_OVERLOAD_PURE(void, Processor, apply_periodic, p, network_ids);
-        }
-
-        void apply_periods(const vector<Period>& p, int network_id = 0) override
-        {
-            PYBIND11_OVERLOAD_PURE(void, Processor, apply_periods, p, network_id);
-        }
-
-        void apply_periods(const vector<Period>& p, const vector<int>& network_ids) override
-        {
-            PYBIND11_OVERLOAD_PURE(void, Processor, apply_periods, p, network_ids);
+            PYBIND11_OVERLOAD_PURE(void, Processor, apply_spikes, s, network_ids, normalized);
         }
 
         void run(double duration, int network_id = 0) override
@@ -202,18 +182,7 @@ void bind_framework_processor(pybind11::module &m) {
         .def(py::init<int,double,double>(), py::arg("id"), py::arg("time"), py::arg("value"))
         .def_readwrite("id", &neuro::Spike::id)
         .def_readwrite("time", &neuro::Spike::time)
-        .def_readwrite("value", &neuro::Spike::value)
-        .def("__str__", [](neuro::Spike& s) {
-            return fmt::format("[Spike id={} t={} val={}]", s.id, s.time, s.value);
-        }) ;
-
-    py::class_<neuro::Period>(m, "Period")
-        .def(py::init<neuro::Spike, double, int>(), 
-                py::arg("s"), py::arg("p"), py::arg("n"))
-
-        .def_readonly("spike", &neuro::Period::spike)
-        .def_readonly("period", &neuro::Period::period)
-        .def_readonly("num", &neuro::Period::num);
+        .def_readwrite("value", &neuro::Spike::value);
 
     /* Requires a trampoline class for override/inheritance of virutal methods */
     py::class_<neuro::Processor, neuro::PyProcessor>(m, "Processor")
@@ -232,17 +201,11 @@ void bind_framework_processor(pybind11::module &m) {
         .def("load_networks",       &neuro::Processor::load_networks,
                 py::arg("network"))
 
-        .def("apply_spike",         (void (neuro::Processor::*)(const neuro::Spike&, int)) &neuro::Processor::apply_spike,
-                py::arg("spike"), py::arg("network_id") = 0)
+        .def("apply_spike",         (void (neuro::Processor::*)(const neuro::Spike&, bool, int)) &neuro::Processor::apply_spike,
+                py::arg("spike"), py::arg("normalized") = true, py::arg("network_id") = 0)
 
-        .def("apply_spikes",        (void (neuro::Processor::*)(const vector<neuro::Spike>&, int)) &neuro::Processor::apply_spikes,
-                py::arg("spikes"), py::arg("network_id") = 0)
-
-        .def("apply_periodic",      (void (neuro::Processor::*)(const neuro::Period&, int)) &neuro::Processor::apply_periodic,
-                py::arg("p"), py::arg("network_id") = 0)
-
-        .def("apply_periods",        (void (neuro::Processor::*)(const vector <neuro::Period>&, int)) &neuro::Processor::apply_periods,
-                py::arg("p"), py::arg("network_id") = 0)
+        .def("apply_spikes",        (void (neuro::Processor::*)(const vector<neuro::Spike>&, bool, int)) &neuro::Processor::apply_spikes,
+                py::arg("spikes"), py::arg("normalized") = true, py::arg("network_id") = 0)
 
         .def("run",                 (void (neuro::Processor::*)(double, int)) &neuro::Processor::run,
                 py::arg("duration"), py::arg("network_id") = 0)
@@ -297,9 +260,6 @@ void bind_framework_processor(pybind11::module &m) {
 
         .def("neuron_charges",      &neuro::Processor::neuron_charges,
                 py::arg("network_id") = 0)
-        .def("__repr__", [](neuro::Processor &dev){
-            return fmt::format("[Processor object at {:x}]", static_cast<void*>(&dev));
-        })
         .def("synapse_weights", [](neuro::Processor &proc, int network_id = 0) {
             vector <uint32_t> pres;
             vector <uint32_t> posts;
@@ -391,11 +351,4 @@ void bind_framework_processor(pybind11::module &m) {
 
             return counts;
           }, py::arg("network_id"), py::arg("num_outputs"));
-
-	py::class_<Spike>(m, "Spike")
-		.def(py::init<int, double, double>())
-			
-		.def_readonly("id", &Spike::id)
-		.def_readonly("time", &Spike::time)
-		.def_readonly("value", &Spike::value);
 }

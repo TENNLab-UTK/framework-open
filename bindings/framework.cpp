@@ -4,6 +4,7 @@
 
 #include "framework.hpp"
 #include "nlohmann/json.hpp"
+#include "pybind_json.hpp"
 
 namespace py = pybind11;
 using namespace neuro;
