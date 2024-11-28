@@ -1,6 +1,8 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+
 #include "framework.hpp"
+#include "nlohmann/json.hpp"
 
 namespace py = pybind11;
 
@@ -24,11 +26,7 @@ void bind_processor_help(py::module &m) {
 
     m.def("neuron_vectors_to_json", &neuro::neuron_vectors_to_json,
         py::arg("events"), py::arg("type"), py::arg("n"));
-
-	m.def("apply_periodic_spikes", py::overload_cast<neuro::Processor*, const neuro::Period&, int>(&neuro::apply_periodic_spikes),
-			py::arg("p"), py::arg("period"), py::arg("network_id") = 0);
-
-	m.def("apply_periodic_spikes", py::overload_cast<neuro::Processor*, const neuro::Period&, const vector<int>&>(&neuro::apply_periodic_spikes),
-			py::arg("p"), py::arg("period"), py::arg("network_ids"));
-
+    
+    m.def("neuron_charges_to_json", &neuro::neuron_charges_to_json,
+        py::arg("charges"), py::arg("n"));
 }

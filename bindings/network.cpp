@@ -4,10 +4,10 @@
 #include <pybind11/stl.h>
 #include <pybind11/cast.h>
 #include <pybind11/operators.h>
-#include <fmt/format.h>
 #include "pybind_json.hpp"
 
 #include "framework.hpp"
+#include "nlohmann/json.hpp"
 
 namespace py = pybind11;
 
@@ -50,8 +50,6 @@ void bind_framework_network(py::module &m)
 		.def_readonly("name", &Property::name)
 		.def(py::self == py::self)
 		.def(py::self != py::self);
-
-	py::bind_map<PropertyMap>(m, "PropertyMap");
 
 	py::class_<PropertyPack>(m, "PropertyPack")
 		.def("__call__", [](PropertyPack &self){
@@ -149,14 +147,14 @@ void bind_framework_network(py::module &m)
 		.def("get_random_input", &Network::get_random_input)
 		.def("get_random_output", &Network::get_random_output)
 
-		.def("randomize_properties", py::overload_cast<MOA&>(&Network::randomize_properties))
-		.def("randomize_properties", py::overload_cast<MOA&, Node*>(&Network::randomize_properties))
-		.def("randomize_properties", py::overload_cast<MOA&, Edge*>(&Network::randomize_properties))
+		.def("randomize_properties", py::overload_cast<neuro::MOA&>(&Network::randomize_properties))
+		.def("randomize_properties", py::overload_cast<neuro::MOA&, Node*>(&Network::randomize_properties))
+		.def("randomize_properties", py::overload_cast<neuro::MOA&, Edge*>(&Network::randomize_properties))
 
-		.def("randomize_property", py::overload_cast<MOA&, const string&>(&Network::randomize_property))
-		.def("randomize_property", py::overload_cast<MOA&, Node*, const string&>(&Network::randomize_property))
-		.def("randomize_property", py::overload_cast<MOA&, Edge*, const string&>(&Network::randomize_property))
-		.def("randomize_property", py::overload_cast<MOA&, const Property&, std::vector<double>&>(&Network::randomize_property))
+		.def("randomize_property", py::overload_cast<neuro::MOA&, const string&>(&Network::randomize_property))
+		.def("randomize_property", py::overload_cast<neuro::MOA&, Node*, const string&>(&Network::randomize_property))
+		.def("randomize_property", py::overload_cast<neuro::MOA&, Edge*, const string&>(&Network::randomize_property))
+		.def("randomize_property", py::overload_cast<neuro::MOA&, const Property&, std::vector<double>&>(&Network::randomize_property))
 
 		.def("randomize", &Network::randomize)
 		.def("prune", &Network::prune)
