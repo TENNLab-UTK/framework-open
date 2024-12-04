@@ -251,8 +251,19 @@ Here's the network:
 
 ![PRWS-2024-9b.png](images/PRWS-2024-9b.png)
 
-By now, you know the drill.
+It's example 45.  By now, you know the drill.
 
 The 30-second video of this network is in [https://youtu.be/6q5wbJFKCSk](https://youtu.be/6q5wbJFKCSk).
 
+
+---------
+## Example 5 - Figure 11(b).  A RISP-1 network for the *Hard* benchmark
+
+Here's the network:
+
+![PRWS-2024-ba.png](images/PRWS-2024-ba.png)
+
+It's example 46.  By now, you know the drill.
+
+The 30-second video of this network is in [https://youtu.be/1ag5gQOU2LI](https://youtu.be/1ag5gQOU2LI).
 
