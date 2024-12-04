@@ -66,10 +66,10 @@ UNIX>
 
 We convert the inputs to spikes as follows:
 
-- 0.852/2.4*8 = 0.355, which maps to three spikes on neuron 1 (neuron 0 is for negative 
+- 0.852/2.4*8 = 2.84, which maps to three spikes on neuron 1 (neuron 0 is for negative 
   values of *x*).
 - 0.007/2*8 = 0.027, which maps to one spike on neuron 2 (neuron 3 is for positive values of *dx*).
-- 0.018/0.209*8 = 0.069, which maps to one spike on neuron 5 (neuron 4 is for negative values of *theta*).
+- 0.018/0.209*8 = 0.69, which maps to one spike on neuron 5 (neuron 4 is for negative values of *theta*).
 - 0.659/2*8 = 2.639, which maps to three spikes on neuron 6 (neuron 7 is for positive values of *d-theta*).
 
 Accordingly, the processor_tool commands for the example are in `tmp_pt_input.txt`:
