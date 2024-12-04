@@ -111,7 +111,7 @@ UNIX>
 You can map this to the video if you want.  For example, here's a screenshot
 of the video, paused at the 3.48 second mark:
 
-![PRWS-2024-7a-SS.jpg](images/PRWS-2024-7a-SS.png)
+![PRWS-2024-7a-SS.jpg](images/PRWS-2024-7a-SS.jpg)
 
 Now, let's take a look at the output of the `processor_tool` for those
 steps.  Each time-raster has 10 neurons, so if we want timestep 173, 
