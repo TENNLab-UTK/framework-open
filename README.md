@@ -58,6 +58,7 @@ and running your own RISP networks, and to start exploring embedded applications
 - [Using RISP to calculate the sine function](markdown/sine_example.md)
 - [The Bars and Stripes problem, and a RISP solution](markdown/bars_stripes.md)
 - [DBSCAN](https://github.com/TENNLab-UTK/dbscan)
+- [The Cart-Pole Application](markdown/cartpole_example.md)
 
 -----------------
 # Documentation
