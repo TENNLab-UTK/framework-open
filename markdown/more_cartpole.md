@@ -23,6 +23,6 @@ This is Figure 7(a) from [PRWS2024].  It is a RISP-1+ network, so all synapse
 weights are one, and all neuron thresholds are one.  The delays are shown on
 the figure:
 
-![PRWS2024-7a.png](images/PRWS2024-7a.png)
+![PRWS-2024-7a.png](images/PRWS-2024-7a.png)
 
 
