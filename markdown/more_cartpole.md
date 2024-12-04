@@ -162,6 +162,8 @@ This is testing example 43, so please follow the instructions above, but use
 "43" instead of "42":
 
 ```
+UNIX> sh scripts/test_risp.sh 43 yes
+Passed Test 43 - Cart-pole example from [PRWS2024], Figure 7b.
 UNIX> ( echo FJ tmp_network.txt ; echo INFO ; echo EDGES ) | bin/network_tool
 Nodes:         11
 Edges:          8
@@ -183,3 +185,60 @@ UNIX>
 ```
 
 The 30-second video of this network is in [https://www.youtube.com/watch?v=8BpuA5y3eVE](https://www.youtube.com/watch?v=8BpuA5y3eVE).
+
+---------
+## Example 3 - Figure 9(a).  A RISP-1 network for the *Medium* benchmark
+
+This is Figure 9(a) from [PRWS2024].  It is a RISP-1 network, so all synapse
+weights are either -1 or 1, and all neuron thresholds are either 0 or 1.
+The delays and threshold are shown in the picture.  Inhibitory synapses
+are in red.  The output neurons are:
+
+- 8: Do-Nothing
+- 9: Left
+- 10: Right
+
+![PRWS-2024-9a.png](images/PRWS-2024-9a.png)
+
+This is testing example 44.
+
+```
+UNIX> sh scripts/test_risp.sh 44 yes
+Passed Test 44 - Cart-pole example from [PRWS2024], Figure 9a.
+UNIX> ( echo FJ tmp_network.txt ; echo INFO ; echo NODES ; echo EDGES ) | bin/network_tool
+Nodes:         11
+Edges:         13
+Inputs:         8
+Outputs:        3
+
+Input nodes:  0 1 2 3 4 5 6 7 
+Hidden nodes: 
+Output nodes: 8 9 10 
+[ {"id":0,"values":[0.0]},
+  {"id":6,"values":[1.0]},
+  {"id":8,"values":[1.0]},
+  {"id":7,"values":[1.0]},
+  {"id":2,"values":[1.0]},
+  {"id":3,"values":[1.0]},
+  {"id":9,"values":[1.0]},
+  {"id":4,"values":[1.0]},
+  {"id":1,"values":[1.0]},
+  {"id":10,"values":[1.0]},
+  {"id":5,"values":[1.0]} ]
+[ {"from":7,"to":8,"values":[1.0,8.0]},
+  {"from":1,"to":8,"values":[1.0,5.0]},
+  {"from":3,"to":5,"values":[1.0,8.0]},
+  {"from":0,"to":2,"values":[1.0,8.0]},
+  {"from":10,"to":0,"values":[-1.0,1.0]},
+  {"from":0,"to":3,"values":[-1.0,4.0]},
+  {"from":0,"to":9,"values":[1.0,5.0]},
+  {"from":6,"to":9,"values":[1.0,11.0]},
+  {"from":5,"to":10,"values":[1.0,5.0]},
+  {"from":3,"to":9,"values":[-1.0,12.0]},
+  {"from":7,"to":10,"values":[1.0,3.0]},
+  {"from":6,"to":0,"values":[1.0,10.0]},
+  {"from":4,"to":9,"values":[1.0,10.0]} ]
+UNIX> 
+```
+
+The 30-second video of this network is in [https://youtu.be/7Dx9tiSEaeE](https://youtu.be/7Dx9tiSEaeE).  Note how often the agent uses the "Do-Nothing" action.
