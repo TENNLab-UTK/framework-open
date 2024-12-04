@@ -21,7 +21,18 @@ matter.  We also include videos so that you can see it working, along with the
 
 This is Figure 7(a) from [PRWS2024].  It is a RISP-1+ network, so all synapse
 weights are one, and all neuron thresholds are one.  The delays are shown on
-the figure:
+the figure.  The mapping of neuron number to identity is as follows:
+
+- 0 is *x-*
+- 1 is *x+*
+- 2 is *dx-*
+- 3 is *dx+*
+- 4 is *theta-*
+- 5 is *theta+*
+- 6 is *d-theta-*
+- 7 is *d-theta+*
+- 8 is Action-Left
+- 9 is Action-right
 
 ![PRWS-2024-7a.png](images/PRWS-2024-7a.png)
 
@@ -138,7 +149,37 @@ Remember, you can also use this network in Gymnasium -- you'll need to
 read through 
 [the first cart-pole example](cartpole_example.md).
 
+---------
+## Example 2 - Figure 7(b).  A second RISP-1+ network for the *Easy* benchmark
 
+This is Figure 7(b) from [PRWS2024].  It is a RISP-1+ network, so all synapse
+weights are one, and all neuron thresholds are one.  The delays are shown on
+the figure and the neuron id's are the same, except 72 is a hidden neuron.
 
+![PRWS-2024-7b.png](images/PRWS-2024-7b.png)
 
+This is testing example 43, so please follow the instructions above, but use
+"43" instead of "42":
 
+```
+UNIX> ( echo FJ tmp_network.txt ; echo INFO ; echo EDGES ) | bin/network_tool
+Nodes:         11
+Edges:          8
+Inputs:         8
+Outputs:        2
+
+Input nodes:  0 1 2 3 4 5 6 7 
+Hidden nodes: 72 
+Output nodes: 8 9 
+[ {"from":1,"to":72,"values":[1.0,14.0]},
+  {"from":2,"to":8,"values":[1.0,6.0]},
+  {"from":4,"to":2,"values":[1.0,11.0]},
+  {"from":72,"to":9,"values":[1.0,3.0]},
+  {"from":5,"to":9,"values":[1.0,6.0]},
+  {"from":6,"to":2,"values":[1.0,4.0]},
+  {"from":7,"to":72,"values":[1.0,11.0]},
+  {"from":7,"to":9,"values":[1.0,3.0]} ]
+UNIX> 
+```
+
+The 30-second video of this network is in [https://www.youtube.com/watch?v=8BpuA5y3eVE](https://www.youtube.com/watch?v=8BpuA5y3eVE).
