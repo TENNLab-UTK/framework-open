@@ -1,0 +1,59 @@
+FJ tmp_empty_network.txt
+AN 0 1 2 3 4 5 6 7 8 9 10
+AI 0 1 2 3 4 5 6 7
+AO 8 9 10
+
+SNP 0 Threshold 9
+SNP 1 Threshold 0
+SNP 2 Threshold 0
+SNP 3 Threshold 0
+SNP 4 Threshold 0
+SNP 5 Threshold 20
+SNP 6 Threshold 87
+SNP 7 Threshold 0
+SNP 8 Threshold 0
+SNP 9 Threshold 3
+SNP 10 Threshold 54
+
+AE 0 10
+SEP 0 10 Weight -44
+SEP 0 10 Delay 15
+
+AE 2 6
+SEP 2 6 Weight 55
+SEP 2 6 Delay 6
+
+AE 2 10
+SEP 2 10 Weight -57
+SEP 2 10 Delay 7
+
+AE 5 0
+SEP 5 0 Weight 1
+SEP 5 0 Delay 13
+
+AE 5 6
+SEP 5 6 Weight -115
+SEP 5 6 Delay 6
+
+AE 5 10
+SEP 5 10 Weight 76
+SEP 5 10 Delay 1
+
+AE 6 9
+SEP 6 9 Weight 1
+SEP 6 9 Delay 5
+
+AE 7 5
+SEP 7 5 Weight 30
+SEP 7 5 Delay 7
+
+AE 9 5
+SEP 9 5 Weight -32
+SEP 9 5 Delay 3
+
+AE 9 6
+SEP 9 6 Weight -66
+SEP 9 6 Delay 11
+
+SORT Q
+TJ tmp_network.txt

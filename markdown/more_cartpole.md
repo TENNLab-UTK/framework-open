@@ -242,3 +242,17 @@ UNIX>
 ```
 
 The 30-second video of this network is in [https://youtu.be/7Dx9tiSEaeE](https://youtu.be/7Dx9tiSEaeE).  Note how often the agent uses the "Do-Nothing" action.
+
+
+---------
+## Example 4 - Figure 9(b).  A RISP-127 network for the *Medium* benchmark
+
+Here's the network:
+
+![PRWS-2024-9b.png](images/PRWS-2024-9b.png)
+
+By now, you know the drill.
+
+The 30-second video of this network is in [https://youtu.be/6q5wbJFKCSk](https://youtu.be/6q5wbJFKCSk).
+
+
