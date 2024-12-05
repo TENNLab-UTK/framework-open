@@ -62,7 +62,7 @@ spike raster output, and processor tool commands for each timestep.  It
 is slowed by 50%, but you can pause and step through the video to see
 individual values.
 
-[Example-7a-video](https://youtu.be/0jozLerSaxI)
+[https://youtu.be/h3yVYmy3jy8](https://youtu.be/h3yVYmy3jy8)
 
 When you run test script 42, the file
 `tmp_pt_input.txt` gives you the processor tool commands that are being
@@ -257,7 +257,7 @@ The 30-second video of this network is in [https://youtu.be/6q5wbJFKCSk](https:/
 
 
 ---------
-## Example 5 - Figure 11(b).  A RISP-1 network for the *Hard* benchmark
+## Example 5 - Figure 11(a).  A RISP-1 network for the *Hard* benchmark
 
 Here's the network:
 
@@ -267,3 +267,14 @@ It's example 46.  By now, you know the drill.
 
 The 30-second video of this network is in [https://youtu.be/1ag5gQOU2LI](https://youtu.be/1ag5gQOU2LI).
 
+
+---------
+## Example 6 - Figure 11(b).  A RISP-7 network for the *Hard* benchmark
+
+Here's the network:
+
+![PRWS-2024-bb.png](images/PRWS-2024-bb.png)
+
+It's example 47.  By now, you know the drill.
+
+The 30-second video of this network is in [https://youtu.be/nY3sSFecGt8](https://youtu.be/nY3sSFecGt8).
