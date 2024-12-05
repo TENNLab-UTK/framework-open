@@ -184,7 +184,7 @@ Output nodes: 8 9
 UNIX> 
 ```
 
-The 30-second video of this network is in [https://www.youtube.com/watch?v=8BpuA5y3eVE](https://www.youtube.com/watch?v=8BpuA5y3eVE).
+The 30-second video of this network is in [https://youtu.be/xoTRZTVE-xE](https://youtu.be/xoTRZTVE-xE).
 
 ---------
 ## Example 3 - Figure 9(a).  A RISP-1 network for the *Medium* benchmark
@@ -241,7 +241,7 @@ Output nodes: 8 9 10
 UNIX> 
 ```
 
-The 30-second video of this network is in [https://youtu.be/7Dx9tiSEaeE](https://youtu.be/7Dx9tiSEaeE).  Note how often the agent uses the "Do-Nothing" action.
+The 30-second video of this network is in []().  Note how often the agent uses the "Do-Nothing" action.
 
 
 ---------
@@ -253,7 +253,7 @@ Here's the network:
 
 It's example 45.  By now, you know the drill.
 
-The 30-second video of this network is in [https://youtu.be/6q5wbJFKCSk](https://youtu.be/6q5wbJFKCSk).
+The 30-second video of this network is in []().
 
 
 ---------
@@ -263,9 +263,9 @@ Here's the network:
 
 ![PRWS-2024-ba.png](images/PRWS-2024-ba.png)
 
-It's example 46.  By now, you know the drill.
+It's example 46.  
 
-The 30-second video of this network is in [https://youtu.be/1ag5gQOU2LI](https://youtu.be/1ag5gQOU2LI).
+The 30-second video of this network is in []().
 
 
 ---------
@@ -275,6 +275,28 @@ Here's the network:
 
 ![PRWS-2024-bb.png](images/PRWS-2024-bb.png)
 
-It's example 47.  By now, you know the drill.
+It's example 47.  
 
-The 30-second video of this network is in [https://youtu.be/nY3sSFecGt8](https://youtu.be/nY3sSFecGt8).
+The 30-second video of this network is in []().
+---------
+## Example 7 - Figure 13(a).  A RISP-15+ network for the *Hardest* benchmark
+
+Here's the network:
+
+![PRWS-2024-da.png](images/PRWS-2024-da.png)
+
+It's example 48.  
+
+The 30-second video of this network is in []().
+
+
+---------
+## Example 8 - Figure 13(b).  A RISP-127 network for the *Hardest* benchmark
+
+Here's the network:
+
+![PRWS-2024-db.png](images/PRWS-2024-db.png)
+
+It's example 49.  
+
+The 30-second video of this network is in []().
