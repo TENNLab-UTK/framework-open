@@ -1,7 +1,7 @@
 # More Examples of the Cart-Pole Application
 
-These come from the paper, 
-["The Cart-Pole Application as a Benchmark for Neuromorphic Computing", by Plank, Rizzo, White and Schuman](https://neuromorphic.eecs.utk.edu/publications/2024-12-06-the-cart-pole-application-as-a-benchmark-for-neuromorphic-computing/).  
+These come from the paper,
+["The Cart-Pole Application as a Benchmark for Neuromorphic Computing", by Plank, Rizzo, White and Schuman](https://neuromorphic.eecs.utk.edu/publications/2024-12-06-the-cart-pole-application-as-a-benchmark-for-neuromorphic-computing/).
 When I refer to it in this markdown file, I'll refer to it as [PRWS2024].
 
 To walk through these examples, or to have instructions on how to use them on
@@ -47,16 +47,16 @@ Edges:          7
 Inputs:         8
 Outputs:        2
 
-Input nodes:  0 1 2 3 4 5 6 7 
-Hidden nodes: 
-Output nodes: 8 9 
-UNIX> 
+Input nodes:  0 1 2 3 4 5 6 7
+Hidden nodes:
+Output nodes: 8 9
+UNIX>
 ```
 
 In the following video, we show our cart-pole application running with this
 network as the agent.  Values are encoded and decoded as explained in
 [the first cart-pole example](cartpole_example.md).  On the left side
-if the video, you can 
+if the video, you can
 also see: the observations, actions, input spikes,
 spike raster output, and processor tool commands for each timestep.  It
 runs at real-time, but you can pause and step through the video to see
@@ -66,8 +66,8 @@ individual values.
 
 When you run test script 42, the file
 `tmp_pt_input.txt` gives you the processor tool commands that are being
-used in the video.  Along with them are the outputs from the left side 
-of the video, included as comments.  So, for example, take a look at 
+used in the video.  Along with them are the outputs from the left side
+of the video, included as comments.  So, for example, take a look at
 the first 27 lines of `tmp_pt_input.txt`:
 
 ```
@@ -99,13 +99,13 @@ GSR
 # Step 0000. R: 9      0000000000000010011001
 # Step 0000. O-Spike-C: 3 4
 # Step 0000. Action: 1
-UNIX> 
+UNIX>
 ```
 
 If we run these lines in the processor_tool, the spike raster matches:
 
 ```
-UNIX> head -n 27 tmp_pt_input.txt | bin/processor_tool_risp 
+UNIX> head -n 27 tmp_pt_input.txt | bin/processor_tool_risp
 0 INPUT  : 1001001001000000000000
 1 INPUT  : 0000001001000000000000
 2 INPUT  : 0000000000000000000000
@@ -116,7 +116,7 @@ UNIX> head -n 27 tmp_pt_input.txt | bin/processor_tool_risp
 7 INPUT  : 1001000000000000000000
 8 OUTPUT : 0000001001001000000000
 9 OUTPUT : 0000000000000010011001
-UNIX> 
+UNIX>
 ```
 
 You can map this to the video if you want.  For example, here's a screenshot
@@ -125,7 +125,7 @@ of the video, paused at the 3.46 second mark:
 ![PRWS-2024-7a-SS.jpg](images/PRWS-2024-7a-SS.jpg)
 
 Now, let's take a look at the output of the `processor_tool` for those
-steps.  Each spike-raster has 10 neurons, so if we want timestep 173, 
+steps.  Each spike-raster has 10 neurons, so if we want timestep 173,
 we'll want lines 1731 to 1740 of the output:
 
 ```
@@ -140,7 +140,7 @@ UNIX> bin/processor_tool_risp < tmp_pt_input.txt | cat -n | sed -n 1731,1740p
   1738	7 INPUT  : 000000000000
   1739	8 OUTPUT : 000000100101
   1740	9 OUTPUT : 000000001000
-UNIX> 
+UNIX>
 ```
 
 See how that matches the spike raster for step 173 in the screenshot?  Cool, no?
@@ -169,9 +169,9 @@ Edges:          8
 Inputs:         8
 Outputs:        2
 
-Input nodes:  0 1 2 3 4 5 6 7 
-Hidden nodes: 72 
-Output nodes: 8 9 
+Input nodes:  0 1 2 3 4 5 6 7
+Hidden nodes: 72
+Output nodes: 8 9
 [ {"from":1,"to":72,"values":[1.0,14.0]},
   {"from":2,"to":8,"values":[1.0,6.0]},
   {"from":4,"to":2,"values":[1.0,11.0]},
@@ -180,7 +180,7 @@ Output nodes: 8 9
   {"from":6,"to":2,"values":[1.0,4.0]},
   {"from":7,"to":72,"values":[1.0,11.0]},
   {"from":7,"to":9,"values":[1.0,3.0]} ]
-UNIX> 
+UNIX>
 ```
 
 The 30-second video of this network is in [https://youtu.be/xoTRZTVE-xE](https://youtu.be/xoTRZTVE-xE).
@@ -210,9 +210,9 @@ Edges:         13
 Inputs:         8
 Outputs:        3
 
-Input nodes:  0 1 2 3 4 5 6 7 
-Hidden nodes: 
-Output nodes: 8 9 10 
+Input nodes:  0 1 2 3 4 5 6 7
+Hidden nodes:
+Output nodes: 8 9 10
 [ {"id":0,"values":[0.0]},
   {"id":6,"values":[1.0]},
   {"id":8,"values":[1.0]},
@@ -237,7 +237,7 @@ Output nodes: 8 9 10
   {"from":7,"to":10,"values":[1.0,3.0]},
   {"from":6,"to":0,"values":[1.0,10.0]},
   {"from":4,"to":9,"values":[1.0,10.0]} ]
-UNIX> 
+UNIX>
 ```
 
 The 30-second video of this network is in [https://youtu.be/LYfclqYHeUI](https://youtu.be/LYfclqYHeUI).  Note how often the agent uses the "Do-Nothing" action.
@@ -260,7 +260,7 @@ Here's the network:
 
 ![PRWS-2024-ba.png](images/PRWS-2024-ba.png)
 
-It's example 46.  
+It's example 46.
 
 The 30-second video of this network is in [https://youtu.be/g31R2v9MABs](https://youtu.be/g31R2v9MABs).
 
@@ -272,7 +272,7 @@ Here's the network:
 
 ![PRWS-2024-bb.png](images/PRWS-2024-bb.png)
 
-It's example 47.  
+It's example 47.
 
 The 30-second video of this network is in [https://youtu.be/nY3sSFecGt8](https://youtu.be/nY3sSFecGt8).
 ---------
@@ -284,10 +284,10 @@ Here's the network:
 
 In this picture and the next, neurons 0 through 3 are input neurons for *x*, and
 4 through 7 are input neurons for *theta*.   We use 4 neurons, because these use
-the "argyle-4" encoders.  Neuron 8 is for left, and 9 is for right.  Neuron 11 is 
+the "argyle-4" encoders.  Neuron 8 is for left, and 9 is for right.  Neuron 11 is
 a hidden neuron.
 
-It's example 48.  
+It's example 48.
 
 The 30-second video of this network is in [https://youtu.be/k_lf_KcPFxc](https://youtu.be/k_lf_KcPFxc).
 
@@ -302,7 +302,7 @@ Here's the network:
 
 Now, neuron 72 is a hidden neuron.
 
-It's example 49.  
+It's example 49.
 
 The 30-second video of this network is in [https://youtu.be/hrt-f_SCX4g](https://youtu.be/hrt-f_SCX4g).
 
