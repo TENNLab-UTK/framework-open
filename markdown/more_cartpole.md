@@ -241,8 +241,7 @@ Output nodes: 8 9 10
 UNIX> 
 ```
 
-The 30-second video of this network is in []().  Note how often the agent uses the "Do-Nothing" action.
-
+The 30-second video of this network is in [https://youtu.be/LYfclqYHeUI](https://youtu.be/LYfclqYHeUI).  Note how often the agent uses the "Do-Nothing" action.
 
 ---------
 ## Example 4 - Figure 9(b).  A RISP-127 network for the *Medium* benchmark
@@ -253,8 +252,7 @@ Here's the network:
 
 It's example 45.  By now, you know the drill.
 
-The 30-second video of this network is in []().
-
+The 30-second video of this network is in [https://youtu.be/r54HajhiA0E](https://youtu.be/r54HajhiA0E).
 
 ---------
 ## Example 5 - Figure 11(a).  A RISP-1 network for the *Hard* benchmark
@@ -265,7 +263,7 @@ Here's the network:
 
 It's example 46.  
 
-The 30-second video of this network is in []().
+The 30-second video of this network is in [https://youtu.be/g31R2v9MABs](https://youtu.be/g31R2v9MABs).
 
 
 ---------
@@ -277,7 +275,7 @@ Here's the network:
 
 It's example 47.  
 
-The 30-second video of this network is in []().
+The 30-second video of this network is in [https://youtu.be/nY3sSFecGt8](https://youtu.be/nY3sSFecGt8).
 ---------
 ## Example 7 - Figure 13(a).  A RISP-15+ network for the *Hardest* benchmark
 
@@ -285,9 +283,15 @@ Here's the network:
 
 ![PRWS-2024-da.png](images/PRWS-2024-da.png)
 
+In this picture and the next, neurons 0 through 3 are input neurons for *x*, and
+4 through 7 are input neurons for *theta*.   We use 4 neurons, because these use
+the "argyle-4" encoders.  Neuron 8 is for left, and 9 is for right.  Neuron 11 is 
+a hidden neuron.
+
 It's example 48.  
 
-The 30-second video of this network is in []().
+The 30-second video of this network is in [https://youtu.be/k_lf_KcPFxc](https://youtu.be/k_lf_KcPFxc).
+
 
 
 ---------
@@ -297,6 +301,8 @@ Here's the network:
 
 ![PRWS-2024-db.png](images/PRWS-2024-db.png)
 
+Now, neuron 72 is a hidden neuron.
+
 It's example 49.  
 
-The 30-second video of this network is in []().
+The 30-second video of this network is in [https://youtu.be/hrt-f_SCX4g](https://youtu.be/hrt-f_SCX4g).
