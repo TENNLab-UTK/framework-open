@@ -1,9 +1,8 @@
 # More Examples of the Cart-Pole Application
 
 These come from the paper, 
-"The Cart-Pole Application as a Benchmark for Neuromorphic Computing", by Plank,
-Rizzo, White and Schuman.  I'll put a link to the paper when I have it, and when
-I refer to it in this markdown file, I'll refer to it as [PRWS2024].
+["The Cart-Pole Application as a Benchmark for Neuromorphic Computing", by Plank, Rizzo, White and Schuman](https://neuromorphic.eecs.utk.edu/publications/2024-12-06-the-cart-pole-application-as-a-benchmark-for-neuromorphic-computing/).  
+When I refer to it in this markdown file, I'll refer to it as [PRWS2024].
 
 To walk through these examples, or to have instructions on how to use them on
 Gymnasium, please see [the main cart-pole example](cartpole_example.md).
@@ -306,3 +305,8 @@ Now, neuron 72 is a hidden neuron.
 It's example 49.  
 
 The 30-second video of this network is in [https://youtu.be/hrt-f_SCX4g](https://youtu.be/hrt-f_SCX4g).
+
+---------
+## Citation
+
+[PRWS2024] James S. Plank, Charles P. Rizzo, Christopher A. White and Catherine D. Schuman, "The Cart-Pole Application as a Benchmark for Neuromorphic Computing", Published on Preprints, https://www.preprints.org/manuscript/202412.0532/v1, December, 2024
