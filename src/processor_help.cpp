@@ -293,7 +293,7 @@ void apply_spike_raster(Processor *p, int in_neuron, const vector <char> &sr, in
   for (i = 0; i < sr.size(); i++) {
     if (sr[i]) {
       s.time = i;
-      p->apply_spike(s, network_id);
+      p->apply_spike(s, true, network_id);
     }
   }
 }
