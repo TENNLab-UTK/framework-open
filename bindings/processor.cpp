@@ -141,136 +141,135 @@ namespace neuro
 
         PropertyPack get_network_properties() const override
         {
-            PYBIND11_OVERLOAD_PURE(PropertyPack, Processor, get_network_properties);
-        }
+				PYBIND11_OVERLOAD_PURE(PropertyPack, Processor, get_network_properties);
+			}
 
-        nlohmann::json get_processor_properties() const override
-        {
-            PYBIND11_OVERLOAD_PURE(nlohmann::json, Processor, get_processor_properties);
-        }
-        nlohmann::json get_params() const override
-        {
-            PYBIND11_OVERLOAD_PURE(nlohmann::json, Processor, get_params);
-        }
-        string get_name() const override
-        {
-            PYBIND11_OVERLOAD_PURE(string, Processor, get_name);
-        }
-        vector <double> neuron_charges(int network_id = 0) override
-        {
-            PYBIND11_OVERLOAD_PURE(vector <double>, Processor, neuron_charges, network_id);
-        }
-        void synapse_weights(vector <uint32_t> &pres,
-                                  vector <uint32_t> &posts,
-                                  vector <double> &vals,int network_id = 0) override
-        {
-            PYBIND11_OVERLOAD_PURE(void, Processor, synapse_weights, pres, posts, vals, network_id);
-        }
-    };
-}
+			nlohmann::json get_processor_properties() const override
+			{
+				PYBIND11_OVERLOAD_PURE(nlohmann::json, Processor, get_processor_properties);
+			}
+			nlohmann::json get_params() const override
+			{
+				PYBIND11_OVERLOAD_PURE(nlohmann::json, Processor, get_params);
+			}
+			string get_name() const override
+			{
+				PYBIND11_OVERLOAD_PURE(string, Processor, get_name);
+			}
+			vector <double> neuron_charges(int network_id = 0) override
+			{
+				PYBIND11_OVERLOAD_PURE(vector <double>, Processor, neuron_charges, network_id);
+			}
+			void synapse_weights(vector <uint32_t> &pres,
+									  vector <uint32_t> &posts,
+									  vector <double> &vals,int network_id = 0) override
+			{
+				PYBIND11_OVERLOAD_PURE(void, Processor, synapse_weights, pres, posts, vals, network_id);
+			}
+		};
+	}
 
 
-void bind_framework_processor(pybind11::module &m) {
-    namespace py = pybind11;
-    using std::vector;
-    using std::string;
+	void bind_framework_processor(pybind11::module &m) {
+		namespace py = pybind11;
+		using std::vector;
+		using std::string;
 
-    // TODO: Add Batch operations
+		// TODO: Add Batch operations
 
-    /* Spikes are essentially 3-tuples of id, time, and value */
-    py::class_<neuro::Spike>(m, "Spike")
-        .def(py::init<int,double,double>(), py::arg("id"), py::arg("time"), py::arg("value"))
-        .def_readwrite("id", &neuro::Spike::id)
-        .def_readwrite("time", &neuro::Spike::time)
-        .def_readwrite("value", &neuro::Spike::value);
+		/* Spikes are essentially 3-tuples of id, time, and value */
+		py::class_<neuro::Spike>(m, "Spike")
+			.def(py::init<int,double,double>(), py::arg("id"), py::arg("time"), py::arg("value"))
+			.def_readwrite("id", &neuro::Spike::id)
+			.def_readwrite("time", &neuro::Spike::time)
+			.def_readwrite("value", &neuro::Spike::value);
 
-    /* Requires a trampoline class for override/inheritance of virutal methods */
-    py::class_<neuro::Processor, neuro::PyProcessor>(m, "Processor")
-        .def(py::init<>())
-        .def("get_params",      &neuro::Processor::get_processor_properties)
-        .def("get_name",      &neuro::Processor::get_network_properties)
+		/* Requires a trampoline class for override/inheritance of virutal methods */
+		py::class_<neuro::Processor, neuro::PyProcessor>(m, "Processor")
+			.def(py::init<>())
+			.def("get_params",      &neuro::Processor::get_processor_properties)
+			.def("get_name",      &neuro::Processor::get_network_properties)
 
-        .def("get_processor_properties",      &neuro::Processor::get_processor_properties)
-        .def("get_network_properties",      &neuro::Processor::get_network_properties)
-        .def("get_time",            &neuro::Processor::get_time,
-                py::arg("network_id") = 0)
+			.def("get_processor_properties",      &neuro::Processor::get_processor_properties)
+			.def("get_network_properties",      &neuro::Processor::get_network_properties)
+			.def("get_time",            &neuro::Processor::get_time,
+					py::arg("network_id") = 0)
 
-        .def("load_network",        &neuro::Processor::load_network,
-                py::arg("network"), py::arg("network_id") = 0)
+			.def("load_network",        &neuro::Processor::load_network,
+					py::arg("network"), py::arg("network_id") = 0)
 
-        .def("load_networks",       &neuro::Processor::load_networks,
-                py::arg("network"))
+			.def("load_networks",       &neuro::Processor::load_networks,
+					py::arg("network"))
 
-        .def("apply_spike",         (void (neuro::Processor::*)(const neuro::Spike&, bool, int)) &neuro::Processor::apply_spike,
-                py::arg("spike"), py::arg("normalized") = true, py::arg("network_id") = 0)
+			.def("apply_spike",         (void (neuro::Processor::*)(const neuro::Spike&, bool, int)) &neuro::Processor::apply_spike,
+					py::arg("spike"), py::arg("normalized") = true, py::arg("network_id") = 0)
 
-        .def("apply_spikes",        (void (neuro::Processor::*)(const vector<neuro::Spike>&, bool, int)) &neuro::Processor::apply_spikes,
-                py::arg("spikes"), py::arg("normalized") = true, py::arg("network_id") = 0)
+			.def("apply_spikes",        (void (neuro::Processor::*)(const vector<neuro::Spike>&, bool, int)) &neuro::Processor::apply_spikes,
+					py::arg("spikes"), py::arg("normalized") = true, py::arg("network_id") = 0)
 
-        .def("run",                 (void (neuro::Processor::*)(double, int)) &neuro::Processor::run,
-                py::arg("duration"), py::arg("network_id") = 0)
+			.def("run",                 (void (neuro::Processor::*)(double, int)) &neuro::Processor::run,
+					py::arg("duration"), py::arg("network_id") = 0)
 
-        .def("get_time",            &neuro::Processor::get_time,
-                py::arg("network_id") = 0)
+			.def("get_time",            &neuro::Processor::get_time,
+					py::arg("network_id") = 0)
 
-        .def("track_output_events", &neuro::Processor::track_output_events,
-                py::arg("output_id"), py::arg("track") = true, py::arg("network_id") = 0)
+			.def("track_output_events", &neuro::Processor::track_output_events,
+					py::arg("output_id"), py::arg("track") = true, py::arg("network_id") = 0)
 
-        .def("track_neuron_events", &neuro::Processor::track_neuron_events,
-                py::arg("node_id"), py::arg("track") = true, py::arg("network_id") = 0)
+			.def("track_neuron_events", &neuro::Processor::track_neuron_events,
+					py::arg("node_id"), py::arg("track") = true, py::arg("network_id") = 0)
 
-        .def("output_last_fires",   (vector<double> (neuro::Processor::*)(int)) &neuro::Processor::output_last_fires,
-                py::arg("network_id") = 0)
+			.def("output_last_fires",   (vector<double> (neuro::Processor::*)(int)) &neuro::Processor::output_last_fires,
+					py::arg("network_id") = 0)
 
-        .def("output_last_fire",   (double (neuro::Processor::*)(int, int)) &neuro::Processor::output_last_fire,
-                py::arg("id"), py::arg("network_id") = 0)
+			.def("output_last_fire",   (double (neuro::Processor::*)(int, int)) &neuro::Processor::output_last_fire,
+					py::arg("id"), py::arg("network_id") = 0)
 
-        .def("clear",               &neuro::Processor::clear,
-                py::arg("network_id") = 0)
+			.def("clear",               &neuro::Processor::clear,
+					py::arg("network_id") = 0)
 
-        .def("clear_activity",      &neuro::Processor::clear_activity,
-                py::arg("network_id") = 0)
+			.def("clear_activity",      &neuro::Processor::clear_activity,
+					py::arg("network_id") = 0)
 
-        .def("output_count",        &neuro::Processor::output_count,
-                py::arg("output_id"), py::arg("network_id") = 0)
+			.def("output_count",        &neuro::Processor::output_count,
+					py::arg("output_id"), py::arg("network_id") = 0)
 
-        .def("output_counts",        &neuro::Processor::output_counts,
-                py::arg("network_id") = 0)
+			.def("output_counts",        &neuro::Processor::output_counts,
+					py::arg("network_id") = 0)
 
-        .def("output_vector",       &neuro::Processor::output_vector,
-                py::arg("output_id"), py::arg("network_id") = 0)
+			.def("output_vector",       &neuro::Processor::output_vector,
+					py::arg("output_id"), py::arg("network_id") = 0)
 
-        .def("output_vectors",       &neuro::Processor::output_vectors,
-                py::arg("network_id") = 0)
+			.def("output_vectors",       &neuro::Processor::output_vectors,
+					py::arg("network_id") = 0)
 
-        .def("total_neuron_counts",  &neuro::Processor::total_neuron_counts,
-                py::arg("network_id") = 0)
+			.def("total_neuron_counts",  &neuro::Processor::total_neuron_counts,
+					py::arg("network_id") = 0)
 
-        .def("total_neuron_accumulates", &neuro::Processor::total_neuron_accumulates,
-                py::arg("network_id") = 0)
+			.def("total_neuron_accumulates", &neuro::Processor::total_neuron_accumulates,
+					py::arg("network_id") = 0)
 
-        .def("neuron_counts",      &neuro::Processor::neuron_counts,
-                py::arg("network_id") = 0)
+			.def("neuron_counts",      &neuro::Processor::neuron_counts,
+					py::arg("network_id") = 0)
 
-        .def("neuron_vectors",      &neuro::Processor::neuron_vectors,
-                py::arg("network_id") = 0)
+			.def("neuron_vectors",      &neuro::Processor::neuron_vectors,
+					py::arg("network_id") = 0)
 
-        .def("neuron_last_fires",      &neuro::Processor::neuron_last_fires,
-                py::arg("network_id") = 0)
+			.def("neuron_last_fires",      &neuro::Processor::neuron_last_fires,
+					py::arg("network_id") = 0)
 
-        .def("neuron_charges",      &neuro::Processor::neuron_charges,
-                py::arg("network_id") = 0)
-        .def("synapse_weights", [](neuro::Processor &proc, int network_id = 0) {
-            vector <uint32_t> pres;
-            vector <uint32_t> posts;
-            vector <double> vals;
-            proc.synapse_weights(pres, posts, vals, network_id);
-            return make_tuple(pres, posts, vals);
-        },  py::arg("network_id")=0)
-        /* Below are extra methods provided for ease of use and performance reasons. */
+			.def("neuron_charges",      &neuro::Processor::neuron_charges,
+					py::arg("network_id") = 0)
+			.def("synapse_weights", [](neuro::Processor &proc, int network_id = 0) {
+				vector <uint32_t> pres;
+				vector <uint32_t> posts;
+				vector <double> vals;
+				proc.synapse_weights(pres, posts, vals, network_id);
+				return make_tuple(pres, posts, vals);
+			},  py::arg("network_id")=0)
+			/* Below are extra methods provided for ease of use and performance reasons. */
 
-        /* Apply binary data as a spikes for each bit place.
-         * TODO: implement version with two neurons per bit place */
+        /* Apply binary data as a spikes for each bit place.*/
         .def("apply_binary_data", [](neuro::Processor &dev, const std::vector<uint8_t>& ram_data, bool two_neurons) {
             vector<neuro::Spike> spikes;
 
