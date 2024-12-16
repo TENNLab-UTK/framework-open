@@ -53,7 +53,7 @@ done
 pwd
 cd `realpath`/build
 cmake ..
-make
+make -j$(nproc)
 
 # exit the venv
 deactivate
