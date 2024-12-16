@@ -6,7 +6,7 @@ This markdown is a simple walk-through on how to set up, activate, and update th
 
 ## Setting Up the Environment
 
-To begin `cd` to the `framework-open` directory. Next:
+To begin `cd` to the `framework-open` directory. Next, run:
 
 ```
 
