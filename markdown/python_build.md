@@ -33,7 +33,7 @@ import risp
 
 ```
 
-Will be able to access the TennLab frameworks functions.
+Will be able to access the TennLab framework's modules.
 
 To exit the python environment just do:
 
