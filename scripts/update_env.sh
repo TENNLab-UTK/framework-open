@@ -50,5 +50,10 @@ for prj in ${Projects[@]}; do
     cp $prj/build/*.so $WORKDIR/lib/$PYVER/site-packages/.
 done
 
+pwd
+cd `realpath`/build
+cmake ..
+make
+
 # exit the venv
 deactivate

@@ -85,7 +85,4 @@ the users for this support are rare, but it is there, and we have it documented.
 -----------------
 # Support for Python
 
-We would welcome a contribution of python support for this software.
-With the rest of our software corpus, we use python bindings so that our researchers may
-do work in either python or C++.  Over time, we will provide that here, but we would also
-very much welcome that contribution from the community.
+To implement this framework in Python, see the [Python Build](markdown/python_build.md) markdown file.
