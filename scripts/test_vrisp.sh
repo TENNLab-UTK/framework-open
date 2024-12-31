@@ -19,7 +19,7 @@ fi
 
 # Make the two executables if they aren't made yet.
 
-for i in bin/network_tool bin/processor_tool_jrisp ; do
+for i in bin/network_tool bin/processor_tool_vrisp ; do
   if [ ! -x $i ]; then make $i ; fi
 done
 
@@ -42,8 +42,8 @@ for i in $t ; do
   l=`cat vrisp_testing/$i/label.txt`
   sh vrisp_testing/$i/processor.sh > tmp_proc_params.txt
 
-  ( echo M jrisp tmp_proc_params.txt
-    echo EMPTYNET tmp_empty_network.txt ) | bin/processor_tool_jrisp
+  ( echo M vrisp tmp_proc_params.txt
+    echo EMPTYNET tmp_empty_network.txt ) | bin/processor_tool_vrisp
 
   # Use network_tool.txt to create the network.
 
@@ -63,13 +63,13 @@ for i in $t ; do
 
   cp vrisp_testing/$i/processor_tool.txt tmp_pt_input.txt
 
-  bin/processor_tool_jrisp < vrisp_testing/$i/processor_tool.txt > tmp_pt_output.txt 2> tmp_pt_error.txt
+  bin/processor_tool_vrisp < vrisp_testing/$i/processor_tool.txt > tmp_pt_output.txt 2> tmp_pt_error.txt
 
   if [ `wc tmp_pt_error.txt | awk '{ print $1 }'` != 0 ]; then
     echo "Test $i - $l" >&2
     echo "There was an error in the processor_tool_risp command when I ran:" >&2
     echo "" >&2
-    echo "bin/processor_tool_jrisp < vrisp_testing/$i/processor_tool.txt" >&2
+    echo "bin/processor_tool_vrisp < vrisp_testing/$i/processor_tool.txt" >&2
     echo "" >&2
     cat tmp_pt_error.txt >&2
     exit 1

@@ -25,13 +25,13 @@ FR_OBJ = obj/framework.o obj/processor_help.o obj/properties.o
 RISP_INC = include/risp.hpp
 RISP_OBJ = obj/risp.o obj/risp_static.o
 
-JRISP_INC = include/jrisp.hpp
-JRISP_OBJ = obj/jrisp.o obj/jrisp_static.o
+VRISP_INC = include/vrisp.hpp
+VRISP_OBJ = obj/vrisp.o obj/vrisp_static.o
 
 all: lib/libframework.a \
      bin/network_tool \
      bin/processor_tool_risp \
-	 bin/processor_tool_jrisp
+	 bin/processor_tool_vrisp
 
 utils: bin/property_pack_tool \
        bin/property_tool
@@ -53,8 +53,8 @@ bin/network_tool: src/network_tool.cpp $(FR_INC) $(FR_LIB)
 bin/processor_tool_risp: src/processor_tool.cpp $(FR_INC) $(RISP_INC) $(RISP_OBJ) $(FR_LIB)
 	$(CXX) $(FR_CFLAGS) -o bin/processor_tool_risp src/processor_tool.cpp $(RISP_OBJ) $(FR_LIB)
 
-bin/processor_tool_jrisp: src/processor_tool.cpp $(FR_INC) $(JRISP_INC) $(JRISP_OBJ) $(FR_LIB)
-	$(CXX) $(FR_CFLAGS) -o bin/processor_tool_jrisp src/processor_tool.cpp $(JRISP_OBJ) $(FR_LIB)
+bin/processor_tool_vrisp: src/processor_tool.cpp $(FR_INC) $(VRISP_INC) $(VRISP_OBJ) $(FR_LIB)
+	$(CXX) $(FR_CFLAGS) -o bin/processor_tool_vrisp src/processor_tool.cpp $(VRISP_OBJ) $(FR_LIB)
 
 # ------------------------------------------------------------ 
 # Utilities.
@@ -74,11 +74,11 @@ obj/risp.o: src/risp.cpp $(FR_INC) $(RISP_INC)
 obj/risp_static.o: src/risp_static.cpp $(FR_INC) $(RISP_INC)
 	$(CXX) -c $(FR_CFLAGS) -o obj/risp_static.o src/risp_static.cpp
 
-obj/jrisp.o: src/jrisp.cpp $(FR_INC) $(JRISP_INC)
-	$(CXX) -c $(FR_CFLAGS) -o obj/jrisp.o src/jrisp.cpp
+obj/vrisp.o: src/vrisp.cpp $(FR_INC) $(VRISP_INC)
+	$(CXX) -c $(FR_CFLAGS) -o obj/vrisp.o src/vrisp.cpp
 
-obj/jrisp_static.o: src/jrisp_static.cpp $(FR_INC) $(JRISP_INC)
-	$(CXX) -c $(FR_CFLAGS) -o obj/jrisp_static.o src/jrisp_static.cpp
+obj/vrisp_static.o: src/vrisp_static.cpp $(FR_INC) $(VRISP_INC)
+	$(CXX) -c $(FR_CFLAGS) -o obj/vrisp_static.o src/vrisp_static.cpp
 
 obj/framework.o: src/framework.cpp $(FR_INC)
 	$(CXX) -c $(FR_CFLAGS) -o obj/framework.o src/framework.cpp

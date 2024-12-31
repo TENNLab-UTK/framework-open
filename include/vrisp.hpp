@@ -9,13 +9,13 @@
 
 using namespace neuro;
 using namespace std;
-namespace jrisp {
+namespace vrisp {
 class Network;
 class Processor;
 
 class Network {
   public:
-    /** Convert network in framework format to an internal jrisp network */
+    /** Convert network in framework format to an internal vrisp network */
 
     Network(neuro::Network* net, double _min_potential, char leak,
             size_t tracked_timesteps, double spike_value_factor);
@@ -173,8 +173,8 @@ class Processor : public neuro::Processor {
     string get_name() const;
 
   protected:
-    jrisp::Network* get_jrisp_network(int network_id);
-    map<int, jrisp::Network*> networks;
+    vrisp::Network* get_vrisp_network(int network_id);
+    map<int, vrisp::Network*> networks;
 
     double min_weight;
     double max_weight;
@@ -190,4 +190,4 @@ class Processor : public neuro::Processor {
 
     json saved_params;
 };
-} // namespace jrisp
+} // namespace vrisp

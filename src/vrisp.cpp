@@ -1,4 +1,4 @@
-#include "jrisp.hpp"
+#include "vrisp.hpp"
 #include "framework.hpp"
 #include "utils/alignment_helpers.hpp"
 #include "utils/json_helpers.hpp"
@@ -17,9 +17,9 @@ using namespace std;
 
 // chrono::system_clock::duration total_time;
 
-namespace jrisp {
-/** Configurable settings for jrisp */
-static json jrisp_spec = {
+namespace vrisp {
+/** Configurable settings for vrisp */
+static json vrisp_spec = {
     {"min_weight", "I"},
     {"max_weight", "I"},
     {"max_delay", "I"},
@@ -124,18 +124,18 @@ Network::~Network() {
 
 void Network::apply_spike(const Spike& s, bool normalized) {
     if (!normalized && !is_integer(s.value)) {
-        throw SRE("jrisp::Network::apply_spike() only supports integer spike "
+        throw SRE("vrisp::Network::apply_spike() only supports integer spike "
                   "values - value (" +
                   to_string(s.value) + ") is not valid.");
     }
 
     if (normalized && (s.value < -1 || s.value > 1)) {
-        throw SRE("jrisp::Network::apply_spike() - value (" +
+        throw SRE("vrisp::Network::apply_spike() - value (" +
                   to_string(s.value) + ") must be in [-1,1].");
     }
 
     if ((size_t)s.time >= tracked_timesteps_count) {
-        throw SRE("jrisp::Network::apply_spike - time (" +
+        throw SRE("vrisp::Network::apply_spike - time (" +
                   to_string((size_t)s.time) +
                   ") must be < tracked_timesteps_count (" +
                   to_string(tracked_timesteps_count) + ")");
@@ -414,7 +414,7 @@ void Network::clear_output_tracking() {
 }
 
 Processor::Processor(json& params) {
-    Parameter_Check_Json_T(params, jrisp_spec);
+    Parameter_Check_Json_T(params, vrisp_spec);
 
     /* Default params */
 
@@ -431,11 +431,11 @@ Processor::Processor(json& params) {
     tracked_timesteps_count = params["tracked_timesteps"];
 
     if (!params.contains("min_weight"))
-        throw SRE("JRISP: Need parameter min_weight.");
+        throw SRE("VRISP: Need parameter min_weight.");
     if (!params.contains("max_weight"))
-        throw SRE("JRISP: Need parameter max_weight.");
+        throw SRE("VRISP: Need parameter max_weight.");
     if (params.contains("inputs_from_weights")) {
-        throw SRE("JRISP: If you don't specify weights, you cannot specify "
+        throw SRE("VRISP: If you don't specify weights, you cannot specify "
                   "inputs_from_weights.");
     }
 
@@ -510,15 +510,15 @@ Processor::Processor(json& params) {
 }
 
 Processor::~Processor() {
-    map<int, jrisp::Network*>::const_iterator it;
+    map<int, vrisp::Network*>::const_iterator it;
     for (it = networks.begin(); it != networks.end(); ++it)
         delete it->second;
 }
 
 bool Processor::load_network(neuro::Network* net, int network_id) {
-    jrisp::Network* jrisp_net;
+    vrisp::Network* vrisp_net;
     string error = "";
-    string rln = "jrisp::load_network() - ";
+    string rln = "vrisp::load_network() - ";
 
     /* Error Check properties */
     if (!net->is_node_property("Threshold")) {
@@ -547,10 +547,10 @@ bool Processor::load_network(neuro::Network* net, int network_id) {
     if (networks.find(network_id) != networks.end())
         delete networks[network_id];
 
-    jrisp_net = new jrisp::Network(net, min_potential, leak_mode[0],
+    vrisp_net = new vrisp::Network(net, min_potential, leak_mode[0],
                                    tracked_timesteps_count, spike_value_factor);
 
-    networks[network_id] = jrisp_net;
+    networks[network_id] = vrisp_net;
 
     return true;
 }
@@ -571,13 +571,13 @@ bool Processor::load_networks(std::vector<neuro::Network*>& n) {
 }
 
 void Processor::clear(int network_id) {
-    jrisp::Network* jrisp_net = get_jrisp_network(network_id);
+    vrisp::Network* vrisp_net = get_vrisp_network(network_id);
     networks.erase(network_id);
-    delete jrisp_net;
+    delete vrisp_net;
 }
 
 void Processor::apply_spike(const Spike& s, bool normalize, int network_id) {
-    get_jrisp_network(network_id)->apply_spike(s, normalize);
+    get_vrisp_network(network_id)->apply_spike(s, normalize);
 }
 
 void Processor::apply_spike(const Spike& s, const vector<int>& network_ids,
@@ -603,11 +603,11 @@ void Processor::apply_spikes(const vector<Spike>& s,
 
 void Processor::run(double duration, int network_id) {
     if (duration < 0) {
-        throw SRE("jrisp::Processor::run called with a negative duration (" +
+        throw SRE("vrisp::Processor::run called with a negative duration (" +
                   to_string(duration) + ").");
     }
 
-    get_jrisp_network(network_id)->run(static_cast<size_t>(duration));
+    get_vrisp_network(network_id)->run(static_cast<size_t>(duration));
 }
 
 void Processor::run(double duration, const vector<int>& network_ids) {
@@ -617,15 +617,15 @@ void Processor::run(double duration, const vector<int>& network_ids) {
 }
 
 long long Processor::total_neuron_counts(int network_id) {
-    return get_jrisp_network(network_id)->total_neuron_counts();
+    return get_vrisp_network(network_id)->total_neuron_counts();
 }
 
 long long Processor::total_neuron_accumulates(int network_id) {
-    return get_jrisp_network(network_id)->total_neuron_accumulates();
+    return get_vrisp_network(network_id)->total_neuron_accumulates();
 }
 
 double Processor::get_time(int network_id) {
-    return get_jrisp_network(network_id)->get_time();
+    return get_vrisp_network(network_id)->get_time();
 }
 
 bool Processor::track_output_events(int output_id, bool track, int network_id) {
@@ -644,52 +644,52 @@ bool Processor::track_neuron_events(uint32_t node_id, bool track,
 }
 
 double Processor::output_last_fire(int output_id, int network_id) {
-    return get_jrisp_network(network_id)->output_last_fire(output_id);
+    return get_vrisp_network(network_id)->output_last_fire(output_id);
 }
 
 vector<double> Processor::output_last_fires(int network_id) {
-    return get_jrisp_network(network_id)->output_last_fires();
+    return get_vrisp_network(network_id)->output_last_fires();
 }
 
 int Processor::output_count(int output_id, int network_id) {
-    return get_jrisp_network(network_id)->output_count(output_id);
+    return get_vrisp_network(network_id)->output_count(output_id);
 }
 
 vector<int> Processor::output_counts(int network_id) {
-    return get_jrisp_network(network_id)->output_counts();
+    return get_vrisp_network(network_id)->output_counts();
 }
 
 vector<double> Processor::output_vector(int output_id, int network_id) {
-    return get_jrisp_network(network_id)->output_vector(output_id);
+    return get_vrisp_network(network_id)->output_vector(output_id);
 }
 
 vector<vector<double>> Processor::output_vectors(int network_id) {
-    return get_jrisp_network(network_id)->output_vectors();
+    return get_vrisp_network(network_id)->output_vectors();
 }
 
 vector<int> Processor::neuron_counts(int network_id) {
-    return get_jrisp_network(network_id)->neuron_counts();
+    return get_vrisp_network(network_id)->neuron_counts();
 }
 
 vector<vector<double>> Processor::neuron_vectors(int network_id) {
-    return get_jrisp_network(network_id)->neuron_vectors();
+    return get_vrisp_network(network_id)->neuron_vectors();
 }
 
 vector<double> Processor::neuron_charges(int network_id) {
-    return get_jrisp_network(network_id)->neuron_charges();
+    return get_vrisp_network(network_id)->neuron_charges();
 }
 
 vector<double> Processor::neuron_last_fires(int network_id) {
-    return get_jrisp_network(network_id)->neuron_last_fires();
+    return get_vrisp_network(network_id)->neuron_last_fires();
 }
 
 void Processor::synapse_weights(vector<uint32_t>& pre, vector<uint32_t>& posts,
                                 vector<double>& vals, int network_id) {
-    return get_jrisp_network(network_id)->synapse_weights(pre, posts, vals);
+    return get_vrisp_network(network_id)->synapse_weights(pre, posts, vals);
 }
 
 void Processor::clear_activity(int network_id) {
-    get_jrisp_network(network_id)->clear_activity();
+    get_vrisp_network(network_id)->clear_activity();
 }
 
 PropertyPack Processor::get_network_properties() const {
@@ -724,15 +724,15 @@ json Processor::get_processor_properties() const {
 
 json Processor::get_params() const { return saved_params; }
 
-string Processor::get_name() const { return "jrisp"; }
+string Processor::get_name() const { return "vrisp"; }
 
-Network* Processor::get_jrisp_network(int network_id) {
-    map<int, jrisp::Network*>::const_iterator it;
+Network* Processor::get_vrisp_network(int network_id) {
+    map<int, vrisp::Network*>::const_iterator it;
     char buf[200];
     it = networks.find(network_id);
     if (it == networks.end()) {
         snprintf(buf, 200,
-                 "jrisp::Processor::get_jrisp_network() network_id %d does not "
+                 "vrisp::Processor::get_vrisp_network() network_id %d does not "
                  "exist",
                  network_id);
         throw SRE((string)buf);
@@ -741,4 +741,4 @@ Network* Processor::get_jrisp_network(int network_id) {
     return it->second;
 }
 
-} // namespace jrisp
+} // namespace vrisp
