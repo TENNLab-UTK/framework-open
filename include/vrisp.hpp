@@ -49,17 +49,6 @@ class Network {
     void clear_output_tracking();
 
   protected:
-    // void add_input(uint32_t node_id, int input_id);
-    // void add_output(uint32_t node_id, int output_id);
-
-    // Neuron* get_neuron(uint32_t node_id);
-    // bool is_neuron(uint32_t node_id);
-    // bool is_valid_output_id(int output_id);
-    // bool is_valid_input_id(int input_id);
-
-    // void clear_tracking_info();   /**< Clear out all tracking info to begin
-    // run() */
-
     void process_events(uint32_t time); /**< Process events at time "time" */
 
     vector<bool> inputs;
@@ -80,8 +69,6 @@ class Network {
     vector<int8_t, AlignmentAllocator<int8_t>> output_last_fire_timestep;
     /**<
                  Timestep of last firing for this neuron */
-    // vector<uint8_t, AlignmentAllocator<uint8_t>> outgoing_synapse_count; /**<
-    //            How many outgoing synapses does  this neuron have*/
     vector<int8_t, AlignmentAllocator<int8_t>>
         neuron_threshold; /**< Neuron's threshold*/
     vector<vector<uint16_t, AlignmentAllocator<uint16_t>>>
