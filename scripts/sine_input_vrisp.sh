@@ -16,8 +16,6 @@ bin=`echo $x | awk '{ v=$1*15/3.1415927; if (v < 0) { v = 0 }; if (v > 30) { v =
 
 # Pin the output if it's too big or too small:
 
-# if [ $bin -lt 0 ]; then bin=0; fi
-# if [ $bin -ge 30 ]; then bin=29; fi
 
 # For bins 0 through 14, you'll spike b+1 on neuron 1, and 15-b on neuron 0
 # For bins 15 through 29, you'll spike 30-b on neuron 1, and b+1-15 on neuron 0
