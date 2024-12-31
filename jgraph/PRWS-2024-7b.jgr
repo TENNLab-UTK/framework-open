@@ -1,0 +1,83 @@
+newgraph
+xaxis min 0.5 max 4.5 size 4 nodraw
+yaxis min -0.2 max 2.2 size 2.4 nodraw
+
+(* x+ to H *)
+
+newline marktype circle marksize .4 rarrow bezier pts  4 1 4.2 .5 4.2 .5 3.5 0
+    newstring hjc rotate 45 vjb x 3.96 y 0.4 : 8
+
+(* H to R *)
+
+newline marktype circle marksize .4 rarrow pts  3.5 0 2.5 0
+    newstring hjc vjb x 3.05 y 0.03 : 9
+
+(* t+ to R *)
+
+newline marktype circle marksize .4 rarrow pts  2 1 2.5 0
+    newstring hjc vjb rotate -60 x 2.28 y 0.5 : 6
+
+(* dt+ to R *)
+
+newline marktype circle marksize .4 rarrow pts  3 1 2.5 0 
+    newstring hjc vjb x 2.72 y 0.5 rotate 60 : 3
+
+(* dt+ to H *)
+
+newline marktype circle marksize .4 rarrow pts  3 1 3.5 0 
+    newstring hjc vjb rotate -60 x 3.28 y 0.5 : 5
+
+(* t- to dx- *)
+
+newline marktype circle marksize .4 rarrow pts  2 2 1 2 
+    newstring hjc vjb x 1.55 y 2.03 : 11
+
+(* dt- to dx- *)
+
+newline marktype none rarrow bezier pts 3 2 2.5 1.4 1.5 1.6 1.17 1.90
+    newstring hjc vjb x 2.1  y 1.64 : 4
+
+(* dx- to L *)
+
+newline marktype circle marksize .4 rarrow bezier pts  1 2 1.5 1.5 1.5 0.5 1.5 0
+    newstring hjc vjb rotate -70 x 1.41 y 1.3 : 6
+
+newcurve marktype circle marksize .4 cfill 1 1 0 pts
+    4 2 (* x- *)
+    4 1 (* x+ *)
+    1 2  (* dx- *)
+    1 1  (* dx+ *)
+    3 2  (* dt- *)
+    3 1  (* dt+ *)
+    2 2  (* t- *)
+    2 1  (* t+ *)
+
+copycurve cfill 1 .5 1 pts
+    1.5 0  (* L *)
+    2.5 0  (* R *)
+
+copycurve fill 1 pts
+    3.5 0  (* H *)
+
+newstring font Times-Italic hjc vjc fontsize 14 x 4 y 2 : 0
+copystring hjc vjc x 3 y 1 : 7
+copystring x 3 y 2 : 6
+copystring x 2 y 2 : 4
+copystring x 2 y 1 : 5
+
+newstring font Times-Italic hjc vjc fontsize 14 x 4 y 2 : 0
+copystring x 4 y 1 : 1
+copystring x 1 y 2 : 2
+copystring x 1 y 1 : 3
+
+copystring x 1.5 y 0 : 8
+copystring x 2.5 y 0 : 9
+copystring x 3.5 y 0 : 72
+
+(*
+
+
+copystring x 3.95 y 2 hjl vjc font Symbol : q-
+copystring x 3.95 y 1 hjl vjc font Symbol : q+
+
+*)

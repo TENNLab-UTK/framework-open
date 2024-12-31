@@ -59,6 +59,7 @@ and running your own RISP networks, and to start exploring embedded applications
 - [The Bars and Stripes problem, and a RISP solution](markdown/bars_stripes.md)
 - [DBSCAN](https://github.com/TENNLab-UTK/dbscan)
 - [The Cart-Pole Application](markdown/cartpole_example.md)
+- [8 Cart-Pole Networks from PRWS-2024 (with videos)](markdown/more_cartpole.md)
 
 -----------------
 # Documentation

@@ -1,0 +1,1 @@
+A Modified RISP-1+ network to do bars-and-stripes on txt/7x7-none.txt

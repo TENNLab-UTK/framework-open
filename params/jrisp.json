@@ -1,0 +1,10 @@
+{
+  "min_weight": 0,
+  "max_weight": 10,
+  "max_delay": 10,
+  "min_threshold": 1,
+  "max_threshold": 2,
+  "min_potential": -1,
+  "spike_value_factor": 1,
+  "leak_mode": "all"
+}

@@ -1,0 +1,83 @@
+newgraph
+xaxis min 0.5 max 4.5 size 4 nodraw
+yaxis min -0.4 max 2.3 size 2.7 nodraw
+
+(* x- to t- *)
+
+newline marktype circle marksize .4 rarrow pts  1 2 4 2
+    color 1 0 0 acfill 1 0 0
+    newstring lcolor 1 0 0 hjc vjb x 2.5 y 2.05 : 10
+
+(* x- to - *)
+
+newline bezier rarrow pts  1 2 0.5 1.0 0.5 0 1.3 0
+    newstring hjc vjb rotate 75 x 0.75 y 1.5 : 14
+
+(* - to - *)
+
+newline bezier rarrow pts  1.5 0 1 -.5 2 -.5 1.64 -0.14
+    color 1 0 0 acfill 1 0 0
+    newstring hjc vjt x 1.55 y -.43 lcolor 1 0 0 : 6
+
+(* x+ to L *)
+
+newline marktype circle marksize .4 rarrow pts  1 1 2.5 0
+    color 1 0 0 acfill 1 0 0
+    newstring hjc vjb x 1.4 y 0.78 rotate -33 lcolor 1 0 0 : 6
+
+(* - to L *)
+
+newline marktype circle marksize .4 rarrow pts  1.5 0 2.5 0
+    newstring hjc vjt x 1.97 y -0.05 : 3
+
+(* L to R *)
+
+newline marktype circle marksize .4 rarrow pts  2.5 0 3.5 0
+    newstring hjc vjt x 2.97 y -0.05 : 12
+
+(* t- to - *)
+
+newline bezier rarrow pts  4 1.95 2 1.95 1.5 1 1.5 .2
+    newstring hjc vjb x 2.5 y 1.72 rotate 23 : 6
+
+(* t+ to x+ *)
+
+newline bezier rarrow pts  4 1 3 1.5 2 1.5 1.14 1.14
+    newstring hjc vjb x 2.5 y 1.42 : 6
+
+(* t+ to - *)
+
+newline bezier rarrow pts  4 1 2 1 1.7 0.5 1.6 0.2
+    color 1 0 0 acfill 1 0 0
+    newstring lcolor 1 0 0 hjc vjb x 2.3 y 0.83 rotate 15 : 3
+
+(* t+ to R *)
+
+newline marktype circle marksize .4 rarrow pts  4 1 3.5 0
+    newstring hjc vjb x 3.75 y 0.6 rotate 65 : 5
+
+(* t- to L *)
+
+newline marktype circle marksize .4 rarrow pts  4 2 2.5 0
+    newstring hjc vjb x 3.5 y 1.4  rotate 55 : 13
+
+newcurve marktype circle marksize .4 cfill 1 1 0 pts
+    1.0 2 (* x- *)
+    1.0 1 (* x+ *)
+    4.0 2  (* t- *)
+    4.0 1  (* t+ *)
+
+copycurve cfill 1 .5 1 pts
+    1.5 0  (* - *)
+    2.5 0  (* L *)
+    3.5 0  (* R *)
+
+newstring font Symbol hjc vjc fontsize 14 x 4.0 y 2 : 2
+copystring x 4.0 y 1 : 3
+
+newstring font Times-Italic hjc vjc fontsize 14 x 1.0 y 2 : 0
+copystring x 1.0 y 1 : 1
+
+copystring x 1.5 y 0 : 4
+copystring x 2.5 y 0 : 5
+copystring x 3.5 y 0 : 6
