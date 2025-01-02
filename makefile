@@ -15,7 +15,13 @@
 # the processor interface from include/framework.hpp.  It should be clear how to
 # compile this for a different processor.
 
-CXX ?= g++
+# CXX ?= g++
+# CFLAGS = -O3 -march=native
+
+CXX = /home/jackson/duo-examples/duo-sdk/riscv64-linux-musl-x86_64/bin/riscv64-unknown-linux-musl-g++
+CFLAGS = -O3 -march=rv64imafdcv0p7xthead -mcpu=c906fdv -mcmodel=medany -mabi=lp64d
+
+
 
 FR_LIB = lib/libframework.a
 FR_INC = include/framework.hpp
@@ -31,7 +37,9 @@ VRISP_OBJ = obj/vrisp.o obj/vrisp_static.o
 all: lib/libframework.a \
      bin/network_tool \
      bin/processor_tool_risp \
-	 bin/processor_tool_vrisp
+	 bin/processor_tool_vrisp \
+     bin/downsample_app_risp \
+     bin/downsample_app_vrisp
 
 utils: bin/property_pack_tool \
        bin/property_tool
@@ -55,6 +63,12 @@ bin/processor_tool_risp: src/processor_tool.cpp $(FR_INC) $(RISP_INC) $(RISP_OBJ
 
 bin/processor_tool_vrisp: src/processor_tool.cpp $(FR_INC) $(VRISP_INC) $(VRISP_OBJ) $(FR_LIB)
 	$(CXX) $(FR_CFLAGS) -o bin/processor_tool_vrisp src/processor_tool.cpp $(VRISP_OBJ) $(FR_LIB)
+
+bin/downsample_app_risp: src/downsample_app.cpp $(FR_INC) $(RISP_INC) $(RISP_OBJ) $(FR_LIB)
+	$(CXX) $(FR_CFLAGS) -o bin/downsample_app_risp src/downsample_app.cpp $(RISP_OBJ) $(FR_LIB)
+
+bin/downsample_app_vrisp: src/downsample_app.cpp $(FR_INC) $(VRISP_INC) $(VRISP_OBJ) $(FR_LIB)
+	$(CXX) $(FR_CFLAGS) -o bin/downsample_app_vrisp src/downsample_app.cpp $(VRISP_OBJ) $(FR_LIB)
 
 # ------------------------------------------------------------ 
 # Utilities.
