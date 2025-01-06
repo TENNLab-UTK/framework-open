@@ -30,8 +30,8 @@ static json vrisp_spec = {
     {"leak_mode", "S"},
     {"spike_value_factor", "D"},
     {"Necessary",
-     {"max_delay", "min_threshold", "max_threshold", "min_potential",
-      "tracked_timesteps"}},
+     {"min_weight", "max_weight", "max_delay", "min_threshold", "max_threshold",
+      "min_potential", "tracked_timesteps"}},
 };
 
 static bool is_integer(double v) {

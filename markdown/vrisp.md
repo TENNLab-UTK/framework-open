@@ -17,6 +17,8 @@ VRISP is a specialized variant of the original RISP processor, focused on optimi
      is allowed to hold a charge less than `0`), even if there are no incoming spikes to the neuron.
   3. Emulation of the RAVENs neuroprocessor is not supported.
   4. Random noise addition is not supported.
+  5. All run times are exclusive (same as RISP default `run_time_inclusive=false`).
+  6. All thresholds are includive (same as RISP default `threshold_inclusive=true`)
   
 For the above reasons, most networks trained for RISP will work exactly the same on VRISP as long as the following RISP parameters are kept the same.
 
@@ -81,6 +83,31 @@ As with RISP, all of these configurations have `"leak_mode"` set to `"none"`, me
 - Minimum neuron potential is *0*.
 - Maximum synapse delay is *max(n,15)*.
 - Tracked timesteps is *max_delay + 1*
+
+-------------------------------------------------------------------------------
+# Params
+
+You can specify the following parameters:
+| Key                | Type    | Default      | Description                                                                                                                                                                               |
+|--------------------|---------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| min_weight         | integer | Necessary    | The minimum synapse weight.                                                                                                                                                               |
+| max_weight         | integer | Necessary    | The maximum snapse weight.                                                                                                                                                                |
+| max_delay          | integer | Necessary    | The maximum synapse delay.                                                                                                                                                                |
+| min_threshold      | integer | Necessary    | The minimum neuron threshold.                                                                                                                                                             |
+| max_threshold      | integer | Necessary    | The maximum neuron threshold.                                                                                                                                                             |
+| min_potential      | integer | Necessary    | At the end of integration, the potential cannot go lower than this value.                                                                                                                 |
+| tracked_timesteps  | integer | Necessary    | The total number of discrete timestamps that VRISP tracks. Can generally be set to `max_delay+1`, but may be higher if one intends to apply spikes at a time step later than this allows. |
+| leak_mode          | string  | "none"       | Leak: `"all"`, `"none"`, `"configurable"`                                                                                                                                                 |
+| spike_value_factor | double  | `max_weight` | Framework applications call `apply_spikes()` with input spike values between 0 and 1. VRISP multiplies these values by this factor.                                                       |
+
+------------------------------------------------------------
+# Examples of Use
+
+You can go through each of these examples with `scripts/test_vrisp.sh`.
+
+
+
+
 
 <!--  LocalWords:  RISP VRISP neuroprocessor RAVENs javascript 
  -->
