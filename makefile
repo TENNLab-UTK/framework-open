@@ -15,13 +15,12 @@
 # the processor interface from include/framework.hpp.  It should be clear how to
 # compile this for a different processor.
 
-CXX ?= g++
-CFLAGS = -O3 -march=native
-
+# CXX ?= g++
+# CFLAGS = -O3 -march=native
 # CXX = /home/jackson/duo-examples/duo-sdk/riscv64-linux-musl-x86_64/bin/riscv64-unknown-linux-musl-g++
-# CFLAGS = -O3 -march=rv64imafdcv0p7xthead -mcpu=c906fdv -mcmodel=medany -mabi=lp64d
-
-
+# CFLAGS = -mcpu=c906fdv -march=rv64imafdcv0p7xthead -mcmodel=medany -mabi=lp64d -O3
+CXX = riscv64-unknown-linux-gnu-g++
+CFLAGS = -march=rv64gcv -Ofast
 
 FR_LIB = lib/libframework.a
 FR_INC = include/framework.hpp
@@ -33,13 +32,15 @@ RISP_OBJ = obj/risp.o obj/risp_static.o
 
 VRISP_INC = include/vrisp.hpp
 VRISP_OBJ = obj/vrisp.o obj/vrisp_static.o
+VRISP_RVV_OBJ = obj/vrisp_rvv.o obj/vrisp_static.o
 
 all: lib/libframework.a \
      bin/network_tool \
      bin/processor_tool_risp \
 	 bin/processor_tool_vrisp \
-     bin/downsample_app_risp \
-     bin/downsample_app_vrisp
+	 bin/downsample_app_risp \
+	 bin/downsample_app_vrisp \
+	 bin/downsample_app_vrisp_vector
 
 utils: bin/property_pack_tool \
        bin/property_tool
@@ -47,7 +48,7 @@ utils: bin/property_pack_tool \
 clean:
 	rm -f bin/* obj/* lib/*
 
-# ------------------------------------------------------------ 
+# ------------------------------------------------------------
 # The library and two programs.  You should see how to compile the processor_tool
 # for a different processor.
 
@@ -70,7 +71,10 @@ bin/downsample_app_risp: src/downsample_app.cpp $(FR_INC) $(RISP_INC) $(RISP_OBJ
 bin/downsample_app_vrisp: src/downsample_app.cpp $(FR_INC) $(VRISP_INC) $(VRISP_OBJ) $(FR_LIB)
 	$(CXX) $(FR_CFLAGS) -o bin/downsample_app_vrisp src/downsample_app.cpp $(VRISP_OBJ) $(FR_LIB)
 
-# ------------------------------------------------------------ 
+bin/downsample_app_vrisp_vector: src/downsample_app.cpp $(FR_INC) $(VRISP_INC) $(VRISP_RVV_OBJ) $(FR_LIB)
+	$(CXX) $(FR_CFLAGS) -o bin/downsample_app_vrisp_vector src/downsample_app.cpp $(VRISP_RVV_OBJ) $(FR_LIB)
+
+# ------------------------------------------------------------
 # Utilities.
 
 bin/property_tool: src/property_tool.cpp $(FR_INC) $(FR_LIB)
@@ -79,7 +83,7 @@ bin/property_tool: src/property_tool.cpp $(FR_INC) $(FR_LIB)
 bin/property_pack_tool: src/property_pack_tool.cpp $(FR_INC) $(FR_LIB)
 	$(CXX) $(FR_CFLAGS) -o bin/property_pack_tool src/property_pack_tool.cpp $(FR_LIB)
 
-# ------------------------------------------------------------ 
+# ------------------------------------------------------------
 # Object files
 
 obj/risp.o: src/risp.cpp $(FR_INC) $(RISP_INC)
@@ -89,7 +93,10 @@ obj/risp_static.o: src/risp_static.cpp $(FR_INC) $(RISP_INC)
 	$(CXX) -c $(FR_CFLAGS) -o obj/risp_static.o src/risp_static.cpp
 
 obj/vrisp.o: src/vrisp.cpp $(FR_INC) $(VRISP_INC)
-	$(CXX) -c $(FR_CFLAGS) -o obj/vrisp.o src/vrisp.cpp
+	$(CXX) -c $(FR_CFLAGS) -DNO_SIMD -o obj/vrisp.o src/vrisp.cpp
+
+obj/vrisp_rvv.o: src/vrisp.cpp $(FR_INC) $(VRISP_INC)
+	$(CXX) -c $(FR_CFLAGS) -DRISCVV -o obj/vrisp_rvv.o src/vrisp.cpp
 
 obj/vrisp_static.o: src/vrisp_static.cpp $(FR_INC) $(VRISP_INC)
 	$(CXX) -c $(FR_CFLAGS) -o obj/vrisp_static.o src/vrisp_static.cpp

@@ -7,7 +7,6 @@
 #include <cstddef>
 #include <cstdint>
 #include <stdexcept>
-#define NO_SIMD
 #ifdef RISCVV
 #include <riscv_vector.h>
 #endif
