@@ -123,7 +123,7 @@ Network::~Network() {
 
 void Network::apply_spike(const Spike& s, bool normalized) {
     if (!normalized && !is_integer(s.value)) {
-        throw SRE("vrisp::Network::apply_spike() only supports integer spike "
+        throw SRE("vrisp::Network::apply_spike() only supports integer spike"
                   "values - value (" +
                   to_string(s.value) + ") is not valid.");
     }
@@ -171,6 +171,7 @@ void Network::run(size_t duration) {
 }
 
 void Network::process_events(uint32_t time) {
+
     size_t internal_timestep =
         (current_timestep + time) % tracked_timesteps_count;
 
@@ -216,7 +217,7 @@ void Network::process_events(uint32_t time) {
     }
 
 #endif // NO_SIMD
-#ifdef RISCVV
+#ifdef RISCVV_FULL
     for (size_t i = 0; i < neuron_count; i += 16) {
         size_t vector_length = min((size_t)16, neuron_count - i);
 
@@ -306,6 +307,66 @@ void Network::process_events(uint32_t time) {
 
                 __riscv_vsuxei32_v_i8m1(neuron_charge_buffer, final_indexes,
                                         downstream_charges, vector_length);
+            }
+        }
+    }
+#endif
+#ifdef RISCVV
+    for (size_t i = 0; i < neuron_count; i += 1) {
+        if (neuron_charge_buffer[internal_timestep * allocation_size + i] <
+            min_potential) {
+            neuron_charge_buffer[internal_timestep * allocation_size + i] =
+                min_potential;
+        }
+        if (neuron_charge_buffer[internal_timestep * allocation_size + i] >=
+            neuron_threshold[i]) {
+            neuron_fired[i] = true;
+            if (outputs[i]) {
+                output_last_fire_timestep[i] = time;
+                output_fire_count[i]++;
+            }
+
+            size_t num_outgoing = synapse_to[i].size();
+            for (size_t k = 0; k < num_outgoing; k += 16) {
+                size_t vector_length = min((size_t)16, num_outgoing - k);
+
+                vint8m1_t weights =
+                    __riscv_vle8_v_i8m1(&synapse_weight[i][k], vector_length);
+                vuint8m1_t delays =
+                    __riscv_vle8_v_u8m1(&synapse_delay[i][k], vector_length);
+                vuint16m2_t destinations =
+                    __riscv_vle16_v_u16m2(&synapse_to[i][k], vector_length);
+
+                vuint16m2_t indexes = __riscv_vwaddu_vx_u16m2(
+                    delays, (uint16_t)internal_timestep, vector_length);
+                indexes = __riscv_vremu_vx_u16m2(
+                    indexes, tracked_timesteps_count, vector_length);
+
+                // vmadd.vx dv, rs1, vs2, vm | vd[i] = (x[rs1] * vd[i]) + vs2[i]
+                indexes =
+                    __riscv_vmadd_vx_u16m2(indexes, (uint16_t)allocation_size,
+                                           destinations, vector_length);
+                vuint32m4_t final_indexes = __riscv_vwmulu_vx_u32m4(
+                    indexes, sizeof(*neuron_charge_buffer), vector_length);
+
+                vint8m1_t downstream_charges = __riscv_vluxei32_v_i8m1(
+                    neuron_charge_buffer, final_indexes, vector_length);
+                downstream_charges = __riscv_vadd_vv_i8m1(
+                    downstream_charges, weights, vector_length);
+
+                __riscv_vsuxei32_v_i8m1(neuron_charge_buffer, final_indexes,
+                                        downstream_charges, vector_length);
+            }
+        } else {
+            // If we don't leak we carry this charge over into the next
+            // timestep
+            if (!neuron_leak[i]) {
+                neuron_charge_buffer[(internal_timestep + 1) %
+                                         tracked_timesteps_count *
+                                         allocation_size +
+                                     i] +=
+                    neuron_charge_buffer[internal_timestep * allocation_size +
+                                         i];
             }
         }
     }
