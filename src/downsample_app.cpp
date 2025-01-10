@@ -83,6 +83,6 @@ int main(int argc, char* argv[]) {
             chrono::steady_clock::now() - tp);
     }
 
-    printf("Total frame time:   %7.5f\n", d.count());
-    printf("Average frame time: %7.5f\n", d.count() / 60.0);
+    printf("Total frame time:   %7.10f\n", d.count());
+    printf("Average frame time: %7.20f\n", d.count() / 60.0);
 }

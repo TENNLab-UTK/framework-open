@@ -50,13 +50,15 @@ main() {
         for ((i = 0; i < input_neurons; i++)); do
             for ((j = 0; j < output_neurons; j++)); do
                 if [[ $((RANDOM % connectivity_chance)) -eq 0 ]]; then
-                    printf 'AE %s %s\n' "${i}" "$((j + input_neurons))"
+                    local destination="$((j + input_neurons))"
+                    printf 'AE %s %s\n' "${i}" "${destination}"
+                    printf 'SEP %s %s Delay %s\n' "${i}" "${destination}" "$(($RANDOM % 14 + 1))"
                 fi
             done
         done
 
         echo "SEP_ALL Weight 1"
-        echo "SEP_ALL Delay 1"
+        # echo "SEP_ALL Delay 1"
         echo "SORT Q"
         echo "TJ"
     } | bin/network_tool
