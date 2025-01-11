@@ -20,7 +20,7 @@
 # CXX = /home/jackson/duo-examples/duo-sdk/riscv64-linux-musl-x86_64/bin/riscv64-unknown-linux-musl-g++
 # CFLAGS = -mcpu=c906fdv -march=rv64imafdcv0p7xthead -mcmodel=medany -mabi=lp64d -O3
 CXX = riscv64-linux-gnu-g++
-CFLAGS = -march=rv64gcv -Ofast
+CFLAGS ?= -march=rv64gcv -Ofast -static
 
 FR_LIB = lib/libframework.a
 FR_INC = include/framework.hpp
