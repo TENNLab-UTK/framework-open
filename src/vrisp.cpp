@@ -350,13 +350,13 @@ void Network::process_events(uint32_t time) {
             __riscv_vmsge_vv_i8m1_b8(charges, thresholds, vector_length);
 
         if (leak_mode != 'a') {
-            vbool8_t not_fired = __riscv_vmnot_m_b8(fired, vector_length);
-            vuint8m1_t leak =
-                __riscv_vle8_v_u8m1(&neuron_leak[i], vector_length);
-            vbool8_t no_leak = __riscv_vmseq_vx_u8m1_b8(leak, 0, vector_length);
+            vbool8_t leak =
+                __riscv_vlm_v_b8(&neuron_leak[i / 8], vector_length);
             vbool8_t should_carryover =
-                __riscv_vmand_mm_b8(not_fired, no_leak, vector_length);
+                __riscv_vmnor_mm_b8(fired, leak, vector_length);
 
+            // TODO Should benchmark if this load is faster with or without the
+            // mask. The only part the needs to be masked is the store.
             vint8m1_t next_charges = __riscv_vle8_v_i8m1_m(
                 should_carryover,
                 &neuron_charge_buffer[((internal_timestep + 1) %
@@ -377,16 +377,11 @@ void Network::process_events(uint32_t time) {
                 next_charges, vector_length);
         }
 
-        uint8_t fired_arr[16] = {0};
-        __riscv_vse8_v_u8m1_m(
-            fired, fired_arr, __riscv_vmv_v_x_u8m1(1, vector_length),
-            vector_length); // Store mask doesn't exist on 0.7 V extension
-        // memcpy(neuron_fired.data() + i, fired_arr, sizeof(fired_arr));
+        __riscv_vsm_v_b8(&neuron_fired[i / 8], fired, vector_length);
         for (size_t j = 0; j < vector_length; j++) {
-            if (!fired_arr[j]) {
+            if (!get_fired(neuron_fired, i + j)) {
                 continue;
             }
-            neuron_fired[i + j] = true;
             if (outputs[i + j]) {
                 output_last_fire_timestep[i + j] = time;
                 output_fire_count[i + j]++;
@@ -412,7 +407,7 @@ void Network::process_events(uint32_t time) {
         }
         if (neuron_charge_buffer[internal_timestep * allocation_size + i] >=
             neuron_threshold[i]) {
-            neuron_fired[i] = true;
+            set_fired(neuron_fired, i);
             if (outputs[i]) {
                 output_last_fire_timestep[i] = time;
                 output_fire_count[i]++;
@@ -452,7 +447,7 @@ void Network::process_events(uint32_t time) {
         } else {
             // If we don't leak we carry this charge over into the next
             // timestep
-            if (!neuron_leak[i]) {
+            if (!get_leak(neuron_leak, i)) {
                 neuron_charge_buffer[(internal_timestep + 1) %
                                          tracked_timesteps_count *
                                          allocation_size +
