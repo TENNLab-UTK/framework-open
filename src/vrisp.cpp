@@ -14,8 +14,6 @@
 typedef std::runtime_error SRE;
 using namespace std;
 
-// chrono::system_clock::duration total_time;
-
 namespace vrisp {
 /** Configurable settings for vrisp */
 static json vrisp_spec = {
@@ -40,6 +38,28 @@ static bool is_integer(double v) {
     return (iv == v);
 }
 
+static bool
+get_fired(const vector<uint8_t, AlignmentAllocator<uint8_t>>& fired_vec,
+          size_t index) {
+    return ((fired_vec[index / 8]) >> (index % 8)) & 1;
+}
+
+static void set_fired(vector<uint8_t, AlignmentAllocator<uint8_t>>& fired_vec,
+                      size_t index) {
+    fired_vec[index / 8] |= 1 << (index % 8);
+}
+
+static bool
+get_leak(const vector<uint8_t, AlignmentAllocator<uint8_t>>& leak_vec,
+         size_t index) {
+    return ((leak_vec[index / 8]) >> (index % 8)) & 1;
+}
+
+static void set_leak(vector<uint8_t, AlignmentAllocator<uint8_t>>& leak_vec,
+                     size_t index) {
+    leak_vec[index / 8] |= 1 << (index % 8);
+}
+
 Network::Network(neuro::Network* net, double _min_potential, char leak,
                  size_t tracked_timesteps, double _spike_value_factor) {
     leak_mode = leak;
@@ -54,12 +74,12 @@ Network::Network(neuro::Network* net, double _min_potential, char leak,
     neuron_count = net->sorted_node_vector.back()->id + 1;
     allocation_size = ((neuron_count + 15) / 16) *
                       16; // JDM Instead of messing with masking load/stores we
-                          // can just round up to a multiple of 32
+                          // can just round up to a multiple of 16
 
     inputs.resize(allocation_size);
     outputs.resize(allocation_size);
 
-    neuron_fired.resize(allocation_size);
+    neuron_fired.resize(allocation_size / 8);
     output_fire_count.resize(allocation_size, 0);
     output_last_fire_timestep.resize(allocation_size, -1);
     neuron_threshold.resize(allocation_size, INT8_MAX);
@@ -72,7 +92,7 @@ Network::Network(neuro::Network* net, double _min_potential, char leak,
     memset(neuron_charge_buffer, 0,
            sizeof(*neuron_charge_buffer) * tracked_timesteps_count *
                allocation_size);
-    neuron_leak.resize(allocation_size);
+    neuron_leak.resize(allocation_size / 8);
 
     /* Add neurons */
     for (size_t i = 0; i < net->sorted_node_vector.size(); i++) {
@@ -81,9 +101,15 @@ Network::Network(neuro::Network* net, double _min_potential, char leak,
         neuron_mappings.push_back(node->id);
 
         if (leak_mode == 'c') {
-            neuron_leak[node->id] = node->get("Leak") != 0;
+            // neuron_leak[node->id] = node->get("Leak") != 0;
+            if (node->get("Leak") != 0) {
+                set_leak(neuron_leak, node->id);
+            }
         } else {
-            neuron_leak[node->id] = leak_mode == 'a';
+            // neuron_leak[node->id] = leak_mode == 'a';
+            if (leak_mode == 'a') {
+                set_leak(neuron_leak, node->id);
+            }
         }
 
         neuron_threshold[node->id] = node->get("Threshold");
@@ -116,10 +142,7 @@ Network::Network(neuro::Network* net, double _min_potential, char leak,
     }
 }
 
-Network::~Network() {
-    free(neuron_charge_buffer);
-    // cerr << "Total time: " << total_time.count() << " seconds\n";
-}
+Network::~Network() { free(neuron_charge_buffer); }
 
 void Network::apply_spike(const Spike& s, bool normalized) {
     if (!normalized && !is_integer(s.value)) {
@@ -175,7 +198,7 @@ void Network::process_events(uint32_t time) {
     size_t internal_timestep =
         (current_timestep + time) % tracked_timesteps_count;
 
-    fill(neuron_fired.begin(), neuron_fired.end(), false);
+    fill(neuron_fired.begin(), neuron_fired.end(), 0);
 
     // auto start = std::chrono::high_resolution_clock::now();
 #ifdef NO_SIMD
@@ -195,7 +218,8 @@ void Network::process_events(uint32_t time) {
                                      synapse_to[i][j]] += synapse_weight[i][j];
             }
 
-            neuron_fired[i] = true;
+            // neuron_fired[i] = true;
+            set_fired(neuron_fired, i);
 
             // Track output count and last fire time
             if (outputs[i]) {
@@ -203,7 +227,8 @@ void Network::process_events(uint32_t time) {
                 output_fire_count[i]++;
             }
         } else {
-            if (!neuron_leak[i]) {
+            // if (!neuron_leak[i]) {
+            if (!get_leak(neuron_leak, i)) {
                 // If we don't leak we carry this charge over into the next
                 // timestep
                 neuron_charge_buffer[(internal_timestep + 1) %
@@ -235,13 +260,13 @@ void Network::process_events(uint32_t time) {
             __riscv_vmsge_vv_i8m1_b8(charges, thresholds, vector_length);
 
         if (leak_mode != 'a') {
-            vbool8_t not_fired = __riscv_vmnot_m_b8(fired, vector_length);
-            vuint8m1_t leak =
-                __riscv_vle8_v_u8m1(&neuron_leak[i], vector_length);
-            vbool8_t no_leak = __riscv_vmseq_vx_u8m1_b8(leak, 0, vector_length);
+            vbool8_t leak =
+                __riscv_vlm_v_b8(&neuron_leak[i / 8], vector_length);
             vbool8_t should_carryover =
-                __riscv_vmand_mm_b8(not_fired, no_leak, vector_length);
+                __riscv_vmnor_mm_b8(fired, leak, vector_length);
 
+            // TODO Should benchmark if this load is faster with or without the
+            // mask. The only part the needs to be masked is the store.
             vint8m1_t next_charges = __riscv_vle8_v_i8m1_m(
                 should_carryover,
                 &neuron_charge_buffer[((internal_timestep + 1) %
@@ -262,15 +287,11 @@ void Network::process_events(uint32_t time) {
                 next_charges, vector_length);
         }
 
-        uint8_t fired_arr[16] = {0};
-        __riscv_vse8_v_u8m1_m(
-            fired, fired_arr, __riscv_vmv_v_x_u8m1(1, vector_length),
-            vector_length); // Store mask doesn't exist on 0.7 V extension
+        __riscv_vsm_v_b8(&neuron_fired[i / 8], fired, vector_length);
         for (size_t j = 0; j < vector_length; j++) {
-            if (!fired_arr[j]) {
+            if (!get_fired(neuron_fired, i + j)) {
                 continue;
             }
-            neuron_fired[i + j] = true;
             if (outputs[i + j]) {
                 output_last_fire_timestep[i + j] = time;
                 output_fire_count[i + j]++;
@@ -530,7 +551,7 @@ void Network::clear_activity() {
            sizeof(*neuron_charge_buffer) * tracked_timesteps_count *
                allocation_size);
 
-    fill(neuron_fired.begin(), neuron_fired.end(), false);
+    fill(neuron_fired.begin(), neuron_fired.end(), 0);
     fill(output_last_fire_timestep.begin(), output_last_fire_timestep.end(),
          -1);
     fill(output_fire_count.begin(), output_fire_count.end(), 0);
