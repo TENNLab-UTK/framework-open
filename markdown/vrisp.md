@@ -74,7 +74,7 @@ You may have noticed that the result of the previous operation `>=` was a mask, 
 
 ![images/carry-over.png](images/carry-over.png)
 
-Now we can load the next step in the ring buffer for the current 8 neurons that we're working on and add any carry-over from the current time step. This is where the masks comes in to play, as it allows us to avoid loading/storing to any of the neurons which should not have their charge carried over (all masked out fields are represented as X's).
+Now we can load the next step in the ring buffer for the current 8 neurons that we're working on and add any carry-over from the current time step. This is where the mask comes in to play, as it allows us to avoid loading/storing to any of the neurons which should not have their charge carried over (all masked out fields are represented as X's).
 
 
 ![images/carry-over-add.png](images/carry-over-add.png)
@@ -83,13 +83,13 @@ To finish the process or carry-over the same mask is used to write the result ch
 
 ### Propagating Charges
 
-Once we have determined that a neuron should fire the next step is to fire down all of its synapses. Normally this involves loop through each of the outgoing synapses one-by-one, but we can do better than that with vector instructions. Instead we can operate of 8 synapses at once by taking advantage of the "ring buffer" structure we explained earlier.
+Once we have determined that a neuron should fire the next step is to fire down all of its synapses. Normally this involves loop through each of the outgoing synapses one-by-one, but we can do better than that with vector instructions. Instead, we can operate of 8 synapses at once by taking advantage of the "ring buffer" structure we explained earlier.
 
 Instead of giving each neuron its own ring buffer, we combine all neurons together into a 2D vector, with rows representing a distinct timestep, and columns representing the individual neuron. 
 
 ![images/charge-buffer.png](images/charge-buffer.png)
 
-Now we can put this all together to demonstrate how charges are propagated. There are two axes to our matrix, time on the rows, neurons on the columns, so we need to get these two values to determine our final location in memory. Neurons are easy, we just look to see what the destination of this particular synapse is. To calculate time we need to add the delay of a particular synapse to the current time, this may result in an out of bounds error, so we mod by the number of tracked time steps to wrap around. 
+Now we can put this all together to demonstrate how charges are propagated. There are two axes to our matrix, time on the rows, neurons on the columns, so we need to get these two values to determine our final location in memory. Neurons are easy, we just look to see what the destination of this particular synapse is. To calculate time we need to add the delay of a particular synapse to the current time, this may result in an out-of-bounds error, so we mod by the number of tracked time steps to wrap around. 
 
 The two values are then used to calculate a offset for each of the downstream neurons. We can then use a gather instruction to load 8 values from memory, using the offsets from the previous step which are individually added onto the base of our matrix during address generation. The weight of each synapse can then be added into its index in the vector, before storing the vector back in memory using a scatter instruction with the same offsets. 
 
