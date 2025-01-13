@@ -91,7 +91,7 @@ Instead of giving each neuron its own ring buffer, we combine all neurons togeth
 
 Now we can put this all together to demonstrate how charges are propagated. There are two axes to our matrix, time on the rows, neurons on the columns, so we need to get these two values to determine our final location in memory. Neurons are easy, we just look to see what the destination of this particular synapse is. To calculate time we need to add the delay of a particular synapse to the current time, this may result in an out of bounds error, so we mod by the number of tracked time steps to wrap around. 
 
-The two values are then used to calculate a offset for each of the downstream neurons. We can then use a gather instruction to load 8 values from memory, using the offsets from the previous step which are individually added onto the base of our matrix during address generation. The weight of each neuron is added into its respective downstream neuron, before storing the values back in memory using a scatter instruction with the same offsets. 
+The two values are then used to calculate a offset for each of the downstream neurons. We can then use a gather instruction to load 8 values from memory, using the offsets from the previous step which are individually added onto the base of our matrix during address generation. The weight of each synapse can then be added into its index in the vector, before storing the vector back in memory using a scatter instruction with the same offsets. 
 
 ![images/scatter-gather.png](images/scatter-gather.png)
 
