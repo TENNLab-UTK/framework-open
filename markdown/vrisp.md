@@ -93,7 +93,7 @@ Now we can put this all together to demonstrate how charges are propagated. Ther
 
 The two values are then used to calculate a offset for each of the downstream neurons. We can then use a gather instruction to load 8 values from memory, using the offsets from the previous step which are individually added onto the base of our matrix during address generation. The weight of each neuron is added into its respective downstream neuron, before storing the values back in memory using a scatter instruction with the same offsets. 
 
-![images/scater-gather.png](images/scater-gather.png)
+![images/scatter-gather.png](images/scatter-gather.png)
 
 Lastly, we clear out the current row of the matrix by setting all values to zero, as leak has already been applied. This is safe to do so as the number of tracked time steps must be at least one greater than the max delay of the network. 
 
