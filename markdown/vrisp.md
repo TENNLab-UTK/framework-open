@@ -37,9 +37,66 @@ For the above reasons, most networks trained for RISP will work exactly the same
 
 VRISP additionally adds the concept of `"tracked_timesteps"`, which should be set to `"max_delay" + 1`, although it can be set higher at the cost of greater memory usage. 
  
-# Implementations
+# Implementation Details
 
-This repository contains the implementation of the VRISP simulator.
+Examples here will assume an architecture where an appropriate vector length is 8 elements, though this approach can and will scale to higher vector lengths.
+
+## Data Structures
+
+Drawing from the simplicity of RISP, VRISP retains much the same code, changing only the sections related to simulating a network. Starting with the way a network is represented, VRISP utilizes a structure of arrays, as opposed to the array of structures that RISP uses. This means that instead of treating a neuron as a complex object that contains all of its related state (charge, threshold, fired status, and synapses), we treat each of the individual properties as its own object. The end result of this is one array for all neuron thresholds, another for their fired status, another for each synapse's weight, and so on.
+
+![images/risp.png](images/risp.png)
+
+![images/vrisp.png](images/vrisp.png)
+
+This change allows us to take advantage of wider load/store instruction, present in SIMD/vector instruction sets. At a high level this means that we can perform the calculations for up to 8 neuron simultaneously. This change alone is already a great advantage over a standard scalar implementation, but there are more gains to be hard. 
+
+## Vectorized Computation
+
+Let's dive into how we actually compute more than one result at a time. The general process we follow for simulating a neuromorphic network is the following: reset the fired state for all neurons, bring up any charges below the minimum, calculate which neurons should fire, fire those neurons, apply leak to any neurons that have not fired. VRISP follows this process from the outside, but make some modifications internally to improve performance.
+
+To start, VRISP requires users to specific a fixed number of `tracked_timesteps`, which determines the size of the "ring buffer" that holds each of the neurons charge for the next `n` time steps. This offers two main advantages, the memory usage of VRISP no longer grows with network activity, and we can use scatter/gather instructions to manipulate memory. We will discuss the scatter/gather instructions later, but for now we can just think of each neuron having exactly one value for its current charge, which we will use in the next section.
+
+### Which Neurons should Fire?
+
+To begin we load the charges for up to 8 neurons into a single vector. I say up to 8 because we only load as many as we need, meaning if we have a network with 7 neurons we will load 7 charges into a vector. Then we create another vector where each index holds the minimum potential. A simple `max` instruction gives us the greater of the two values in either vector, resulting in the beginning charges for each neuron.
+
+![images/min_potential.png](images/min_potential.png)
+
+The next step is to calculate which neurons have fired. Once again this requires loading values into a vector and doing an element-wise comparison, in this case a greater than or equal to. The difference here is that each neuron can have a different threshold, so the vector can contain different values at each index.
+
+![images/fired.png](images/fired.png)
+
+Now that we know which neurons have fired, we also know which ones to apply leak to. This is one area that is significantly different from RISP, instead of not leaking being a no-op (as the location in memory of a neurons current charge does not change between time steps), we have leaking as no-op. In VRISP when a neuron does not leak its charge we have to add that value into the next position of its ring buffer. We accomplish this by taking the `NOR` of a neuron's fired status and if it should leak. Put simply, we only want to carry over charges when a neuron has not fired `AND` shouldn't leak. 
+
+You may have noticed that the result of the previous operation `>=` was a mask, this just means that instead of have a entire element dedicate to the result of each comparison we create a bit-mask. We can treat masks just like regular vectors and perform element-wise comparisons with other masks, and they will also allow us to selectively operation on other vectors, masking off regions which should not be operated on. Conveniently, VRISP stores both the fired and leak information in memory as these masks so they can be efficiently stored and loaded. Now we can generate our final mask for applying carry-over through the `NOR` comparison.
+
+
+![images/carry-over.png](images/carry-over.png)
+
+Now we can load the next step in the ring buffer for the current 8 neurons that we're working on and add any carry-over from the current time step. This is where the masks comes in to play, as it allows us to avoid loading/storing to any of the neurons which should not have their charge carried over (all masked out fields are represented as X's).
+
+
+![images/carry-over-add.png](images/carry-over-add.png)
+
+To finish the process or carry-over the same mask is used to write the result charges back to memory.
+
+### Propagating Charges
+
+Once we have determined that a neuron should fire the next step is to fire down all of its synapses. Normally this involves loop through each of the outgoing synapses one-by-one, but we can do better than that with vector instructions. Instead we can operate of 8 synapses at once by taking advantage of the "ring buffer" structure we explained earlier.
+
+Instead of giving each neuron its own ring buffer, we combine all neurons together into a 2D vector, with rows representing a distinct timestep, and columns representing the individual neuron. 
+
+![images/charge-buffer.png](images/charge-buffer.png)
+
+Now we can put this all together to demonstrate how charges are propagated. There are two axes to our matrix, time on the rows, neurons on the columns, so we need to get these two values to determine our final location in memory. Neurons are easy, we just look to see what the destination of this particular synapse is. To calculate time we need to add the delay of a particular synapse to the current time, this may result in an out of bounds error, so we mod by the number of tracked time steps to wrap around. 
+
+The two values are then used to calculate a offset for each of the downstream neurons. We can then use a gather instruction to load 8 values from memory, using the offsets from the previous step which are individually added onto the base of our matrix during address generation. The weight of each neuron is added into its respective downstream neuron, before storing the values back in memory using a scatter instruction with the same offsets. 
+
+![images/scater-gather.png](images/scater-gather.png)
+
+Lastly, we clear out the current row of the matrix by setting all values to zero, as leak has already been applied. This is safe to do so as the number of tracked time steps must be at least one greater than the max delay of the network. 
+
 
 -------------------------------------------------------------------------------
 

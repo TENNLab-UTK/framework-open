@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>vrisp.html</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8"/>
+<link rel="stylesheet" type="text/css" media="all" href="/home/jackson/framework-open-fork/markdown/https:/cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"  />
+<link rel="stylesheet" type="text/css" media="all" href="/home/jackson/framework-open-fork/markdown/https:/cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css"  /><meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'><style> body { box-sizing: border-box; max-width: 740px; width: 100%; margin: 40px auto; padding: 0 10px; } </style><script id='MathJax-script' async src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'></script><script src='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js'></script><script>document.addEventListener('DOMContentLoaded', () => { document.body.classList.add('markdown-body'); document.querySelectorAll('pre[lang] > code').forEach((code) => { code.classList.add(code.parentElement.lang); }); document.querySelectorAll('pre > code').forEach((code) => { hljs.highlightBlock(code); }); });</script>
+</head>
+
+<body>
+
+marked(): highlight and langPrefix parameters are deprecated since version 5.0.0, should not be used and will be removed in the future. Instead use https://www.npmjs.com/package/marked-highlight.
+marked(): mangle parameter is deprecated since version 5.0.0, should not be used and will be removed in the future. Instead use https://www.npmjs.com/package/marked-mangle.
+marked(): headerIds and headerPrefix parameters are deprecated since version 5.0.0, should not be used and will be removed in the future. Instead use https://www.npmjs.com/package/marked-gfm-heading-id.
+<h1 id="vrisp---vectorized-reduced-instruction-spiking-processor">VRISP - Vectorized Reduced Instruction Spiking Processor</h1>
+<p>Point of contact: Jackson Mowry</p>
+<hr>
+<p>[TOC]</p>
+<hr>
+<h1 id="introduction">Introduction</h1>
+<p>VRISP is a specialized variant of the original RISP processor, focused on optimizations to support large densely connected networks, with high levels of activity, and being run on low-power hardware. It differs from RISP on the following features.</p>
+<ol>
+<li>Weights, threshold and activations potentials <strong>must</strong> be set to integer values.</li>
+<li>A threshold value of <code>0</code> means that the neuron will fire every time step (unless it
+is allowed to hold a charge less than <code>0</code>), even if there are no incoming spikes to the neuron.</li>
+<li>Emulation of the RAVENs neuroprocessor is not supported.</li>
+<li>Random noise addition is not supported.</li>
+<li>All run times are exclusive (same as RISP default <code>run_time_inclusive=false</code>).</li>
+<li>All thresholds are includive (same as RISP default <code>threshold_inclusive=true</code>)</li>
+</ol>
+<p>For the above reasons, most networks trained for RISP will work exactly the same on VRISP as long as the following RISP parameters are kept the same.</p>
+<pre><code class="language-javascript">{
+  &quot;min_weight&quot;: XX,
+  &quot;max_weight&quot;: XX,
+  &quot;min_threshold&quot;: 1,
+  &quot;max_threshold&quot;: XX,
+  &quot;min_potential&quot;: XX,
+  &quot;max_delay&quot;: XX,
+  &quot;discrete&quot;: true
+}
+</code></pre>
+<p>VRISP additionally adds the concept of <code>&quot;tracked_timesteps&quot;</code>, which should be set to <code>&quot;max_delay&quot; + 1</code>, although it can be set higher at the cost of greater memory usage. </p>
+<h1 id="implementation-details">Implementation Details</h1>
+<p>Examples here will assume an architecture where an appropriate vector legnth is 8 elements, though this approach can and will scale to higher vector lengths.</p>
+<p>Drawing from the simplicity of RISP, VRISP retains much the same code, changing only the sections related to simulating a network. Starting with the way a network is represented, VRISP utilizes a structure of arrays, as opposed to the array of structures that RISP uses. This means that instead of treating a neuron as a complex object that contains all of its related state (charge, threshold, fired status, and synapses), we treat each of the individual properties as its own object. The end result of this is one array for all neuron thresholds, another for their fired status, another for each synapses weight, and so on.</p>
+<hr>
+<h1 id="default-vrisp-parameter-settings">Default VRISP Parameter Settings</h1>
+<p>There are only two main types of VRISP processors:</p>
+<ol>
+<li>VRISP with positive and negative weights: <code>VRISP-n</code></li>
+<li>VRISP with only positive weights: <code>VRISP_n+</code></li>
+</ol>
+<p>You can find common configurations in the <code>params</code> directory.</p>
+<pre><code class="language-console">UNIX&gt; ls params/*vrisp* -1
+params/vrisp_127.json
+params/vrisp_15_plus.json
+params/vrisp_1.json
+params/vrisp_1_plus.json
+params/vrisp_64.json
+params/vrisp_7.json
+UNIX&gt;
+</code></pre>
+<p>As with RISP, all of these configurations have <code>&quot;leak_mode&quot;</code> set to <code>&quot;none&quot;</code>, meaning you will need to change this setting to either <code>&quot;all&quot;</code> or <code>&quot;configurable&quot;</code> if your network requires the setting.</p>
+<p><code>VRISP-n</code> means that:</p>
+<ul>
+<li>Maximum synapse weight is <em>n</em>.</li>
+<li>Minimum synapse weight is <em>-n</em>.</li>
+<li>Maxiumum neuron threshold is <em>n</em>.</li>
+<li>Minimum neuron threshold is <em>0</em>.</li>
+<li>Minimum neuron potential is <em>-n</em>.</li>
+<li>Maximum synapse delay is <em>max(n,15)</em>.</li>
+<li>Tracked timesteps is <em>max_delay + 1</em></li>
+</ul>
+<p><code>VRISP-n+1</code> means that:</p>
+<ul>
+<li>Maximum synapse weight is <em>n</em>.</li>
+<li>Minimum synapse weight is <em>1</em>.</li>
+<li>Maxiumum neuron threshold is <em>n</em>.</li>
+<li>Minimum neuron threshold is <em>1</em>.</li>
+<li>Minimum neuron potential is <em>0</em>.</li>
+<li>Maximum synapse delay is <em>max(n,15)</em>.</li>
+<li>Tracked timesteps is <em>max_delay + 1</em></li>
+</ul>
+<hr>
+<h1 id="params">Params</h1>
+<p>You can specify the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>min_weight</td>
+<td>integer</td>
+<td>Necessary</td>
+<td>The minimum synapse weight.</td>
+</tr>
+<tr>
+<td>max_weight</td>
+<td>integer</td>
+<td>Necessary</td>
+<td>The maximum snapse weight.</td>
+</tr>
+<tr>
+<td>max_delay</td>
+<td>integer</td>
+<td>Necessary</td>
+<td>The maximum synapse delay.</td>
+</tr>
+<tr>
+<td>min_threshold</td>
+<td>integer</td>
+<td>Necessary</td>
+<td>The minimum neuron threshold.</td>
+</tr>
+<tr>
+<td>max_threshold</td>
+<td>integer</td>
+<td>Necessary</td>
+<td>The maximum neuron threshold.</td>
+</tr>
+<tr>
+<td>min_potential</td>
+<td>integer</td>
+<td>Necessary</td>
+<td>At the end of integration, the potential cannot go lower than this value.</td>
+</tr>
+<tr>
+<td>tracked_timesteps</td>
+<td>integer</td>
+<td>Necessary</td>
+<td>The total number of discrete timestamps that VRISP tracks. Can generally be set to <code>max_delay+1</code>, but may be higher if one intends to apply spikes at a time step later than this allows.</td>
+</tr>
+<tr>
+<td>leak_mode</td>
+<td>string</td>
+<td>&quot;none&quot;</td>
+<td>Leak: <code>&quot;all&quot;</code>, <code>&quot;none&quot;</code>, <code>&quot;configurable&quot;</code></td>
+</tr>
+<tr>
+<td>spike_value_factor</td>
+<td>double</td>
+<td><code>max_weight</code></td>
+<td>Framework applications call <code>apply_spikes()</code> with input spike values between 0 and 1. VRISP multiplies these values by this factor.</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="examples-of-use">Examples of Use</h1>
+<p>You can go through each of these examples with <code>scripts/test_vrisp.sh</code>.</p>
+<!--  LocalWords:  RISP VRISP neuroprocessor RAVENs javascript
+ -->
+
+
+</body>
+</html>
