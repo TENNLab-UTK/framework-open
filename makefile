@@ -19,8 +19,8 @@
 # CFLAGS = -O3 -march=native
 # CXX = /home/jackson/duo-examples/duo-sdk/riscv64-linux-musl-x86_64/bin/riscv64-unknown-linux-musl-g++
 # CFLAGS = -mcpu=c906fdv -march=rv64imafdcv0p7xthead -mcmodel=medany -mabi=lp64d -O3
-CXX = riscv64-linux-gnu-g++
-CFLAGS ?= -march=rv64gcv -Ofast -static
+# CXX = riscv64-linux-gnu-g++
+# CFLAGS ?= -march=rv64gcv -Ofast -static
 
 FR_LIB = lib/libframework.a
 FR_INC = include/framework.hpp
@@ -40,19 +40,11 @@ all: lib/libframework.a \
      bin/network_tool \
      bin/processor_tool_risp \
 	 bin/processor_tool_vrisp \
-	 bin/processor_tool_vrisp_vector_full \
-	 bin/processor_tool_vrisp_vector_fired \
-	 bin/processor_tool_vrisp_vector_synapses \
-	 bin/downsample_app_risp \
-	 bin/downsample_app_vrisp \
-	 bin/downsample_app_vrisp_vector_full \
-	 bin/downsample_app_vrisp_vector_fired \
-	 bin/downsample_app_vrisp_vector_synapses \
-	 bin/dbscan_app_risp \
-	 bin/dbscan_app_vrisp \
-	 bin/dbscan_app_vrisp_vector_full \
-	 bin/dbscan_app_vrisp_vector_fired \
-	 bin/dbscan_app_vrisp_vector_synapses
+
+riscv_vector: all \
+		      bin/processor_tool_vrisp_vector_full \
+			  bin/processor_tool_vrisp_vector_fired \
+			  bin/processor_tool_vrisp_vector_synapses
 
 utils: bin/property_pack_tool \
        bin/property_tool
@@ -85,36 +77,6 @@ bin/processor_tool_vrisp_vector_fired: src/processor_tool.cpp $(FR_INC) $(VRISP_
 
 bin/processor_tool_vrisp_vector_synapses: src/processor_tool.cpp $(FR_INC) $(VRISP_INC) $(VRISP_RVV_SYNAPSES_OBJ) $(FR_LIB)
 	$(CXX) $(FR_CFLAGS) -o bin/processor_tool_vrisp_vector_synapses src/processor_tool.cpp $(VRISP_RVV_SYNAPSES_OBJ) $(FR_LIB)
-
-bin/downsample_app_risp: src/downsample_app.cpp $(FR_INC) $(RISP_INC) $(RISP_OBJ) $(FR_LIB)
-	$(CXX) $(FR_CFLAGS) -o bin/downsample_app_risp src/downsample_app.cpp $(RISP_OBJ) $(FR_LIB)
-
-bin/downsample_app_vrisp: src/downsample_app.cpp $(FR_INC) $(VRISP_INC) $(VRISP_OBJ) $(FR_LIB)
-	$(CXX) $(FR_CFLAGS) -o bin/downsample_app_vrisp src/downsample_app.cpp $(VRISP_OBJ) $(FR_LIB)
-
-bin/downsample_app_vrisp_vector_full: src/downsample_app.cpp $(FR_INC) $(VRISP_INC) $(VRISP_RVV_FULL_OBJ) $(FR_LIB)
-	$(CXX) $(FR_CFLAGS) -o bin/downsample_app_vrisp_vector_full src/downsample_app.cpp $(VRISP_RVV_FULL_OBJ) $(FR_LIB)
-
-bin/downsample_app_vrisp_vector_fired: src/downsample_app.cpp $(FR_INC) $(VRISP_INC) $(VRISP_RVV_FIRED_OBJ) $(FR_LIB)
-	$(CXX) $(FR_CFLAGS) -o bin/downsample_app_vrisp_vector_fired src/downsample_app.cpp $(VRISP_RVV_FIRED_OBJ) $(FR_LIB)
-
-bin/downsample_app_vrisp_vector_synapses: src/downsample_app.cpp $(FR_INC) $(VRISP_INC) $(VRISP_RVV_SYNAPSES_OBJ) $(FR_LIB)
-	$(CXX) $(FR_CFLAGS) -o bin/downsample_app_vrisp_vector_synapses src/downsample_app.cpp $(VRISP_RVV_SYNAPSES_OBJ) $(FR_LIB)
-
-bin/dbscan_app_risp: src/dbscan_app.cpp $(FR_INC) $(RISP_INC) $(RISP_OBJ) $(FR_LIB)
-	$(CXX) $(FR_CFLAGS) -o bin/dbscan_app_risp src/dbscan_app.cpp $(RISP_OBJ) $(FR_LIB)
-
-bin/dbscan_app_vrisp: src/dbscan_app.cpp $(FR_INC) $(VRISP_INC) $(VRISP_OBJ) $(FR_LIB)
-	$(CXX) $(FR_CFLAGS) -o bin/dbscan_app_vrisp src/dbscan_app.cpp $(VRISP_OBJ) $(FR_LIB)
-
-bin/dbscan_app_vrisp_vector_full: src/dbscan_app.cpp $(FR_INC) $(VRISP_INC) $(VRISP_RVV_FULL_OBJ) $(FR_LIB)
-	$(CXX) $(FR_CFLAGS) -o bin/dbscan_app_vrisp_vector_full src/dbscan_app.cpp $(VRISP_RVV_FULL_OBJ) $(FR_LIB)
-
-bin/dbscan_app_vrisp_vector_fired: src/dbscan_app.cpp $(FR_INC) $(VRISP_INC) $(VRISP_RVV_FIRED_OBJ) $(FR_LIB)
-	$(CXX) $(FR_CFLAGS) -o bin/dbscan_app_vrisp_vector_fired src/dbscan_app.cpp $(VRISP_RVV_FIRED_OBJ) $(FR_LIB)
-
-bin/dbscan_app_vrisp_vector_synapses: src/dbscan_app.cpp $(FR_INC) $(VRISP_INC) $(VRISP_RVV_SYNAPSES_OBJ) $(FR_LIB)
-	$(CXX) $(FR_CFLAGS) -o bin/dbscan_app_vrisp_vector_synapses src/dbscan_app.cpp $(VRISP_RVV_SYNAPSES_OBJ) $(FR_LIB)
 
 # ------------------------------------------------------------
 # Utilities.
