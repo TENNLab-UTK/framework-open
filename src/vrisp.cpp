@@ -71,7 +71,9 @@ Network::Network(neuro::Network* net, double _min_potential, char leak,
 
     net->make_sorted_node_vector();
 
-    neuron_count = net->sorted_node_vector.back()->id + 1;
+    neuron_count = net->sorted_node_vector.size() != 0
+                       ? net->sorted_node_vector.back()->id + 1
+                       : 0;
     allocation_size = ((neuron_count + 15) / 16) *
                       16; // JDM Instead of messing with masking load/stores we
                           // can just round up to a multiple of 16
