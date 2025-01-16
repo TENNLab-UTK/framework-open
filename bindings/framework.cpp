@@ -5,6 +5,7 @@
 #include "framework.hpp"
 #include "nlohmann/json.hpp"
 #include "pybind_json.hpp"
+#include "utils/json_helpers.hpp"
 
 namespace py = pybind11;
 using namespace neuro;
@@ -12,6 +13,7 @@ using namespace neuro;
 void bind_framework_network(py::module &m);
 void bind_framework_processor(py::module &m);
 void bind_processor_help(py::module &m);
+void bind_framework_moa(py::module &m);
 
 PYBIND11_MODULE(neuro, m) {
     m.doc() = "Neuromorphic Framework";
@@ -38,7 +40,18 @@ PYBIND11_MODULE(neuro, m) {
         })
         .def("__str__", [](nlohmann::json &j) {
             return j.dump(4);
-        });
+        })
+		.def("dump", [](nlohmann::json &j, int val) {
+			return j.dump(val);
+		});
+
+	m.def("pretty_json_helper", &pretty_json_helper,
+		 py::arg("j"),
+		 py::arg("indent_space") = 2,
+		 py::arg("indent") = 2,
+		 py::arg("print_width") = 150,
+		 py::arg("indent_bracket") = true);
+	
     py::implicitly_convertible<py::object, nlohmann::json>();
 
 	// Bind Nodes, Edges, & Networks 
@@ -47,6 +60,9 @@ PYBIND11_MODULE(neuro, m) {
 	// Bind Device Interface & Spikes
 	bind_framework_processor(m);
 
-	//Bind helper functions for processors
+	// Bind helper functions for processors
 	bind_processor_help(m);
+
+	// Bind MOA RNG class
+	bind_framework_moa(m);
 }
