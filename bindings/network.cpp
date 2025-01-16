@@ -1,4 +1,6 @@
+#include <cstdint>
 #include <fstream>
+#include <iostream>
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
@@ -18,11 +20,23 @@ void bind_framework_network(py::module &m)
 
     using nlohmann::json;
 
+	using neuro::int_hash;
+	using neuro::coord_hash;
     using neuro::Property;
     using neuro::PropertyPack;
     using neuro::Node;
     using neuro::Edge;
     using neuro::Network;
+
+	typedef std::pair<int,int> Coords;
+
+	py::class_<int_hash>(m, "int_hash")
+		.def(py::init<>())
+		.def("__call__", &int_hash::operator());
+
+	py::class_<coord_hash>(m, "coord_hash")
+		.def(py::init<>())
+		.def("__call__", &coord_hash::operator());
 
 	py::enum_<Property::Type>(m, "PropertyType")
 		.value("Integer", Property::Type::INTEGER)
@@ -52,12 +66,14 @@ void bind_framework_network(py::module &m)
 		.def(py::self != py::self);
 
 	py::class_<PropertyPack>(m, "PropertyPack")
+		.def(py::init<>())
 		.def("__call__", [](PropertyPack &self){
 			return py::make_tuple(self.nodes, self.edges, self.networks);
 		})
 		.def("to_json", &PropertyPack::to_json)
 		.def("as_json", &PropertyPack::as_json)
 		.def("from_json", &PropertyPack::from_json)
+		.def("pretty_json", &PropertyPack::pretty_json)
 		.def("clear", &PropertyPack::clear)
 		.def_readonly("nodes", &PropertyPack::nodes)
 		.def_readonly("edges", &PropertyPack::edges)
@@ -78,10 +94,10 @@ void bind_framework_network(py::module &m)
 		.def_readonly("output_id", &Node::output_id)
 		.def_readonly("net", &Node::net)
 		.def_readonly("values", &Node::values)
-		.def_readonly("incoming", &Node::incoming)
-		.def_readonly("outgoing", &Node::outgoing)
-		.def_readonly("coordinates", &Node::coordinates)
-		.def_readonly("name", &Node::name)
+		.def_readwrite("incoming", &Node::incoming, py::return_value_policy::reference)
+		.def_readwrite("outgoing", &Node::outgoing, py::return_value_policy::reference)
+		.def_readwrite("coordinates", &Node::coordinates)
+		.def_readwrite("name", &Node::name)
 		.def("set", py::overload_cast<int, double>(&Node::set))
 		.def("set", py::overload_cast<const string&, double>(&Node::set))
 		.def("get", py::overload_cast<int>(&Node::get))
@@ -97,7 +113,7 @@ void bind_framework_network(py::module &m)
 		.def_readonly("net", &Edge::net)
 		.def_readonly("values", &Edge::values)
 		.def("as_json", &Edge::as_json)
-		.def_readonly("control_point", &Edge::control_point)
+		.def_readwrite("control_point", &Edge::control_point)
 		.def("set", py::overload_cast<int, double>(&Edge::set))
 		.def("set", py::overload_cast<const string&, double>(&Edge::set))
 		.def("get", py::overload_cast<int>(&Edge::get))
@@ -121,21 +137,23 @@ void bind_framework_network(py::module &m)
 		.def("get_node_property", &Network::get_node_property)
 		.def("get_edge_property", &Network::get_edge_property)
 		.def("get_network_property", &Network::get_network_property)
-		.def("add_node", &Network::add_node)
+		.def("add_node", &Network::add_node, py::return_value_policy::reference)
 		.def("is_node", &Network::is_node)
-		.def("get_node", &Network::get_node)
+		.def("get_node", &Network::get_node, py::return_value_policy::reference)
 		.def("add_or_get_node", &Network::add_or_get_node)
 		.def("remove_node", &Network::remove_node)
 		.def("rename_node", &Network::rename_node)
-		.def("add_edge", &Network::add_edge)
+		.def("add_edge", &Network::add_edge, py::return_value_policy::reference)
 		.def("is_edge", &Network::is_edge)
-		.def("get_edge", &Network::get_edge)
-		.def("add_or_get_edge", &Network::add_or_get_edge)
+		.def("get_edge", &Network::get_edge, py::return_value_policy::reference)
+		.def("add_or_get_edge", &Network::add_or_get_edge, py::return_value_policy::reference)
 		.def("remove_edge", &Network::remove_edge)
 
 		.def("add_input", &Network::add_input)
 		.def("get_input", &Network::get_input)
+		.def("num_inputs", &Network::num_inputs)
 		.def("add_output", &Network::add_output)
+		.def("get_output", &Network::get_output)
 		.def("num_outputs", &Network::num_outputs)
 
 		.def("set_data", &Network::set_data)
@@ -160,11 +178,21 @@ void bind_framework_network(py::module &m)
 		.def("prune", &Network::prune)
 		.def("make_sorted_node_vector", &Network::make_sorted_node_vector)
 		.def_readonly("sorted_node_vector", &Network::sorted_node_vector)
-		.def("begin", &Network::begin)
-		.def("end", &Network::end)
-		.def("edges_begin", &Network::edges_begin)
-		.def("edges_end", &Network::edges_end)
-
+		.def("get_node_map", [](Network &self) {
+				py::dict dict;
+				for (auto it = self.begin(); it != self.end(); it++) {
+					dict[py::str(std::to_string(it->first))] = py::cast(it->second.get());
+				}
+				return dict;
+			}, py::return_value_policy::reference)
+		.def("get_edge_map", [](Network &self) {
+				py::dict dict;
+				for (auto it = self.edges_begin(); it != self.edges_end(); it++) {
+					std::tuple<uint32_t, uint32_t> coords = {it->second.get()->from->id, it->second.get()->to->id};
+					dict[py::cast(coords)] = py::cast(it->second.get());
+				}
+				return dict;
+			}, py::return_value_policy::reference)
 		.def("num_nodes", &Network::num_nodes)
 		.def("num_edges", &Network::num_edges)
 		.def_readonly("values", &Network::values);

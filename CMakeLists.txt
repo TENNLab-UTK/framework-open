@@ -11,9 +11,12 @@ set(SOURCES_NEURO bindings/framework.cpp
                   bindings/processor.cpp
                   bindings/network.cpp
                   bindings/pybind_json.hpp
+				  bindings/moa.cpp
                   src/framework.cpp
                   src/properties.cpp
-                  src/processor_help.cpp)
+                  src/processor_help.cpp
+			  	  include/utils/MOA.hpp
+			  	  include/utils/json_helpers.hpp)
 
 pybind11_add_module(neuro ${SOURCES_NEURO})
 
@@ -25,7 +28,9 @@ set(SOURCES_RISP bindings/risp.cpp
                  src/risp_static.cpp
                  src/framework.cpp
                  src/properties.cpp
-                 src/processor_help.cpp)
+                 src/processor_help.cpp
+			  	 include/utils/MOA.hpp
+			 	 include/utils/json_helpers.hpp)
 
 pybind11_add_module(risp ${SOURCES_RISP})
 
