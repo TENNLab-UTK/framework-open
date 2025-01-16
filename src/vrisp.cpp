@@ -245,8 +245,9 @@ void Network::process_events(uint32_t time) {
 
 #endif // NO_SIMD
 #ifdef RISCVV_FULL
-    for (size_t i = 0; i < neuron_count; i += 16) {
-        size_t vector_length = min((size_t)16, neuron_count - i);
+    const size_t max_vector_length = __riscv_vsetvlmax_e8m1();
+    for (size_t i = 0; i < neuron_count; i += max_vector_length) {
+        size_t vector_length = min(max_vector_length, neuron_count - i);
 
         vint8m1_t charges = __riscv_vle8_v_i8m1(
             &neuron_charge_buffer[(internal_timestep * allocation_size) + i],
@@ -267,8 +268,6 @@ void Network::process_events(uint32_t time) {
             vbool8_t should_carryover =
                 __riscv_vmnor_mm_b8(fired, leak, vector_length);
 
-            // TODO Should benchmark if this load is faster with or without the
-            // mask. The only part the needs to be masked is the store.
             vint8m1_t next_charges = __riscv_vle8_v_i8m1_m(
                 should_carryover,
                 &neuron_charge_buffer[((internal_timestep + 1) %
@@ -300,8 +299,9 @@ void Network::process_events(uint32_t time) {
             }
 
             size_t num_outgoing = synapse_to[i + j].size();
-            for (size_t k = 0; k < num_outgoing; k += 16) {
-                size_t vector_length = min((size_t)16, num_outgoing - k);
+            for (size_t k = 0; k < num_outgoing; k += max_vector_length) {
+                size_t vector_length =
+                    min((size_t)max_vector_length, num_outgoing - k);
 
                 vint8m1_t weights = __riscv_vle8_v_i8m1(
                     &synapse_weight[i + j][k], vector_length);
@@ -335,8 +335,9 @@ void Network::process_events(uint32_t time) {
     }
 #endif
 #ifdef RISCVV_FIRED
-    for (size_t i = 0; i < neuron_count; i += 16) {
-        size_t vector_length = min((size_t)16, neuron_count - i);
+    const size_t max_vector_length = __riscv_vsetvlmax_e8m1();
+    for (size_t i = 0; i < neuron_count; i += max_vector_length) {
+        size_t vector_length = min(max_vector_length, neuron_count - i);
 
         vint8m1_t charges = __riscv_vle8_v_i8m1(
             &neuron_charge_buffer[(internal_timestep * allocation_size) + i],
@@ -401,6 +402,7 @@ void Network::process_events(uint32_t time) {
     }
 #endif
 #ifdef RISCVV_SYNAPSES
+    const size_t max_vector_length = __riscv_vsetvlmax_e8m1();
     for (size_t i = 0; i < neuron_count; i += 1) {
         if (neuron_charge_buffer[internal_timestep * allocation_size + i] <
             min_potential) {
@@ -416,8 +418,8 @@ void Network::process_events(uint32_t time) {
             }
 
             size_t num_outgoing = synapse_to[i].size();
-            for (size_t k = 0; k < num_outgoing; k += 16) {
-                size_t vector_length = min((size_t)16, num_outgoing - k);
+            for (size_t k = 0; k < num_outgoing; k += max_vector_length) {
+                size_t vector_length = min(max_vector_length, num_outgoing - k);
 
                 vint8m1_t weights =
                     __riscv_vle8_v_i8m1(&synapse_weight[i][k], vector_length);

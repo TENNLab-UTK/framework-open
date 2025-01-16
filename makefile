@@ -16,8 +16,6 @@
 # compile this for a different processor.
 
 CXX ?= g++
-# CXX = riscv64-linux-gnu-g++
-# CFLAGS = -march=rv64imafdcv -O3
 
 FR_LIB = lib/libframework.a
 FR_INC = include/framework.hpp
