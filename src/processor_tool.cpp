@@ -248,7 +248,7 @@ Network *load_network(Processor **pp,
   }
 
   if (!p->load_network(net)) throw SRE("load_network() failed");
-  if (!track_all_neuron_events(p, net)) throw SRE("track_all_neuron_events() failed.");
+  track_all_neuron_events(p, net);
 
   return net;
 }
