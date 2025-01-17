@@ -2,8 +2,6 @@
 #include "framework.hpp"
 #include "utils/alignment_helpers.hpp"
 #include "utils/json_helpers.hpp"
-#include <algorithm>
-#include <chrono>
 #include <cstddef>
 #include <cstdint>
 #include <stdexcept>
@@ -31,19 +29,22 @@ static json vrisp_spec = {
       "min_potential", "tracked_timesteps"}},
 };
 
-static bool is_integer(double v) {
+static inline bool is_integer(double v) {
     int iv;
 
     iv = v;
     return (iv == v);
 }
 
+#if defined(RISCVV_FIRED) || defined(RISCVV_FULL)
 static bool
 get_fired(const vector<uint8_t, AlignmentAllocator<uint8_t>>& fired_vec,
           size_t index) {
     return ((fired_vec[index / 8]) >> (index % 8)) & 1;
 }
+#endif
 
+#if defined(NO_SIMD) || defined(RISCVV_SYNAPSES)
 static void set_fired(vector<uint8_t, AlignmentAllocator<uint8_t>>& fired_vec,
                       size_t index) {
     fired_vec[index / 8] |= 1 << (index % 8);
@@ -54,6 +55,7 @@ get_leak(const vector<uint8_t, AlignmentAllocator<uint8_t>>& leak_vec,
          size_t index) {
     return ((leak_vec[index / 8]) >> (index % 8)) & 1;
 }
+#endif
 
 static void set_leak(vector<uint8_t, AlignmentAllocator<uint8_t>>& leak_vec,
                      size_t index) {
@@ -103,12 +105,10 @@ Network::Network(neuro::Network* net, double _min_potential, char leak,
         neuron_mappings.push_back(node->id);
 
         if (leak_mode == 'c') {
-            // neuron_leak[node->id] = node->get("Leak") != 0;
             if (node->get("Leak") != 0) {
                 set_leak(neuron_leak, node->id);
             }
         } else {
-            // neuron_leak[node->id] = leak_mode == 'a';
             if (leak_mode == 'a') {
                 set_leak(neuron_leak, node->id);
             }
@@ -202,7 +202,6 @@ void Network::process_events(uint32_t time) {
 
     fill(neuron_fired.begin(), neuron_fired.end(), 0);
 
-    // auto start = std::chrono::high_resolution_clock::now();
 #ifdef NO_SIMD
     for (size_t i = 0; i < neuron_count; i++) {
         if (neuron_charge_buffer[internal_timestep * allocation_size + i] <
@@ -220,7 +219,6 @@ void Network::process_events(uint32_t time) {
                                      synapse_to[i][j]] += synapse_weight[i][j];
             }
 
-            // neuron_fired[i] = true;
             set_fired(neuron_fired, i);
 
             // Track output count and last fire time
@@ -229,7 +227,6 @@ void Network::process_events(uint32_t time) {
                 output_fire_count[i]++;
             }
         } else {
-            // if (!neuron_leak[i]) {
             if (!get_leak(neuron_leak, i)) {
                 // If we don't leak we carry this charge over into the next
                 // timestep
@@ -358,8 +355,6 @@ void Network::process_events(uint32_t time) {
             vbool8_t should_carryover =
                 __riscv_vmnor_mm_b8(fired, leak, vector_length);
 
-            // TODO Should benchmark if this load is faster with or without the
-            // mask. The only part the needs to be masked is the store.
             vint8m1_t next_charges = __riscv_vle8_v_i8m1_m(
                 should_carryover,
                 &neuron_charge_buffer[((internal_timestep + 1) %
@@ -462,8 +457,6 @@ void Network::process_events(uint32_t time) {
         }
     }
 #endif
-    // auto end = std::chrono::high_resolution_clock::now();
-    // total_time += end - start;
 
     memset(&neuron_charge_buffer[(internal_timestep * allocation_size)], 0,
            sizeof(*neuron_charge_buffer) * allocation_size);
