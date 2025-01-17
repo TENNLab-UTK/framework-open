@@ -38,19 +38,12 @@ static inline bool is_integer(double v) {
 }
 
 #if defined(RISCVV_FIRED) || defined(RISCVV_FULL) || defined(RISCVV_DVLEN)
-static bool
-get_fired(const vector<uint8_t, AlignmentAllocator<uint8_t>>& fired_vec,
-          size_t index) {
+static bool get_fired(const uint8_t* fired_vec, size_t index) {
     return ((fired_vec[index / 8]) >> (index % 8)) & 1;
 }
 #endif
 
 #if defined(NO_SIMD) || defined(RISCVV_SYNAPSES)
-static void set_fired(vector<uint8_t, AlignmentAllocator<uint8_t>>& fired_vec,
-                      size_t index) {
-    fired_vec[index / 8] |= 1 << (index % 8);
-}
-
 static bool
 get_leak(const vector<uint8_t, AlignmentAllocator<uint8_t>>& leak_vec,
          size_t index) {
@@ -84,7 +77,6 @@ Network::Network(neuro::Network* net, double _min_potential, char leak,
     inputs.resize(allocation_size);
     outputs.resize(allocation_size);
 
-    neuron_fired.resize(allocation_size / 8);
     output_fire_count.resize(allocation_size, 0);
     output_last_fire_timestep.resize(allocation_size, -1);
     neuron_threshold.resize(allocation_size, INT8_MAX);
@@ -201,8 +193,6 @@ void Network::process_events(uint32_t time) {
     size_t internal_timestep =
         (current_timestep + time) % tracked_timesteps_count;
 
-    fill(neuron_fired.begin(), neuron_fired.end(), 0);
-
 #ifdef NO_SIMD
     for (size_t i = 0; i < neuron_count; i++) {
         if (neuron_charge_buffer[internal_timestep * allocation_size + i] <
@@ -219,8 +209,6 @@ void Network::process_events(uint32_t time) {
                                          allocation_size +
                                      synapse_to[i][j]] += synapse_weight[i][j];
             }
-
-            set_fired(neuron_fired, i);
 
             // Track output count and last fire time
             if (outputs[i]) {
@@ -286,9 +274,10 @@ void Network::process_events(uint32_t time) {
                 next_charges, vector_length);
         }
 
-        __riscv_vsm_v_b8(&neuron_fired[i / 8], fired, vector_length);
+        uint8_t fired_mask[4] = {0};
+        __riscv_vsm_v_b8(fired_mask, fired, vector_length);
         for (size_t j = 0; j < vector_length; j++) {
-            if (!get_fired(neuron_fired, i + j)) {
+            if (!get_fired(fired_mask, j)) {
                 continue;
             }
             if (outputs[i + j]) {
@@ -376,9 +365,10 @@ void Network::process_events(uint32_t time) {
                 next_charges, vector_length);
         }
 
-        __riscv_vsm_v_b4(&neuron_fired[i / 8], fired, vector_length);
+        uint8_t fired_mask[4] = {0};
+        __riscv_vsm_v_b4(fired_mask, fired, vector_length);
         for (size_t j = 0; j < vector_length; j++) {
-            if (!get_fired(neuron_fired, i + j)) {
+            if (!get_fired(fired_mask, j)) {
                 continue;
             }
             if (outputs[i + j]) {
@@ -465,9 +455,10 @@ void Network::process_events(uint32_t time) {
                 next_charges, vector_length);
         }
 
-        __riscv_vsm_v_b8(&neuron_fired[i / 8], fired, vector_length);
+        uint8_t fired_mask[4] = {0};
+        __riscv_vsm_v_b8(fired_mask, fired, vector_length);
         for (size_t j = 0; j < vector_length; j++) {
-            if (!get_fired(neuron_fired, i + j)) {
+            if (!get_fired(fired_mask, j)) {
                 continue;
             }
             if (outputs[i + j]) {
@@ -496,7 +487,6 @@ void Network::process_events(uint32_t time) {
         }
         if (neuron_charge_buffer[internal_timestep * allocation_size + i] >=
             neuron_threshold[i]) {
-            set_fired(neuron_fired, i);
             if (outputs[i]) {
                 output_last_fire_timestep[i] = time;
                 output_fire_count[i]++;
@@ -633,7 +623,6 @@ void Network::clear_activity() {
            sizeof(*neuron_charge_buffer) * tracked_timesteps_count *
                allocation_size);
 
-    fill(neuron_fired.begin(), neuron_fired.end(), 0);
     fill(output_last_fire_timestep.begin(), output_last_fire_timestep.end(),
          -1);
     fill(output_fire_count.begin(), output_fire_count.end(), 0);

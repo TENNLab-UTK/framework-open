@@ -63,8 +63,6 @@ class Network {
     size_t tracked_timesteps_count;
 
     vector<uint8_t, AlignmentAllocator<uint8_t>>
-        neuron_fired; /**< Bitmap, Did this neuron fire on this timestep */
-    vector<uint8_t, AlignmentAllocator<uint8_t>>
         output_fire_count; /**< Number of fires since last run() call*/
     vector<int8_t, AlignmentAllocator<int8_t>> output_last_fire_timestep;
     /**<
