@@ -839,7 +839,9 @@ int main(int argc, char **argv)
         if (network_processor_validation(net, p)) {
           if (sv.size() == 1) {
             if (sv[0][0] == 'T') {
-              (void) track_all_neuron_events(p, net);
+              if (!track_all_neuron_events(p, net)) {
+                printf("track_all_neuron_events() not supported by processor.\n");
+              }
             } else {
               for (nit = net->begin(); nit != net->end(); nit++) {
                 p->track_neuron_events(nit->second->id, false);
