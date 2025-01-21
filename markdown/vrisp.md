@@ -57,6 +57,8 @@ Let's dive into how we actually compute more than one result at a time. The gene
 
 To start, VRISP requires users to specific a fixed number of `tracked_timesteps`, which determines the size of the "ring buffer" that holds each of the neurons charge for the next `n` time steps. This offers two main advantages, the memory usage of VRISP no longer grows with network activity, and we can use scatter/gather instructions to manipulate memory. We will discuss the scatter/gather instructions later, but for now we can just think of each neuron having exactly one value for its current charge, which we will use in the next section.
 
+VRISP has two different components of the processing loop that can be vectorized. Both are described in the following section, and can be independently enabled. Additionally, their combination can also be enabled to have a fully vectorized processing loop in the processor.
+
 ### Which Neurons should Fire?
 
 To begin we load the charges for up to 8 neurons into a single vector. I say up to 8 because we only load as many as we need, meaning if we have a network with 7 neurons we will load 7 charges into a vector. Then we create another vector where each index holds the minimum potential. A simple `max` instruction gives us the greater of the two values in either vector, resulting in the beginning charges for each neuron.
