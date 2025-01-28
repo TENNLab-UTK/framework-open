@@ -18,7 +18,7 @@ VRISP is a specialized variant of the original RISP processor, focused on optimi
   3. Emulation of the RAVENs neuroprocessor is not supported.
   4. Random noise addition is not supported.
   5. All run times are exclusive (same as RISP default `run_time_inclusive=false`).
-  6. All thresholds are includive (same as RISP default `threshold_inclusive=true`)
+  6. All thresholds are inclusive (same as RISP default `threshold_inclusive=true`)
   
 For the above reasons, most networks trained for RISP will work exactly the same on VRISP as long as the following RISP parameters are kept the same.
 
@@ -36,6 +36,12 @@ For the above reasons, most networks trained for RISP will work exactly the same
 ```
 
 VRISP additionally adds the concept of `"tracked_timesteps"`, which should be set to `"max_delay" + 1`, although it can be set higher at the cost of greater memory usage. 
+
+# Why?
+
+The work on VRISP began out of the necessity to showcase computationally expensive networks on real world embedded-class hardware. Specifically the TENNLab neuromorphic implementation of ![https://github.com/TENNLab-UTK/dbscan](dbscan). This led to the data-oriented design that allows VRISP to achieve great performance on large densely connected networks.
+
+Through the research and design process I discovered that the new architecture would lend itself nicely to data level parallelism, as all operations of neurons/synapses had now been made independent. For this initial implementation I decided to focus my efforts on a scalar implementation that should run on any processor, and a vectorized implementation for processors supporting the RISC-V vector 1.0 extension. This neuroprocessor showcases that simulating neuromorphic networks can benefit greatly from hardware support for parallelism, especially with lower overall compute power, as is often found in embedded-class hardware.
  
 # Implementation Details
 
@@ -87,7 +93,7 @@ To finish the process or carry-over the same mask is used to write the result ch
 
 Once we have determined that a neuron should fire the next step is to fire down all of its synapses. Normally this involves loop through each of the outgoing synapses one-by-one, but we can do better than that with vector instructions. Instead, we can operate of 8 synapses at once by taking advantage of the "ring buffer" structure we explained earlier.
 
-Instead of giving each neuron its own ring buffer, we combine all neurons together into a 2D vector, with rows representing a distinct timestep, and columns representing the individual neuron. 
+Instead of giving each neuron its own ring buffer, we combine all neurons together into a 2D vector, with rows representing a distinct time step, and columns representing the individual neuron. 
 
 ![images/charge-buffer.png](images/charge-buffer.png)
 
@@ -131,7 +137,7 @@ As with RISP, all of these configurations have `"leak_mode"` set to `"none"`, me
 - Minimum neuron threshold is *0*.
 - Minimum neuron potential is *-n*.
 - Maximum synapse delay is *max(n,15)*.
-- Tracked timesteps is *max_delay + 1*
+- Tracked time steps is *max_delay + 1*
 
 `VRISP-n+1` means that:
 
@@ -141,7 +147,7 @@ As with RISP, all of these configurations have `"leak_mode"` set to `"none"`, me
 - Minimum neuron threshold is *1*.
 - Minimum neuron potential is *0*.
 - Maximum synapse delay is *max(n,15)*.
-- Tracked timesteps is *max_delay + 1*
+- Tracked time steps is *max_delay + 1*
 
 -------------------------------------------------------------------------------
 # Params
