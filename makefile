@@ -34,12 +34,12 @@ VRISP_RVV_SYNAPSES_OBJ = obj/vrisp_rvv_synapses.o obj/vrisp_static.o
 all: lib/libframework.a \
      bin/network_tool \
      bin/processor_tool_risp \
-	 bin/processor_tool_vrisp \
+     bin/processor_tool_vrisp \
 
 riscv_vector: all \
-		      bin/processor_tool_vrisp_vector_full \
-			  bin/processor_tool_vrisp_vector_fired \
-			  bin/processor_tool_vrisp_vector_synapses
+              bin/processor_tool_vrisp_vector_full \
+              bin/processor_tool_vrisp_vector_fired \
+              bin/processor_tool_vrisp_vector_synapses
 
 utils: bin/property_pack_tool \
        bin/property_tool
