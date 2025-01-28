@@ -1,0 +1,18 @@
+ML tmp_network.txt
+ASR 0 0101
+ASR 1 0011
+RUN 1
+OC
+OLF
+RUN 1
+OC
+OLF
+RUN 1
+OC
+OLF
+RUN 1
+OC
+OLF
+RUN 1
+OC
+OLF

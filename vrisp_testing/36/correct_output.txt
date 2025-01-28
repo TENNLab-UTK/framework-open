@@ -1,0 +1,2 @@
+node 0(O-Bar) spike counts: 1
+node 1(O-Stripe) spike counts: 0

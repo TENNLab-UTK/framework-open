@@ -1,0 +1,1 @@
+A VRISP network to approximate sine(x) ~3% error rate

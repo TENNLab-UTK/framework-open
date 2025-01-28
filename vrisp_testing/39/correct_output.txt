@@ -1,0 +1,2 @@
+node 0(O-Bar) last fire time: -1.0
+node 1(O-Stripe) last fire time: -1.0

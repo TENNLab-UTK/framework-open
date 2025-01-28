@@ -1,0 +1,68 @@
+ML tmp_network.txt
+
+AS 0 0 1
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+
+AS 2 0 1
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+NCH
+
+AS 1 0 1   2 1 1 
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC
+RUN 1
+OC

@@ -1,0 +1,18 @@
+FJ tmp_empty_network.txt
+
+AN 0 1 2 3 4
+AI 0 1 2 3 4
+SNP_ALL Threshold 10
+AE 0 4  1 4  2 4  3 4
+SEP 0 4 Weight 10
+SEP 1 4 Weight -6
+SEP 2 4 Weight -5
+SEP 3 4 Weight -2
+SEP 0 4 Delay 1
+SEP 1 4 Delay 1
+SEP 2 4 Delay 1
+SEP 3 4 Delay 1
+
+# Store
+
+TJ tmp_network.txt

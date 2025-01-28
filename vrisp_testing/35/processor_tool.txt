@@ -1,0 +1,10111 @@
+ML tmp_network.txt
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 0 27 1
+AS 0 28 1
+AS 0 29 1
+AS 1 0 1
+RUN 60
+OC
+
+# Value is 0.000000
+# sin(x) is 0
+# Spikes on input neuron 0: 30
+# Spikes on input neuron 1: 1
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 15
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 0 27 1
+AS 0 28 1
+AS 0 29 1
+AS 1 0 1
+RUN 60
+OC
+
+# Value is 0.026180
+# sin(x) is 0.026177
+# Spikes on input neuron 0: 30
+# Spikes on input neuron 1: 1
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 15
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 0 27 1
+AS 0 28 1
+AS 0 29 1
+AS 1 0 1
+RUN 60
+OC
+
+# Value is 0.052360
+# sin(x) is 0.0523361
+# Spikes on input neuron 0: 30
+# Spikes on input neuron 1: 1
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 16
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 0 27 1
+AS 0 28 1
+AS 0 29 1
+AS 1 0 1
+RUN 60
+OC
+
+# Value is 0.078540
+# sin(x) is 0.0784593
+# Spikes on input neuron 0: 30
+# Spikes on input neuron 1: 1
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 16
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 0 27 1
+AS 0 28 1
+AS 1 0 1
+AS 1 1 1
+RUN 60
+OC
+
+# Value is 0.104720
+# sin(x) is 0.104529
+# Spikes on input neuron 0: 29
+# Spikes on input neuron 1: 2
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 16
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 0 27 1
+AS 0 28 1
+AS 1 0 1
+AS 1 1 1
+RUN 60
+OC
+
+# Value is 0.130900
+# sin(x) is 0.130526
+# Spikes on input neuron 0: 29
+# Spikes on input neuron 1: 2
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 16
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 0 27 1
+AS 0 28 1
+AS 1 0 1
+AS 1 1 1
+RUN 60
+OC
+
+# Value is 0.157080
+# sin(x) is 0.156435
+# Spikes on input neuron 0: 29
+# Spikes on input neuron 1: 2
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 17
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 0 27 1
+AS 0 28 1
+AS 1 0 1
+AS 1 1 1
+RUN 60
+OC
+
+# Value is 0.183260
+# sin(x) is 0.182236
+# Spikes on input neuron 0: 29
+# Spikes on input neuron 1: 2
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 17
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 0 27 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+RUN 60
+OC
+
+# Value is 0.209440
+# sin(x) is 0.207912
+# Spikes on input neuron 0: 28
+# Spikes on input neuron 1: 3
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 17
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 0 27 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+RUN 60
+OC
+
+# Value is 0.235619
+# sin(x) is 0.233445
+# Spikes on input neuron 0: 28
+# Spikes on input neuron 1: 3
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 17
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 0 27 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+RUN 60
+OC
+
+# Value is 0.261799
+# sin(x) is 0.258819
+# Spikes on input neuron 0: 28
+# Spikes on input neuron 1: 3
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 18
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 0 27 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+RUN 60
+OC
+
+# Value is 0.287979
+# sin(x) is 0.284015
+# Spikes on input neuron 0: 28
+# Spikes on input neuron 1: 3
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 18
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+RUN 60
+OC
+
+# Value is 0.314159
+# sin(x) is 0.309017
+# Spikes on input neuron 0: 27
+# Spikes on input neuron 1: 4
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 18
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+RUN 60
+OC
+
+# Value is 0.340339
+# sin(x) is 0.333807
+# Spikes on input neuron 0: 27
+# Spikes on input neuron 1: 4
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 18
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+RUN 60
+OC
+
+# Value is 0.366519
+# sin(x) is 0.358368
+# Spikes on input neuron 0: 27
+# Spikes on input neuron 1: 4
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 19
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 0 26 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+RUN 60
+OC
+
+# Value is 0.392699
+# sin(x) is 0.382683
+# Spikes on input neuron 0: 27
+# Spikes on input neuron 1: 4
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 19
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+RUN 60
+OC
+
+# Value is 0.418879
+# sin(x) is 0.406737
+# Spikes on input neuron 0: 26
+# Spikes on input neuron 1: 5
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 19
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+RUN 60
+OC
+
+# Value is 0.445059
+# sin(x) is 0.430511
+# Spikes on input neuron 0: 26
+# Spikes on input neuron 1: 5
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 19
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+RUN 60
+OC
+
+# Value is 0.471239
+# sin(x) is 0.453991
+# Spikes on input neuron 0: 26
+# Spikes on input neuron 1: 5
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 20
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 0 25 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+RUN 60
+OC
+
+# Value is 0.497419
+# sin(x) is 0.477159
+# Spikes on input neuron 0: 26
+# Spikes on input neuron 1: 5
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 20
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+RUN 60
+OC
+
+# Value is 0.523599
+# sin(x) is 0.5
+# Spikes on input neuron 0: 25
+# Spikes on input neuron 1: 6
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 20
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+RUN 60
+OC
+
+# Value is 0.549779
+# sin(x) is 0.522499
+# Spikes on input neuron 0: 25
+# Spikes on input neuron 1: 6
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 20
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+RUN 60
+OC
+
+# Value is 0.575959
+# sin(x) is 0.544639
+# Spikes on input neuron 0: 25
+# Spikes on input neuron 1: 6
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 20
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 0 24 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+RUN 60
+OC
+
+# Value is 0.602139
+# sin(x) is 0.566407
+# Spikes on input neuron 0: 25
+# Spikes on input neuron 1: 6
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 21
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+RUN 60
+OC
+
+# Value is 0.628319
+# sin(x) is 0.587786
+# Spikes on input neuron 0: 24
+# Spikes on input neuron 1: 7
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 21
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+RUN 60
+OC
+
+# Value is 0.654498
+# sin(x) is 0.608761
+# Spikes on input neuron 0: 24
+# Spikes on input neuron 1: 7
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 21
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+RUN 60
+OC
+
+# Value is 0.680678
+# sin(x) is 0.62932
+# Spikes on input neuron 0: 24
+# Spikes on input neuron 1: 7
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 21
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 0 23 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+RUN 60
+OC
+
+# Value is 0.706858
+# sin(x) is 0.649448
+# Spikes on input neuron 0: 24
+# Spikes on input neuron 1: 7
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 21
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+RUN 60
+OC
+
+# Value is 0.733038
+# sin(x) is 0.66913
+# Spikes on input neuron 0: 23
+# Spikes on input neuron 1: 8
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 22
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+RUN 60
+OC
+
+# Value is 0.759218
+# sin(x) is 0.688354
+# Spikes on input neuron 0: 23
+# Spikes on input neuron 1: 8
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 22
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+RUN 60
+OC
+
+# Value is 0.785398
+# sin(x) is 0.707107
+# Spikes on input neuron 0: 23
+# Spikes on input neuron 1: 8
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 22
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 0 22 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+RUN 60
+OC
+
+# Value is 0.811578
+# sin(x) is 0.725374
+# Spikes on input neuron 0: 23
+# Spikes on input neuron 1: 8
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 22
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+RUN 60
+OC
+
+# Value is 0.837758
+# sin(x) is 0.743145
+# Spikes on input neuron 0: 22
+# Spikes on input neuron 1: 9
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 22
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+RUN 60
+OC
+
+# Value is 0.863938
+# sin(x) is 0.760406
+# Spikes on input neuron 0: 22
+# Spikes on input neuron 1: 9
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 23
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+RUN 60
+OC
+
+# Value is 0.890118
+# sin(x) is 0.777146
+# Spikes on input neuron 0: 22
+# Spikes on input neuron 1: 9
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 23
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 0 21 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+RUN 60
+OC
+
+# Value is 0.916298
+# sin(x) is 0.793353
+# Spikes on input neuron 0: 22
+# Spikes on input neuron 1: 9
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 23
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+RUN 60
+OC
+
+# Value is 0.942478
+# sin(x) is 0.809017
+# Spikes on input neuron 0: 21
+# Spikes on input neuron 1: 10
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 23
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+RUN 60
+OC
+
+# Value is 0.968658
+# sin(x) is 0.824126
+# Spikes on input neuron 0: 21
+# Spikes on input neuron 1: 10
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 23
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+RUN 60
+OC
+
+# Value is 0.994838
+# sin(x) is 0.838671
+# Spikes on input neuron 0: 21
+# Spikes on input neuron 1: 10
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 23
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 0 20 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+RUN 60
+OC
+
+# Value is 1.021018
+# sin(x) is 0.85264
+# Spikes on input neuron 0: 21
+# Spikes on input neuron 1: 10
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+RUN 60
+OC
+
+# Value is 1.047198
+# sin(x) is 0.866026
+# Spikes on input neuron 0: 20
+# Spikes on input neuron 1: 11
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+RUN 60
+OC
+
+# Value is 1.073377
+# sin(x) is 0.878817
+# Spikes on input neuron 0: 20
+# Spikes on input neuron 1: 11
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+RUN 60
+OC
+
+# Value is 1.099557
+# sin(x) is 0.891006
+# Spikes on input neuron 0: 20
+# Spikes on input neuron 1: 11
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 0 19 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+RUN 60
+OC
+
+# Value is 1.125737
+# sin(x) is 0.902585
+# Spikes on input neuron 0: 20
+# Spikes on input neuron 1: 11
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+RUN 60
+OC
+
+# Value is 1.151917
+# sin(x) is 0.913545
+# Spikes on input neuron 0: 19
+# Spikes on input neuron 1: 12
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+RUN 60
+OC
+
+# Value is 1.178097
+# sin(x) is 0.923879
+# Spikes on input neuron 0: 19
+# Spikes on input neuron 1: 12
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+RUN 60
+OC
+
+# Value is 1.204277
+# sin(x) is 0.93358
+# Spikes on input neuron 0: 19
+# Spikes on input neuron 1: 12
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 0 18 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+RUN 60
+OC
+
+# Value is 1.230457
+# sin(x) is 0.942641
+# Spikes on input neuron 0: 19
+# Spikes on input neuron 1: 12
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+RUN 60
+OC
+
+# Value is 1.256637
+# sin(x) is 0.951056
+# Spikes on input neuron 0: 18
+# Spikes on input neuron 1: 13
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+RUN 60
+OC
+
+# Value is 1.282817
+# sin(x) is 0.95882
+# Spikes on input neuron 0: 18
+# Spikes on input neuron 1: 13
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+RUN 60
+OC
+
+# Value is 1.308997
+# sin(x) is 0.965926
+# Spikes on input neuron 0: 18
+# Spikes on input neuron 1: 13
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 0 17 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+RUN 60
+OC
+
+# Value is 1.335177
+# sin(x) is 0.97237
+# Spikes on input neuron 0: 18
+# Spikes on input neuron 1: 13
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+RUN 60
+OC
+
+# Value is 1.361357
+# sin(x) is 0.978148
+# Spikes on input neuron 0: 17
+# Spikes on input neuron 1: 14
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+RUN 60
+OC
+
+# Value is 1.387537
+# sin(x) is 0.983255
+# Spikes on input neuron 0: 17
+# Spikes on input neuron 1: 14
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+RUN 60
+OC
+
+# Value is 1.413717
+# sin(x) is 0.987688
+# Spikes on input neuron 0: 17
+# Spikes on input neuron 1: 14
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 0 16 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+RUN 60
+OC
+
+# Value is 1.439897
+# sin(x) is 0.991445
+# Spikes on input neuron 0: 17
+# Spikes on input neuron 1: 14
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+RUN 60
+OC
+
+# Value is 1.466077
+# sin(x) is 0.994522
+# Spikes on input neuron 0: 16
+# Spikes on input neuron 1: 15
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+RUN 60
+OC
+
+# Value is 1.492257
+# sin(x) is 0.996917
+# Spikes on input neuron 0: 16
+# Spikes on input neuron 1: 15
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+RUN 60
+OC
+
+# Value is 1.518436
+# sin(x) is 0.99863
+# Spikes on input neuron 0: 16
+# Spikes on input neuron 1: 15
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 0 15 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+RUN 60
+OC
+
+# Value is 1.544616
+# sin(x) is 0.999657
+# Spikes on input neuron 0: 16
+# Spikes on input neuron 1: 15
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+RUN 60
+OC
+
+# Value is 1.570796
+# sin(x) is 1
+# Spikes on input neuron 0: 15
+# Spikes on input neuron 1: 16
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+RUN 60
+OC
+
+# Value is 1.596976
+# sin(x) is 0.999657
+# Spikes on input neuron 0: 15
+# Spikes on input neuron 1: 16
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+RUN 60
+OC
+
+# Value is 1.623156
+# sin(x) is 0.99863
+# Spikes on input neuron 0: 15
+# Spikes on input neuron 1: 16
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 0 14 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+RUN 60
+OC
+
+# Value is 1.649336
+# sin(x) is 0.996917
+# Spikes on input neuron 0: 15
+# Spikes on input neuron 1: 16
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+RUN 60
+OC
+
+# Value is 1.675516
+# sin(x) is 0.994522
+# Spikes on input neuron 0: 14
+# Spikes on input neuron 1: 17
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+RUN 60
+OC
+
+# Value is 1.701696
+# sin(x) is 0.991445
+# Spikes on input neuron 0: 14
+# Spikes on input neuron 1: 17
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+RUN 60
+OC
+
+# Value is 1.727876
+# sin(x) is 0.987688
+# Spikes on input neuron 0: 14
+# Spikes on input neuron 1: 17
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 0 13 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+RUN 60
+OC
+
+# Value is 1.754056
+# sin(x) is 0.983255
+# Spikes on input neuron 0: 14
+# Spikes on input neuron 1: 17
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+RUN 60
+OC
+
+# Value is 1.780236
+# sin(x) is 0.978148
+# Spikes on input neuron 0: 13
+# Spikes on input neuron 1: 18
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+RUN 60
+OC
+
+# Value is 1.806416
+# sin(x) is 0.97237
+# Spikes on input neuron 0: 13
+# Spikes on input neuron 1: 18
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+RUN 60
+OC
+
+# Value is 1.832596
+# sin(x) is 0.965926
+# Spikes on input neuron 0: 13
+# Spikes on input neuron 1: 18
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 0 12 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+RUN 60
+OC
+
+# Value is 1.858776
+# sin(x) is 0.95882
+# Spikes on input neuron 0: 13
+# Spikes on input neuron 1: 18
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+RUN 60
+OC
+
+# Value is 1.884956
+# sin(x) is 0.951056
+# Spikes on input neuron 0: 12
+# Spikes on input neuron 1: 19
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 25
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+RUN 60
+OC
+
+# Value is 1.911136
+# sin(x) is 0.942641
+# Spikes on input neuron 0: 12
+# Spikes on input neuron 1: 19
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+RUN 60
+OC
+
+# Value is 1.937315
+# sin(x) is 0.933581
+# Spikes on input neuron 0: 12
+# Spikes on input neuron 1: 19
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 0 11 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+RUN 60
+OC
+
+# Value is 1.963495
+# sin(x) is 0.92388
+# Spikes on input neuron 0: 12
+# Spikes on input neuron 1: 19
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+RUN 60
+OC
+
+# Value is 1.989675
+# sin(x) is 0.913546
+# Spikes on input neuron 0: 11
+# Spikes on input neuron 1: 20
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+RUN 60
+OC
+
+# Value is 2.015855
+# sin(x) is 0.902585
+# Spikes on input neuron 0: 11
+# Spikes on input neuron 1: 20
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+RUN 60
+OC
+
+# Value is 2.042035
+# sin(x) is 0.891007
+# Spikes on input neuron 0: 11
+# Spikes on input neuron 1: 20
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 0 10 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+RUN 60
+OC
+
+# Value is 2.068215
+# sin(x) is 0.878817
+# Spikes on input neuron 0: 11
+# Spikes on input neuron 1: 20
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+RUN 60
+OC
+
+# Value is 2.094395
+# sin(x) is 0.866025
+# Spikes on input neuron 0: 10
+# Spikes on input neuron 1: 21
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+RUN 60
+OC
+
+# Value is 2.120575
+# sin(x) is 0.85264
+# Spikes on input neuron 0: 10
+# Spikes on input neuron 1: 21
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 24
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+RUN 60
+OC
+
+# Value is 2.146755
+# sin(x) is 0.838671
+# Spikes on input neuron 0: 10
+# Spikes on input neuron 1: 21
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 23
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 0 9 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+RUN 60
+OC
+
+# Value is 2.172935
+# sin(x) is 0.824126
+# Spikes on input neuron 0: 10
+# Spikes on input neuron 1: 21
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 23
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+RUN 60
+OC
+
+# Value is 2.199115
+# sin(x) is 0.809017
+# Spikes on input neuron 0: 9
+# Spikes on input neuron 1: 22
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 23
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+RUN 60
+OC
+
+# Value is 2.225295
+# sin(x) is 0.793353
+# Spikes on input neuron 0: 9
+# Spikes on input neuron 1: 22
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 23
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+RUN 60
+OC
+
+# Value is 2.251475
+# sin(x) is 0.777146
+# Spikes on input neuron 0: 9
+# Spikes on input neuron 1: 22
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 23
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 0 8 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+RUN 60
+OC
+
+# Value is 2.277655
+# sin(x) is 0.760406
+# Spikes on input neuron 0: 9
+# Spikes on input neuron 1: 22
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 23
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+RUN 60
+OC
+
+# Value is 2.303835
+# sin(x) is 0.743145
+# Spikes on input neuron 0: 8
+# Spikes on input neuron 1: 23
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 22
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+RUN 60
+OC
+
+# Value is 2.330015
+# sin(x) is 0.725374
+# Spikes on input neuron 0: 8
+# Spikes on input neuron 1: 23
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 22
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+RUN 60
+OC
+
+# Value is 2.356194
+# sin(x) is 0.707107
+# Spikes on input neuron 0: 8
+# Spikes on input neuron 1: 23
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 22
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 0 7 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+RUN 60
+OC
+
+# Value is 2.382374
+# sin(x) is 0.688355
+# Spikes on input neuron 0: 8
+# Spikes on input neuron 1: 23
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 22
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+RUN 60
+OC
+
+# Value is 2.408554
+# sin(x) is 0.669131
+# Spikes on input neuron 0: 7
+# Spikes on input neuron 1: 24
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 22
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+RUN 60
+OC
+
+# Value is 2.434734
+# sin(x) is 0.649448
+# Spikes on input neuron 0: 7
+# Spikes on input neuron 1: 24
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 21
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+RUN 60
+OC
+
+# Value is 2.460914
+# sin(x) is 0.629321
+# Spikes on input neuron 0: 7
+# Spikes on input neuron 1: 24
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 21
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 0 6 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+RUN 60
+OC
+
+# Value is 2.487094
+# sin(x) is 0.608762
+# Spikes on input neuron 0: 7
+# Spikes on input neuron 1: 24
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 21
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+RUN 60
+OC
+
+# Value is 2.513274
+# sin(x) is 0.587785
+# Spikes on input neuron 0: 6
+# Spikes on input neuron 1: 25
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 21
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+RUN 60
+OC
+
+# Value is 2.539454
+# sin(x) is 0.566406
+# Spikes on input neuron 0: 6
+# Spikes on input neuron 1: 25
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 21
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+RUN 60
+OC
+
+# Value is 2.565634
+# sin(x) is 0.544639
+# Spikes on input neuron 0: 6
+# Spikes on input neuron 1: 25
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 20
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 0 5 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+RUN 60
+OC
+
+# Value is 2.591814
+# sin(x) is 0.522499
+# Spikes on input neuron 0: 6
+# Spikes on input neuron 1: 25
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 20
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+RUN 60
+OC
+
+# Value is 2.617994
+# sin(x) is 0.5
+# Spikes on input neuron 0: 5
+# Spikes on input neuron 1: 26
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 20
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+RUN 60
+OC
+
+# Value is 2.644174
+# sin(x) is 0.477159
+# Spikes on input neuron 0: 5
+# Spikes on input neuron 1: 26
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 20
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+RUN 60
+OC
+
+# Value is 2.670354
+# sin(x) is 0.45399
+# Spikes on input neuron 0: 5
+# Spikes on input neuron 1: 26
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 20
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 0 4 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+RUN 60
+OC
+
+# Value is 2.696534
+# sin(x) is 0.430511
+# Spikes on input neuron 0: 5
+# Spikes on input neuron 1: 26
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 19
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+RUN 60
+OC
+
+# Value is 2.722714
+# sin(x) is 0.406736
+# Spikes on input neuron 0: 4
+# Spikes on input neuron 1: 27
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 19
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+RUN 60
+OC
+
+# Value is 2.748894
+# sin(x) is 0.382683
+# Spikes on input neuron 0: 4
+# Spikes on input neuron 1: 27
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 19
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+RUN 60
+OC
+
+# Value is 2.775074
+# sin(x) is 0.358367
+# Spikes on input neuron 0: 4
+# Spikes on input neuron 1: 27
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 19
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 0 3 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+RUN 60
+OC
+
+# Value is 2.801253
+# sin(x) is 0.333807
+# Spikes on input neuron 0: 4
+# Spikes on input neuron 1: 27
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 18
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+RUN 60
+OC
+
+# Value is 2.827433
+# sin(x) is 0.309017
+# Spikes on input neuron 0: 3
+# Spikes on input neuron 1: 28
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 18
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+RUN 60
+OC
+
+# Value is 2.853613
+# sin(x) is 0.284016
+# Spikes on input neuron 0: 3
+# Spikes on input neuron 1: 28
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 18
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+RUN 60
+OC
+
+# Value is 2.879793
+# sin(x) is 0.258819
+# Spikes on input neuron 0: 3
+# Spikes on input neuron 1: 28
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 18
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 0 2 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+RUN 60
+OC
+
+# Value is 2.905973
+# sin(x) is 0.233446
+# Spikes on input neuron 0: 3
+# Spikes on input neuron 1: 28
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 17
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+RUN 60
+OC
+
+# Value is 2.932153
+# sin(x) is 0.207912
+# Spikes on input neuron 0: 2
+# Spikes on input neuron 1: 29
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 17
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+RUN 60
+OC
+
+# Value is 2.958333
+# sin(x) is 0.182236
+# Spikes on input neuron 0: 2
+# Spikes on input neuron 1: 29
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 17
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+RUN 60
+OC
+
+# Value is 2.984513
+# sin(x) is 0.156434
+# Spikes on input neuron 0: 2
+# Spikes on input neuron 1: 29
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 17
+
+CA
+AS 0 0 1
+AS 0 1 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+RUN 60
+OC
+
+# Value is 3.010693
+# sin(x) is 0.130526
+# Spikes on input neuron 0: 2
+# Spikes on input neuron 1: 29
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 16
+
+CA
+AS 0 0 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+AS 1 29 1
+RUN 60
+OC
+
+# Value is 3.036873
+# sin(x) is 0.104528
+# Spikes on input neuron 0: 1
+# Spikes on input neuron 1: 30
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 16
+
+CA
+AS 0 0 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+AS 1 29 1
+RUN 60
+OC
+
+# Value is 3.063053
+# sin(x) is 0.0784589
+# Spikes on input neuron 0: 1
+# Spikes on input neuron 1: 30
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 16
+
+CA
+AS 0 0 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+AS 1 29 1
+RUN 60
+OC
+
+# Value is 3.089233
+# sin(x) is 0.0523357
+# Spikes on input neuron 0: 1
+# Spikes on input neuron 1: 30
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 16
+
+CA
+AS 0 0 1
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+AS 1 29 1
+RUN 60
+OC
+
+# Value is 3.115413
+# sin(x) is 0.0261767
+# Spikes on input neuron 0: 1
+# Spikes on input neuron 1: 30
+# Spikes on input neuron 2: 0
+# Number of output spikes should be: 15
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+AS 1 29 1
+AS 1 30 1
+AS 2 0 1
+RUN 60
+OC
+
+# Value is 3.141593
+# sin(x) is -3.4641e-07
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 31
+# Spikes on input neuron 2: 1
+# Number of output spikes should be: 15
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+AS 1 29 1
+AS 2 0 1
+RUN 60
+OC
+
+# Value is 3.167773
+# sin(x) is -0.0261774
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 30
+# Spikes on input neuron 2: 1
+# Number of output spikes should be: 15
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+AS 1 29 1
+AS 2 0 1
+RUN 60
+OC
+
+# Value is 3.193953
+# sin(x) is -0.0523364
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 30
+# Spikes on input neuron 2: 1
+# Number of output spikes should be: 14
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+AS 1 29 1
+AS 2 0 1
+RUN 60
+OC
+
+# Value is 3.220132
+# sin(x) is -0.0784586
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 30
+# Spikes on input neuron 2: 1
+# Number of output spikes should be: 14
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+AS 1 29 1
+AS 2 0 1
+AS 2 1 1
+RUN 60
+OC
+
+# Value is 3.246312
+# sin(x) is -0.104528
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 30
+# Spikes on input neuron 2: 2
+# Number of output spikes should be: 14
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+AS 2 0 1
+AS 2 1 1
+RUN 60
+OC
+
+# Value is 3.272492
+# sin(x) is -0.130526
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 29
+# Spikes on input neuron 2: 2
+# Number of output spikes should be: 14
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+AS 2 0 1
+AS 2 1 1
+RUN 60
+OC
+
+# Value is 3.298672
+# sin(x) is -0.156434
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 29
+# Spikes on input neuron 2: 2
+# Number of output spikes should be: 13
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+AS 2 0 1
+AS 2 1 1
+RUN 60
+OC
+
+# Value is 3.324852
+# sin(x) is -0.182235
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 29
+# Spikes on input neuron 2: 2
+# Number of output spikes should be: 13
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 1 28 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+RUN 60
+OC
+
+# Value is 3.351032
+# sin(x) is -0.207912
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 29
+# Spikes on input neuron 2: 3
+# Number of output spikes should be: 13
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+RUN 60
+OC
+
+# Value is 3.377212
+# sin(x) is -0.233445
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 28
+# Spikes on input neuron 2: 3
+# Number of output spikes should be: 13
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+RUN 60
+OC
+
+# Value is 3.403392
+# sin(x) is -0.258819
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 28
+# Spikes on input neuron 2: 3
+# Number of output spikes should be: 12
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+RUN 60
+OC
+
+# Value is 3.429572
+# sin(x) is -0.284015
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 28
+# Spikes on input neuron 2: 3
+# Number of output spikes should be: 12
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 1 27 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+RUN 60
+OC
+
+# Value is 3.455752
+# sin(x) is -0.309017
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 28
+# Spikes on input neuron 2: 4
+# Number of output spikes should be: 12
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+RUN 60
+OC
+
+# Value is 3.481932
+# sin(x) is -0.333807
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 27
+# Spikes on input neuron 2: 4
+# Number of output spikes should be: 12
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+RUN 60
+OC
+
+# Value is 3.508112
+# sin(x) is -0.358368
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 27
+# Spikes on input neuron 2: 4
+# Number of output spikes should be: 11
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+RUN 60
+OC
+
+# Value is 3.534292
+# sin(x) is -0.382684
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 27
+# Spikes on input neuron 2: 4
+# Number of output spikes should be: 11
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 1 26 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+RUN 60
+OC
+
+# Value is 3.560472
+# sin(x) is -0.406737
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 27
+# Spikes on input neuron 2: 5
+# Number of output spikes should be: 11
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+RUN 60
+OC
+
+# Value is 3.586652
+# sin(x) is -0.430511
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 26
+# Spikes on input neuron 2: 5
+# Number of output spikes should be: 11
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+RUN 60
+OC
+
+# Value is 3.612832
+# sin(x) is -0.453991
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 26
+# Spikes on input neuron 2: 5
+# Number of output spikes should be: 10
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+RUN 60
+OC
+
+# Value is 3.639011
+# sin(x) is -0.477158
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 26
+# Spikes on input neuron 2: 5
+# Number of output spikes should be: 10
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 1 25 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+RUN 60
+OC
+
+# Value is 3.665191
+# sin(x) is -0.5
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 26
+# Spikes on input neuron 2: 6
+# Number of output spikes should be: 10
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+RUN 60
+OC
+
+# Value is 3.691371
+# sin(x) is -0.522498
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 25
+# Spikes on input neuron 2: 6
+# Number of output spikes should be: 10
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+RUN 60
+OC
+
+# Value is 3.717551
+# sin(x) is -0.544639
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 25
+# Spikes on input neuron 2: 6
+# Number of output spikes should be: 10
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+RUN 60
+OC
+
+# Value is 3.743731
+# sin(x) is -0.566406
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 25
+# Spikes on input neuron 2: 6
+# Number of output spikes should be: 9
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 1 24 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+RUN 60
+OC
+
+# Value is 3.769911
+# sin(x) is -0.587785
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 25
+# Spikes on input neuron 2: 7
+# Number of output spikes should be: 9
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+RUN 60
+OC
+
+# Value is 3.796091
+# sin(x) is -0.608761
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 24
+# Spikes on input neuron 2: 7
+# Number of output spikes should be: 9
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+RUN 60
+OC
+
+# Value is 3.822271
+# sin(x) is -0.62932
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 24
+# Spikes on input neuron 2: 7
+# Number of output spikes should be: 9
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+RUN 60
+OC
+
+# Value is 3.848451
+# sin(x) is -0.649448
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 24
+# Spikes on input neuron 2: 7
+# Number of output spikes should be: 9
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 1 23 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+RUN 60
+OC
+
+# Value is 3.874631
+# sin(x) is -0.669131
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 24
+# Spikes on input neuron 2: 8
+# Number of output spikes should be: 8
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+RUN 60
+OC
+
+# Value is 3.900811
+# sin(x) is -0.688355
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 23
+# Spikes on input neuron 2: 8
+# Number of output spikes should be: 8
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+RUN 60
+OC
+
+# Value is 3.926991
+# sin(x) is -0.707107
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 23
+# Spikes on input neuron 2: 8
+# Number of output spikes should be: 8
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+RUN 60
+OC
+
+# Value is 3.953171
+# sin(x) is -0.725375
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 23
+# Spikes on input neuron 2: 8
+# Number of output spikes should be: 8
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 1 22 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+RUN 60
+OC
+
+# Value is 3.979351
+# sin(x) is -0.743145
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 23
+# Spikes on input neuron 2: 9
+# Number of output spikes should be: 8
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+RUN 60
+OC
+
+# Value is 4.005531
+# sin(x) is -0.760406
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 22
+# Spikes on input neuron 2: 9
+# Number of output spikes should be: 7
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+RUN 60
+OC
+
+# Value is 4.031711
+# sin(x) is -0.777146
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 22
+# Spikes on input neuron 2: 9
+# Number of output spikes should be: 7
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+RUN 60
+OC
+
+# Value is 4.057891
+# sin(x) is -0.793354
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 22
+# Spikes on input neuron 2: 9
+# Number of output spikes should be: 7
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 1 21 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+RUN 60
+OC
+
+# Value is 4.084070
+# sin(x) is -0.809017
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 22
+# Spikes on input neuron 2: 10
+# Number of output spikes should be: 7
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+RUN 60
+OC
+
+# Value is 4.110250
+# sin(x) is -0.824126
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 21
+# Spikes on input neuron 2: 10
+# Number of output spikes should be: 7
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+RUN 60
+OC
+
+# Value is 4.136430
+# sin(x) is -0.83867
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 21
+# Spikes on input neuron 2: 10
+# Number of output spikes should be: 7
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+RUN 60
+OC
+
+# Value is 4.162610
+# sin(x) is -0.85264
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 21
+# Spikes on input neuron 2: 10
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 1 20 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+RUN 60
+OC
+
+# Value is 4.188790
+# sin(x) is -0.866025
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 21
+# Spikes on input neuron 2: 11
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+RUN 60
+OC
+
+# Value is 4.214970
+# sin(x) is -0.878817
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 20
+# Spikes on input neuron 2: 11
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+RUN 60
+OC
+
+# Value is 4.241150
+# sin(x) is -0.891006
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 20
+# Spikes on input neuron 2: 11
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+RUN 60
+OC
+
+# Value is 4.267330
+# sin(x) is -0.902585
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 20
+# Spikes on input neuron 2: 11
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 1 19 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+RUN 60
+OC
+
+# Value is 4.293510
+# sin(x) is -0.913545
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 20
+# Spikes on input neuron 2: 12
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+RUN 60
+OC
+
+# Value is 4.319690
+# sin(x) is -0.92388
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 19
+# Spikes on input neuron 2: 12
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+RUN 60
+OC
+
+# Value is 4.345870
+# sin(x) is -0.93358
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 19
+# Spikes on input neuron 2: 12
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+RUN 60
+OC
+
+# Value is 4.372050
+# sin(x) is -0.942642
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 19
+# Spikes on input neuron 2: 12
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 1 18 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+RUN 60
+OC
+
+# Value is 4.398230
+# sin(x) is -0.951057
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 19
+# Spikes on input neuron 2: 13
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+RUN 60
+OC
+
+# Value is 4.424410
+# sin(x) is -0.95882
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 18
+# Spikes on input neuron 2: 13
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+RUN 60
+OC
+
+# Value is 4.450590
+# sin(x) is -0.965926
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 18
+# Spikes on input neuron 2: 13
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+RUN 60
+OC
+
+# Value is 4.476770
+# sin(x) is -0.97237
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 18
+# Spikes on input neuron 2: 13
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 1 17 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+RUN 60
+OC
+
+# Value is 4.502949
+# sin(x) is -0.978148
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 18
+# Spikes on input neuron 2: 14
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+RUN 60
+OC
+
+# Value is 4.529129
+# sin(x) is -0.983255
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 17
+# Spikes on input neuron 2: 14
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+RUN 60
+OC
+
+# Value is 4.555309
+# sin(x) is -0.987688
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 17
+# Spikes on input neuron 2: 14
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+RUN 60
+OC
+
+# Value is 4.581489
+# sin(x) is -0.991445
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 17
+# Spikes on input neuron 2: 14
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 1 16 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+RUN 60
+OC
+
+# Value is 4.607669
+# sin(x) is -0.994522
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 17
+# Spikes on input neuron 2: 15
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+RUN 60
+OC
+
+# Value is 4.633849
+# sin(x) is -0.996917
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 16
+# Spikes on input neuron 2: 15
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+RUN 60
+OC
+
+# Value is 4.660029
+# sin(x) is -0.99863
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 16
+# Spikes on input neuron 2: 15
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+RUN 60
+OC
+
+# Value is 4.686209
+# sin(x) is -0.999657
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 16
+# Spikes on input neuron 2: 15
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 1 15 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+RUN 60
+OC
+
+# Value is 4.712389
+# sin(x) is -1
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 16
+# Spikes on input neuron 2: 16
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+RUN 60
+OC
+
+# Value is 4.738569
+# sin(x) is -0.999657
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 15
+# Spikes on input neuron 2: 16
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+RUN 60
+OC
+
+# Value is 4.764749
+# sin(x) is -0.99863
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 15
+# Spikes on input neuron 2: 16
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+RUN 60
+OC
+
+# Value is 4.790929
+# sin(x) is -0.996917
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 15
+# Spikes on input neuron 2: 16
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 1 14 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+RUN 60
+OC
+
+# Value is 4.817109
+# sin(x) is -0.994522
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 15
+# Spikes on input neuron 2: 17
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+RUN 60
+OC
+
+# Value is 4.843289
+# sin(x) is -0.991445
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 14
+# Spikes on input neuron 2: 17
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+RUN 60
+OC
+
+# Value is 4.869469
+# sin(x) is -0.987688
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 14
+# Spikes on input neuron 2: 17
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+RUN 60
+OC
+
+# Value is 4.895649
+# sin(x) is -0.983255
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 14
+# Spikes on input neuron 2: 17
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 1 13 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+RUN 60
+OC
+
+# Value is 4.921828
+# sin(x) is -0.978148
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 14
+# Spikes on input neuron 2: 18
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+RUN 60
+OC
+
+# Value is 4.948008
+# sin(x) is -0.97237
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 13
+# Spikes on input neuron 2: 18
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+RUN 60
+OC
+
+# Value is 4.974188
+# sin(x) is -0.965926
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 13
+# Spikes on input neuron 2: 18
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+RUN 60
+OC
+
+# Value is 5.000368
+# sin(x) is -0.95882
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 13
+# Spikes on input neuron 2: 18
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 1 12 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+RUN 60
+OC
+
+# Value is 5.026548
+# sin(x) is -0.951057
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 13
+# Spikes on input neuron 2: 19
+# Number of output spikes should be: 5
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+RUN 60
+OC
+
+# Value is 5.052728
+# sin(x) is -0.942642
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 12
+# Spikes on input neuron 2: 19
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+RUN 60
+OC
+
+# Value is 5.078908
+# sin(x) is -0.93358
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 12
+# Spikes on input neuron 2: 19
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+RUN 60
+OC
+
+# Value is 5.105088
+# sin(x) is -0.92388
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 12
+# Spikes on input neuron 2: 19
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 1 11 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+RUN 60
+OC
+
+# Value is 5.131268
+# sin(x) is -0.913545
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 12
+# Spikes on input neuron 2: 20
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+RUN 60
+OC
+
+# Value is 5.157448
+# sin(x) is -0.902585
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 11
+# Spikes on input neuron 2: 20
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+RUN 60
+OC
+
+# Value is 5.183628
+# sin(x) is -0.891006
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 11
+# Spikes on input neuron 2: 20
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+RUN 60
+OC
+
+# Value is 5.209808
+# sin(x) is -0.878817
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 11
+# Spikes on input neuron 2: 20
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 1 10 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+RUN 60
+OC
+
+# Value is 5.235988
+# sin(x) is -0.866025
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 11
+# Spikes on input neuron 2: 21
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+RUN 60
+OC
+
+# Value is 5.262168
+# sin(x) is -0.85264
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 10
+# Spikes on input neuron 2: 21
+# Number of output spikes should be: 6
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+RUN 60
+OC
+
+# Value is 5.288348
+# sin(x) is -0.83867
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 10
+# Spikes on input neuron 2: 21
+# Number of output spikes should be: 7
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+RUN 60
+OC
+
+# Value is 5.314528
+# sin(x) is -0.824126
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 10
+# Spikes on input neuron 2: 21
+# Number of output spikes should be: 7
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 1 9 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+RUN 60
+OC
+
+# Value is 5.340708
+# sin(x) is -0.809017
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 10
+# Spikes on input neuron 2: 22
+# Number of output spikes should be: 7
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+RUN 60
+OC
+
+# Value is 5.366887
+# sin(x) is -0.793354
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 9
+# Spikes on input neuron 2: 22
+# Number of output spikes should be: 7
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+RUN 60
+OC
+
+# Value is 5.393067
+# sin(x) is -0.777146
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 9
+# Spikes on input neuron 2: 22
+# Number of output spikes should be: 7
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+RUN 60
+OC
+
+# Value is 5.419247
+# sin(x) is -0.760406
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 9
+# Spikes on input neuron 2: 22
+# Number of output spikes should be: 7
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 1 8 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+RUN 60
+OC
+
+# Value is 5.445427
+# sin(x) is -0.743145
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 9
+# Spikes on input neuron 2: 23
+# Number of output spikes should be: 8
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+RUN 60
+OC
+
+# Value is 5.471607
+# sin(x) is -0.725375
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 8
+# Spikes on input neuron 2: 23
+# Number of output spikes should be: 8
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+RUN 60
+OC
+
+# Value is 5.497787
+# sin(x) is -0.707107
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 8
+# Spikes on input neuron 2: 23
+# Number of output spikes should be: 8
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+RUN 60
+OC
+
+# Value is 5.523967
+# sin(x) is -0.688355
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 8
+# Spikes on input neuron 2: 23
+# Number of output spikes should be: 8
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 1 7 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+RUN 60
+OC
+
+# Value is 5.550147
+# sin(x) is -0.669131
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 8
+# Spikes on input neuron 2: 24
+# Number of output spikes should be: 8
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+RUN 60
+OC
+
+# Value is 5.576327
+# sin(x) is -0.649448
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 7
+# Spikes on input neuron 2: 24
+# Number of output spikes should be: 9
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+RUN 60
+OC
+
+# Value is 5.602507
+# sin(x) is -0.62932
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 7
+# Spikes on input neuron 2: 24
+# Number of output spikes should be: 9
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+RUN 60
+OC
+
+# Value is 5.628687
+# sin(x) is -0.608761
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 7
+# Spikes on input neuron 2: 24
+# Number of output spikes should be: 9
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 1 6 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+RUN 60
+OC
+
+# Value is 5.654867
+# sin(x) is -0.587785
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 7
+# Spikes on input neuron 2: 25
+# Number of output spikes should be: 9
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+RUN 60
+OC
+
+# Value is 5.681047
+# sin(x) is -0.566406
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 6
+# Spikes on input neuron 2: 25
+# Number of output spikes should be: 9
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+RUN 60
+OC
+
+# Value is 5.707227
+# sin(x) is -0.544639
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 6
+# Spikes on input neuron 2: 25
+# Number of output spikes should be: 10
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+RUN 60
+OC
+
+# Value is 5.733407
+# sin(x) is -0.522498
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 6
+# Spikes on input neuron 2: 25
+# Number of output spikes should be: 10
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 1 5 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+RUN 60
+OC
+
+# Value is 5.759587
+# sin(x) is -0.5
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 6
+# Spikes on input neuron 2: 26
+# Number of output spikes should be: 10
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+RUN 60
+OC
+
+# Value is 5.785766
+# sin(x) is -0.477159
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 5
+# Spikes on input neuron 2: 26
+# Number of output spikes should be: 10
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+RUN 60
+OC
+
+# Value is 5.811946
+# sin(x) is -0.453991
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 5
+# Spikes on input neuron 2: 26
+# Number of output spikes should be: 10
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+RUN 60
+OC
+
+# Value is 5.838126
+# sin(x) is -0.430511
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 5
+# Spikes on input neuron 2: 26
+# Number of output spikes should be: 11
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 1 4 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+RUN 60
+OC
+
+# Value is 5.864306
+# sin(x) is -0.406737
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 5
+# Spikes on input neuron 2: 27
+# Number of output spikes should be: 11
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+RUN 60
+OC
+
+# Value is 5.890486
+# sin(x) is -0.382684
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 4
+# Spikes on input neuron 2: 27
+# Number of output spikes should be: 11
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+RUN 60
+OC
+
+# Value is 5.916666
+# sin(x) is -0.358368
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 4
+# Spikes on input neuron 2: 27
+# Number of output spikes should be: 11
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+RUN 60
+OC
+
+# Value is 5.942846
+# sin(x) is -0.333807
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 4
+# Spikes on input neuron 2: 27
+# Number of output spikes should be: 12
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 1 3 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+AS 2 27 1
+RUN 60
+OC
+
+# Value is 5.969026
+# sin(x) is -0.309017
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 4
+# Spikes on input neuron 2: 28
+# Number of output spikes should be: 12
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+AS 2 27 1
+RUN 60
+OC
+
+# Value is 5.995206
+# sin(x) is -0.284015
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 3
+# Spikes on input neuron 2: 28
+# Number of output spikes should be: 12
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+AS 2 27 1
+RUN 60
+OC
+
+# Value is 6.021386
+# sin(x) is -0.258819
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 3
+# Spikes on input neuron 2: 28
+# Number of output spikes should be: 12
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+AS 2 27 1
+RUN 60
+OC
+
+# Value is 6.047566
+# sin(x) is -0.233445
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 3
+# Spikes on input neuron 2: 28
+# Number of output spikes should be: 13
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 1 2 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+AS 2 27 1
+AS 2 28 1
+RUN 60
+OC
+
+# Value is 6.073746
+# sin(x) is -0.207911
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 3
+# Spikes on input neuron 2: 29
+# Number of output spikes should be: 13
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+AS 2 27 1
+AS 2 28 1
+RUN 60
+OC
+
+# Value is 6.099926
+# sin(x) is -0.182235
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 2
+# Spikes on input neuron 2: 29
+# Number of output spikes should be: 13
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+AS 2 27 1
+AS 2 28 1
+RUN 60
+OC
+
+# Value is 6.126106
+# sin(x) is -0.156434
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 2
+# Spikes on input neuron 2: 29
+# Number of output spikes should be: 13
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+AS 2 27 1
+AS 2 28 1
+RUN 60
+OC
+
+# Value is 6.152286
+# sin(x) is -0.130526
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 2
+# Spikes on input neuron 2: 29
+# Number of output spikes should be: 14
+
+CA
+AS 1 0 1
+AS 1 1 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+AS 2 27 1
+AS 2 28 1
+AS 2 29 1
+RUN 60
+OC
+
+# Value is 6.178466
+# sin(x) is -0.104528
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 2
+# Spikes on input neuron 2: 30
+# Number of output spikes should be: 14
+
+CA
+AS 1 0 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+AS 2 27 1
+AS 2 28 1
+AS 2 29 1
+RUN 60
+OC
+
+# Value is 6.204645
+# sin(x) is -0.0784596
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 1
+# Spikes on input neuron 2: 30
+# Number of output spikes should be: 14
+
+CA
+AS 1 0 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+AS 2 27 1
+AS 2 28 1
+AS 2 29 1
+RUN 60
+OC
+
+# Value is 6.230825
+# sin(x) is -0.0523364
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 1
+# Spikes on input neuron 2: 30
+# Number of output spikes should be: 14
+
+CA
+AS 1 0 1
+AS 2 0 1
+AS 2 1 1
+AS 2 2 1
+AS 2 3 1
+AS 2 4 1
+AS 2 5 1
+AS 2 6 1
+AS 2 7 1
+AS 2 8 1
+AS 2 9 1
+AS 2 10 1
+AS 2 11 1
+AS 2 12 1
+AS 2 13 1
+AS 2 14 1
+AS 2 15 1
+AS 2 16 1
+AS 2 17 1
+AS 2 18 1
+AS 2 19 1
+AS 2 20 1
+AS 2 21 1
+AS 2 22 1
+AS 2 23 1
+AS 2 24 1
+AS 2 25 1
+AS 2 26 1
+AS 2 27 1
+AS 2 28 1
+AS 2 29 1
+RUN 60
+OC
+
+# Value is 6.257005
+# sin(x) is -0.0261773
+# Spikes on input neuron 0: 0
+# Spikes on input neuron 1: 1
+# Spikes on input neuron 2: 30
+# Number of output spikes should be: 15
+

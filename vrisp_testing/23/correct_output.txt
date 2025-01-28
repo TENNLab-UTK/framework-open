@@ -1,0 +1,4 @@
+node 3(Out) spike counts: 5
+node 4(Bias) spike counts: 5
+time: 6.0
+time: 12.0
