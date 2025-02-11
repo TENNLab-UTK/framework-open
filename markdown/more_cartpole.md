@@ -1,8 +1,8 @@
 # More Examples of the Cart-Pole Application
 
 These come from the paper,
-["The Cart-Pole Application as a Benchmark for Neuromorphic Computing", by Plank, Rizzo, White and Schuman](https://neuromorphic.eecs.utk.edu/publications/2024-12-06-the-cart-pole-application-as-a-benchmark-for-neuromorphic-computing/).
-When I refer to it in this markdown file, I'll refer to it as [PRWS2024].
+["The Cart-Pole Application as a Benchmark for Neuromorphic Computing", by Plank, Rizzo, White and Schuman](https://neuromorphic.eecs.utk.edu/publications/2025-01-26-the-cart-pole-application-as-a-benchmark-for-neuromorphic-computing/).
+When I refer to it in this markdown file, I'll refer to it as [PRWS2025].
 
 To walk through these examples, or to have instructions on how to use them on
 Gymnasium, please see [the main cart-pole example](cartpole_example.md).
@@ -18,7 +18,7 @@ matter.  We also include videos so that you can see it working, along with the
 ---------
 ## Example 1 - Figure 7(a).  A RISP-1+ network for the *Easy* benchmark
 
-This is Figure 7(a) from [PRWS2024].  It is a RISP-1+ network, so all synapse
+This is Figure 7(a) from [PRWS2025].  It is a RISP-1+ network, so all synapse
 weights are one, and all neuron thresholds are one.  The delays are shown on
 the figure.  The mapping of neuron number to identity is as follows:
 
@@ -40,7 +40,7 @@ file `tmp_network.txt`:
 
 ```
 UNIX> sh scripts/test_risp.sh 42 yes
-Passed Test 42 - Cart-pole example from [PRWS2024], Figure 7a.
+Passed Test 42 - Cart-pole example from [PRWS2025], Figure 7a.
 UNIX> ( echo FJ tmp_network.txt ; echo INFO ) | bin/network_tool
 Nodes:         10
 Edges:          7
@@ -151,7 +151,7 @@ read through [the first cart-pole example](cartpole_example.md).
 ---------
 ## Example 2 - Figure 7(b).  A second RISP-1+ network for the *Easy* benchmark
 
-This is Figure 7(b) from [PRWS2024].  It is a RISP-1+ network, so all synapse
+This is Figure 7(b) from [PRWS2025].  It is a RISP-1+ network, so all synapse
 weights are one, and all neuron thresholds are one.  The delays are shown on
 the figure and the neuron id's are the same, except 72 is a hidden neuron.
 
@@ -162,7 +162,7 @@ This is testing example 43, so please follow the instructions above, but use
 
 ```
 UNIX> sh scripts/test_risp.sh 43 yes
-Passed Test 43 - Cart-pole example from [PRWS2024], Figure 7b.
+Passed Test 43 - Cart-pole example from [PRWS2025], Figure 7b.
 UNIX> ( echo FJ tmp_network.txt ; echo INFO ; echo EDGES ) | bin/network_tool
 Nodes:         11
 Edges:          8
@@ -188,7 +188,7 @@ The 30-second video of this network is in [https://youtu.be/xoTRZTVE-xE](https:/
 ---------
 ## Example 3 - Figure 9(a).  A RISP-1 network for the *Medium* benchmark
 
-This is Figure 9(a) from [PRWS2024].  It is a RISP-1 network, so all synapse
+This is Figure 9(a) from [PRWS2025].  It is a RISP-1 network, so all synapse
 weights are either -1 or 1, and all neuron thresholds are either 0 or 1.
 The delays and threshold are shown in the picture.  Inhibitory synapses
 are in red.  The output neurons are:
@@ -203,7 +203,7 @@ This is testing example 44.
 
 ```
 UNIX> sh scripts/test_risp.sh 44 yes
-Passed Test 44 - Cart-pole example from [PRWS2024], Figure 9a.
+Passed Test 44 - Cart-pole example from [PRWS2025], Figure 9a.
 UNIX> ( echo FJ tmp_network.txt ; echo INFO ; echo NODES ; echo EDGES ) | bin/network_tool
 Nodes:         11
 Edges:         13
@@ -309,4 +309,4 @@ The 30-second video of this network is in [https://youtu.be/hrt-f_SCX4g](https:/
 ---------
 ## Citation
 
-[PRWS2024] James S. Plank, Charles P. Rizzo, Christopher A. White and Catherine D. Schuman, "The Cart-Pole Application as a Benchmark for Neuromorphic Computing", Published on Preprints, https://www.preprints.org/manuscript/202412.0532/v1, December, 2024
+[PRWS2025] James S. Plank, Charles P. Rizzo, Chris A. White and Catherine D. Schuman, "The Cart-Pole Application as a Benchmark for Neuromorphic Computing", Journal of Low Power Electronics and Applications (Open access), 15(1), 2025, [https://www.mdpi.com/2079-9268/15/1/5](https://www.mdpi.com/2079-9268/15/1/5).
