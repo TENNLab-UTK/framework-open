@@ -1,0 +1,78 @@
+FJ tmp_empty_network.txt
+AN 0 1 2 3 4 5 6 7 8 9 10 11
+AI 0 1 2 3 
+AO 4 5 6
+
+SNP 0 Threshold 1.0
+SNP 1 Threshold 1.0
+SNP 2 Threshold 1.0
+SNP 3 Threshold 1.0
+SNP 4 Threshold 7.0
+SNP 5 Threshold 1.0
+SNP 6 Threshold 1.0
+SNP 7 Threshold 3.0
+SNP 8 Threshold 3.0
+SNP 9 Threshold 6.0
+SNP 10 Threshold 4.0
+SNP 11 Threshold 6.0
+
+AE 10 6
+SEP 10 6 Weight -6.0
+SEP 10 6 Delay 1.0
+AE 4 5
+SEP 4 5 Weight -4.0
+SEP 4 5 Delay 14.0
+AE 0 10
+SEP 0 10 Weight 6.0
+SEP 0 10 Delay 7.0
+AE 8 0
+SEP 8 0 Weight -3.0
+SEP 8 0 Delay 7.0
+AE 1 5
+SEP 1 5 Weight -3.0
+SEP 1 5 Delay 2.0
+AE 10 3
+SEP 10 3 Weight -3.0
+SEP 10 3 Delay 12.0
+AE 5 3
+SEP 5 3 Weight 5.0
+SEP 5 3 Delay 12.0
+AE 9 10
+SEP 9 10 Weight -7.0
+SEP 9 10 Delay 14.0
+AE 3 9
+SEP 3 9 Weight 7.0
+SEP 3 9 Delay 12.0
+AE 10 9
+SEP 10 9 Weight 3.0
+SEP 10 9 Delay 15.0
+AE 7 6
+SEP 7 6 Weight 3.0
+SEP 7 6 Delay 3.0
+AE 7 0
+SEP 7 0 Weight -1.0
+SEP 7 0 Delay 13.0
+AE 10 11
+SEP 10 11 Weight -3.0
+SEP 10 11 Delay 10.0
+AE 3 8
+SEP 3 8 Weight 6.0
+SEP 3 8 Delay 14.0
+AE 11 8
+SEP 11 8 Weight 2.0
+SEP 11 8 Delay 1.0
+AE 3 7
+SEP 3 7 Weight 6.0
+SEP 3 7 Delay 5.0
+AE 0 1
+SEP 0 1 Weight -3.0
+SEP 0 1 Delay 12.0
+AE 6 0
+SEP 6 0 Weight 5.0
+SEP 6 0 Delay 12.0
+AE 2 5
+SEP 2 5 Weight 1.0
+SEP 2 5 Delay 9.0
+
+SORT Q
+TJ tmp_network.txt
