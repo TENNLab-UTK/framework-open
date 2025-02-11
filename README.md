@@ -29,6 +29,7 @@ Here are some links about RISP:
 
 - [The Case for RISP: A Reduced Instruction Spiking Processor](https://neuromorphic.eecs.utk.edu/publications/2022-06-29-the-case-for-risp-a-reduced-instruction-spiking-processor/), a paper describing RISP.
 - [The RISP Markdown In This Repo](markdown/risp.md).
+- [The VRISP Vectorized Version of RISP](markdown/vrisp.md)
 - [Open-Source FPGA Implementation of RISP](https://github.com/TENNLab-UTK/fpga).
 
 -----------------
@@ -51,6 +52,8 @@ By the end of this exercise, you should be equipped with the know-how and tools 
 and running your own RISP networks, and to start exploring embedded applications with the
 [Open-Source FPGA Implementation of RISP](https://github.com/TENNLab-UTK/fpga).
 
+Also, you may want to try [vrisp](markdown/vrisp.md), as its simulator is faster than the
+original RISP simulator.
 
 -----------------
 # Additional Examples
