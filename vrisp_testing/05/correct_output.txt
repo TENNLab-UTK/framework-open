@@ -1,0 +1,20 @@
+node 4(A^B) spike counts: 0
+node 4(A^B) last fire time: -1.0
+node 4(A^B) spike counts: 0
+node 4(A^B) last fire time: -1.0
+node 4(A^B) spike counts: 0
+node 4(A^B) last fire time: -1.0
+node 4(A^B) spike counts: 1
+node 4(A^B) last fire time: 0.0
+node 4(A^B) spike counts: 1
+node 4(A^B) last fire time: 0.0
+node 4(A^B) spike counts: 0
+node 4(A^B) last fire time: -1.0
+node 4(A^B) spike counts: 0
+node 4(A^B) last fire time: -1.0
+node 4(A^B) spike counts: 1
+node 4(A^B) last fire time: 0.0
+node 4(A^B) spike counts: 1
+node 4(A^B) last fire time: 0.0
+node 4(A^B) spike counts: 0
+node 4(A^B) last fire time: -1.0

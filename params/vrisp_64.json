@@ -1,0 +1,11 @@
+{
+  "min_weight": -64,
+  "max_weight": 64,
+  "min_threshold": 1,
+  "max_threshold": 64,
+  "min_potential": -64,
+  "tracked_timesteps": 64,
+  "max_delay": 15,
+  "leak_mode": "none",
+  "spike_value_factor": 1.0
+}
