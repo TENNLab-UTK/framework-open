@@ -6,7 +6,11 @@
 #include <cstdlib>
 #include <new>
 namespace neuro {
-#include <malloc.h>
+#ifdef __APPLE__
+	#include <malloc/malloc.h>
+#else
+	#include <malloc.h>
+#endif
 #include <stdlib.h>
 
 template <typename T> struct AlignmentAllocator {
