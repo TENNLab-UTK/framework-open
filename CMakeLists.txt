@@ -36,9 +36,4 @@ pybind11_add_module(risp ${SOURCES_RISP})
 
 target_include_directories(risp PRIVATE ./include ./bindings)
 
-set_target_properties(neuro PROPERTIES 
-	OUTPUT_NAME "framework"
-	SUFFIX ".so"
-)
-
 target_include_directories(neuro PRIVATE ./include)
