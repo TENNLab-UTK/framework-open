@@ -35,15 +35,88 @@ PYBIND11_MODULE(neuro, m) {
                 return j;
             }
         ))
+		.def("__getitem__", [](nlohmann::json &j, const py::object &key) {
+			// Checks the type of the key, then returns the value based on its type if it exists
+			if (py::isinstance<py::str>(key)) {
+				auto value = j[py::cast<std::string>(key)];
+			
+				if (value.is_string()) {
+					return py::cast(value.get<std::string>());
+				} else if (value.is_number_integer()) {
+					return py::cast(value.get<int>());
+				} else if (value.is_number_float()) {
+					return py::cast(value.get<float>());
+				} else if (value.is_boolean()) {
+					return py::cast(value.get<bool>());
+				} else if (value.is_null()) {
+					return py::cast<py::object>(py::none());
+				} else if (value.is_object() || value.is_array()) {
+					return py::cast(value);
+				} else {
+					throw py::type_error("Unknown return value type");
+				}
+
+			} else if (py::isinstance<py::int_>(key)) {
+				auto value = j[py::cast<std::size_t>(key)];
+
+				if (value.is_string()) {
+					return py::cast(value.get<std::string>());
+				} else if (value.is_number_integer()) {
+					return py::cast(value.get<int>());
+				} else if (value.is_number_float()) {
+					return py::cast(value.get<float>());
+				} else if (value.is_boolean()) {
+					return py::cast(value.get<bool>());
+				} else if (value.is_null()) {
+					return py::cast<py::object>(py::none());
+				} else if (value.is_object() || value.is_array()) {
+					return py::cast(value);
+				} else {
+					throw py::type_error("Unknown return value type");
+				}
+
+			} else {
+				throw py::type_error("Key must be string or int");
+			}
+		})
+		.def("__setitem__", [](nlohmann::json &j, const py::object &key, const py::object &o) {
+			// Checks the type of the key and sets the value
+			if (py::isinstance<py::str>(key)) {
+				j[py::cast<std::string>(key)] = o;
+			} else if (py::isinstance<py::int_>(key)) {
+				j[py::cast<std::size_t>(key)] = o;
+			} else {
+				throw py::type_error("Key must be string or int");
+			}
+		})
+		.def("__contains__", [](nlohmann::json &j, const py::object &key) {
+			// Checks the type of the key and returns whether or not the key exists
+			if (py::isinstance<py::str>(key)) {
+				if (j.is_object()) {
+					return j.contains(py::cast<std::string>(key));
+				}
+			} else if (py::isinstance<py::int_>(key)) {
+				if (j.is_array()) {
+					size_t index = py::cast<std::size_t>(key);
+					return index < j.size();
+				}
+			}
+			return false;
+		})
         .def("__repr__", [](nlohmann::json &j) {
             return j.dump();
         })
         .def("__str__", [](nlohmann::json &j) {
-            return j.dump(4);
+            return j.dump();
         })
+		.def("__len__", [](nlohmann::json &j) {
+			return j.size();
+			})
 		.def("dump", [](nlohmann::json &j, int val) {
 			return j.dump(val);
-		});
+		})
+		.def(py::self == py::self);
+	py::implicitly_convertible<py::object, nlohmann::json>();
 
 	m.def("pretty_json_helper", &pretty_json_helper,
 		 py::arg("j"),

@@ -82,12 +82,12 @@ def read_json (sv, starting_field):
         try:
             with open(sv[starting_field], 'r') as f:
                 try:
-                    rv = json.loads(f.readline().split()[0])
+                    rv = json.loads(f.read())
                     return rv
                 except:
                     return None
         except Exception as e:
-            sys.stderr.write(f'{e} {sv[starting_field]}')
+            sys.stderr.write(f'{e}\n')
     else:
         try:
             rv = json.loads(input().split()[0])
@@ -137,8 +137,11 @@ def main():
 
     while 1:
         if prompt != "": print(prompt, end='')
-
-        sv = input().split()
+        
+        try:
+            sv = input().split()
+        except:
+            sys.exit(0)
 
         size = len(sv)
         if size != 0: sv[0] = to_uppercase(sv[0])
