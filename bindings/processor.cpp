@@ -187,8 +187,8 @@ namespace neuro
 		/* Requires a trampoline class for override/inheritance of virutal methods */
 		py::class_<neuro::Processor, neuro::PyProcessor>(m, "Processor")
 			.def(py::init<>())
-			.def("get_params",      &neuro::Processor::get_processor_properties)
-			.def("get_name",      &neuro::Processor::get_network_properties)
+			.def("get_params",      &neuro::Processor::get_params)
+			.def("get_name",      &neuro::Processor::get_name)
 
 			.def("get_processor_properties",      &neuro::Processor::get_processor_properties)
 			.def("get_network_properties",      &neuro::Processor::get_network_properties)
