@@ -1,6 +1,6 @@
 # Python Build
 
-This markdown is a simple walk-through on how to set up, activate, and update the TennLab Python environment. For information about the TennLab framework see the [Getting Started](./getting_started.md) markdown. All functions between the C++ and Python environments are identical.
+This markdown is a simple walk-through on how to set up, activate, and update the TennLab Python environment. For information about the TennLab framework see the [Getting Started](./getting_started.md) markdown. Most functions between the C++ and Python environments are identical, if a function cannot be used in Python, there is a replacement function to rectify the inconsistency.
 
 ------------------------------
 
