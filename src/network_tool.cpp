@@ -869,7 +869,7 @@ int main(int argc, char **argv)
       
       if (!j1["Associated_Data"]["other"].contains("app_name")) {
         printf("app name is not specified in the network\n");
-      } else if (!j1["Associated_Data"]["other"].contains("app_name")) {
+      } else if (!j1["Associated_Data"]["other"].contains("proc_name")) {
         printf("proc name is not specified in the network\n");
       } else {
         app_name = j1["Associated_Data"]["other"]["app_name"];
