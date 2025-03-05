@@ -20,3 +20,4 @@ tmp_pt_output.txt
 build/*
 !build/.keep
 pyframework/*
+.DS_Store
