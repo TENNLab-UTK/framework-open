@@ -35,6 +35,7 @@ all: lib/libframework.a \
      bin/network_tool \
      bin/processor_tool_risp \
      bin/processor_tool_vrisp \
+     bin/network_to_jgraph \
 
 riscv_vector: all \
               bin/processor_tool_vrisp_vector_full \
@@ -57,6 +58,9 @@ lib/libframework.a: $(FR_OBJ) include/framework.hpp
 
 bin/network_tool: src/network_tool.cpp $(FR_INC) $(FR_LIB)
 	$(CXX) $(FR_CFLAGS) -o bin/network_tool src/network_tool.cpp $(FR_LIB)
+
+bin/network_to_jgraph: src/network_to_jgraph.cpp $(FR_INC) $(FR_LIB)
+	$(CXX) $(FR_CFLAGS) -o bin/network_to_jgraph src/network_to_jgraph.cpp $(FR_LIB)
 
 bin/processor_tool_risp: src/processor_tool.cpp $(FR_INC) $(RISP_INC) $(RISP_OBJ) $(FR_LIB)
 	$(CXX) $(FR_CFLAGS) -o bin/processor_tool_risp src/processor_tool.cpp $(RISP_OBJ) $(FR_LIB)
