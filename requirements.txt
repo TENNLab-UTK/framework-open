@@ -1,0 +1,16 @@
+wheel
+setuptools
+pybind11
+ipython
+notebook
+pyglet
+six
+pillow
+imageio
+numpy
+scipy
+scikit-learn
+pandas
+matplotlib
+gym
+networkx
