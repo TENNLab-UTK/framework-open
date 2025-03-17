@@ -1,1 +1,1 @@
-sed '/discrete/s/$/, "run_time_inclusive": true/' params/risp_f.txt
+sed '/discrete/s/$/, "run_time_inclusive": true/' params/risp/risp_f.txt

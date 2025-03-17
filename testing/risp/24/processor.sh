@@ -1,1 +1,1 @@
-sed '/discrete/s/$/, "threshold_inclusive": false, "spike_value_factor": 1/' params/risp_f.txt
+sed '/discrete/s/$/, "threshold_inclusive": false, "spike_value_factor": 1/' params/risp/risp_f.txt

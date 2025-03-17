@@ -1,1 +1,1 @@
-sed 's/none/all/' params/risp_f.txt
+sed 's/none/all/' params/risp/risp_f.txt

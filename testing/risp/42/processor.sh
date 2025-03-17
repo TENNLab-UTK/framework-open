@@ -1,1 +1,1 @@
-cat params/risp_1_plus.txt
+cat params/risp/risp_1_plus.txt
