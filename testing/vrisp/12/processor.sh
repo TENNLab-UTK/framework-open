@@ -1,1 +1,1 @@
-sed 's/none/all/' params/vrisp_1.json
+sed 's/none/all/' params/vrisp/vrisp_1.json

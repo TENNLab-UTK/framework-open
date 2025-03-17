@@ -1,1 +1,1 @@
-cat params/vrisp_1_plus.json
+cat params/vrisp/vrisp_1_plus.json
