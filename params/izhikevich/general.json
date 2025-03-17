@@ -1,0 +1,22 @@
+{
+  "min_v": -100,
+  "max_v": 100,
+  "min_u": -100,
+  "max_u": 100,
+  "min_a": -100,
+  "max_a": 100,
+  "min_b": -100,
+  "max_b": 100,
+  "min_c": -100,
+  "max_c": 100,
+  "min_d": -100,
+  "max_d": 100,
+
+  "min_synaptic_current": -100,
+  "max_synaptic_current": 100,
+  "min_synaptic_delay": 1,
+  "max_synaptic_delay": 100,
+
+  "min_input_current": -100,
+  "max_input_current": 100
+}
