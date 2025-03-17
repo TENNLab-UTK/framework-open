@@ -31,10 +31,14 @@ VRISP_RVV_FULL_OBJ = obj/vrisp_rvv_full.o obj/vrisp_static.o
 VRISP_RVV_FIRED_OBJ = obj/vrisp_rvv_fired.o obj/vrisp_static.o
 VRISP_RVV_SYNAPSES_OBJ = obj/vrisp_rvv_synapses.o obj/vrisp_static.o
 
+IZHIKEVICH_INC = include/izhikevich.hpp
+IZHIKEVICH_OBJ = obj/izhikevich.o obj/izhikevich_static.o
+
 all: lib/libframework.a \
      bin/network_tool \
      bin/processor_tool_risp \
      bin/processor_tool_vrisp \
+     bin/processor_tool_izhikevich \
      bin/network_to_jgraph \
 
 riscv_vector: all \
@@ -77,6 +81,9 @@ bin/processor_tool_vrisp_vector_fired: src/processor_tool.cpp $(FR_INC) $(VRISP_
 bin/processor_tool_vrisp_vector_synapses: src/processor_tool.cpp $(FR_INC) $(VRISP_INC) $(VRISP_RVV_SYNAPSES_OBJ) $(FR_LIB)
 	$(CXX) $(FR_CFLAGS) -o bin/processor_tool_vrisp_vector_synapses src/processor_tool.cpp $(VRISP_RVV_SYNAPSES_OBJ) $(FR_LIB)
 
+bin/processor_tool_izhikevich: src/processor_tool.cpp $(FR_INC) $(IZHIKEVICH_INC) $(IZHIKEVICH_OBJ) $(FR_LIB)
+	$(CXX) $(FR_CFLAGS) -o bin/processor_tool_izhikevich src/processor_tool.cpp $(IZHIKEVICH_OBJ) $(FR_LIB)
+
 # ------------------------------------------------------------
 # Utilities.
 
@@ -109,6 +116,12 @@ obj/vrisp_rvv_synapses.o: src/vrisp.cpp $(FR_INC) $(VRISP_INC)
 
 obj/vrisp_static.o: src/vrisp_static.cpp $(FR_INC) $(VRISP_INC)
 	$(CXX) -c $(FR_CFLAGS) -o obj/vrisp_static.o src/vrisp_static.cpp
+
+obj/izhikevich.o: src/izhikevich.cpp $(FR_INC) $(RISP_INC)
+	$(CXX) -c $(FR_CFLAGS) -o obj/izhikevich.o src/izhikevich.cpp
+
+obj/izhikevich_static.o: src/izhikevich_static.cpp $(FR_INC) $(RISP_INC)
+	$(CXX) -c $(FR_CFLAGS) -o obj/izhikevich_static.o src/izhikevich_static.cpp
 
 obj/framework.o: src/framework.cpp $(FR_INC)
 	$(CXX) -c $(FR_CFLAGS) -o obj/framework.o src/framework.cpp

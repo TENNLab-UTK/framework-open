@@ -1,0 +1,16 @@
+{
+  "min_v": -64,
+  "max_v": -64,
+  "min_u": -16,
+  "max_u": -16,
+  "min_a": 0.03,
+  "max_a": 0.03,
+  "min_b": 0.25,
+  "max_b": 0.25,
+  "min_c": -52,
+  "max_c": -52,
+  "min_d": 0,
+  "max_d": 0,
+
+  "milliseconds_per_timestep": 0.2
+}

@@ -1,0 +1,10 @@
+FJ tmp_empty_network.txt
+
+# Create neuron
+
+AN 0
+AI 0
+
+# Store
+
+TJ tmp_network.txt
