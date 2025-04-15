@@ -1,0 +1,28 @@
+[build-system]
+requires = [
+    "scikit_build_core[pyproject]",
+    "pybind11",
+]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "framework"
+version = "0.0.0"
+requires-python = ">=3.7"
+
+dependencies = [
+    "ipython",
+    "notebook",
+    "pyglet",
+    "six",
+    "pillow",
+    "imageio",
+    "numpy",
+    "scipy",
+    "scikit-learn",
+    "pandas",
+    "matplotlib",
+    "gymnasium",
+    "networkx"
+]
+

@@ -110,6 +110,8 @@ void bind_framework_network(py::module &m)
 		.def(py::init<Node*, Node*, Network*>(), py::arg("f"), py::arg("to"), py::arg("net"))
 		.def_readonly("from", &Edge::from)
 		.def_readonly("to", &Edge::to)
+		.def_readonly("pre", &Edge::from)
+        .def_readonly("post", &Edge::to)
 		.def_readonly("net", &Edge::net)
 		.def_readonly("values", &Edge::values)
 		.def("as_json", &Edge::as_json)
@@ -122,6 +124,20 @@ void bind_framework_network(py::module &m)
 	py::class_<Network>(m, "Network")
 		.def(py::init<>())
 		.def("__eq__", &Network::operator==)
+
+		.def("read_from_file", [](Network &net, const string& fname) {
+            std::ifstream fs(fname);
+            json j;
+            fs >> j;
+            return net.from_json(j);
+        })
+
+        .def("write_to_file", [](const Network &net, const string& fname) {
+            json j = net.as_json();
+            std::ofstream fs(fname);
+            fs << j;
+        })
+
 		.def("clear", &Network::clear)
 		.def("to_json", &Network::to_json)
 		.def("as_json", &Network::as_json)
@@ -195,5 +211,20 @@ void bind_framework_network(py::module &m)
 			}, py::return_value_policy::reference)
 		.def("num_nodes", &Network::num_nodes)
 		.def("num_edges", &Network::num_edges)
+
+		.def("__getitem__", [](const Network &net, int key) {
+            return net.get_node(key);
+        }, py::return_value_policy::reference_internal)
+
+        .def("__len__", &Network::num_nodes)
+
+        .def("nodes", [](Network &net) {
+            return py::make_key_iterator(net.begin(), net.end());
+        }, py::keep_alive<0, 1>())
+
+        .def("edges", [](Network &net) { 
+            return py::make_key_iterator(net.edges_begin(), net.edges_end()); 
+        }, py::keep_alive<0, 1>())
+
 		.def_readonly("values", &Network::values);
 }
