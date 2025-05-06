@@ -17,7 +17,7 @@ This network is too simple to bother with -- please read the paper.
 
 This is a network that converts a value into a time.  The network is pictured below:
 
-![img/val_to_temporal.jpg](img/val_to_temporal.jpg)
+![../img/val_to_temporal.jpg](../img/val_to_temporal.jpg)
 
 To use this network, spike in a value <i>v</i> from 0 to <i>max</i> to the top neuron at time 0,
 and also spike in a value of 1 to the bottom neuron (S) at time 0.  Then run it for
