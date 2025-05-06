@@ -64,6 +64,7 @@ original RISP simulator.
 - [The Cart-Pole Application](markdown/cartpole_example.md)
 - [8 Cart-Pole Networks from PRWS-2024 (with videos)](markdown/more_cartpole.md)
 - [A program to draw networks with nodes around the unit circle](markdown/network_to_jgraph.md)
+- [Neuromorphic Conversion Networks for Optimizing Communication](markdown/conversion_networks.md)
 
 -----------------
 # Documentation
