@@ -1,0 +1,13 @@
+FJ tmp_empty_network.txt
+AN 0 1
+AI 0 1
+AO 0
+SETNAME 0 Val_v
+SETNAME 1 S
+SNP 0 Threshold 11
+SNP 1 Threshold 1
+AE 0 0 0 1 1 0 1 1
+SEP_ALL Delay 1
+SEP_ALL Weight 1
+SEP 0 0 0 1 Weight -1
+TJ tmp_network.txt
