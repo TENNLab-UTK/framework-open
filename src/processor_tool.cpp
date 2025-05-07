@@ -23,7 +23,7 @@ void print_commands(FILE *f);
 void to_uppercase(string &s);
 
 /** Make sure the spike has the legal id, time, and value. **/
-void spike_validation(const Spike &s, const Network *n, bool normalize);
+void spike_validation(const Spike &s, const Network *n, bool normalized);
 
 /** Make sure the node "node_id" is an output node in the network */
 void output_node_id_validation(const int node_id, const Network *n);
