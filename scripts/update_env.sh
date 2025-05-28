@@ -53,7 +53,7 @@ done
 pwd
 cd `realpath`/build
 cmake ..
-make -j$(nproc)
+make -j $NUM_CORES
 
 # exit the venv
 deactivate
