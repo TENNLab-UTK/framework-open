@@ -143,13 +143,13 @@ int node_validation(const Network *n, const string &node_id)
   return nid;
 }
 
-void spike_validation(const Spike &s, const Network *n, bool normalize) 
+void spike_validation(const Spike &s, const Network *n, bool normalized) 
 {
   Node *node;
   char buf[20];
 
   try {
-    if (normalize) {
+    if (normalized) {
       if (s.value < -1 || s.value > 1) throw "spike val must be >= -1 and <= 1";
     }
     if (s.time < 0) throw "spike time must be > 0";
@@ -306,7 +306,7 @@ int main(int argc, char **argv)
   map <int, string> aliases; // Aliases for input/output nodes.
   map <int, string>::iterator ait;
   bool gsr_hidden_nodes;
-  bool normalize;
+  bool normalized;
   unordered_set <int> gsr_nodes;
   
   json proc_params, network_json;
@@ -433,7 +433,7 @@ int main(int argc, char **argv)
             printf("usage: %s node_id spike_time spike_value node_id1 spike_time1 spike_value1 ...\n", sv[0].c_str());
           } else {
   
-            normalize = (sv[0].size() == 2);
+            normalized = (sv[0].size() == 2);
             for (i = 0; i < (sv.size() - 1) / 3; i++) {
               try {
   
@@ -444,9 +444,9 @@ int main(int argc, char **argv)
                   throw SRE((string) "Invalid spike [ " + sv[i*3 + 1] + "," + sv[i*3 + 2] + "," +
                                        sv[i*3 + 3] + "]\n");
                 } 
-                spike_validation(Spike(spike_id, spike_time, spike_val), net, normalize);
+                spike_validation(Spike(spike_id, spike_time, spike_val), net, normalized);
                 
-                p->apply_spike(Spike(net->get_node(spike_id)->input_id, spike_time, spike_val), normalize);
+                p->apply_spike(Spike(net->get_node(spike_id)->input_id, spike_time, spike_val), normalized);
                 spikes_array.push_back(Spike(spike_id, spike_time, spike_val));
   
               } catch (const SRE &e) {

@@ -1126,9 +1126,10 @@ string Network::pretty_edges() const
   map <uint32_t, Edge *> m;
   map <uint32_t, Edge *>::iterator mit;
   
+  if (num_edges() == 0) return "[]";
+
   if (sorted_node_vector.size() == 0) {
     j1 = as_json();
-    if (j1["Edges"].size() == 0) return "[]";
     s = "";
     for (i = 0; i < j1["Edges"].size(); i++) {
       s += ((i == 0) ? "[ " : "  ");
