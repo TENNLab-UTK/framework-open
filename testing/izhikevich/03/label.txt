@@ -1,0 +1,1 @@
+Example C from [Izhikevich2004], figure 1

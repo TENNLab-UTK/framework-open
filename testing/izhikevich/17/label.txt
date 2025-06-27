@@ -1,0 +1,1 @@
+Example Q from [Izhikevich2004], figure 1
