@@ -33,6 +33,7 @@ VRISP_RVV_SYNAPSES_OBJ = obj/vrisp_rvv_synapses.o obj/vrisp_static.o
 
 all: lib/libframework.a \
      bin/network_tool \
+     bin/compose_networks \
      bin/processor_tool_risp \
      bin/processor_tool_vrisp \
      bin/network_to_jgraph \
@@ -61,6 +62,9 @@ bin/network_tool: src/network_tool.cpp $(FR_INC) $(FR_LIB)
 
 bin/network_to_jgraph: src/network_to_jgraph.cpp $(FR_INC) $(FR_LIB)
 	$(CXX) $(FR_CFLAGS) -o bin/network_to_jgraph src/network_to_jgraph.cpp $(FR_LIB)
+
+bin/compose_networks: src/compose_networks.cpp $(FR_INC) $(FR_LIB)
+	$(CXX) $(FR_CFLAGS) -o bin/compose_networks src/compose_networks.cpp $(FR_LIB)
 
 bin/processor_tool_risp: src/processor_tool.cpp $(FR_INC) $(RISP_INC) $(RISP_OBJ) $(FR_LIB)
 	$(CXX) $(FR_CFLAGS) -o bin/processor_tool_risp src/processor_tool.cpp $(RISP_OBJ) $(FR_LIB)
