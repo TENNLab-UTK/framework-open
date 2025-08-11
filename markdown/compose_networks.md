@@ -380,6 +380,8 @@ Finally, let's add an OR network to the mix:
 UNIX> ( echo SYNAPSE 4 0 1 1 ; echo SYNAPSE 9 1 1 1 ) | bin/compose_networks tmp_two_xor_one_and.txt tmp_or.txt > tmp_two_xor_and_or.txt ""
 ```
 
+![../img/two_xor_and_or.jpg](../img/two_xor_and_or.jpg)
+
 And let's test -- the output on neuron 15 should be "10011001" Or "00001111", which is"10011111".
 You can see that below, starting at timestep 4:
 
