@@ -43,7 +43,7 @@ We're going to compose some XOR, AND and OR networks.  We'll have three examples
 
 Let's recall what an XOR network looks like, from [P2021]:
 
-![../img/img/xor_w_leak.jpg](../img/img/xor_w_leak.jpg)
+![../img/xor_w_leak.jpg](../img/xor_w_leak.jpg)
 
 ------------------------------------------------------------
 ## Bibliography
