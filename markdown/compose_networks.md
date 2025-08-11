@@ -59,6 +59,7 @@ UNIX> sed s/none/all/ < params/risp_7.txt > tmp_risp_leak.txt
 Now we'll create an empty network with those settings, and then use the network tool
 to create the network:
 
+```
 UNIX> ( echo M risp tmp_risp_leak.txt ; echo EMPTYNET tmp_empty.txt ) | bin/processor_tool_risp 
 UNIX> bin/network_tool -
 - FJ tmp_empty.txt
