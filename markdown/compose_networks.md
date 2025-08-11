@@ -132,7 +132,7 @@ UNIX>
 
 The network will look like the following:
 
-![../img/two_xors.jpg](../img/two_xors.jpg)
+![../img/two_xor.jpg](../img/two_xor.jpg)
 
 You'll note that the "Tag" has renamed the neurons in the second network, so that they
 start with "X2".    Let's run it.  We'll put "11001100" into A and X2-B, and we'll
