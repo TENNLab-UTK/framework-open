@@ -220,5 +220,4 @@ https://dl.acm.org/doi/10.1145/3354265.3354268, 2019, pp. 1-8.
 - [AHSV2021]: J. B. Aimone, A. J. Hill, W. M. Severa and C. M. Vineyard,
 <i>"Spiking Neural Streaming Binary Arithmetic,"</i> <b>IEEE
 International Conference on Rebooting Computing (ICRC)</b>,
-https://www.computer.org/csdl/proceedings-article/icrc/2021/233200a079/1CbZFjqAqju,
-2021.          
+https://www.computer.org/csdl/proceedings-article/icrc/2021/233200a079/1CbZFjqAqju, 2021.
