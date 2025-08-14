@@ -168,8 +168,8 @@ w: 4
 9(A)      INPUT  : 1011000
 10(O)     OUTPUT : 0000001
 OK -- v1: 13, v2: 5, last spike of O: 1
-UNIX> sh scripts/aimone_comparison.sh 45 129 .           # V1 < V2 - O should spike, and since w is bigger, it runs for more timesteps.
-Inputs in little endian: 10110100 10000001
+UNIX> sh scripts/aimone_comparison.sh 45 129 .           # V1 < V2 - O should not spike,
+Inputs in little endian: 10110100 10000001               # and since w is bigger, it runs for more timesteps.
 w: 8
 0(+A)     INPUT  : 01011010000
 1(+B/I-O) INPUT  : 00111111011
