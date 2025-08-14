@@ -94,7 +94,7 @@ UNIX>
 # Inversion
 
 It is unfortunate that RISP does not implement the features required by [AHSV2021] to
-implement a streaming inverter.  Instead, we set up a simple inversion network that
+implement a simple streaming inverter.  Instead, we set up a simple inversion network that
 employs a starting spike at time zero to set up a bias that fires every timestep:
 
 ![img/Streaming_Inversion.jpg](../img/Streaming_Inversion.jpg)
@@ -129,7 +129,7 @@ number of timesteps.  We don't do that here, but it may become necessary later.
 # Comparison
 
 In figure 2 of [AHSV2021], they give a network for performing the comparison of two numbers,
-*A* and *B*.  They do this by first inverting *B*, and then adding it to *B*.  If *B > A*,
+*A* and *B*.  They do this by first inverting *B*, and then adding it to *A*.  If *B > A*,
 then the result is a negative number, which means that the carry bit (neuron S2) fires on
 the last bit.  The following network implements this in RISP:
 
@@ -201,3 +201,9 @@ w: 27
 OK -- v1: 123456789, v2: 123456789, last spike of O: 0
 UNIX> 
 ```
+
+The network composition uses the `bin/compose_networks` program.  I'll admit that the
+shell script is Byzantine, and that `bin/compose_networks` is pretty primitive.  I'm sure
+this is easier in Fugu, and maybe when we have the two projects interact, we'll be able
+to use Fugu with RISP.  Until then, we'll use `bin/compose_networks` and our prowess
+at writing shell scripts.
