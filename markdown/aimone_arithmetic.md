@@ -211,12 +211,14 @@ at writing shell scripts.
 --------------
 # References
 
-- [ASV2019]: J. B. Aimone, W. Severa and C. M. Vineyard, <i>"Composing neural
+- [ASV2019]: 
+J. B. Aimone, W. Severa and C. M. Vineyard, <i>"Composing neural
 algorithms with Fugu,"</i> <b>International Conference on
-Neuromorphic Computing Systems (ICONS)</b>, ACM, 2019, pp. 1-8.
+Neuromorphic Computing Systems (ICONS)</b>, ACM,
+https://dl.acm.org/doi/10.1145/3354265.3354268, 2019, pp. 1-8.
 
-- [AHSV2021]: "Spiking Neural Streaming Binary Arithmetic",
-by James B. Aimone, Aaron J. Hill, William M. Severa, & Craig M. Vineyard, 
-*IEEE International Conference on Rebooting Computing*, 2021.
-[https://www.computer.org/csdl/proceedings-article/icrc/2021/233200a079/1CbZFjqAqju](https://www.computer.org/csdl/proceedings-article/icrc/2021/233200a079/1CbZFjqAqju).
-
+- [AHSV2021]: J. B. Aimone, A. J. Hill, W. M. Severa and C. M. Vineyard,
+<i>"Spiking Neural Streaming Binary Arithmetic,"</i> <b>IEEE
+International Conference on Rebooting Computing (ICRC)</b>,
+https://www.computer.org/csdl/proceedings-article/icrc/2021/233200a079/1CbZFjqAqju,
+2021.          
