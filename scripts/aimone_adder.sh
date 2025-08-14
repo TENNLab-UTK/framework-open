@@ -1,8 +1,6 @@
 # This adds two numbers that are fed in a binary spike train,
 # in little endian.
 
-# Converting a V_1 value to make a sign neuron spike.
-
 if [ $# -ne 3 ]; then
   echo 'usage: sh scripts/aimone_adder.sh v1 v2 os_framework' >&2
   exit 1
