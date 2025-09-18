@@ -208,6 +208,44 @@ this is easier in Fugu [ASV2019], and maybe when we have the two projects intera
 to use Fugu with RISP.  Until then, we'll use `bin/compose_networks` and our prowess
 at writing shell scripts.
 
+----------------------------------------
+# Multiplication of a number by a constant
+
+This is performed by cascading adder networks, and forwarding the number being multiplied
+to each adder's inputs with the proper delay, so that the number, multiplied by the proper
+factor of two, is added into the product.
+
+It's best illustrated by a simple example.  Suppose we want to multiply by 556.  You'll
+note that in binary, 556 = 0x22c = 1000101100.  Since there are four one bits set in 556,
+you can multiply *a* by 556 by doing: *4a+8a+32a+512a*.  This is probably easier to see in
+binary.  Suppose *a* is 87 = 0x57 = 1010111.  Then we have:
+
+```
+   4a        101011100   
+   8a       1010111000  
+            ----------
+           10000010100 -- 4*87 + 8*87 = 1044
+  32a     101011100000
+          ------------
+          111011110100 -- 4*87 + 8*87 + 32*87 = 3828
+ 512a 1010111000000000
+      ----------------
+      1011110011110100 --  4*87 + 8*87 + 32*87 + 512*87 = 48372
+```
+
+Rendering this with a spiking neural network, we cascade three adders, so that:
+
+- *A* of the first adder is *a* delayed by two timesteps (*4a*).
+- *B* of the first adder is *a* delayed by three timesteps (*8a*).
+- *A* of the second adder is the output of the first adder (*4a+8a*).
+- *B* of the second adder is *a* delayed by five timesteps (*32a*).
+- *A* of the third adder is the output of the second adder (*4a+8a+32a*).
+- *B* of the third adder is *a* delayed by nine timesteps (*512a*).
+- The output of the third added is our desired product:  (*4a+8a+32a+512a = 556a*).
+
+
+
+
 --------------
 # References
 
