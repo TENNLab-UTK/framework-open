@@ -243,8 +243,51 @@ Rendering this with a spiking neural network, we cascade three adders, so that:
 - *B* of the third adder is *a* delayed by nine timesteps (*512a*).
 - The output of the third added is our desired product:  (*4a+8a+32a+512a = 556a*).
 
+Here's a picture:
 
+![img/Aimone_Multiplier.jpg](img/Aimone_Multiplier.jpg)
 
+If you delve into the detail, you may be a little confused by the delays -- they work, and
+I'll explain them later.  For now, just trust me.
+
+The shell script `scripts/aimone_mult_const.sh` takes a constant and a value, and creates
+a network for multiplying any value by the constant.  It then turns the value into a 
+binary spike train, and applies it to the network, printing out the product.
+
+Here's an example where the constant is 556, and the value is 87 (0x57 = 01010111).
+For reference, 556*87 = 48,372:
+
+```
+UNIX> sh scripts/aimone_mult_const.sh 
+usage: sh scripts/aimone_adder.sh const val os_framework
+UNIX> sh scripts/aimone_mult_const.sh 556 87 .
+max 15
+Const in little endian: 0011010001
+V in little endian: 1110101
+Timestep that output begins: 6               # The input, 1010111, is applied to neuron 16 in little endian.
+0(A)        INPUT  : 0011101010000000000000      
+1(B)        INPUT  : 0001110101000000000000
+2(S1)       HIDDEN : 0001111111110000000000
+3(S2)       HIDDEN : 0000111111100000000000
+4(S3)       HIDDEN : 0000010000000000000000
+5(O/3_A)    INPUT  : 0000101000001000000000
+6(3_B)      INPUT  : 0000000111010100000000
+7(3_S1)     HIDDEN : 0000010111101110000000
+8(3_S2)     HIDDEN : 0000000000000000000000
+9(3_S3)     HIDDEN : 0000000000000000000000
+10(3_O/2_A) INPUT  : 0000001011110111000000
+11(3_2_B)   INPUT  : 0000000000000111010100
+12(3_2_S1)  HIDDEN : 0000000101111011111010
+13(3_2_S2)  HIDDEN : 0000000000000011100000
+14(3_2_S3)  HIDDEN : 0000000000000001100000
+15(3_2_O)   OUTPUT : 0000000010111100111101  # The product starts at timestep 6.
+16          INPUT  : 1110101000000000000000
+Product in Little Endian: 0010111100111101
+Product in Decimal: 48372
+UNIX> 
+```
+
+After running the script, the network is in `tmp_network.txt`.
 
 --------------
 # References
