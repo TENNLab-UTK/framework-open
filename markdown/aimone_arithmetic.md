@@ -245,7 +245,7 @@ Rendering this with a spiking neural network, we cascade three adders, so that:
 
 Here's a picture:
 
-![img/Aimone_Multiplier.jpg](img/Aimone_Multiplier.jpg)
+![../img/Aimone_Multiplier.jpg](../img/Aimone_Multiplier.jpg)
 
 If you delve into the detail, you may be a little confused by the delays -- they work, and
 I'll explain them later.  For now, just trust me.
