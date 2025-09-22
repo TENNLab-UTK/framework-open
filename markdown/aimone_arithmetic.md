@@ -122,8 +122,16 @@ RSC 5
 UNIX> 
 ```
 
-If we wanted to, we could use an extra neuron to turn the bias neuron off after the proper
-number of timesteps.  We don't do that here, but it may become necessary later.
+There's a second script, `scripts/inversion.sh` that turns the bias off, so that
+it only spikes *bits-1* times.  Since there is an extra spike from *S* to *O*, that
+means that *O* gets *bits* spikes overall.  This is useful, because the bias doesn't
+just keep spiking, which sometimes makes it confusing to figure out values.
+
+![img/Streaming_Inversion_w.jpg](../img/Streaming_Inversion_w.jpg)
+
+Here, the output starts at timestep 1, and finishes at timestep *bits*.  After that,
+the network is ready to go again.
+
 
 ----------------------------------------
 # Comparison

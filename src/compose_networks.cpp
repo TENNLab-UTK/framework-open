@@ -123,7 +123,11 @@ int main(int argc, char **argv)
       n2 = n2_nodes[conflate[i][1]];
 
       n2_new[n2->id] = n1;
-      n1->name += ((string) "/" + tag + n2->name);
+      
+      /* If the tag is "", then just keep the first name.  Otherwise, put a 
+         slash between the two names. */
+
+      if (tag != "") n1->name += ((string) "/" + tag + n2->name);
     }
 
     /* Go through all of the nodes in n2, and for those that are not conflated, create
