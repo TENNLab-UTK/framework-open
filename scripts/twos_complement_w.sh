@@ -23,6 +23,12 @@ while [ $v -ne 0 ]; do
   sr="$sr$b"
 done
   
+if [ $w = 0 ]; then
+  w=1
+  sr=0
+fi
+
+if [ $w -gt $bits ]; then echo "Not enough bits to store $v (must be at least $w)">&2 ; exit 1 ; fi
 
 # Make an empty network with the proper RISP parameters.
 # By default, leak is on.
@@ -72,7 +78,6 @@ cat $fro/params/risp_127.txt | sed '/leak_mode/s/none/all/' > tmp_risp.txt
 $fro/bin/network_tool < tmp_network_tool.txt
 
 echo "Input in little endian: $sr "
-echo "bits: $w"
 
 # Create the processor_tool input and run it.
 
@@ -92,8 +97,3 @@ cat tmp_pt_output.txt
 osr=`tail -n 1 tmp_pt_output.txt | awk '{ print $NF }' | sed 's/..//'`
 while [ `echo $osr | wc | awk '{ print $3 }'` -le $bits ]; do osr=$osr"0"; done
 echo Answer in Little Endian: $osr
-
-# s=`echo $osr | sed 's/\(.\)/ \1/g' |
-#    awk '{ for (i = NF; i > 0; i--) { v *= 2; v += $i }; print v }'`
-# 
-# echo Sum in Decimal: $s

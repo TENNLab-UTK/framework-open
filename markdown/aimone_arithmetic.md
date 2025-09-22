@@ -122,7 +122,7 @@ RSC 5
 UNIX> 
 ```
 
-There's a second script, `scripts/inversion.sh` that turns the bias off, so that
+There's a second script, `scripts/inversion_w.sh` that turns the bias off, so that
 it only spikes *bits-1* times.  Since there is an extra spike from *S* to *O*, that
 means that *O* gets *bits* spikes overall.  This is useful, because the bias doesn't
 just keep spiking, which sometimes makes it confusing to figure out values.
@@ -320,9 +320,126 @@ an inversion network and an adder -- you invert the input and then add one to it
 once you compose those networks, you can do quite a bit of optimization, resulting in
 this network:
 
-![img/twos_c.jpg](../img/twos_c.jpg]
+![img/twos_c.jpg](../img/twos_c.jpg)
 
 If you want to see the derivation, take a look at [the following picture](../img_two_c_derivation.jpg).
+
+The script is `scripts/twos_complement_w.sh`
+
+Here are a few examples -- see the inline comments:
+
+```
+UNIX> sh scripts/twos_complement_w.sh 5 8 .             # The inverse of 00000101 is 11111010.  Add one to get 11111011
+Input in little endian: 101 
+bits: 3
+0(A)    INPUT  : 1010000000
+1(S)    INPUT  : 1000000000
+2(C)    HIDDEN : 0000000100
+3(Bias) HIDDEN : 0111111100
+4(S1)   HIDDEN : 0110111110
+5(S2)   HIDDEN : 0000000000
+6(O)    OUTPUT : 0011011111
+Answer in Little Endian: 11011111                        # Here's the answer.  Remember, it's in little endian.
+
+UNIX> sh scripts/twos_complement_w.sh 1 8 .              # Two's complement of 1 is 11111111
+Input in little endian: 1 
+bits: 1
+0(A)    INPUT  : 1000000000
+1(S)    INPUT  : 1000000000
+2(C)    HIDDEN : 0000000100
+3(Bias) HIDDEN : 0111111100
+4(S1)   HIDDEN : 0111111110
+5(S2)   HIDDEN : 0000000000
+6(O)    OUTPUT : 0011111111
+Answer in Little Endian: 11111111
+UNIX> sh scripts/twos_complement_w.sh 255 8 .            # And Two's complement of 11111111 is 1.
+Input in little endian: 11111111 
+bits: 8
+0(A)    INPUT  : 11111111
+1(S)    INPUT  : 10000000
+2(C)    HIDDEN : 00000001
+3(Bias) HIDDEN : 01111111
+4(S1)   HIDDEN : 01000000
+5(S2)   HIDDEN : 00000000
+6(O)    OUTPUT : 00100000
+Answer in Little Endian: 10000000
+UNIX> sh scripts/twos_complement_w.sh 0 8 .               # Finally, two's complement of 0 is 0.
+Input in little endian:  
+bits: 0
+0(A)    INPUT  : 0000000000
+1(S)    INPUT  : 1000000000
+2(C)    HIDDEN : 0000000100
+3(Bias) HIDDEN : 0111111100
+4(S1)   HIDDEN : 0111111111
+5(S2)   HIDDEN : 0111111110
+6(O)    OUTPUT : 0000000000
+Answer in Little Endian: 00000000
+UNIX> 
+```
+
+As always, the network is in `tmp_network.txt`
+
+
+----------------------------------------
+# Subtraction
+
+For subtraction, we can compose a two's complement network and an adder, but as above,
+you can do some optimization.  Here's the network I came up with:
+
+![img/Subtraction.jpg](../img/Subtraction.jpg)
+
+Like the adder, you start getting output at timestep 2.  This network also builds in the
+number of bits, like the two's complement network above.
+
+The script `scripts/subtraction.sh` builds and runs a network:
+
+```
+UNIX> sh scripts/subtraction.sh
+usage: sh scripts/subtraction.sh v1 v2 bits os_framework
+UNIX> sh scripts/subtraction.sh 16 9 8 .                        # 16-9 = 7
+Input 1 in little endian: 00001 
+Input 2 in little endian: 1001 
+0(A)    INPUT  : 0000100000
+1(A)    INPUT  : 1001000000
+2(S)    INPUT  : 1000000000
+3(C)    HIDDEN : 0000000100
+4(Bias) HIDDEN : 0111111100
+5(S1)   HIDDEN : 0111011111
+6(S2)   HIDDEN : 0000011110
+7(S3)   HIDDEN : 0000000000
+8(O)    OUTPUT : 0011100000
+Answer in Little Endian: 11100000
+Answer Corroborated
+UNIX> sh scripts/subtraction.sh 9 16 8 .                        # 9-16 = -7 = 11111001
+Input 1 in little endian: 1001                                  # in two's complement.
+Input 2 in little endian: 00001 
+0(A)    INPUT  : 1001000000
+1(A)    INPUT  : 0000100000
+2(S)    INPUT  : 1000000000
+3(C)    HIDDEN : 0000000100
+4(Bias) HIDDEN : 0111111100
+5(S1)   HIDDEN : 0111111110
+6(S2)   HIDDEN : 0111100000
+7(S3)   HIDDEN : 0100100000
+8(O)    OUTPUT : 0010011111
+Answer in Little Endian: 10011111
+Answer Corroborated
+UNIX> sh scripts/subtraction.sh 9 9 8 .                         $ 9-9 = 0.
+Input 1 in little endian: 1001 
+Input 2 in little endian: 1001 
+0(A)    INPUT  : 1001000000
+1(A)    INPUT  : 1001000000
+2(S)    INPUT  : 1000000000
+3(C)    HIDDEN : 0000000100
+4(Bias) HIDDEN : 0111111100
+5(S1)   HIDDEN : 0111111111
+6(S2)   HIDDEN : 0111111110
+7(S3)   HIDDEN : 0000000000
+8(O)    OUTPUT : 0000000000
+Answer in Little Endian: 00000000
+Answer Corroborated
+UNIX> 
+```
 
 --------------
 # References
