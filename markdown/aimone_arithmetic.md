@@ -132,6 +132,21 @@ just keep spiking, which sometimes makes it confusing to figure out values.
 Here, the output starts at timestep 1, and finishes at timestep *bits*.  After that,
 the network is ready to go again.
 
+```
+UNIX> sh scripts/inversion_w.sh 14 6 .
+Input in little endian: 011100 
+bits: 6
+Time    0(A)    1(S)    2(O) 3(Bias)    4(C) |    0(A)    1(S)    2(O) 3(Bias)    4(C)
+   0       -       *       -       -       - |       0       0       0       0       0
+   1       *       -       *       *       - |       0       0       0       0       0
+   2       *       -       -       *       - |       0       0       0       0       0
+   3       *       -       -       *       - |       0       0       0       0       0
+   4       -       -       -       *       - |       0       0       0       0       0
+   5       -       -       *       *       * |       0       0       0       0       0
+   6       -       -       *       -       - |       0       0       0       0       0
+Answer in Little Endian: 100011
+UNIX> 
+```
 
 ----------------------------------------
 # Comparison
@@ -296,6 +311,18 @@ UNIX>
 ```
 
 After running the script, the network is in `tmp_network.txt`.
+
+----------------------------------------
+# Two's Complement
+
+In order to do subtraction, you need to do two's complement.  It's a simple composition of
+an inversion network and an adder -- you invert the input and then add one to it.  However,
+once you compose those networks, you can do quite a bit of optimization, resulting in
+this network:
+
+![img/twos_c.jpg](../img/twos_c.jpg]
+
+If you want to see the derivation, take a look at [the following picture](../img_two_c_derivation.jpg).
 
 --------------
 # References
