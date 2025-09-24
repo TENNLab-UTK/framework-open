@@ -58,7 +58,7 @@ cat $fro/params/risp_127.txt | sed '/leak_mode/s/none/all/' > tmp_risp.txt
   echo AI 0 1 2
   echo AO 8
   echo SETNAME 0 A
-  echo SETNAME 1 A
+  echo SETNAME 1 B
   echo SETNAME 2 S
   echo SETNAME 3 C
   echo SETNAME 4 Bias
@@ -74,7 +74,7 @@ cat $fro/params/risp_127.txt | sed '/leak_mode/s/none/all/' > tmp_risp.txt
   echo AE 0 5   0 6   0 7
   echo AE 1 5   1 6   1 7
   echo AE 2 3   2 4   2 5   2 6   2 7
-  echo AE 3 4
+  echo AE 3 4   3 8
   echo AE 4 4   4 5   4 6   4 7
   echo AE 5 8
   echo AE 6 5   6 6   6 7   6 8
@@ -83,9 +83,10 @@ cat $fro/params/risp_127.txt | sed '/leak_mode/s/none/all/' > tmp_risp.txt
   echo SEP_ALL Weight 1
   echo SEP_ALL Delay 1
   echo SEP 2 3 Delay $(($bits-1))
+  echo SEP 3 8 Delay 3
   echo SEP 1 5    1 6   1 7   Weight -1
   echo SEP 2 5    2 6   2 7   Weight 2
-  echo SEP 3 4 Weight -1
+  echo SEP 3 4    3 8         Weight -1
   echo SEP 6 8 Weight -1
 
   echo SORT Q
@@ -104,7 +105,7 @@ echo "Input 2 in little endian: $sr2 "
   echo ASR 0 $sr1
   echo ASR 1 $sr2
   echo AS 2 0 1
-  echo RUN $(($bits+2))
+  echo RUN $(($bits+3))
   echo GSR 
 ) > tmp_pt_input.txt
 
