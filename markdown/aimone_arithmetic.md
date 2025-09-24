@@ -391,16 +391,37 @@ you can do some optimization.  Here's the network I came up with:
 Like the adder, you start getting output at timestep 2.  This network also builds in the
 number of bits, like the two's complement network above.
 
+There is a subtle issue here, which is handled by that synapse from *C* to *O* in the 
+network.  Consider the example where you subtract 5 from 7 when *w=5*:
+
+- In little endian 5-bit binary, 7 is 11100.  In big endian, it's 00111.
+- In little endian 5-bit binary, 5 is 10100.  In big endian, it's 00101.
+- In little endian 5-bit two's complement binary, -5 is 11011.  In big endian, it's also 11011.
+- So, we add 7 and -5, which, when you do it by hand, makes more sense in big endian:
+
+```
+ 00111
+ 11011
+------
+100010
+```
+
+See that extra bit, caused by the last carry?  We truncate it, so the answer is 2, which is
+what we want, but when we're having the spiking neural network perform the calculation, it's
+going to generate that last spike, and although we can ignore it, I don't like it.  For that
+reason, we have the synapse from *C* to *O*, which kills that last spike if it happens.
+You need to remember it though, if you're using the network repeatedly -- you need to run
+the network for *w+3* timesteps, and consider the output starting at timestep 2.  You can
+ignore the output on timestep *w+2$ (the last one) or not -- it won't spike.
+
 The script `scripts/subtraction.sh` builds and runs a network:
 
 ```
-UNIX> sh scripts/subtraction.sh
-usage: sh scripts/subtraction.sh v1 v2 bits os_framework
-UNIX> sh scripts/subtraction.sh 16 9 8 .                        # 16-9 = 7
-Input 1 in little endian: 00001 
+UNIX> sh scripts/subtraction.sh 16 9 8 .        # 16-9 = 7.  There would be a spike at timestep
+Input 1 in little endian: 00001                 # 10 if we didn't have the synapse from C to O.
 Input 2 in little endian: 1001 
 0(A)    INPUT  : 0000100000
-1(A)    INPUT  : 1001000000
+1(B)    INPUT  : 1001000000
 2(S)    INPUT  : 1000000000
 3(C)    HIDDEN : 0000000100
 4(Bias) HIDDEN : 0111111100
@@ -410,11 +431,11 @@ Input 2 in little endian: 1001
 8(O)    OUTPUT : 0011100000
 Answer in Little Endian: 11100000
 Answer Corroborated
-UNIX> sh scripts/subtraction.sh 9 16 8 .                        # 9-16 = -7 = 11111001
-Input 1 in little endian: 1001                                  # in two's complement.
+UNIX> sh scripts/subtraction.sh 9 16 8 .         # 9 - 16 = -7.
+Input 1 in little endian: 1001 
 Input 2 in little endian: 00001 
 0(A)    INPUT  : 1001000000
-1(A)    INPUT  : 0000100000
+1(B)    INPUT  : 0000100000
 2(S)    INPUT  : 1000000000
 3(C)    HIDDEN : 0000000100
 4(Bias) HIDDEN : 0111111100
@@ -424,11 +445,11 @@ Input 2 in little endian: 00001
 8(O)    OUTPUT : 0010011111
 Answer in Little Endian: 10011111
 Answer Corroborated
-UNIX> sh scripts/subtraction.sh 9 9 8 .                         $ 9-9 = 0.
+UNIX> sh scripts/subtraction.sh 9 9 8 .          # 9 - 9 = 0.
 Input 1 in little endian: 1001 
 Input 2 in little endian: 1001 
 0(A)    INPUT  : 1001000000
-1(A)    INPUT  : 1001000000
+1(B)    INPUT  : 1001000000
 2(S)    INPUT  : 1000000000
 3(C)    HIDDEN : 0000000100
 4(Bias) HIDDEN : 0111111100
