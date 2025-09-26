@@ -88,8 +88,8 @@ UNIX>
 
 For each arithmetic operation *xxx*, we provide two shell scripts:
 
-- `*xxx*_network.sh` - Prints a RISP network implementing the operation on standard output.
-- `*xxx*_run.sh` - Takes input values, creates the network, runs the network, interprets the output, and confirms correctness.
+- *xxx*`_network.sh` - Prints a RISP network implementing the operation on standard output.
+- *xxx*`_run.sh` - Takes input values, creates the network, runs the network, interprets the output, and confirms correctness.
 
 ----------------------------------------
 # HERE in rewrite. Addition of two numbers.
