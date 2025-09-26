@@ -1,15 +1,98 @@
-# Arithmetic Networks from Aimone, Hill, Severa and Vineyard, 2021.
+# Streaming Arithmetic on Little-Endian, Two's Complement Spike Trains
 
 James S. Plank
 
-In this markdown file, we go over scripts to implement arithmetic using
-the networks defined in the paper [AHSV2021]: "Spiking Neural Streaming Binary Arithmetic",
-by James B. Aimone, Aaron J. Hill, William M. Severa, & Craig M. Vineyard, 
-*IEEE International Conference on Rebooting Computing*, 2021.
+## Introduction
+
+In 2021, James B. Aimone, Aaron J. Hill, William M. Severa, & Craig M. Vineyard published
+a wonderful paper in the *IEEE International Conference on Rebooting Computing*, entitled
+"Spiking Neural Streaming Binary Arithmetic" [AHSV2021].  In this paper, the authors demonstrated how
+to perform the following operations using spiking neural networks:
+
+- Addition
+- Inversion
+- Comparison
+- Maximum
+- Subtraction
+- Multiplication by a constant
+
 You can get the paper from [https://www.computer.org/csdl/proceedings-article/icrc/2021/233200a079/1CbZFjqAqju](https://www.computer.org/csdl/proceedings-article/icrc/2021/233200a079/1CbZFjqAqju), (or on arXiv).
 
+In the TENNLab open-source framework, we have written shell scripts to create networks
+that perform each of these operations, plus two's complement negation and integer division
+by a power of two.  We also have shell scripts to run each of these networks and corroborate
+the results.
+
+------------------------------------------------------------
+## Including the number of bits
+
+In [AHSV2021], the authors use unbounded streams of spikes to represent numbers.
+While this is both cool and elegant, when our research group set about composing these networks
+for mathematical operations, we realized the value of defining the number of bits in each
+numbers' representation.  So the networks that we present here require the user to define
+the value *w*, which is the number of bits/spikes in the representation of the numbers.
+
+Each of our networks also has a *starting* neuron *S*, which must be spiked at timestep 0
+in order for the network to work.  
+
+------------------------------------------------------------
+## Two's Complement, Little Endian
+
+To be precise, each number is represented by a train of *w* spikes.  If you represent no
+spike on a timestep by 0, and a spike by 1, then the stream of 0's and 1's that result from
+a stream of spikes represents the number in two's complement, little endian.
+Therefore, if there is a spike on the last timestep (timestep *w-1$), the number is negative,
+and if there is no spike, then the number is positive.
+
+Here are example of mapping spike trains to numbers:
+
+- *w = 4*, spike train 1010 represents 5.
+- *w = 4*, spike train 1011 represents -3.
+- *w = 5*, spike train 10110 represents 13.
+- *w = 8*, spike train 11111111 represents -1.
+
+There are two shell scripts to help you out with converting numbers to spike trains and
+back again:
+
+- `scripts/val_to_tcle.sh` converts a value and a number of bits to its corresponding spike train.
+- `scripts/tcle_toLval.sh` converts a spike train to a v value.  It is assumed that the length of the spike train equals the number of bits.
+
+So:
+
+```
+UNIX> sh scripts/val_to_tcle.sh 
+usage: sh val_to_tcle.sh val w
+UNIX> sh scripts/val_to_tcle.sh 5 4
+1010
+UNIX> sh scripts/val_to_tcle.sh -3 4
+1011
+UNIX> sh scripts/val_to_tcle.sh 13 5
+10110
+UNIX> sh scripts/val_to_tcle.sh -1 8
+11111111
+UNIX> sh scripts/tcle_to_val.sh
+usage: sh tcle_to_val.sh spike-raster
+UNIX> sh scripts/tcle_to_val.sh 1010
+5
+UNIX> sh scripts/tcle_to_val.sh 1011
+-3
+UNIX> sh scripts/tcle_to_val.sh 10110
+13
+UNIX> sh scripts/tcle_to_val.sh 11111111
+-1
+UNIX> 
+```
+
 ----------------------------------------
-# Addition of two numbers.
+## Two shell scripts for each operation
+
+For each arithmetic operation *xxx*, we provide two shell scripts:
+
+- `*xxx*_network.sh` - Prints a RISP network implementing the operation on standard output.
+- `*xxx*_run.sh` - Takes input values, creates the network, runs the network, interprets the output, and confirms correctness.
+
+----------------------------------------
+# HERE in rewrite. Addition of two numbers.
 
 The following network, from [AHSV2021], adds two numbers when they are streamed in little-endian.
 (As always, if unlabeled, neuron thresholds are one, synapse weights are 1, and synapse delays or 1.

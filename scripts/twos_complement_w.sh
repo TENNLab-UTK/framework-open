@@ -10,25 +10,11 @@ v=$1
 bits=$2
 fro=$3
 
-if [ $v -lt 0 ]; then echo "V cannot be negative" >&2; exit 1; fi
-
 # Convert the number into a spike stream
 
-w=0
-sr=""
-while [ $v -ne 0 ]; do
-  w=$(($w+1))
-  b=$(($v%2))
-  v=$(($v/2))
-  sr="$sr$b"
-done
-  
-if [ $w = 0 ]; then
-  w=1
-  sr=0
-fi
+if ! sh $fro/scripts/val_to_tcle.sh $v $bits > /dev/null ; then exit 1 ; fi
 
-if [ $w -gt $bits ]; then echo "Not enough bits to store $v (must be at least $w)">&2 ; exit 1 ; fi
+sr=`sh $fro/scripts/val_to_tcle.sh $v $bits`
 
 # Make an empty network with the proper RISP parameters.
 # By default, leak is on.
