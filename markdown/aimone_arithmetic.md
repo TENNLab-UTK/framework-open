@@ -140,7 +140,7 @@ Red synapses, if unlabeled, have weights of -1.).
 Let's test it out with `scripts/adder_run.sh`.  The output is pretty self-explanatory, but
 I've put a few comments in:
 
-``
+```
 UNIX> sh scripts/adder_run.sh 
 usage: sh scripts/adder_run.sh v0 v1 w os_framework
 UNIX> sh scripts/adder_run.sh 44 80 8 .
