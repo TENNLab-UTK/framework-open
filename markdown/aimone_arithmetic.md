@@ -128,7 +128,7 @@ composing networks by hand.
 ----------------------------------------
 # Addition
 
-We use the following network for addition.  It is derived from the network in [AHSV2021], but
+We use the following network for addition.  It is the network presented in [AHSV2021], but
 we've added a neuron and synapse to deal with the fixed bit width:
 
 (In all of these network drawings,
@@ -137,81 +137,86 @@ Red synapses, if unlabeled, have weights of -1.).
 
 ![../img/adder.jpg](../img/adder.jpg)
 
-Now, let's construct a network and test it out.  The shell script
-[scripts/aimone_adder.sh](../scripts/aimone_adder.sh) does all of the work for you:
+Let's test it out with `scripts/adder_run.sh`.  The output is pretty self-explanatory, but
+I've put a few comments in:
 
-```
-UNIX> sh scripts/aimone_adder.sh 
-usage: sh scripts/aimone_adder.sh v1 v2 os_framework
-UNIX> sh scripts/aimone_adder.sh 15 85 .
-Inputs in little endian: 1111000 1010101
-w: 7
-Time  0(A)  1(B) 2(S1) 3(S2) 4(S3)  5(O) |  0(A)  1(B) 2(S1) 3(S2) 4(S3)  5(O)
-   0     *     *     -     -     -     - |     0     0     0     0     0     0
-   1     *     -     *     *     -     - |     0     0     0     0     0     0
-   2     *     *     *     *     -     - |     0     0     0     0     0     0
-   3     *     -     *     *     *     - |     0     0     0     0     0     0
-   4     -     *     *     *     -     * |     0     0     0     0     0     0
-   5     -     -     *     *     -     - |     0     0     0     0     0     0
-   6     -     *     *     -     -     - |     0     0     0     0     0     0
-   7     -     -     *     -     -     * |     0     0     0     0     0     0
-   8     -     -     -     -     -     * |     0     0     0     0     0     0
-   9     -     -     -     -     -     - |     0     0     0     0     0     0
-Sum in Little Endian: 00100110
-Sum in Decimal: 100
+``
+UNIX> sh scripts/adder_run.sh 
+usage: sh scripts/adder_run.sh v0 v1 w os_framework
+UNIX> sh scripts/adder_run.sh 44 80 8 .
+V0: 44
+V1: 80
+W:  8
+Top:  128
+V0-SR: 00110100
+V1-SR: 00001010
+Output-Neuron: 6
+Output-Starting-Timestep: 2
+Output-Num-Timesteps: 8
+Output-On-Output-Neuron: 000011111                  # This is all of the timesteps of the output.
+Stripped-Output: 00111110                           # Here, we've stripped out the 8 spikes starting at timestep 2.
+Sum: 124
+Computed-Sum: 124
+Overflow: 0
+Underflow: 0
+
+The network is in tmp_adder.txt
+Its info is in tmp_info.txt
+Input for the processor_tool to run this test is in tmp_pt_input.txt
+Output of the processor_tool on this input is in tmp_pt_output.txt
 UNIX> 
 ```
 
-In the shell script, I convert the two values to binary, little endian.  So 15 becomes
-1111000 and 85 becomes 1010101.  You can see above how the network computes the sum,
-whose little endian starts at timestep 2: 00100110.  that equals 100 in decimal,
-which of course is correct.
-
-In this script and the others in this markdown writeup, when you're done running
-it, it creates the following files:
-
-- `tmp_network.txt` - The RISP network.
-- `tmp_network_tool.txt` - The `network_tool` commands to create the network.
-- `tmp_pt_input.txt` - The input to `processor_tool_risp` that gives the output above.
-- `tmp_pt_output.txt` - The output of `processor_tool_risp` on the input.
-- `tmp_empty.txt` - The "empty" RISP network that the `network_tool` uses as a starting 
-   network.
-- `tmp_risp.txt` - The RISP JSON to create the empty network.  
-
-You'll note that since this network requires leak, the RISP settings make sure that the
-neurons leak their charge at every timestep.
+You can run this yourself:
 
 ```
 UNIX> cat tmp_pt_input.txt
-ML tmp_network.txt
-ASR 0 1111000
-ASR 1 1010101
-RSC 10
+ML tmp_adder.txt
+ASR 0 00110100
+ASR 1 00001010
+AS 2 0 1
+RUN 11
+GSR
 UNIX> bin/processor_tool_risp < tmp_pt_input.txt
-Time  0(A)  1(B) 2(S1) 3(S2) 4(S3)  5(O) |  0(A)  1(B) 2(S1) 3(S2) 4(S3)  5(O)
-   0     *     *     -     -     -     - |     0     0     0     0     0     0
-   1     *     -     *     *     -     - |     0     0     0     0     0     0
-   2     *     *     *     *     -     - |     0     0     0     0     0     0
-   3     *     -     *     *     *     - |     0     0     0     0     0     0
-   4     -     *     *     *     -     * |     0     0     0     0     0     0
-   5     -     -     *     *     -     - |     0     0     0     0     0     0
-   6     -     *     *     -     -     - |     0     0     0     0     0     0
-   7     -     -     *     -     -     * |     0     0     0     0     0     0
-   8     -     -     -     -     -     * |     0     0     0     0     0     0
-   9     -     -     -     -     -     - |     0     0     0     0     0     0
-UNIX> ( echo FJ tmp_network.txt ; echo INFO ) | bin/network_tool
-Nodes:          6
-Edges:         12
-Inputs:         2
-Outputs:        1
-
-Input nodes:  0(A) 1(B) 
-Hidden nodes: 4(S3) 2(S1) 3(S2) 
-Output nodes: 5(O) 
+0(V0)  INPUT  : 001101000
+1(V1)  INPUT  : 000010100
+2(S)   INPUT  : 100000000
+3(S1)  HIDDEN : 000111110
+4(S2)  HIDDEN : 000000000       # The GSR command stops printing timesteps when there are no more
+5(S3)  HIDDEN : 000000000       # spikes, so even though we run for 11 timesteps, its only prints
+6(SUM) OUTPUT : 000011111       # nine timesteps.  The last two have no spikes on any neuron.
 UNIX> 
 ```
+
+We can try this with negative numbers and it works fine:
+
+```
+UNIX> sh scripts/val_to_tcle.sh 25 8               # Get the spike rasters for 25 and -100
+10011000
+UNIX> sh scripts/val_to_tcle.sh -100 8
+00111001
+UNIX> bin/processor_tool_risp                      # Run the processor_tool, and:
+ML tmp_adder.txt                                   # Load the network.
+ASR 0 10011000                                     # Input the spike raster for 25.
+ASR 1 00111001                                     # Input the spike raster for -100.
+AS 2 0 1                                           # Apply the starting spike to the S neuron.
+RUN 11                                             # Run it for 11 timesteps.
+GSR                                                # Print the spike raster.
+0(V0)  INPUT  : 1001100000
+1(V1)  INPUT  : 0011100100
+2(S)   INPUT  : 1000000000
+3(S1)  HIDDEN : 0101111010
+4(S2)  HIDDEN : 0000110000
+5(S3)  HIDDEN : 0000010000
+6(SUM) OUTPUT : 0010101101                          # We want the output starting at timestep 2,
+Q                                                   # which is 10101101.
+UNIX> sh scripts/tcle_to_val.sh 10101101            # That equals -75, so our addition worked!
+-75
+UNIX> 
+```
+
 ----------------------------------------
-# Inversion
+# Inversion -- HERE IN THE REWRITE
 
 It is unfortunate that RISP does not implement the features required by [AHSV2021] to
 implement a simple streaming inverter.  Instead, we set up a simple inversion network that

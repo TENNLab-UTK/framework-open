@@ -88,3 +88,8 @@ echo "Computed-Sum: $sum"
 echo "Overflow: $overflow"
 echo "Underflow: $underflow"
 
+echo ""
+echo "The network is in tmp_adder.txt"
+echo "Its info is in tmp_info.txt"
+echo "Input for the processor_tool to run this test is in tmp_pt_input.txt"
+echo "Output of the processor_tool on this input is in tmp_pt_output.txt"

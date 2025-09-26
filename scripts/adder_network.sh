@@ -34,7 +34,7 @@ cat $fro/params/risp_127.txt | sed '/leak_mode/s/none/all/' > tmp_risp.txt
 ( echo M risp tmp_risp.txt
   echo EMPTYNET tmp_emptynet.txt ) | $fro/bin/processor_tool_risp
 
-# Create the network and put it into tmp_network.txt
+# Create the network and put print it on standard output.
 
 ( echo FJ tmp_emptynet.txt
   echo AN 0 1 2 3 4 5 6
@@ -82,3 +82,7 @@ $fro/bin/network_tool < tmp_network_tool.txt
   echo OUTPUT SUM 6 TC_LE $w 2 
   echo RUN $(($w+3))
 ) > tmp_info.txt
+
+rm -f tmp_risp.txt
+rm -f tmp_emptynet.txt
+rm -f tmp_network_tool.txt
