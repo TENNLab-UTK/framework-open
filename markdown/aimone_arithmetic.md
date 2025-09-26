@@ -88,17 +88,54 @@ UNIX>
 
 For each arithmetic operation *xxx*, we provide two shell scripts:
 
-- *xxx*`_network.sh` - Prints a RISP network implementing the operation on standard output.
-- *xxx*`_run.sh` - Takes input values, creates the network, runs the network, interprets the output, and confirms correctness.
+- `xxx_network.sh` - Prints a RISP network implementing the operation on standard output.
+- `xxx_run.sh` - Takes input values, creates the network, runs the network, interprets the output, and confirms correctness.
+
+In the `xxx_network.sh` scripts, there is a file `tmp_info.txt` that is created, that contains
+information about the networks.  Let me give you an example.  Suppose you create an adder
+for 8-bit numbers:
+
+```
+UNIX> sh scripts/adder_network.sh 
+usage: sh scripts/aimone_adder.sh w os_framework
+UNIX> sh scripts/adder_network.sh 8 . > tmp_adder.txt
+UNIX> cat tmp_info.txt
+INPUT V0 0 TC_LE 8 0
+INPUT V1 1 TC_LE 8 0
+INPUT S 2 Spike 1 0
+OUTPUT SUM 6 TC_LE 8 2
+RUN 11
+UNIX> 
+```
+
+You get the following information from `tmp_info.txt`:
+
+- The first input, *V0* is named "V0" in the network, and its neuron number is 0.  It represents
+  its values with two's complement, little-endian, and it expects a train of 8 spikes starting
+  at timestep 0.
+- The second input, *V1* is named "V1" in the network, and its neuron number is 1.  Its other
+  details are just like *V0$.
+- The third input, *S* is a single spike at timestep 0.
+- The network should run for 11 timesteps.
+- The output neuron is named "SUM" and is neuron number 6.  Its output is two's complement,
+  little-endian, and it is a train of 8 spikes starting at timestep 2.
+
+This information is there to help you compose and use these networks.
+The `xxx_run.sh` shell scripts make use of this information, and perhaps we'll be able to use
+it to automate composition, but we're not at that point yet.  We're still learning, and
+composing networks by hand.
 
 ----------------------------------------
-# HERE in rewrite. Addition of two numbers.
+# Addition
 
-The following network, from [AHSV2021], adds two numbers when they are streamed in little-endian.
-(As always, if unlabeled, neuron thresholds are one, synapse weights are 1, and synapse delays or 1.
-Red synapses have weights of -1.).
+We use the following network for addition.  It is derived from the network in [AHSV2021], but
+we've added a neuron and synapse to deal with the fixed bit width:
 
-![../img/Aimone_Adder.jpg](../img/Aimone_Adder.jpg)
+(In all of these network drawings,
+if unlabeled, neuron thresholds are one, synapse weights are 1, and synapse delays are 1.
+Red synapses, if unlabeled, have weights of -1.).
+
+![../img/adder.jpg](../img/adder.jpg)
 
 Now, let's construct a network and test it out.  The shell script
 [scripts/aimone_adder.sh](../scripts/aimone_adder.sh) does all of the work for you:
