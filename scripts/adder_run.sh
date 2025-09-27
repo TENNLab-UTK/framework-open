@@ -74,8 +74,8 @@ if [ $cs -lt $((-$top)) ]; then underflow=1; else underflow=0; fi
 
 echo "V0: $v0"
 echo "V1: $v1"
-echo "W:  $w"
-echo "Top:  $top"
+echo "W: $w"
+echo "Top: $top"
 echo "V0-SR: $sr0"
 echo "V1-SR: $sr1"
 echo "Output-Neuron: $on"

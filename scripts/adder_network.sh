@@ -14,7 +14,7 @@
 # put into tmp_info.txt.  
 
 if [ $# -ne 2 ]; then
-  echo 'usage: sh scripts/aimone_adder.sh w os_framework' >&2
+  echo 'usage: sh scripts/adder_network.sh w os_framework' >&2
   exit 1
 fi
 

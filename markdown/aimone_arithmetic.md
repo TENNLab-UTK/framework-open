@@ -216,60 +216,43 @@ UNIX>
 ```
 
 ----------------------------------------
-# Inversion -- HERE IN THE REWRITE
+# Inversion 
 
 It is unfortunate that RISP does not implement the features required by [AHSV2021] to
 implement a simple streaming inverter.  Instead, we set up a simple inversion network that
-employs a starting spike at time zero to set up a bias that fires every timestep:
+employs a starting spike at time zero to set up a bias that fires every timestep, and stops
+after *w* timesteps.
 
-![img/Streaming_Inversion.jpg](../img/Streaming_Inversion.jpg)
+This network simply flips the bits of its input -- it is not a two's complement inverter.
+That's next.
 
+![img/inversion.jpg](../img/inversion.jpg)
+
+The script `scripts/inversion_network.sh` prints an inversion network on
+standard output, and the script `scripts/inversion_run.sh
 The shell script `scripts/inversion.sh` inverts a number using this network:
 
 ```
-UNIX> sh scripts/inversion.sh 
-usage: sh scripts/inversion.sh v1 bits os_framework
-UNIX> sh scripts/inversion.sh 13 4 .
-Input in little endian: 1011 
-bits: 4
-Time    0(A)    1(S)    2(O) 3(Bias) |    0(A)    1(S)    2(O) 3(Bias)
-   0       *       *       -       - |       0       0       0       0
-   1       -       -       -       * |       0       0       0       0
-   2       *       -       *       * |       0       0       0       0
-   3       *       -       -       * |       0       0       0       0
-   4       -       -       -       * |       0       0       0       0
-Answer in Little Endian: 0100
-UNIX> cat tmp_pt_input.txt 
-ML tmp_network.txt
-ASR 0 1011
-AS 1 0 1
-RSC 5
-UNIX> 
-```
+UNIX> sh scripts/inversion_run.sh
+usage: sh scripts/inversion_run.sh v w os_framework
+UNIX> sh scripts/inversion_run.sh 0100111110 4 .
+V's length (10) is not equal to w (4)
+UNIX> sh scripts/inversion_run.sh 0100111110 10 .
+1011000001
+V0: 0100111110
+W: 10
+Output-Neuron: 4
+Output-Starting-Timestep: 1
+Output-Num-Timesteps: 10
+Output-On-Output-Neuron: 01011000001
+Stripped-Output: 1011000001
+Input-Inverted: 1011000001
+Correct: 1
 
-There's a second script, `scripts/inversion_w.sh` that turns the bias off, so that
-it only spikes *bits-1* times.  Since there is an extra spike from *S* to *O*, that
-means that *O* gets *bits* spikes overall.  This is useful, because the bias doesn't
-just keep spiking, which sometimes makes it confusing to figure out values.
-
-![img/Streaming_Inversion_w.jpg](../img/Streaming_Inversion_w.jpg)
-
-Here, the output starts at timestep 1, and finishes at timestep *bits*.  After that,
-the network is ready to go again.
-
-```
-UNIX> sh scripts/inversion_w.sh 14 6 .
-Input in little endian: 011100 
-bits: 6
-Time    0(A)    1(S)    2(O) 3(Bias)    4(C) |    0(A)    1(S)    2(O) 3(Bias)    4(C)
-   0       -       *       -       -       - |       0       0       0       0       0
-   1       *       -       *       *       - |       0       0       0       0       0
-   2       *       -       -       *       - |       0       0       0       0       0
-   3       *       -       -       *       - |       0       0       0       0       0
-   4       -       -       -       *       - |       0       0       0       0       0
-   5       -       -       *       *       * |       0       0       0       0       0
-   6       -       -       *       -       - |       0       0       0       0       0
-Answer in Little Endian: 100011
+The network is in tmp_inversion.txt
+Its info is in tmp_info.txt
+Input for the processor_tool to run this test is in tmp_pt_input.txt
+Output of the processor_tool on this input is in tmp_pt_output.txt
 UNIX> 
 ```
 
