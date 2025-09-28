@@ -268,7 +268,7 @@ When you reason a little about the network, you realize first that S3 never fire
 You can also coalesce A and A+, and S/Bias /B+, resulting in the following, smaller
 network:
 
-![img/twos_comp_1.jpg](../img/twos_comp_1.jpg)
+![img/twos_comp_2.jpg](../img/twos_comp_2.jpg)
 
 You can use `scripts/twos_comp_network.sh` to create one of these networks, and
 `scripts/twos_comp_run.sh` to demonstrate how it works:
