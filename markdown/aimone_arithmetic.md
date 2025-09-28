@@ -6,8 +6,8 @@ James S. Plank
 
 In 2021, James B. Aimone, Aaron J. Hill, William M. Severa, & Craig M. Vineyard published
 a wonderful paper in the *IEEE International Conference on Rebooting Computing*, entitled
-"Spiking Neural Streaming Binary Arithmetic" [AHSV2021].  In this paper, the authors demonstrated how
-to perform the following operations using spiking neural networks:
+"Spiking Neural Streaming Binary Arithmetic" [AHSV2021].  In this paper, the authors demonstrated 
+how to perform the following operations using spiking neural networks:
 
 - Addition
 - Inversion
