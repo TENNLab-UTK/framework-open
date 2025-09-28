@@ -1,4 +1,4 @@
-# This creates an adder network in tmp_inversion.txt.  It takes a value to invert,
+# This creates a bit-inversion network in tmp_inversion.txt.  It takes a value to invert,
 # and a number of bits (w).  It reads the information in tmp_info.txt to create
 # processor_tool commands to run the inversion network.  It 
 # runs the network, and then double-checks the results.
@@ -61,8 +61,6 @@ zeros=`echo "$dots$st_dots" | sed 's/./0/g'`
 
 output=`grep '^'$on'(' tmp_pt_output.txt | awk '{ print $NF }'`
 stripped=`echo "$output$zeros" | sed 's/'$st_dots'\('$dots'\).*/\1/'`
-
-echo $stripped
 
 if [ $stripped = $c ]; then correct=1; else correct=0; fi
 echo "V0: $v"

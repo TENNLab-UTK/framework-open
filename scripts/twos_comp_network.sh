@@ -1,20 +1,21 @@
-# This script takes a number and its number of bits (w), and outputs the two's
-# complement negation of it as a w-bit number.
+# This creates a network that takes a w-bit number, represented as spikes in 
+# little-endian, twos-complement, and outputs the two's-complement of the number.
+#
+# James S. Plank.  September, 2025.
+#
+# This network was created by composing the inversion network of scripts/inversion_network.sh
+# and the adder of scripts/adder_network.sh, and then optimizing.
+#
+# The network is printed on standard output, and information for running is
+# put into tmp_info.txt.
 
-if [ $# -ne 3 ]; then
-  echo 'usage: sh scripts/twos_complement_w.sh v1 bits os_framework' >&2
+if [ $# -ne 2 ]; then
+  echo 'usage: sh scripts/twos_complement_w.sh $w os_framework' >&2
   exit 1
 fi
 
-v=$1
-bits=$2
-fro=$3
-
-# Convert the number into a spike stream
-
-if ! sh $fro/scripts/val_to_tcle.sh $v $bits > /dev/null ; then exit 1 ; fi
-
-sr=`sh $fro/scripts/val_to_tcle.sh $v $bits`
+w=$1
+fro=$2
 
 # Make an empty network with the proper RISP parameters.
 # By default, leak is on.
@@ -24,7 +25,7 @@ cat $fro/params/risp_127.txt | sed '/leak_mode/s/none/all/' > tmp_risp.txt
 ( echo M risp tmp_risp.txt
   echo EMPTYNET tmp_emptynet.txt ) | $fro/bin/processor_tool_risp
 
-# Now create the network and put it into tmp_network.txt
+# Now create the network and print on stdout
 
 ( echo FJ tmp_emptynet.txt
   echo AN 0 1 2 3 4 5 6
@@ -52,34 +53,30 @@ cat $fro/params/risp_127.txt | sed '/leak_mode/s/none/all/' > tmp_risp.txt
   echo SEP_ALL Delay 1
   echo SEP 0 4    0 5   Weight -1
   echo SEP 1 4    1 5   Weight 2
-  echo SEP 1 2 Delay $(($bits-1))
+  echo SEP 1 2 Delay $(($w-1))
   echo SEP 2 3 Weight -1
   echo SEP 5 6 Weight -1
 
   echo SORT Q
-  echo TJ tmp_network.txt
+  echo TJ
 
   ) > tmp_network_tool.txt
 
 $fro/bin/network_tool < tmp_network_tool.txt
 
-echo "Input in little endian: $sr "
+# Info is the form:
+#
+# INPUT  node_name node_number format timesteps starting_timestep
+# OUTPUT node_name node_number format timesteps starting_timestep
+# RUN timesteps
 
-# Create the processor_tool input and run it.
+( echo INPUT  V0  0 TC_LE $w   0
+  echo INPUT  S   1 Spike 1    0
+  echo OUTPUT O   6 TC_LE $w 2
+  echo RUN $(($w+2))
+) > tmp_info.txt
 
-( echo ML tmp_network.txt
-  echo ASR 0 $sr
-  echo AS 1 0 1
-  echo RUN $(($bits+2))
-  echo GSR 
-) > tmp_pt_input.txt
+rm -f tmp_risp.txt
+rm -f tmp_emptynet.txt
+rm -f tmp_network_tool.txt
 
-$fro/bin/processor_tool_risp < tmp_pt_input.txt > tmp_pt_output.txt
-
-cat tmp_pt_output.txt
-
-# Now, construct the output from the O neuron.
-
-osr=`tail -n 1 tmp_pt_output.txt | awk '{ print $NF }' | sed 's/..//'`
-while [ `echo $osr | wc | awk '{ print $3 }'` -le $bits ]; do osr=$osr"0"; done
-echo Answer in Little Endian: $osr

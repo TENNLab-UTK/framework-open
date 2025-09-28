@@ -238,7 +238,6 @@ usage: sh scripts/inversion_run.sh v w os_framework
 UNIX> sh scripts/inversion_run.sh 0100111110 4 .
 V's length (10) is not equal to w (4)
 UNIX> sh scripts/inversion_run.sh 0100111110 10 .
-1011000001
 V0: 0100111110
 W: 10
 Output-Neuron: 4
@@ -257,87 +256,49 @@ UNIX>
 ```
 
 ----------------------------------------
-# Comparison
+# Two's Complement Inversion
 
-In figure 2 of [AHSV2021], they give a network for performing the comparison of two numbers,
-*A* and *B*.  They do this by first inverting *B*, and then adding it to *A*.  If *B > A*,
-then the result is a negative number, which means that the carry bit (neuron S2) fires on
-the last bit.  The following network implements this in RISP:
+To perform two's complement inversion of a number, the algorithm is to flip the 
+number's bits, and then add one to it.  Therefore, we may compose the two networks
+above to perform the inversion:
 
-![img/Aimone_Comparison.jpg](../img/Aimone_Comparison.jpg)
+![img/twos_comp_1.jpg](../img/twos_comp_1.jpg)
 
-As denoted by the colors, we create this network by composing an addition network and
-an inversion network, and then adding two extra neurons:
+When you reason a little about the network, you realize first that S3 never fires.
+You can also coalesce A and A+, and S/Bias /B+, resulting in the following, smaller
+network:
 
-1. An input neuron *A* that has a synapse to *A* in the addition network.   This causes
-   each *A* bit to reach the addition network at the same time as the corresponding bit
-   from the inverted *B*.
+![img/twos_comp_1.jpg](../img/twos_comp_1.jpg)
 
-2. An output neuron *O* that is set to fire if the last bit of *S2* fires.  Here, *w* is
-   the number of bits of the two numbers, and must be precalculated.  Alternatively, you
-   can just set *w* to be a suitably large value -- this is one of the nice things about
-   the streaming little-endian representation.  
-
-When we run it, the shell script shows the spike-raster output of the neurons.  The last
-bit of the *O* neuron determines the comparison.  Below, I'll do *V1 > V2*, 
-*V1 < V2* and *V1 == V2*.  The shell script calculates *w* and then runs the network
-for the appropriate number of timesteps:
+You can use `scripts/twos_comp_network.sh` to create one of these networks, and
+`scripts/twos_comp_run.sh` to demonstrate how it works:
 
 ```
-UNIX> sh scripts/aimone_comparison.sh 13 5 .             # V1 > V2 - O should spike.
-Inputs in little endian: 1011 1010
-w: 4
-0(+A)     INPUT  : 0101100
-1(+B/I-O) INPUT  : 0010111
-2(+S1)    HIDDEN : 0011111
-3(+S2)    HIDDEN : 0000011
-4(+S3)    HIDDEN : 0000000
-5(+O)     OUTPUT : 0001110
-6(I-A)    INPUT  : 1010000
-7(I-S)    INPUT  : 1000000
-8(I-Bias) HIDDEN : 0111111
-9(A)      INPUT  : 1011000
-10(O)     OUTPUT : 0000001
-OK -- v1: 13, v2: 5, last spike of O: 1
-UNIX> sh scripts/aimone_comparison.sh 45 129 .           # V1 < V2 - O should not spike,
-Inputs in little endian: 10110100 10000001               # and since w is bigger, it runs for more timesteps.
-w: 8
-0(+A)     INPUT  : 01011010000
-1(+B/I-O) INPUT  : 00111111011
-2(+S1)    HIDDEN : 00111111111
-3(+S2)    HIDDEN : 00001111100
-4(+S3)    HIDDEN : 00000101000
-5(+O)     OUTPUT : 00011010101
-6(I-A)    INPUT  : 10000001000
-7(I-S)    INPUT  : 10000000000
-8(I-Bias) HIDDEN : 01111111111
-9(A)      INPUT  : 10110100000
-10(O)     OUTPUT : 00000000000
-OK -- v1: 45, v2: 129, last spike of O: 0
-                                                         # V1 == V2, and I make them really big.
-UNIX> sh scripts/aimone_comparison.sh 123456789 123456789 .
-Inputs in little endian: 101010001011001111011010111 101010001011001111011010111
-w: 27
-0(+A)     INPUT  : 010101000101100111101101011100
-1(+B/I-O) INPUT  : 001010111010011000010010100011
-2(+S1)    HIDDEN : 001111111111111111111111111111
-3(+S2)    HIDDEN : 000000000000000000000000000000
-4(+S3)    HIDDEN : 000000000000000000000000000000
-5(+O)     OUTPUT : 000111111111111111111111111111
-6(I-A)    INPUT  : 101010001011001111011010111000
-7(I-S)    INPUT  : 100000000000000000000000000000
-8(I-Bias) HIDDEN : 011111111111111111111111111111
-9(A)      INPUT  : 101010001011001111011010111000
-10(O)     OUTPUT : 000000000000000000000000000000
-OK -- v1: 123456789, v2: 123456789, last spike of O: 0
+UNIX> sh scripts/twos_comp_run.sh 
+usage: sh scripts/inversion_run.sh v w os_framework
+UNIX> sh scripts/twos_comp_run.sh 14 8 .
+V0: 14
+W: 8
+V0-Spike-Raster: 01110000
+Output-Neuron: 6
+Output-Starting-Timestep: 2
+Output-Num-Timesteps: 8
+Output-On-Output-Neuron: 0001001111
+Stripped-Output: 01001111
+Input-Inverted: -14
+Inverted-Spike-Raster: 01001111
+Correct: 1
+
+The network is in tmp_twos_comp.txt
+Its info is in tmp_info.txt
+Input for the processor_tool to run this test is in tmp_pt_input.txt
+Output of the processor_tool on this input is in tmp_pt_output.txt
+UNIX> sh scripts/twos_comp_run.sh -14 8 . | grep Spike
+V0-Spike-Raster: 01001111
+Inverted-Spike-Raster: 01110000
 UNIX> 
 ```
 
-The network composition uses the `bin/compose_networks` program.  I'll admit that the
-shell script is Byzantine, and that `bin/compose_networks` is pretty primitive.  I'm sure
-this is easier in Fugu [ASV2019], and maybe when we have the two projects interact, we'll be able
-to use Fugu with RISP.  Until then, we'll use `bin/compose_networks` and our prowess
-at writing shell scripts.
 
 ----------------------------------------
 # Multiplication of a number by a constant
