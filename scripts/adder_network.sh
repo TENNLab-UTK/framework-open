@@ -2,6 +2,13 @@
 # in little endian.  It works with positive and negative numbers, where the negative
 # numbers are converted with two's complement.
 #
+# w is used to isolate the output to w bits.  This is necessary, because sometimes there
+# is overflow, and sometimes there is not overflow, and it is inconsistent (when you use
+# two's complement for negative numbers).
+#
+# If you set w to zero, then it does not put in the isolation, and the network is exactly
+# the same as in Aimone's paper.
+#
 # James S. Plank.  September, 2025.
 #
 # This network comes from the paper "Spiking Neural Streaming Binary Arithmetic",
@@ -36,33 +43,56 @@ cat $fro/params/risp_127.txt | sed '/leak_mode/s/none/all/' > tmp_risp.txt
 
 # Create the network and put print it on standard output.
 
+if [ $w -ne 0 ]; then
+  s=2
+  s1=3
+  s2=4
+  s3=5
+  sum=6
+else
+  s=BADS
+  s1=2
+  s2=3
+  s3=4
+  sum=5
+fi
+
 ( echo FJ tmp_emptynet.txt
-  echo AN 0 1 2 3 4 5 6
-  echo AI 0 1 2
-  echo AO 6
+  echo AN 0 1 $s1 $s2 $s3 $sum
+  echo AI 0 1
+  echo AO $sum
   echo SETNAME 0 V0
   echo SETNAME 1 V1
-  echo SETNAME 2 S
-  echo SETNAME 3 S1
-  echo SETNAME 4 S2
-  echo SETNAME 5 S3
-  echo SETNAME 6 SUM
+  echo SETNAME $s1 S1
+  echo SETNAME $s2 S2
+  echo SETNAME $s3 S3
+  echo SETNAME $sum SUM
+  if [ $w -ne 0 ]; then
+    echo AN $s
+    echo AI $s
+    echo SETNAME $s S
+  fi
   echo SNP_ALL Threshold 1
-  echo SNP 4 Threshold 2
-  echo SNP 5 Threshold 3
+  echo SNP $s2 Threshold 2
+  echo SNP $s3 Threshold 3
 
-  echo AE 0 3   0 4   0 5
-  echo AE 1 3   1 4   1 5
-  echo AE 2 6
-  echo AE 3 6
-  echo AE 4 3   4 4   4 5   4 6
-  echo AE 5 6
+  
+  echo AE 0 $s1   0 $s2   0 $s3
+  echo AE 1 $s1   1 $s2   1 $s3
+  echo AE $s1 $sum
+  echo AE $s2 $s1   $s2 $s2   $s2 $s3   $s2 $sum
+  echo AE $s3 $sum
+
 
   echo SEP_ALL Weight 1
   echo SEP_ALL Delay 1
-  echo SEP 4 6 Weight -1
-  echo SEP 2 6 Weight -1
-  echo SEP 2 6 Delay $(($w+2))
+  echo SEP $s2 $sum Weight -1
+
+  if [ $w -ne 0 ]; then 
+    echo AE $s $sum
+    echo SEP $s $sum Weight -1
+    echo SEP $s $sum Delay $(($w+2))
+  fi
   
   echo SORT Q
   echo TJ
@@ -78,8 +108,10 @@ $fro/bin/network_tool < tmp_network_tool.txt
 
 ( echo INPUT  V0  0 TC_LE $w   0 
   echo INPUT  V1  1 TC_LE $w   0 
-  echo INPUT  S   2 Spike 1    0 
-  echo OUTPUT SUM 6 TC_LE $w 2 
+  if [ $w -ne 0 ]; then
+    echo INPUT  S   $s Spike 1    0 
+  fi
+  echo OUTPUT SUM $sum TC_LE $w 2 
   echo RUN $(($w+3))
 ) > tmp_info.txt
 

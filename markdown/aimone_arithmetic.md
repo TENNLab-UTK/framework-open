@@ -299,7 +299,6 @@ Inverted-Spike-Raster: 01110000
 UNIX> 
 ```
 
-
 ----------------------------------------
 # Multiplication of a number by a constant
 
@@ -308,81 +307,199 @@ to each adder's inputs with the proper delay, so that the number, multiplied by 
 factor of two, is added into the product.
 
 It's best illustrated by a simple example.  Suppose we want to multiply by 556.  You'll
-note that in binary, 556 = 0x22c = 1000101100.  Since there are four one bits set in 556,
-you can multiply *a* by 556 by doing: *4a+8a+32a+512a*.  This is probably easier to see in
-binary.  Suppose *a* is 87 = 0x57 = 1010111.  Then we have:
+note that in binary (big-endian), 556 = 0x22c = 1000101100.  Since there are four one bits set 
+in 556, you can multiply *x* by 556 by doing: *4x+8x+32x+512x*.  This is probably easier to see in
+binary.  Suppose *x* is 87 = 0x57 = 1010111.  Then we have:
 
 ```
-   4a        101011100   
-   8a       1010111000  
+   4x        101011100   
+   8x       1010111000  
             ----------
            10000010100 -- 4*87 + 8*87 = 1044
-  32a     101011100000
+  32x     101011100000
           ------------
           111011110100 -- 4*87 + 8*87 + 32*87 = 3828
- 512a 1010111000000000
+ 512x 1010111000000000
       ----------------
       1011110011110100 --  4*87 + 8*87 + 32*87 + 512*87 = 48372
 ```
 
-Rendering this with a spiking neural network, we cascade three adders, so that:
+Rendering this with a spiking neural network, we are going to compose three
+adders as follows:
 
-- *A* of the first adder is *a* delayed by two timesteps (*4a*).
-- *B* of the first adder is *a* delayed by three timesteps (*8a*).
-- *A* of the second adder is the output of the first adder (*4a+8a*).
-- *B* of the second adder is *a* delayed by five timesteps (*32a*).
-- *A* of the third adder is the output of the second adder (*4a+8a+32a*).
-- *B* of the third adder is *a* delayed by nine timesteps (*512a*).
-- The output of the third added is our desired product:  (*4a+8a+32a+512a = 556a*).
+- The first adder will add *4x* and *8x*.
+- The second adder will add the sum of the first adder and *32x*.
+- The third adder will add the sum of the second adder and *512x*.
 
 Here's a picture:
 
-![../img/Aimone_Multiplier.jpg](../img/Aimone_Multiplier.jpg)
+![../img/multby_556.jpg](../img/multby_556.jpg)
 
-If you delve into the detail, you may be a little confused by the delays -- they work, and
-I'll explain them later.  For now, just trust me.
+I know you may be confused by this picture, so I'm going to walk you through it slowly.
 
-The shell script `scripts/aimone_mult_const.sh` takes a constant and a value, and creates
-a network for multiplying any value by the constant.  It then turns the value into a 
-binary spike train, and applies it to the network, printing out the product.
+1. The first (leftmost) adder adds *4x* and *8x*.   The delay of 3 from *A* is what performs the
+multiplication by four.  To be precise, the edge from *A* to *a* must have a delay of
+*y+1*, where *y* is the number of leading zeros in the little-endian representation of the
+constant.  Here, the constant is 556, which is 0011010001 in little-endian.  There are two
+leading zero's, so *y=2* and the delay of the synapse from *A* to *a* *2+1=3*.
 
-Here's an example where the constant is 556, and the value is 87 (0x57 = 01010111).
-For reference, 556*87 = 48,372:
+You'll note that the synase from *a* to *b* has a delay of one.  That is because we multiply
+*4x* by 2 to get *8x*.  To be precise, if there are *y* zeros between the first 1 and the second
+1 in the little-endian representation of our constant, then the weight of the synapse from
+*a* to *b* is *y+1*.
+
+2. The second (middle) adder adds *(4x+8x)* and *32x*.  First, you'll note that*4x* and *8x*
+arrive at *a* and *b* respectively at timestep 1.  That might be confusing, but think about
+when, say, *x* is three = 11.  Then *4x* is 0011 (little endian) and *8x* is 00011.  Because of
+the delay from *A*, neuron *a's* spike raster, starting at timestep 1 is 00011, and neuron *b's$
+is 000011.  Thus, *4x*, which is 0011, starts at timestep 1 on neuron *a* and *8x*, which is 00011,
+also starts at timestep 1 on neuron *b*.
+
+The upshot of this is that *(4x+8x)* starts spiking on neuron *f* at timestep 3.  That means
+we have to arrange for *32x* to start spiking on neuron *g* at timestep 3.  The delay of 4 makes
+that happen -- three units of delay from *A* to *a*, one from *a* to *b*, four from *b* to *g*.
+That means *x* starts spiking at timestep 8, which is what we want -- 5 timesteps after timestep
+three, since 32 = 2^5.
+
+3. Similarly, the third (rightmost) adder adds *(4x+8x+32x)* and *512x*.  *(4x+8x+32x)* 
+is calculated on neuron *k* at timestep 5, so we need *512x* to start spiking on neuron *l*
+at timestep 5.  The delay of 6 makes that happen -- *x* starts spiking on *g* at timestep 8,
+so it starts spiking on *l* at timestep 14.  512 = 2^9, so that means *512x* starts on *g*
+at timestep 5, which is what we want!
+
+4. The final product starts spiking on *p* at timestep 7.  Given that this product can be
+roughly *2w* bits, and we only want to keep *w* of them, we set up *C* and the *Bias* to 
+spike exactly *w* times into the *Prod* neuron, starting at timestep 8.  That achieves our
+goal.
+
+The script `scripts/aimone_mult_network.sh` makes the network, and `scripts/aimone_mult_run.sh`
+runs it.  Let's see what happens when we multiply 556 and 87.  We'll set *w* to 20, since that
+stores 556*87 comfortably in two's complement:
 
 ```
-UNIX> sh scripts/aimone_mult_const.sh 
-usage: sh scripts/aimone_adder.sh const val os_framework
-UNIX> sh scripts/aimone_mult_const.sh 556 87 .
-max 15
-Const in little endian: 0011010001
-V in little endian: 1110101
-Timestep that output begins: 6               # The input, 1010111, is applied to neuron 16 in little endian.
-0(A)        INPUT  : 0011101010000000000000      
-1(B)        INPUT  : 0001110101000000000000
-2(S1)       HIDDEN : 0001111111110000000000
-3(S2)       HIDDEN : 0000111111100000000000
-4(S3)       HIDDEN : 0000010000000000000000
-5(O/3_A)    INPUT  : 0000101000001000000000
-6(3_B)      INPUT  : 0000000111010100000000
-7(3_S1)     HIDDEN : 0000010111101110000000
-8(3_S2)     HIDDEN : 0000000000000000000000
-9(3_S3)     HIDDEN : 0000000000000000000000
-10(3_O/2_A) INPUT  : 0000001011110111000000
-11(3_2_B)   INPUT  : 0000000000000111010100
-12(3_2_S1)  HIDDEN : 0000000101111011111010
-13(3_2_S2)  HIDDEN : 0000000000000011100000
-14(3_2_S3)  HIDDEN : 0000000000000001100000
-15(3_2_O)   OUTPUT : 0000000010111100111101  # The product starts at timestep 6.
-16          INPUT  : 1110101000000000000000
-Product in Little Endian: 0010111100111101
-Product in Decimal: 48372
+UNIX> sh scripts/aimone_mult_run.sh  556 87 20 .
+V0: 87
+W: 20
+Top: 524288
+V0-SR: 11101010000000000000
+Output-Neuron: 4
+Output-Starting-Timestep: 8
+Output-Num-Timesteps: 20
+Output-On-Output-Neuron: 000000000010111100111101
+Stripped-Output: 00101111001111010000
+Product: 48372
+Computed-Product: 48372
+Correct: 1
+Overflow: 0
+Underflow: 0
+
+The network is in tmp_adder.txt
+Its info is in tmp_info.txt
+Input for the processor_tool to run this test is in tmp_pt_input.txt
+Output of the processor_tool on this input is in tmp_pt_output.txt
 UNIX> 
 ```
 
-After running the script, the network is in `tmp_network.txt`.
+Let's probe this a little.  Here's `tmp_info.txt`:
+
+```
+UNIX> cat tmp_info.txt
+INPUT V0 0 TC_LE 20 0
+INPUT S 1 Spike 1 0
+OUTPUT Prod 4 TC_LE 20 8
+RUN 48
+UNIX> 
+```
+
+That means that we'll spike in 87 on neuron 0 starting at timestep 0, and spike neuron 1
+(S) once at time 0.  The output will be on neuron 4, and it will be 20 timesteps starting
+at timestep 8.  You need to run the network for 48 timesteps.  (That's a little overkill,
+but whatever...)
+
+Let's start with the input, S and Prod neurons:
+
+```
+UNIX> grep '^[014](' tmp_pt_output.txt
+0(V0)           INPUT  : 111010100000000000000000          # Here's 87 = 101101010000...
+1(Start)        INPUT  : 100000000000000000000000          # The single spike on S.
+4(Prod/A)       OUTPUT : 000000000010111100111101          # The product starts at timestep 8.
+                                 ^^^^^^^^^^^^^^^^          # The carats start at timestep 8.
+UNIX> 
+```
+
+Let's look at neurons *a*, *b*, *g* and *l* from the picture.  These are named AV0, AV1,
+A3_V1 and A3_2_V1 in the network:
+
+```
+UNIX> egrep '(AV0)|(AV1)|(A3_V1)|(A3_2_V1)' tmp_pt_output.txt
+5(AV0)          INPUT  : 000111010100000000000000          # 4*87 starts at timestep 1
+                          ^^^^^^^^^^^^^^^^^^^^
+6(AV1)          INPUT  : 000011101010000000000000          # 8*87 starts at timestep 1
+                          ^^^^^^^^^^^^^^^^^^^^
+11(A3_V1)       INPUT  : 000000001110101000000000          # 32*87 starts at timestep 3
+                            ^^^^^^^^^^^^^^^^^^^^
+16(A3_2_V1)     INPUT  : 000000000000001110101000          # 512*87 starts at timestep 5
+                              ^^^^^^^^^^^^^^^^^^^ 
+UNIX> 
+```
+
+This works with positive and negative numbers:
+
+```
+UNIX> sh scripts/aimone_mult_run.sh  -3 -11 16 . | egrep 'Stripped|Product'
+Stripped-Output: 1000010000000000
+Product: 33
+Computed-Product: 33
+UNIX> sh scripts/aimone_mult_run.sh  -3 11 16 . | egrep 'Stripped|Product'
+Stripped-Output: 1111101111111111
+Product: -33
+Computed-Product: -33
+UNIX> sh scripts/aimone_mult_run.sh  3 -11 16 . | egrep 'Stripped|Product'
+Stripped-Output: 1111101111111111
+Product: -33
+Computed-Product: -33
+UNIX> 
+```
+
+One thing you need to consider very seriously when you're using these networks is overflow.
+You need *w* to have enough bits to store the product in two's complement, which means positive
+numbers need to end with 0, and negative numbers need to end with 1.  Fortunately, you can make*w*
+really big, and it shouldn't affect performance too much.  
+
+Here's an example of*w* too small:
+
+```
+UNIX> sh scripts/val_to_tcle.sh 99 5             # You can't store 99 in 5 bits.
+Value 99 is too big -- must be < 32
+UNIX> sh scripts/val_to_tcle.sh 99 8             # But you can in 8 bits.
+11000110
+UNIX> sh scripts/aimone_mult_run.sh 9 11 5 .     # Here 5 bits is not enough to store the product.
+V0: 11
+W: 5
+Top: 16
+V0-SR: 11010
+Output-Neuron: 4
+Output-Starting-Timestep: 4
+Output-Num-Timesteps: 5
+Output-On-Output-Neuron: 0000110000
+Stripped-Output: 11000
+Product: 99
+Computed-Product: 3
+Correct: 0
+Overflow: 1
+Underflow: 0
+
+The network is in tmp_adder.txt
+Its info is in tmp_info.txt
+Input for the processor_tool to run this test is in tmp_pt_input.txt
+Output of the processor_tool on this input is in tmp_pt_output.txt
+UNIX> sh scripts/aimone_mult_run.sh 9 11 8 . | grep Correct              # 8 bits is enough.
+Correct: 1
+UNIX> 
+```
 
 ----------------------------------------
-# Two's Complement
+# Two's Complement -- HERE IN THE REWRITE.
 
 In order to do subtraction, you need to do two's complement.  It's a simple composition of
 an inversion network and an adder -- you invert the input and then add one to it.  However,
