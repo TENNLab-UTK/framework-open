@@ -467,10 +467,10 @@ UNIX>
 
 One thing you need to consider very seriously when you're using these networks is overflow.
 You need *w* to have enough bits to store the product in two's complement, which means positive
-numbers need to end with 0, and negative numbers need to end with 1.  Fortunately, you can make*w*
-really big, and it shouldn't affect performance too much.  
+numbers need to end with 0, and negative numbers need to end with 1.  Fortunately, you can make
+*w* really big, and it shouldn't affect performance too much.  
 
-Here's an example of*w* too small:
+Here's an example of *w* too small:
 
 ```
 UNIX> sh scripts/val_to_tcle.sh 99 5             # You can't store 99 in 5 bits.
