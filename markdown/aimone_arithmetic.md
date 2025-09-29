@@ -29,7 +29,7 @@ the results.
 In [AHSV2021], the authors use unbounded streams of spikes to represent numbers.
 While this is both cool and elegant, when our research group set about composing these networks
 for mathematical operations, we realized the value of defining the number of bits in each
-numbers' representation.  So the networks that we present here require the user to define
+number's representation.  So the networks that we present here require the user to define
 the value *w*, which is the number of bits/spikes in the representation of the numbers.
 
 Each of our networks also has a *starting* neuron *S*, which must be spiked at timestep 0
