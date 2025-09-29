@@ -84,7 +84,7 @@ UNIX>
 ```
 
 ----------------------------------------
-## Two shell scripts for each operation
+## Two shell scripts for each operation, and tmp-info.txt
 
 For each arithmetic operation *xxx*, we provide two shell scripts:
 
@@ -214,6 +214,10 @@ UNIX> sh scripts/tcle_to_val.sh 10101101            # That equals -75, so our ad
 -75
 UNIX> 
 ```
+
+If you call `scripts/adder_network.sh` and set *w* to 0, then it emits the original adder
+from [AHXV2021], without the *S* neuron.  We use this network as a building block for 
+multiplication below.
 
 ----------------------------------------
 # Inversion 
