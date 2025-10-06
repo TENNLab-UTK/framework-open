@@ -41,7 +41,7 @@ in order for the network to work.
 To be precise, each number is represented by a train of *w* spikes.  If you represent no
 spike on a timestep by 0, and a spike by 1, then the stream of 0's and 1's that result from
 a stream of spikes represents the number in two's complement, little endian.
-Therefore, if there is a spike on the last timestep (timestep *w-1$), the number is negative,
+Therefore, if there is a spike on the last timestep (timestep *w-1*), the number is negative,
 and if there is no spike, then the number is positive.
 
 Here are example of mapping spike trains to numbers:
@@ -233,8 +233,8 @@ That's next.
 ![img/inversion.jpg](../img/inversion.jpg)
 
 The script `scripts/inversion_network.sh` prints an inversion network on
-standard output, and the script `scripts/inversion_run.sh
-The shell script `scripts/inversion.sh` inverts a number using this network:
+standard output, and the script `scripts/inversion_run.sh`
+inverts a number using this network:
 
 ```
 UNIX> sh scripts/inversion_run.sh
@@ -466,11 +466,11 @@ UNIX>
 ```
 
 One thing you need to consider very seriously when you're using these networks is overflow.
-You need *w* to have enough bits to store the product in two's complement, which means positive
-numbers need to end with 0, and negative numbers need to end with 1.  Fortunately, you can make
-*w* really big, and it shouldn't affect performance too much.  
+You need w to have enough bits to store the product in two's complement, which means positive
+numbers need to end with 0, and negative numbers need to end with 1.  Fortunately, you can
+make w really big, and it shouldn't affect performance too much.  
 
-Here's an example of *w* too small:
+Here's an example of w too small:
 
 ```
 UNIX> sh scripts/val_to_tcle.sh 99 5             # You can't store 99 in 5 bits.
@@ -503,152 +503,65 @@ UNIX>
 ```
 
 ----------------------------------------
-# Two's Complement -- HERE IN THE REWRITE.
-
-In order to do subtraction, you need to do two's complement.  It's a simple composition of
-an inversion network and an adder -- you invert the input and then add one to it.  However,
-once you compose those networks, you can do quite a bit of optimization, resulting in
-this network:
-
-![img/twos_c.jpg](../img/twos_c.jpg)
-
-If you want to see the derivation, take a look at [the following picture](../img_two_c_derivation.jpg).
-
-The script is `scripts/twos_complement_w.sh`
-
-Here are a few examples -- see the inline comments:
-
-```
-UNIX> sh scripts/twos_complement_w.sh 5 8 .             # The inverse of 00000101 is 11111010.  Add one to get 11111011
-Input in little endian: 101 
-bits: 3
-0(A)    INPUT  : 1010000000
-1(S)    INPUT  : 1000000000
-2(C)    HIDDEN : 0000000100
-3(Bias) HIDDEN : 0111111100
-4(S1)   HIDDEN : 0110111110
-5(S2)   HIDDEN : 0000000000
-6(O)    OUTPUT : 0011011111
-Answer in Little Endian: 11011111                        # Here's the answer.  Remember, it's in little endian.
-
-UNIX> sh scripts/twos_complement_w.sh 1 8 .              # Two's complement of 1 is 11111111
-Input in little endian: 1 
-bits: 1
-0(A)    INPUT  : 1000000000
-1(S)    INPUT  : 1000000000
-2(C)    HIDDEN : 0000000100
-3(Bias) HIDDEN : 0111111100
-4(S1)   HIDDEN : 0111111110
-5(S2)   HIDDEN : 0000000000
-6(O)    OUTPUT : 0011111111
-Answer in Little Endian: 11111111
-UNIX> sh scripts/twos_complement_w.sh 255 8 .            # And Two's complement of 11111111 is 1.
-Input in little endian: 11111111 
-bits: 8
-0(A)    INPUT  : 11111111
-1(S)    INPUT  : 10000000
-2(C)    HIDDEN : 00000001
-3(Bias) HIDDEN : 01111111
-4(S1)   HIDDEN : 01000000
-5(S2)   HIDDEN : 00000000
-6(O)    OUTPUT : 00100000
-Answer in Little Endian: 10000000
-UNIX> sh scripts/twos_complement_w.sh 0 8 .               # Finally, two's complement of 0 is 0.
-Input in little endian:  
-bits: 0
-0(A)    INPUT  : 0000000000
-1(S)    INPUT  : 1000000000
-2(C)    HIDDEN : 0000000100
-3(Bias) HIDDEN : 0111111100
-4(S1)   HIDDEN : 0111111111
-5(S2)   HIDDEN : 0111111110
-6(O)    OUTPUT : 0000000000
-Answer in Little Endian: 00000000
-UNIX> 
-```
-
-As always, the network is in `tmp_network.txt`
-
-
-----------------------------------------
 # Subtraction
 
 For subtraction, we can compose a two's complement network and an adder, but as above,
 you can do some optimization.  Here's the network I came up with:
 
-![img/Subtraction.jpg](../img/Subtraction.jpg)
+![img/subtraction.jpg](../img/subtraction.jpg)
 
-Like the adder, you start getting output at timestep 2.  This network also builds in the
-number of bits, like the two's complement network above.
+Like the adder, you start getting output at timestep 2, and the number of bits is built into
+the network, so it won't spike after the w bits of output (the synapse from S to O is what
+insures that).
 
-There is a subtle issue here, which is handled by that synapse from *C* to *O* in the 
-network.  Consider the example where you subtract 5 from 7 when *w=5*:
-
-- In little endian 5-bit binary, 7 is 11100.  In big endian, it's 00111.
-- In little endian 5-bit binary, 5 is 10100.  In big endian, it's 00101.
-- In little endian 5-bit two's complement binary, -5 is 11011.  In big endian, it's also 11011.
-- So, we add 7 and -5, which, when you do it by hand, makes more sense in big endian:
+By now, you should know the drill with `scripts/subtraction_network.sh` and
+`scripts/subtraction_run.sh`:
 
 ```
- 00111
- 11011
-------
-100010
-```
+UNIX> sh scripts/subtraction_run.sh 10 4 8 .             # Subtract 4 from 10 with 8 bits.
+V0: 10
+V1: 4
+W: 8
+Top: 128
+V0-SR: 01010000
+V1-SR: 00100000
+Output-Neuron: 8
+Output-Starting-Timestep: 2
+Output-Num-Timesteps: 8
+Output-On-Output-Neuron: 0001100000
+Stripped-Output: 01100000
+Difference: 6
+Computed-Difference: 6
+Correct: 1
+Overflow: 0
+Underflow: 0
 
-See that extra bit, caused by the last carry?  We truncate it, so the answer is 2, which is
-what we want, but when we're having the spiking neural network perform the calculation, it's
-going to generate that last spike, and although we can ignore it, I don't like it.  For that
-reason, we have the synapse from *C* to *O*, which kills that last spike if it happens.
-You need to remember it though, if you're using the network repeatedly -- you need to run
-the network for *w+3* timesteps, and consider the output starting at timestep 2.  You can
-ignore the output on timestep *w+2$ (the last one) or not -- it won't spike.
+The network is in tmp_subtraction.txt
+Its info is in tmp_info.txt
+Input for the processor_tool to run this test is in tmp_pt_input.txt
+Output of the processor_tool on this input is in tmp_pt_output.txt
+UNIX> sh scripts/subtraction_run.sh 4 10 8 .             # Subtract 10 from 4 with 8 bits.
+V0: 4
+V1: 10
+W: 8
+Top: 128
+V0-SR: 00100000
+V1-SR: 01010000
+Output-Neuron: 8
+Output-Starting-Timestep: 2
+Output-Num-Timesteps: 8
+Output-On-Output-Neuron: 0001011111
+Stripped-Output: 01011111
+Difference: -6
+Computed-Difference: -6
+Correct: 1
+Overflow: 0
+Underflow: 0
 
-The script `scripts/subtraction.sh` builds and runs a network:
-
-```
-UNIX> sh scripts/subtraction.sh 16 9 8 .        # 16-9 = 7.  There would be a spike at timestep
-Input 1 in little endian: 00001                 # 10 if we didn't have the synapse from C to O.
-Input 2 in little endian: 1001 
-0(A)    INPUT  : 0000100000
-1(B)    INPUT  : 1001000000
-2(S)    INPUT  : 1000000000
-3(C)    HIDDEN : 0000000100
-4(Bias) HIDDEN : 0111111100
-5(S1)   HIDDEN : 0111011111
-6(S2)   HIDDEN : 0000011110
-7(S3)   HIDDEN : 0000000000
-8(O)    OUTPUT : 0011100000
-Answer in Little Endian: 11100000
-Answer Corroborated
-UNIX> sh scripts/subtraction.sh 9 16 8 .         # 9 - 16 = -7.
-Input 1 in little endian: 1001 
-Input 2 in little endian: 00001 
-0(A)    INPUT  : 1001000000
-1(B)    INPUT  : 0000100000
-2(S)    INPUT  : 1000000000
-3(C)    HIDDEN : 0000000100
-4(Bias) HIDDEN : 0111111100
-5(S1)   HIDDEN : 0111111110
-6(S2)   HIDDEN : 0111100000
-7(S3)   HIDDEN : 0100100000
-8(O)    OUTPUT : 0010011111
-Answer in Little Endian: 10011111
-Answer Corroborated
-UNIX> sh scripts/subtraction.sh 9 9 8 .          # 9 - 9 = 0.
-Input 1 in little endian: 1001 
-Input 2 in little endian: 1001 
-0(A)    INPUT  : 1001000000
-1(B)    INPUT  : 1001000000
-2(S)    INPUT  : 1000000000
-3(C)    HIDDEN : 0000000100
-4(Bias) HIDDEN : 0111111100
-5(S1)   HIDDEN : 0111111111
-6(S2)   HIDDEN : 0111111110
-7(S3)   HIDDEN : 0000000000
-8(O)    OUTPUT : 0000000000
-Answer in Little Endian: 00000000
-Answer Corroborated
+The network is in tmp_subtraction.txt
+Its info is in tmp_info.txt
+Input for the processor_tool to run this test is in tmp_pt_input.txt
+Output of the processor_tool on this input is in tmp_pt_output.txt
 UNIX> 
 ```
 
