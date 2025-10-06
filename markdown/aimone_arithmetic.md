@@ -508,7 +508,7 @@ UNIX>
 For subtraction, we can compose a two's complement network and an adder, but as above,
 you can do some optimization.  Here's the network I came up with:
 
-![img/subtraction.jpg](../img/subtraction.jpg)
+![img/subtract.jpg](../img/subtract.jpg)
 
 Like the adder, you start getting output at timestep 2, and the number of bits is built into
 the network, so it won't spike after the w bits of output (the synapse from S to O is what
