@@ -565,6 +565,97 @@ Output of the processor_tool on this input is in tmp_pt_output.txt
 UNIX> 
 ```
 
+----------------------------------------
+# Integer Division by a Power of Two
+
+For positive numbers, dividing by a power of two is trivial -- to divide by 2^k, simply
+delete the first k spikes, and add k zero spikes to the end of the train.  It's equivalent
+to a right-shift operation.
+
+Once you add negative numbers to the mix, I can't think of a more elegant solution than to
+convert the number a positive number, perform the right-shift, and then convert the result
+back to a negative number.  I'd be very happy to be shown how to do this better.
+
+The following picture diagrams the process:
+
+![img/division_overview.jpg](../img/division_overview.jpg)
+
+Basically, there are two paths for the spikes.  The first (top) path is when A is negative, and
+must be inverted with two's complement.  Following the inversion, it is divided by 2^k by
+right-shifting by k.  That result is inverted with two's complement back into a negative number.
+
+The second (bottom) path simply performs the right-shift.  The two paths proceed in parallel,
+and the w-th spike, the one that determines whether A is positive or negative, is used to select
+which path to use.  
+
+The network looks messy, but we use the same colors as above in the presentation 
+below to try to make the funcationalities of the neurons more easy to see.  One caveat is
+that we use the same C/B neurons for both two's complement networks.
+
+![img/divisiong.jpg](../img/division_overview.jpg)
+
+The scripts are `scripts/div_2k_network.sh` and `scripts/div_2k_run.sh`.
+When we run it, it feels like a leap of faith, but it works!
+
+```
+UNIX> sh scripts/div_2k_run.sh
+usage: sh scripts/div_2k_run.sh v0 k w os_framework
+UNIX> sh scripts/div_2k_run.sh 54 1 7 .
+000000000000011011
+1101100
+27
+V0: 54
+W: 7
+K: 1
+2^k: 2
+Top: 64
+V0-SR: 0110110
+Output-Neuron: 19
+Output-Starting-Timestep: 13
+Output-Num-Timesteps: 7
+Output-On-Output-Neuron: 000000000000011011
+Stripped-Output: 1101100
+Quotient: 27
+Computed-Quotient: 27
+Correct: 1
+Overflow: 0
+Underflow: 0
+
+The network is in tmp_div_2k_network.txt
+Its info is in tmp_info.txt
+Input for the processor_tool to run this test is in tmp_pt_input.txt
+Output of the processor_tool on this input is in tmp_pt_output.txt
+
+UNIX> cat tmp_info.txt                     # Here's where we see how input and output work.
+INPUT V0 0 TC_LE 7 0       
+INPUT S 1 Spike 1 0
+OUTPUT QUOTIENT 19 TC_LE 7 13
+RUN 20
+UNIX> 
+UNIX> sh scripts/div_2k_run.sh 54 2 7 . | grep Quotient
+Quotient: 13
+Computed-Quotient: 13
+UNIX> sh scripts/div_2k_run.sh 54 3 7 . | grep Quotient
+Quotient: 6
+Computed-Quotient: 6
+UNIX> sh scripts/div_2k_run.sh 54 4 7 . | grep Quotient
+Quotient: 3
+Computed-Quotient: 3
+UNIX> sh scripts/div_2k_run.sh 54 6 7 . | grep Quotient
+Quotient: 0
+Computed-Quotient: 0
+UNIX> sh scripts/div_2k_run.sh -54 1 7 . | grep Quotient
+Quotient: -27
+Computed-Quotient: -27
+UNIX> sh scripts/div_2k_run.sh -54 2 7 . | grep Quotient
+Quotient: -13
+Computed-Quotient: -13
+UNIX> sh scripts/div_2k_run.sh -54 6 7 . | grep Quotient
+Quotient: 0
+Computed-Quotient: 0
+UNIX> 
+```
+
 --------------
 # References
 
