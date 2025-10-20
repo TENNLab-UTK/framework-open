@@ -310,7 +310,7 @@ This seems kinda brain-dead, but it's actually useful.  You can set up a network
 to emit a constant as two's complement, little endian, when you give it a starting spike.
 Here's an example of a network that emits the number 5:
 
-![constant_11.jpg](constant_11.jpg)
+![../img/constant_11.jpg](../img/constant_11.jpg)
 
 The script is `scripts/constant_network.sh`, and you need to give it a number of bits,
 so that it will handle negative numbers properly (which is does):
