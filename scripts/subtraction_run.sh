@@ -64,7 +64,7 @@ zeros=`echo "$dots$st_dots" | sed 's/./0/g'`
 
 output=`grep '^'$on'(' tmp_pt_output.txt | awk '{ print $NF }'`
 stripped=`echo "$output$zeros" | sed 's/'$st_dots'\('$dots'\).*/\1/'`
-diff=`sh scripts/tcle_to_val.sh $stripped`
+diff=`sh $fro/scripts/tcle_to_val.sh $stripped`
 
 top=`echo $w | awk '{ i=1 ; for (j = 1; j < $1; j++) i *= 2; print i }'`
 

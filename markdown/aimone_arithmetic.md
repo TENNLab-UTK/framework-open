@@ -304,6 +304,70 @@ UNIX>
 ```
 
 ----------------------------------------
+# Emiting a constant
+
+This seems kinda brain-dead, but it's actually useful.  You can set up a network
+to emit a constant as two's complement, little endian, when you give it a starting spike.
+Here's an example of a network that emits the number 5:
+
+![constant_11.jpg](constant_11.jpg)
+
+The script is `scripts/constant_network.sh`, and you need to give it a number of bits,
+so that it will handle negative numbers properly (which is does):
+
+```
+UNIX> sh scripts/constant_run.sh
+usage: sh scripts/constant_run.sh c w os_framework
+UNIX> sh scripts/constant_run.sh 11 8 .
+C: 11
+W: 8
+Top: 128
+CSR: 11010000
+Output-Neuron: 3
+Output-Starting-Timestep: 1
+Output-Num-Timesteps: 8
+Output-On-Output-Neuron: 01101
+Stripped-Output: 11010000
+Computed-Constant: 11
+Correct: 1
+
+The network is in tmp_constant.txt
+Its info is in tmp_info.txt
+Input for the processor_tool to run this test is in tmp_pt_input.txt
+Output of the processor_tool on this input is in tmp_pt_output.txt
+UNIX> cat tmp_pt_output.txt
+0(S) INPUT  : 10000
+1    HIDDEN : 01000
+2    HIDDEN : 00010
+3(C) OUTPUT : 01101                                # The output starts on timestep 1.
+UNIX> sh scripts/constant_run.sh -11 8 .
+C: -11
+W: 8
+Top: 128
+CSR: 10101111
+Output-Neuron: 6
+Output-Starting-Timestep: 1
+Output-Num-Timesteps: 8
+Output-On-Output-Neuron: 010101111
+Stripped-Output: 10101111
+Computed-Constant: -11
+Correct: 1
+
+The network is in tmp_constant.txt
+Its info is in tmp_info.txt
+Input for the processor_tool to run this test is in tmp_pt_input.txt
+Output of the processor_tool on this input is in tmp_pt_output.txt
+UNIX> cat tmp_pt_output.txt
+0(S) INPUT  : 100000000
+1    HIDDEN : 001000000
+2    HIDDEN : 000010000
+3    HIDDEN : 000001000
+4    HIDDEN : 000000100
+5    HIDDEN : 000000010
+6(C) OUTPUT : 010101111
+UNIX> 
+```
+----------------------------------------
 # Multiplication of a number by a constant
 
 This is performed by cascading adder networks, and forwarding the number being multiplied
