@@ -308,7 +308,7 @@ UNIX>
 
 This seems kinda brain-dead, but it's actually useful.  You can set up a network
 to emit a constant as two's complement, little endian, when you give it a starting spike.
-Here's an example of a network that emits the number 5:
+Here's an example of a network that emits the number 11 (11010000 when *w*=8):
 
 ![../img/constant_11.jpg](../img/constant_11.jpg)
 
