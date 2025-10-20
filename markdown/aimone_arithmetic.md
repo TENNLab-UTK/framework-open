@@ -656,7 +656,7 @@ The network looks messy, but we use the same colors as above in the presentation
 below to try to make the funcationalities of the neurons more easy to see.  One caveat is
 that we use the same C/B neurons for both two's complement networks.
 
-![img/divisiong.jpg](../img/division_overview.jpg)
+![img/division.jpg](../img/division.jpg)
 
 The scripts are `scripts/div_2k_network.sh` and `scripts/div_2k_run.sh`.
 When we run it, it feels like a leap of faith, but it works!
