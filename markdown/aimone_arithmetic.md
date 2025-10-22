@@ -368,6 +368,61 @@ UNIX> cat tmp_pt_output.txt
 UNIX> 
 ```
 ----------------------------------------
+# Emiting w spikes
+
+Sometimes you'd like a network that spits out exactly w spikes.  Yes, you can use the network
+above with a constant of -1, but that uses w+1 neurons, when you only need three.  So, this
+generates the three neuron network, rendered here in ASCII art (unlabeled weights/delays/thresholds = 1):
+
+```
+         Delay = w 
+  S -------------------> K
+   \                     |
+    \                    | Weight = -1
+     \                   v 
+      \----------------> O <-\
+                         |   |
+                         \---/
+```
+
+Here's the script and the network in action:
+
+```
+UNIX> sh scripts/w_spikes_network.sh 
+usage: sh scripts/constant_network.sh w os_framework
+UNIX> sh scripts/w_spikes_network.sh 10 . > tmp_network.txt
+UNIX> cat tmp_info.txt
+INPUT S 0 Spike 1 0
+OUTPUT O 2 TC_LE 10 1
+RUN 11
+UNIX> ( echo ML tmp_network.txt ; echo AS 0 0 1 ; echo RUN 11 ; echo GSR ) | bin/processor_tool_risp 
+0(S) INPUT  : 10000000000
+1(K) HIDDEN : 00000000001
+2(O) OUTPUT : 01111111111
+UNIX> sh scripts/w_spikes_run.sh 
+usage: sh scripts/w_spikes_run.sh w os_framework
+UNIX> sh scripts/w_spikes_run.sh 10 .
+C: 
+W: 10
+Top: 512
+Output-Neuron: 2
+Output-Starting-Timestep: 1
+Output-Num-Timesteps: 10
+Output-On-Output-Neuron: 01111111111
+Stripped-Output: 1111111111
+Computed-Value: -1
+Correct: 1
+
+The network is in tmp_w_spikes.txt
+Its info is in tmp_info.txt
+Input for the processor_tool to run this test is in tmp_pt_input.txt
+Output of the processor_tool on this input is in tmp_pt_output.txt
+UNIX> 
+```
+
+
+
+----------------------------------------
 # Multiplication of a number by a constant
 
 This is performed by cascading adder networks, and forwarding the number being multiplied

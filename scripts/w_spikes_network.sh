@@ -1,40 +1,22 @@
-# This creates a network that spikes a constant value in TC_LE.
+# This creates a network that spikes w times.
 #
 # James S. Plank.  October, 2025.
 #
 # The network is printed on standard output, and information for running is
 # put into tmp_info.txt.  
 
-if [ $# -ne 3 ]; then
-  echo 'usage: sh scripts/constant_network.sh c w os_framework' >&2
+if [ $# -ne 2 ]; then
+  echo 'usage: sh scripts/constant_network.sh w os_framework' >&2
   exit 1
 fi
 
-c=$1
-w=$2
-fro=$3
+w=$1
+fro=$2
 
 # Compile necesssary programs in the open-source framework
 
 for i in network_tool processor_tool_risp ; do
   if [ ! -x $fro/bin/$i ]; then ( cd $fro ; make bin/$i ) fi
-done
-
-# Get the spike raster of the constant
-
-if ! sr=`sh $fro/scripts/val_to_tcle.sh $c $w` ; then
-  exit 1
-fi
-
-# Create the neuron ids and the delay from s
-
-ids=""
-id=0
-delay=0
-for i in `echo $sr | sed 's/\(.\)/\1 /g'` ; do
-  if [ $i = 1 ]; then ids="$ids $id-$delay"; id=$(($id+1)); fi
-  if [ $id = 0 ]; then id=$(($id+1)); fi
-  delay=$(($delay+1))
 done
 
 # Make an empty network with the proper RISP parameters.
@@ -46,32 +28,20 @@ cat $fro/params/risp_127.txt | sed '/leak_mode/s/none/all/' > tmp_risp.txt
 
 # Make the network
 
-o=$id
-
 ( echo FJ tmp_emptynet.txt
-  echo AN 0 $o
+  echo AN 0 1 2
   echo AI 0 
-  echo AO $o
+  echo AO 2
   echo SETNAME 0 S
-  echo SETNAME $id C
+  echo SETNAME 1 K
+  echo SETNAME 2 O
 
-  for i in $ids ; do
-    id=`echo $i | sed 's/-.*//'`
-    delay=`echo $i | sed 's/.*-//'`
-    if [ $delay = 0 ]; then
-      echo AE 0 $o
-      echo SEP 0 $o Delay 1
-    else
-      echo AN $id
-      echo AE 0 $id
-      echo AE $id $o
-      echo SEP 0 $id Delay $delay
-      echo SEP $id $o Delay 1
-    fi
-  done
-    
+  echo AE 0 1   0 2   2 2   1 2
   echo SNP_ALL Threshold 1
   echo SEP_ALL Weight 1
+  echo SEP_ALL Delay 1
+  echo SEP 0 1 Delay $w
+  echo SEP 1 2 Weight -1
 
   echo SORT Q
   echo TJ
@@ -80,7 +50,7 @@ o=$id
 $fro/bin/network_tool < tmp_network_tool.txt
 
 ( echo INPUT  S   0 Spike 1    0 
-  echo OUTPUT C  $o TC_LE $w   1
+  echo OUTPUT O   2 TC_LE $w   1
   echo RUN $(($w+1))
 ) > tmp_info.txt
 
