@@ -126,7 +126,7 @@ else
       cp tmp_adder_network.txt tmp_base_adder.txt
     else
       echo CONFLATE $output_neuron 0 |
-        bin/compose_networks tmp_adder_network.txt tmp_base_adder.txt $i"_" > tmp_network.txt
+        $fro/bin/compose_networks tmp_adder_network.txt tmp_base_adder.txt $i"_" > tmp_network.txt
       mv tmp_network.txt tmp_base_adder.txt
     fi
   done
@@ -158,7 +158,7 @@ else
   # then deleting any that have slashes, since they were conflated.
 
   inputs="" 
-  for i in `( echo FJ tmp_base_adder.txt ; echo INFO ) | bin/network_tool | grep Input` ; do
+  for i in `( echo FJ tmp_base_adder.txt ; echo INFO ) | $fro/bin/network_tool | grep Input` ; do
     if [ `echo $i | sed 's/^[0-9][0-9]*([^\/]*)/XXX/'` = XXX ]; then 
       n=`echo $i | sed 's/(.*//'`
       inputs=$inputs" "$n
@@ -213,7 +213,7 @@ else
  
   ( echo SYNAPSE 0 $first_neuron 1 1
     echo CONFLATE 4 $(($highnode+1)) ) |
-      bin/compose_networks tmp_base_network.txt tmp_base_adder.txt "A" > tmp_network.txt
+      $fro/bin/compose_networks tmp_base_network.txt tmp_base_adder.txt "A" > tmp_network.txt
   mv tmp_network.txt tmp_base_network.txt
 
   av0=`( echo FJ tmp_base_network.txt ; echo INFO ) |

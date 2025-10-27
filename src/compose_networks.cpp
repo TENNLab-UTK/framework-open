@@ -73,7 +73,7 @@ int main(int argc, char **argv)
       ss.clear();
       ss.str(l);
       if (ss >> w) {
-        if (w == "CONFLATE" || w == "SYNAPSE") {
+        if (w == "CONFLATE" || w == "SYNAPSE" || w == "INPUT" || w == "OUTPUT") {
           vd.clear();
           while (ss >> d) vd.push_back(d);
           if (w == "CONFLATE") {
@@ -81,11 +81,12 @@ int main(int argc, char **argv)
             conflate.push_back(vd);
           }
           if (w == "SYNAPSE") {
+            while (ss >> d) vd.push_back(d);
             if (vd.size() <= 3) throw SRE(l + "\nSYNAPSE should have n1 and n2 and then each prop");
             synapse.push_back(vd);
           }
         } else {
-          throw SRE(l + "\nUnknown command.  Should be CONFLATE or SYNAPSE");
+          throw SRE(l + "\nUnknown command.  Should be CONFLATE, SYNAPSE, INPUT or OUTPUT");
         }
       }
     }
@@ -95,6 +96,8 @@ int main(int argc, char **argv)
     n2_json = json_from_string_or_file(argv[2]);
     n1_network.from_json(n1_json);
     n2_network.from_json(n2_json);
+
+    /* Process the input and output vectors to make sure they are legal. */
 
     /* Create the two node maps */
 
