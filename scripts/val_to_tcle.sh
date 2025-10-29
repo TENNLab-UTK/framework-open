@@ -13,16 +13,18 @@ w=$2
 
 v=`echo $v | awk '{ printf "%.0f\n", $1 }'`
 
-top=1
-for i in `seq $w` ; do top=$(($top*2)); done
-if [ $v -ge $top ]; then
-  echo "Value $v is too big -- must be < $top" >&2
-  exit 1
-fi
-
-if [ $v -le -$top ]; then
-  echo "Value $v is too small -- must be > -$top" >&2
-  exit 1
+if [ $w -lt 63 ]; then
+  top=1
+  for i in `seq $w` ; do top=$(($top*2)); done
+  if [ $v -ge $top ]; then
+    echo "Value $v is too big -- must be < $top" >&2
+    exit 1
+  fi
+  
+  if [ $v -le -$top ]; then
+    echo "Value $v is too small -- must be > -$top" >&2
+    exit 1
+  fi
 fi
 
 # If v is positive, then turn it into le:
