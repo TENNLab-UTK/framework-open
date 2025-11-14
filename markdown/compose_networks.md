@@ -306,6 +306,7 @@ the four inputs.  Here's the network that we'll create:
 This is a simple matter of composing the three networks, adding two synapses that
 connect the outputs of X1 and X2 to the inputs of X3, and fixing the inputs/outputs:
 
+```
 UNIX> ( echo TAG 0 X1- 1 X2- 2 X3-
     echo SYNAPSE 0 4  2 0  Weight 1 Delay 1
     echo SYNAPSE 1 4  2 1  Weight 1 Delay 1 
