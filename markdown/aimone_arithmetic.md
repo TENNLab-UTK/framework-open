@@ -97,7 +97,7 @@ for 8-bit numbers:
 
 ```
 UNIX> sh scripts/adder_network.sh 
-usage: sh scripts/aimone_adder.sh w os_framework
+usage: sh scripts/adder_network.sh w os_framework
 UNIX> sh scripts/adder_network.sh 8 . > tmp_adder.txt
 UNIX> cat tmp_info.txt
 INPUT V0 0 TC_LE 8 0

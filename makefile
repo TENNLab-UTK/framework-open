@@ -66,6 +66,9 @@ bin/network_to_jgraph: src/network_to_jgraph.cpp $(FR_INC) $(FR_LIB)
 bin/compose_networks: src/compose_networks.cpp $(FR_INC) $(FR_LIB)
 	$(CXX) $(FR_CFLAGS) -o bin/compose_networks src/compose_networks.cpp $(FR_LIB)
 
+bin/compose_tmp: src/compose_tmp.cpp $(FR_INC) $(FR_LIB)
+	$(CXX) $(FR_CFLAGS) -o bin/compose_tmp src/compose_tmp.cpp $(FR_LIB)
+
 bin/processor_tool_risp: src/processor_tool.cpp $(FR_INC) $(RISP_INC) $(RISP_OBJ) $(FR_LIB)
 	$(CXX) $(FR_CFLAGS) -o bin/processor_tool_risp src/processor_tool.cpp $(RISP_OBJ) $(FR_LIB)
 
@@ -80,6 +83,12 @@ bin/processor_tool_vrisp_vector_fired: src/processor_tool.cpp $(FR_INC) $(VRISP_
 
 bin/processor_tool_vrisp_vector_synapses: src/processor_tool.cpp $(FR_INC) $(VRISP_INC) $(VRISP_RVV_SYNAPSES_OBJ) $(FR_LIB)
 	$(CXX) $(FR_CFLAGS) -o bin/processor_tool_vrisp_vector_synapses src/processor_tool.cpp $(VRISP_RVV_SYNAPSES_OBJ) $(FR_LIB)
+
+# ------------------------------------------------------------
+# Auxiliary Programs
+
+bin/dcta3_network_tool: src/dcta3_network_tool.cpp
+	$(CXX) -o bin/dcta3_network_tool src/dcta3_network_tool.cpp
 
 # ------------------------------------------------------------
 # Utilities.
