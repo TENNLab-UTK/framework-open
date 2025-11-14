@@ -409,3 +409,12 @@ UNIX> ( echo ML tmp_network.txt
 UNIX> 
 ```
 
+----------------------
+# Esoterica on the propery pack an associated data
+
+The new network copies its property pack and associated data from the first network specified.
+That means if the networks that you specify on the command line have different property
+packs and different proc_params in their "associated data," then the final network
+will use the ones from the first network.  There's a good chance the composition won't work
+at all, so just be aware of it -- I may fix it later when we try to incorporate spike encoding,
+but for now just be aware of it.
