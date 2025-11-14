@@ -410,7 +410,7 @@ UNIX>
 ```
 
 ----------------------
-# Esoterica on the propery pack an associated data
+# Esoterica on the propery pack and associated data
 
 The new network copies its property pack and associated data from the first network specified.
 That means if the networks that you specify on the command line have different property
