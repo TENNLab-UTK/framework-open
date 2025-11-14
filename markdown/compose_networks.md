@@ -197,7 +197,15 @@ Output nodes: 4(X1-Xor) 10(X2-Xor)
 UNIX> 
 ```
 
-Let's set up synapses to this new neuron.  We want one from X1-Xor and one from X2-Xor,
+Let's set up synapses to this new neuron.  You can use the `SYNAPSE` command to 
+add a synapse between two nodes, even when they started on different networks.  The
+command is:
+
+```
+SYNAPSE from-network from-id to-network to-id [ Property_name Property_value ]
+```
+
+So, we want one synpase from X1-Xor and one from X2-Xor,
 each with a delay of 1 and a weight of 1:
 
 ```
@@ -293,7 +301,7 @@ UNIX>
 Let's now compose three XOR networks so that we're calculating the 4-way parity of
 the four inputs.  Here's the network that we'll create:
 
-![img/four_way_parity.jpg](img/four_way_parity.jpg)
+![../img/four_way_parity.jpg](../img/four_way_parity.jpg)
 
 This is a simple matter of composing the three networks, adding two synapses that
 connect the outputs of X1 and X2 to the inputs of X3, and fixing the inputs/outputs:
