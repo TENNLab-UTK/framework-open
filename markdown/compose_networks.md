@@ -132,7 +132,7 @@ UNIX>
 
 Here's what the new network looks like:
 
-![../img/two_xors.jpg](../img/two_xors.jpg)
+![../img/two_xor.jpg](../img/two_xor.jpg)
 
 Let's test it to make sure it works:
 
