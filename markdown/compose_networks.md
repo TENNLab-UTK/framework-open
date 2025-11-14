@@ -356,7 +356,7 @@ synapses to the third XOR network above, if we make the output of X1 be the same
 A of X3, and the output of X2 be the same node as input B of X3, then we can perform the 
 same calculation with one fewer timestep.  Here's the network we're going for:
 
-![../four_parity_conflate.jpg](../four_parity_conflate.jpg)
+![../img/four_parity_conflate.jpg](../img/four_parity_conflate.jpg)
 
 To do this, you can use the `CONFLATE` command to specify that two (or more) nodes are
 equivalent.   Here's how you create the network above.
