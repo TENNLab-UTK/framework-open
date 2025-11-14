@@ -85,7 +85,7 @@ UNIX>
 
 Now, let's use `compose_networks` to create two XOR networks instead of one:
 
-``
+```
 UNIX> echo "" | bin/compose_networks tmp_xor.txt tmp_xor.txt > tmp_network.txt
 UNIX> ( echo FJ tmp_network.txt ; echo INFO ; echo SORT Q ; echo NODES) | bin/network_tool
 Nodes:         10
