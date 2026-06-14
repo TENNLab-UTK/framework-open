@@ -355,7 +355,8 @@ void Network::apply_spike(const Spike& s, bool normalized)
 
   if (normalized && (s.value < 0 || s.value > 1)) {
     snprintf(buf, 24, "%lg", s.value);
-    throw SRE((string) "risp::Network::apply_spike() - value (" + buf + ") must be in [-1,1].");
+    throw SRE((string) "risp::Network::apply_spike() - value (" + buf + 
+               ") must be in [0,1] when normalized.");
   }
 
   if (!is_valid_input_id(s.id)) {
