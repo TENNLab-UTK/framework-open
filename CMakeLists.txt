@@ -1,18 +1,23 @@
 cmake_minimum_required(VERSION 3.22)
 project(neuro)
 
-find_package(pybind11 REQUIRED)
+execute_process(
+    COMMAND python3 -c "import pybind11; print(pybind11.get_cmake_dir())"
+    OUTPUT_VARIABLE pybind11_DIR
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+find_package(pybind11 REQUIRED CONFIG)
 find_package(Python3)
 
 execute_process(
-    COMMAND ${PYTHON_EXECUTABLE} -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')"
+    COMMAND python3 -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')"
     OUTPUT_VARIABLE PYTHON_VERSION
 	OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 message(STATUS "Detected Python version: ${PYTHON_VERSION}")
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../pyframework/lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages)
-set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};pyframework/lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages/pybind11/share/cmake/pybind11/")
 
 set(SOURCES_NEURO bindings/framework.cpp
                   bindings/processor_help.cpp

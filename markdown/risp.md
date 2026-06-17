@@ -33,6 +33,7 @@ RISP is a lightweight neuroprocessor. It has the following features.
      the RAVENs neuroprocessor.  
 
 Please read ["The Case for RISP: A Reduced Instruction Spiking Processor"](http://neuromorphic.eecs.utk.edu/publications/2022-06-29-the-case-for-risp-a-reduced-instruction-spiking-processor/) for a precise description of RISP.
+The video to accompany this Markdown file is [here](https://youtu.be/WJYtQohviJ8).
 
 # Implementations
 
