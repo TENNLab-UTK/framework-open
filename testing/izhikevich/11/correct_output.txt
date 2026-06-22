@@ -1,0 +1,20 @@
+{
+  "input_scaling_value": 7,
+  "max_excitatory_delay": 4,
+  "max_excitatory_weight": 2,
+  "max_inhibitory_delay": 6,
+  "max_inhibitory_weight": -1,
+  "min_excitatory_delay": 3,
+  "min_excitatory_weight": 1,
+  "min_inhibitory_delay": 5,
+  "min_inhibitory_weight": -2
+}
+{ "node_properties": [
+    { "name":"exc", "type":66, "index":0, "size":1, "min_value":0.0, "max_value":1.0 }],
+  "edge_properties": [
+    { "name":"excitatory_delay", "type":73, "index":2, "size":1, "min_value":3.0, "max_value":4.0 },
+    { "name":"excitatory_weight", "type":73, "index":0, "size":1, "min_value":1.0, "max_value":2.0 },
+    { "name":"inhibitory_delay", "type":73, "index":3, "size":1, "min_value":5.0, "max_value":6.0 },
+    { "name":"inhibitory_weight", "type":73, "index":1, "size":1, "min_value":-2.0, "max_value":-1.0 }],
+  "network_properties": [] }
+{"binary_input":false,"input_scaling_value":7,"integration_delay":true,"plasticity":"none","run_time_inclusive":false,"spike_raster_info":true,"threshold_inclusive":true}
