@@ -55,6 +55,8 @@ and running your own RISP networks, and to start exploring embedded applications
 Also, you may want to try [vrisp](markdown/vrisp.md), as its simulator is faster than the
 original RISP simulator.
 
+You can also try the [RISP GUI Simulator](https://neuromorphic-processor-ui-dashboard.vercel.app/) for a web-based, interactive experience to visually design and simulate RISP networks. Learn how to use it in this [Video](https://www.youtube.com/playlist?list=PLIarkhy9e0fM).
+
 -----------------
 # Additional Examples
 
