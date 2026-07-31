@@ -19,6 +19,7 @@ static json risp_spec = {
   { "noisy_stddev", "D" },
   { "spike_value_factor", "D" },
   { "leak_mode", "S" },            /* "all", "none", "configurable" */
+  { "nonpositive_threshold_mode", "S" },  /* "legacy", "generative" */
   { "fire_like_ravens", "B" },
   { "run_time_inclusive", "B" },
   { "threshold_inclusive", "B" },
@@ -59,6 +60,7 @@ Network::Network(neuro::Network *net,
                  double _spike_value_factor, 
                  double _min_potential, 
                  char leak,
+                 char _nonpositive_threshold_mode,
                  bool _run_time_inclusive,
                  bool _threshold_inclusive,
                  bool _fire_like_ravens,
@@ -92,11 +94,16 @@ Network::Network(neuro::Network *net,
   neuron_fire_counter = 0;
   neuron_accum_counter = 0;
   rng.Seed(noisy_seed, "noisy_risp");
+  generative_nonpositive_threshold = _nonpositive_threshold_mode == 'g';
+
+  will_fire = threshold_inclusive
+    ? [](double charge, double threshold) { return charge >= threshold; }
+    : [](double charge, double threshold) { return charge > threshold; };
 
   /* Add neurons */
   net->make_sorted_node_vector();
 
-  for(i = 0; i < net->sorted_node_vector.size(); i++) {
+  for (i = 0; i < net->sorted_node_vector.size(); i++) {
     node = net->sorted_node_vector[i];
 
     if (leak_mode == 'c') {
@@ -154,14 +161,6 @@ Neuron* Network::add_neuron(uint32_t node_id, double threshold, bool leak) {
     throw SRE((string) buf);
   }
   n = new Neuron(node_id, threshold, leak);
-
-  /* JSP: I'm not a big fan of this hack, 
-     but I'd rather do this than put an if
-     statement before every threshold check.  */
-
-  if (!threshold_inclusive) {
-    n->threshold = (discrete) ? (n->threshold+1) : (n->threshold + 0.0000001);
-  }
 
   neuron_map[node_id] = n;
   return n;
@@ -291,7 +290,7 @@ void Network::process_events(uint32_t time)
     if (n->check == true) {
 
       /* fire */
-      if (n->charge >= n->threshold) {
+      if (will_fire(n->charge, n->threshold)) {
         for (j = 0; j < n->synapses.size(); j++) {
           syn = n->synapses[j];
           to_time = time + syn->delay;
@@ -314,6 +313,11 @@ void Network::process_events(uint32_t time)
           
         }
 
+        /* Nonpositive threshold neurons self-spawn evaluation events in generative mode. */
+        if (generative_nonpositive_threshold && will_fire(0, n->threshold)) {
+          events[time + 1].push_back(make_pair(n, 0));
+        }
+
         if (fire_like_ravens) {
           to_fire.push_back(n);
         } else {
@@ -331,6 +335,13 @@ void Network::clear_activity() {
 
   Neuron *n;
   size_t i;
+
+  events.clear();
+  to_fire.clear();
+  overall_run_time = 0;
+
+  if (generative_nonpositive_threshold) events.resize(1);
+
   for (i = 0; i < sorted_neuron_vector.size(); i++) {
     n = sorted_neuron_vector[i];
     n->last_fire = -1;
@@ -338,11 +349,10 @@ void Network::clear_activity() {
     n->fire_times.clear();  // JSP should clear regardless of tracking.
     n->charge = 0;
     n->last_check = -1;
+    if (generative_nonpositive_threshold && will_fire(0, n->threshold)) {
+      events[0].push_back(make_pair(n, 0));
+    }
   }
-
-  events.clear();
-  to_fire.clear();
-  overall_run_time = 0;
 }
 
 void Network::apply_spike(const Spike& s, bool normalized) 
@@ -756,12 +766,17 @@ Processor::Processor(json &params)
   if (params.contains("fire_like_ravens")) fire_like_ravens = params["fire_like_ravens"];
   if (params.contains("noisy_seed")) noisy_seed = params["noisy_seed"];
   if (params.contains("leak_mode")) leak_mode = params["leak_mode"];
+  if (params.contains("nonpositive_threshold_mode")) nonpositive_threshold_mode = params["nonpositive_threshold_mode"];
 
   if (params.contains("stds")) stds = params["stds"].get< vector <double> >(); 
   if (params.contains("noisy_stddev")) noisy_stddev = params["noisy_stddev"]; 
 
   if (leak_mode != "all" && leak_mode != "none" && leak_mode != "configurable") {
     throw SRE("Reading processor json - bad leak_mode.  Must be all, none or configurable");
+  }
+
+  if (min_threshold <= 0 && nonpositive_threshold_mode != "legacy" && nonpositive_threshold_mode != "generative") {
+    throw SRE("Reading processor json - bad nonpositive_threshold_mode. Must be legacy or generative if min_threshold ≤ 0.");
   }
 
   /* General Error Checking */
@@ -819,6 +834,7 @@ Processor::Processor(json &params)
   saved_params["discrete"] = discrete;
 
   saved_params["leak_mode"] = leak_mode;
+  if (!nonpositive_threshold_mode.empty()) saved_params["nonpositive_threshold_node"] = nonpositive_threshold_mode;
   saved_params["fire_like_ravens"] = fire_like_ravens;
   saved_params["run_time_inclusive"] = run_time_inclusive;
   saved_params["threshold_inclusive"] = threshold_inclusive;
@@ -868,6 +884,7 @@ bool Processor::load_network(neuro::Network* net, int network_id) {
                                spike_value_factor,
                                min_potential,
                                leak_mode[0], 
+                               nonpositive_threshold_mode.empty() ? 'l' : nonpositive_threshold_mode[0],
                                run_time_inclusive, 
                                threshold_inclusive, 
                                fire_like_ravens, 

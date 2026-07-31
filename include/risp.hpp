@@ -49,6 +49,7 @@ public:
           double _spike_value_factor, 
           double _min_potential,
           char leak,
+          char _nonpositive_threshold_mode,
           bool _run_time_inclusive,
           bool _threshold_inclusive,
           bool _fire_like_ravens,
@@ -104,6 +105,8 @@ protected:
   
   void process_events(uint32_t time); /**< Process events at time "time" */
 
+  bool (*will_fire)(double charge, double threshold);
+
   vector <int> inputs;        /**< index is input id and its value is neuron id. 
                                    If the neuron id is -1, it's not an input node. */
   vector <int> outputs;       /**< index is output id and its value is neuron id. 
@@ -127,6 +130,7 @@ protected:
   bool discrete;            /**< Are networks discrete */
   bool inputs_from_weights; /**< Inputs are indices into the weight vector. */
   char leak_mode;           /**< 'a' for all, 'n' for nothing, 'c' for configurable */
+  bool generative_nonpositive_threshold; /**< Do we create events for neurons that would fire after reset */
   vector <double> weights;
   double noisy_stddev;
   uint32_t noisy_seed;
@@ -223,6 +227,7 @@ protected:
   bool discrete;
   double spike_value_factor;
   string leak_mode;
+  string nonpositive_threshold_mode;
   bool run_time_inclusive;
   bool threshold_inclusive;
   bool fire_like_ravens;

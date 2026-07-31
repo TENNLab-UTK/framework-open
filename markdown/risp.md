@@ -112,26 +112,27 @@ to use for your task.  The smaller values of *n* are more efficiently implemente
 You can specify the following parameters:
 
 
-| Key                 | Type   | Default      | Description |
-|-------------------- |------- | ------------ |------------ |
-| discrete            | bool   | Necessary    | If `true`, weights, thresholds and activation potentials are integers.  Otherwise they are floating point. (Default param file: `false`) |
-| min_weight          | double | Necessary*   | The minimum synapse weight (Default param file: -1).  Not required when `weights` are specified. |
-| max_weight          | double | Necessary*   | The maximum synapse weight (Default param file: 1).  Not required when `weights` are specified. |
-| min_threshold       | double | Necessary    | The minimum neuron threshold (Default param file: -1) |
-| max_threshold       | double | Necessary    | The maximum neuron threshold (Default param file: 1) |
-| max_delay           | int    | Necessary    | The maximum synapse delay (Default param file: 5) |
-| min_potential       | double | Necessary    | At the end of integration, the potential cannot go lower than this value. (Default param file: -1) |
-| leak_mode           | string | `"none"`     | Leak: `"all"`, `"none"`, `"configurable"` |
-| run_time_inclusive  | bool   | `false`      | If `true`, `run(duration)` calls run for `duration+1` timesteps. |
-| threshold_inclusive | bool   | `true`       | If `true` neurons spike when the potential is >= the threshold.  If `false`, then it has to exceed the threshold. |
-| fire_like_ravens    | bool   | `false`      | If `true` neurons fire on the timestep after they normally fire.  The synapses work as normal. |
-| spike_value_factor  | double | `max_weight` | Framework applications call `apply_spikes()` with input spike values between 0 and 1.  RISP multiplies these values by this factor. |
-| weights             | vector | []           | If this is specified, then synapse weights are restricted to these values.  If `discrete` is true, these must be integers. |
-| inputs_from_weights | bool   | Necessary*   | Must specify if you use `weights`.  If `true`, then input spikes map to the `weights` array.  Otherwise, `spike_value_factor` is used. |
-| noisy_seed          | int    | 0            | If noise is used (either `noisy_stddev` or `stds` is specified), then this is the RNG seed. 0 uses the current time in microseconds. |
-| noisy_stddev        | double | 0            | A random normal with this standard deviation is added to the weight on each synapse fire. ||
-| stds                | vector | []           | Each time a synapse with `weights[i]` fires, a random normal with `stds[i]` is added to/subtracted from the weight. |
-| log                 | JSON   | {}           | IO_Stream to log events (for debugging) | 
+| Key                        | Type   | Default      | Description |
+|--------------------------- |------- | ------------ |------------ |
+| discrete                   | bool   | Necessary    | If `true`, weights, thresholds and activation potentials are integers.  Otherwise they are floating point. (Default param file: `false`) |
+| min_weight                 | double | Necessary*   | The minimum synapse weight (Default param file: -1).  Not required when `weights` are specified. |
+| max_weight                 | double | Necessary*   | The maximum synapse weight (Default param file: 1).  Not required when `weights` are specified. |
+| min_threshold              | double | Necessary    | The minimum neuron threshold (Default param file: -1) |
+| max_threshold              | double | Necessary    | The maximum neuron threshold (Default param file: 1) |
+| max_delay                  | int    | Necessary    | The maximum synapse delay (Default param file: 5) |
+| min_potential              | double | Necessary    | At the end of integration, the potential cannot go lower than this value. (Default param file: -1) |
+| leak_mode                  | string | `"none"`     | Leak: `"all"`, `"none"`, `"configurable"` |
+| nonpositive_threshold_mode | string | Necessary*   | Determines how neurons with thresholds < 0 (≤ 0 for `threshold_inclusive`) fire, "generative" or "legacy". Not required when `min_threshold` > 0. |
+| run_time_inclusive         | bool   | `false`      | If `true`, `run(duration)` calls run for `duration+1` timesteps. |
+| threshold_inclusive        | bool   | `true`       | If `true` neurons spike when the potential is >= the threshold.  If `false`, then it has to exceed the threshold. |
+| fire_like_ravens           | bool   | `false`      | If `true` neurons fire on the timestep after they normally fire.  The synapses work as normal. |
+| spike_value_factor         | double | `max_weight` | Framework applications call `apply_spikes()` with input spike values between 0 and 1.  RISP multiplies these values by this factor. |
+| weights                    | vector | []           | If this is specified, then synapse weights are restricted to these values.  If `discrete` is true, these must be integers. |
+| inputs_from_weights        | bool   | Necessary*   | Must specify if you use `weights`.  If `true`, then input spikes map to the `weights` array.  Otherwise, `spike_value_factor` is used. |
+| noisy_seed                 | int    | 0            | If noise is used (either `noisy_stddev` or `stds` is specified), then this is the RNG seed. 0 uses the current time in microseconds. |
+| noisy_stddev               | double | 0            | A random normal with this standard deviation is added to the weight on each synapse fire. ||
+| stds                       | vector | []           | Each time a synapse with `weights[i]` fires, a random normal with `stds[i]` is added to/subtracted from the weight. |
+| log                        | JSON   | {}           | IO_Stream to log events (for debugging) |
 
 ------------------------------------------------------------
 # Examples of Use
@@ -1149,7 +1150,8 @@ UNIX> cat tmp_proc_params.txt
   "max_threshold": 1,
   "min_potential": -1,
   "max_delay": 5,
-  "discrete": false
+  "discrete": false,
+  "nonpositive_threshold_mode": "generative"
 }
 UNIX> 
 ```
