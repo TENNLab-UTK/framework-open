@@ -7,4 +7,5 @@
   "min_potential": -1,
   "max_delay": 15,
   "discrete": false
+  "nonpositive_threshold_mode": "generative"
 }
