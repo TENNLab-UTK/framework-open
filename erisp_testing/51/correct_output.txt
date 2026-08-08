@@ -1,0 +1,3 @@
+node 0(Val_v) spike times: 11.0
+node 0(Val_v) spike times: 1.0
+node 0(Val_v) spike times: 6.0

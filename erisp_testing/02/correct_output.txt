@@ -1,0 +1,3 @@
+0(A)   INPUT  : 01010
+1(B)   INPUT  : 00110
+2(A|B) OUTPUT : 00111

@@ -1,0 +1,5 @@
+ML tmp_network.txt
+ASR 0 01010101
+ASR 1 00110011
+RUN 10
+GSR

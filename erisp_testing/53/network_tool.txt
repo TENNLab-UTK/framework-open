@@ -1,0 +1,21 @@
+FJ tmp_empty_network.txt
+
+# Neuron 0 is a driver: an input neuron that fires each time it is spiked.
+# Neurons 1 and 2 both receive inhibitory input from it and never fire,
+# but they have different Min_Potential floors, so their charges settle
+# at different values.
+
+AN 0 1 2
+AI 0
+AO 1 2
+
+SNP_ALL Threshold 1
+SNP 1 Min_Potential -1
+SNP 2 Min_Potential -5
+
+AE 0 1
+AE 0 2
+SEP_ALL Delay 1
+SEP_ALL Weight -1
+
+TJ tmp_network.txt

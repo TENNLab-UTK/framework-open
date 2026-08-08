@@ -1,0 +1,72 @@
+node 72(Core[0][0]) spike times:
+node 73(Core[0][1]) spike times:
+node 74(Core[0][2]) spike times:
+node 75(Core[0][3]) spike times:
+node 76(Core[0][4]) spike times:
+node 77(Core[0][5]) spike times:
+node 78(Core[1][0]) spike times:
+node 79(Core[1][1]) spike times:
+node 80(Core[1][2]) spike times:
+node 81(Core[1][3]) spike times:
+node 82(Core[1][4]) spike times:
+node 83(Core[1][5]) spike times:
+node 84(Core[2][0]) spike times:
+node 85(Core[2][1]) spike times: 2.0
+node 86(Core[2][2]) spike times:
+node 87(Core[2][3]) spike times:
+node 88(Core[2][4]) spike times:
+node 89(Core[2][5]) spike times:
+node 90(Core[3][0]) spike times:
+node 91(Core[3][1]) spike times: 2.0
+node 92(Core[3][2]) spike times: 2.0
+node 93(Core[3][3]) spike times:
+node 94(Core[3][4]) spike times:
+node 95(Core[3][5]) spike times:
+node 96(Core[4][0]) spike times:
+node 97(Core[4][1]) spike times:
+node 98(Core[4][2]) spike times: 2.0
+node 99(Core[4][3]) spike times:
+node 100(Core[4][4]) spike times:
+node 101(Core[4][5]) spike times:
+node 102(Core[5][0]) spike times:
+node 103(Core[5][1]) spike times:
+node 104(Core[5][2]) spike times:
+node 105(Core[5][3]) spike times:
+node 106(Core[5][4]) spike times:
+node 107(Core[5][5]) spike times:
+node 144(Border[0][0]) spike times:
+node 145(Border[0][1]) spike times:
+node 146(Border[0][2]) spike times:
+node 147(Border[0][3]) spike times:
+node 148(Border[0][4]) spike times:
+node 149(Border[0][5]) spike times:
+node 150(Border[1][0]) spike times: 4.0
+node 151(Border[1][1]) spike times:
+node 152(Border[1][2]) spike times: 4.0
+node 153(Border[1][3]) spike times:
+node 154(Border[1][4]) spike times:
+node 155(Border[1][5]) spike times:
+node 156(Border[2][0]) spike times:
+node 157(Border[2][1]) spike times:
+node 158(Border[2][2]) spike times:
+node 159(Border[2][3]) spike times:
+node 160(Border[2][4]) spike times:
+node 161(Border[2][5]) spike times:
+node 162(Border[3][0]) spike times: 4.0
+node 163(Border[3][1]) spike times:
+node 164(Border[3][2]) spike times:
+node 165(Border[3][3]) spike times:
+node 166(Border[3][4]) spike times:
+node 167(Border[3][5]) spike times:
+node 168(Border[4][0]) spike times:
+node 169(Border[4][1]) spike times:
+node 170(Border[4][2]) spike times:
+node 171(Border[4][3]) spike times:
+node 172(Border[4][4]) spike times:
+node 173(Border[4][5]) spike times:
+node 174(Border[5][0]) spike times:
+node 175(Border[5][1]) spike times:
+node 176(Border[5][2]) spike times:
+node 177(Border[5][3]) spike times: 4.0
+node 178(Border[5][4]) spike times:
+node 179(Border[5][5]) spike times:

@@ -1,0 +1,1 @@
+is_ensemble rejects a network whose Start_Node is the sentinel.

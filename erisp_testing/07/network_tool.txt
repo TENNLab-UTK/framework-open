@@ -1,0 +1,31 @@
+FJ tmp_empty_network.txt
+
+# Create neurons
+
+AN 0 1 2 3 4 5 6
+AI 0 1 2 3
+AO 5 6
+SNP_ALL Threshold 1
+SETNAME 0 A
+SETNAME 1 ~A
+SETNAME 2 B
+SETNAME 3 ~B
+SETNAME 4 H_(x|y)
+SETNAME 5 A|B
+SETNAME 6 ~(A|B)
+
+# Create synapses
+
+AE 1 4  3 4
+AE 0 6  1 6
+AE 4 5  4 6
+
+SEP_ALL Delay 1 
+SEP_ALL Weight 1
+
+SEP 0 6 1 6 Delay 2
+SEP 4 6 Weight -1
+
+# Store
+
+TJ tmp_network.txt

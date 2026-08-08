@@ -1,0 +1,14 @@
+ML tmp_network.txt
+ASV 0 0 0
+ASV 1 0 1
+RUN 12 
+OT
+ASV 0 0 10
+ASV 1 0 1
+RUN 12 
+OT
+ML tmp_network.txt 
+ASV 0 0 5
+ASV 1 0 1
+RUN 12 
+OT

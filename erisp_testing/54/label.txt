@@ -1,0 +1,1 @@
+The start neuron fires at t=0 with no applied spikes.

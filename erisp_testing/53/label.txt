@@ -1,0 +1,1 @@
+Per-neuron Min_Potential: two neurons with different charge floors.
