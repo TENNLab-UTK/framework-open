@@ -1,0 +1,3 @@
+node 0 last fire time: 1.0
+node 0 spike counts: 1
+node 0 spike times: 1.0

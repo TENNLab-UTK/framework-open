@@ -1,0 +1,11 @@
+FJ tmp_empty_network.txt
+
+AN 0 1
+
+AI 0
+
+AE 0 1
+
+SEP 0 1 excitatory_weight 1
+
+TJ tmp_network.txt

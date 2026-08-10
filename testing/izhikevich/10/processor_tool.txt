@@ -1,0 +1,11 @@
+ML tmp_network.txt
+
+AS 0 0 1
+
+RUN 2
+
+CLEAR-A
+
+GT
+TNC
+TNA

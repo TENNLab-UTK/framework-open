@@ -1,0 +1,4 @@
+Node 0 charge: -65
+Node 0 last fire: -1.0
+Node 0 fire count: 0
+Node  0 fire times:

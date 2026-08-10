@@ -1,0 +1,7 @@
+FJ tmp_empty_network.txt
+
+AN 0
+AI 0
+AO 0
+
+TJ tmp_network.txt
