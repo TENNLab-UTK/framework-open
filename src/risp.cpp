@@ -163,6 +163,10 @@ Neuron* Network::add_neuron(uint32_t node_id, double threshold, bool leak) {
   n = new Neuron(node_id, threshold, leak);
 
   neuron_map[node_id] = n;
+  if (generative_nonpositive_threshold && will_fire(0, n->threshold)) {
+    events.resize(max(events.size(), size_t(1)));
+    events[0].push_back(make_pair(n, 0));
+  }
   return n;
 }
 
@@ -313,17 +317,23 @@ void Network::process_events(uint32_t time)
 
         }
 
-        /* Nonpositive threshold neurons self-spawn evaluation events in generative mode. */
-        if (generative_nonpositive_threshold && will_fire(0, n->threshold)) {
-          events[time + 1].push_back(make_pair(n, 0));
-        }
-
         if (fire_like_ravens) {
           to_fire.push_back(n);
         } else {
           neuron_fire_counter++;
           n->perform_fire(time);
         }
+      }
+      /* generative mode spawns events for neurons*/
+      if (generative_nonpositive_threshold && will_fire(
+        n->leak ? max(0.0, min_potential) : n->charge,
+        n->threshold
+      )) {
+        if (time + 1 >= events_size) {
+          events_size = time + 2;
+          events.resize(events_size);
+        }
+        events[time + 1].push_back(make_pair(n, 0));
       }
       n->check = false;
     }
