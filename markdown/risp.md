@@ -990,6 +990,7 @@ UNIX> cat tmp_risp.txt
   "min_weight": -1, "noisy_stddev": 0.01,
   "max_weight": 1,
   "leak_mode": "none",
+  "nonpositive_threshold_mode": "legacy",
   "min_threshold": -1,
   "max_threshold": 1,
   "min_potential": -1,
@@ -1147,11 +1148,11 @@ UNIX> cat tmp_proc_params.txt
   "inputs_from_weights": false,
   "spike_value_factor": 1,
   "min_threshold": -1,
+  "nonpositive_threshold_mode": "legacy",
   "max_threshold": 1,
   "min_potential": -1,
   "max_delay": 5,
-  "discrete": false,
-  "nonpositive_threshold_mode": "generative"
+  "discrete": false
 }
 UNIX> 
 ```
