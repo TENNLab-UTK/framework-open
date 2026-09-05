@@ -1,0 +1,1 @@
+START neuron, using generative nonpositive threshold mode, no leak
