@@ -1,0 +1,1 @@
+NOT gate, using generative nonpositive threshold mode, leak
