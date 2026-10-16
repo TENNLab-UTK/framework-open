@@ -1,1 +1,1 @@
-sed 's/legacy/generative/' params/risp_f.txt | sed 's/none/all/'
+sed 's/none/all/' params/risp_f.txt

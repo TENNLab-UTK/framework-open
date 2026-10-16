@@ -1,1 +1,1 @@
-cat params/risp_f.txt
+sed -e 's/generative/legacy/' params/risp_f.txt
