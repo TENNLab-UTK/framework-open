@@ -41,7 +41,7 @@ sh $fro/scripts/aimone_mult_network.sh $const $w $fro > tmp_mult.txt
 # Get the output timesteps.
 # Get the output starting time.
 
-nv0=`grep V0 tmp_info.txt | awk '{ print $3 }'`
+nv0=`grep A tmp_info.txt | awk '{ print $3 }'`
 run=`grep RUN tmp_info.txt | awk '{ print $2 }'`
 on=`grep OUTPUT tmp_info.txt | awk '{ print $3 }'`
 ots=`grep OUTPUT tmp_info.txt | awk '{ print $5 }'`
@@ -90,7 +90,7 @@ echo "Overflow: $overflow"
 echo "Underflow: $underflow"
 
 echo ""
-echo "The network is in tmp_adder.txt"
+echo "The network is in tmp_mult.txt"
 echo "Its info is in tmp_info.txt"
 echo "Input for the processor_tool to run this test is in tmp_pt_input.txt"
 echo "Output of the processor_tool on this input is in tmp_pt_output.txt"

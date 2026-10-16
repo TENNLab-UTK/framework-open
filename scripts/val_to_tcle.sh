@@ -37,8 +37,10 @@ if [ $v -ge 0 ]; then
     sr="$sr"$b
   done
   echo $sr
-else
 
+# Here's the code for when it's negative.
+
+else
   sr=""
   nv=$((-$v))
   c=1
