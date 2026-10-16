@@ -1,7 +1,8 @@
-{ 
+{
   "min_weight": -7,
   "max_weight": 7,
   "leak_mode": "none",
+  "nonpositive_threshold_mode": "generative",
   "min_threshold": 1,
   "max_threshold": 7,
   "min_potential": -7,
