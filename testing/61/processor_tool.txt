@@ -1,0 +1,6 @@
+ML tmp_network.txt
+RUN 8
+GSR
+CA
+RUN 8
+GSR
