@@ -22,6 +22,7 @@ static json risp_spec = {
   { "fire_like_ravens", "B" },
   { "run_time_inclusive", "B" },
   { "threshold_inclusive", "B" },
+  { "nonpositive_threshold_mode", "S" },  /* "legacy", "generative" */
   { "fire_like_ravens", "B" },
   { "discrete", "B" },
   { "weights", "A"},
@@ -65,6 +66,7 @@ void Neuron::perform_fire(int time)
 Network::Network(neuro::Network *net,
                  double _spike_value_factor,
                  char leak,
+                 char _nonpositive_threshold_mode,
                  bool _run_time_inclusive,
                  bool _threshold_inclusive,
                  bool _fire_like_ravens,
@@ -97,6 +99,7 @@ Network::Network(neuro::Network *net,
   neuron_fire_counter = 0;
   neuron_accum_counter = 0;
   rng.Seed(noisy_seed, "noisy_erisp");
+  generative_nonpositive_threshold = (_nonpositive_threshold_mode == 'g');
 
   /* Add neurons */
   net->make_sorted_node_vector();
@@ -181,6 +184,14 @@ Neuron* Network::add_neuron(uint32_t node_id, double threshold, bool leak, doubl
   }
 
   neuron_map[node_id] = n;
+
+  /* Generative mode (ported from upstream RISP): a neuron that would fire
+     with zero charge spikes on its own. The threshold hack above keeps
+     ">=" equivalent to RISP's will_fire() for both inclusive modes. */
+  if (generative_nonpositive_threshold && 0 >= n->threshold) {
+    events.resize(max(events.size(), size_t(1)));
+    events[0].push_back(make_pair(n, 0));
+  }
   return n;
 }
 
@@ -338,6 +349,15 @@ void Network::process_events(uint32_t time)
           n->perform_fire(time);
         }
       }
+      /* generative mode spawns events for neurons that will fire again after reset */
+      if (generative_nonpositive_threshold &&
+          (n->leak ? max(0.0, n->min_potential) : n->charge) >= n->threshold) {
+        if (time + 1 >= events_size) {
+          events_size = time + 2;
+          events.resize(events_size);
+        }
+        events[time + 1].push_back(make_pair(n, 0));
+      }
       n->check = false;
     }
   }
@@ -348,6 +368,12 @@ void Network::clear_activity() {
 
   Neuron *n;
   size_t i;
+
+  events.clear();
+  to_fire.clear();
+  overall_run_time = 0;
+  if (generative_nonpositive_threshold) events.resize(1);
+
   for (i = 0; i < sorted_neuron_vector.size(); i++) {
     n = sorted_neuron_vector[i];
     n->last_fire = -1;
@@ -355,11 +381,10 @@ void Network::clear_activity() {
     n->fire_times.clear();  // JSP should clear regardless of tracking.
     n->charge = 0;
     n->last_check = -1;
+    if (generative_nonpositive_threshold && 0 >= n->threshold) {
+      events[0].push_back(make_pair(n, 0));
+    }
   }
-
-  events.clear();
-  to_fire.clear();
-  overall_run_time = 0;
 }
 
 void Network::apply_spike(const Spike& s, bool normalized) 
@@ -436,11 +461,16 @@ void Network::run(double duration) {
 
   if (duration < 0) throw SRE("erisp::Network::run() - duration < 0");
 
+  /* run(0) without run_time_inclusive covers no timesteps. Without this guard,
+     run_time is -1: the loop bound below wraps to UINT32_MAX and the start
+     neuron is pushed onto an event buffer that may be empty. */
+  run_time = (run_time_inclusive) ? duration : duration-1;
+  if (run_time < 0) return;
+
   /* if clear_activity get called, we don't want to clear tracking info again. */
   first_run = (overall_run_time == 0);
   if (!first_run) clear_tracking_info();
 
-  run_time = (run_time_inclusive) ? duration : duration-1;
   overall_run_time += (run_time+1);
 
   /* expand the event buffer */
@@ -797,6 +827,18 @@ Processor::Processor(json &params)
     throw SRE("Reading processor json - bad leak_mode.  Must be all, none or configurable");
   }
 
+  /* Unlike upstream RISP, this is optional and defaults to "legacy", so ERISP
+     networks and compiled ensembles saved before the parameter existed still
+     load. If given, it must be one of the two modes. */
+  if (params.contains("nonpositive_threshold_mode")) {
+    nonpositive_threshold_mode = params["nonpositive_threshold_mode"];
+    if (nonpositive_threshold_mode != "legacy" && nonpositive_threshold_mode != "generative") {
+      throw SRE("Reading processor json - bad nonpositive_threshold_mode.  Must be legacy or generative.");
+    }
+  } else {
+    nonpositive_threshold_mode = "legacy";
+  }
+
   /* General Error Checking */
 
   if (discrete) {
@@ -852,6 +894,10 @@ Processor::Processor(json &params)
   saved_params["discrete"] = discrete;
 
   saved_params["leak_mode"] = leak_mode;
+  if (params.contains("nonpositive_threshold_mode")) {
+    saved_params["nonpositive_threshold_mode"] = nonpositive_threshold_mode;
+  }
+  if (is_ensemble) saved_params["is_ensemble"] = true;
   saved_params["fire_like_ravens"] = fire_like_ravens;
   saved_params["run_time_inclusive"] = run_time_inclusive;
   saved_params["threshold_inclusive"] = threshold_inclusive;
@@ -917,7 +963,8 @@ bool Processor::load_network(neuro::Network* net, int network_id) {
   risp_net = new erisp::Network(net,
                                spike_value_factor,
                                leak_mode[0],
-                               run_time_inclusive, 
+                               nonpositive_threshold_mode[0],
+                               run_time_inclusive,
                                threshold_inclusive, 
                                fire_like_ravens, 
                                discrete, 

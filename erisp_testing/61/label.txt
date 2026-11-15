@@ -1,0 +1,1 @@
+nonpositive threshold mode regression: generative, no leak, threshold exclusive (ERISP: per-neuron Min_Potential set to the processor floor)

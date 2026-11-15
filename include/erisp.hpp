@@ -49,6 +49,7 @@ public:
   Network(neuro::Network *net,
           double _spike_value_factor,
           char leak,
+          char _nonpositive_threshold_mode,
           bool _run_time_inclusive,
           bool _threshold_inclusive,
           bool _fire_like_ravens,
@@ -128,6 +129,7 @@ protected:
   bool discrete;            /**< Are networks discrete */
   bool inputs_from_weights; /**< Inputs are indices into the weight vector. */
   char leak_mode;           /**< 'a' for all, 'n' for nothing, 'c' for configurable */
+  bool generative_nonpositive_threshold; /**< Do we create events for neurons that would fire after reset */
   vector <double> weights;
   double noisy_stddev;
   uint32_t noisy_seed;
@@ -224,6 +226,7 @@ protected:
   bool discrete;
   double spike_value_factor;
   string leak_mode;
+  string nonpositive_threshold_mode;
   bool run_time_inclusive;
   bool threshold_inclusive;
   bool fire_like_ravens;
