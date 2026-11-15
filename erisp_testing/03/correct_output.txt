@@ -1,0 +1,5 @@
+0(A)      INPUT  : 01010
+1(B)      INPUT  : 00110
+2(H_A&~B) HIDDEN : 00100
+3(H_B&~A) HIDDEN : 00010
+4(A^B)    OUTPUT : 00011

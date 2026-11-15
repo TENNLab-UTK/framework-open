@@ -1,0 +1,2 @@
+0 OUTPUT : 10
+1 OUTPUT : 01

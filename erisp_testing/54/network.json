@@ -1,0 +1,33 @@
+{
+ "Associated_Data": {
+  "other": { "proc_name": "erisp" },
+  "proc_params": {
+   "discrete": false, "fire_like_ravens": false, "leak_mode": "none",
+   "max_delay": 5, "max_threshold": 1.0, "max_weight": 1.0,
+   "min_potential": -1.0, "min_threshold": 0.0, "min_weight": -1.0,
+   "run_time_inclusive": false, "spike_value_factor": 1.0,
+   "threshold_inclusive": true
+  }
+ },
+ "Edges": [ { "from": 0, "to": 1, "values": [1.0, 1.0] } ],
+ "Inputs": [],
+ "Network_Values": [0.0],
+ "Nodes": [
+  { "id": 0, "values": [1.0, -1.0] },
+  { "id": 1, "values": [1.0, -1.0] }
+ ],
+ "Outputs": [0, 1],
+ "Properties": {
+  "edge_properties": [
+   { "index": 1, "max_value": 5.0, "min_value": 1.0, "name": "Delay", "size": 1, "type": 73 },
+   { "index": 0, "max_value": 1.0, "min_value": -1.0, "name": "Weight", "size": 1, "type": 68 }
+  ],
+  "network_properties": [
+   { "index": 0, "max_value": 4294967295.0, "min_value": 0.0, "name": "Start_Node", "size": 1, "type": 73 }
+  ],
+  "node_properties": [
+   { "index": 1, "max_value": 0.0, "min_value": -1.0, "name": "Min_Potential", "size": 1, "type": 68 },
+   { "index": 0, "max_value": 1.0, "min_value": 0.0, "name": "Threshold", "size": 1, "type": 68 }
+  ]
+ }
+}

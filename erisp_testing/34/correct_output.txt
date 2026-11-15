@@ -1,0 +1,12 @@
+node 24(Core[0][1]) spike times:
+node 25(Core[1][1]) spike times:
+node 26(Core[2][1]) spike times: 4.0
+node 27(Core[3][1]) spike times: 4.0 5.0
+node 28(Core[4][1]) spike times: 5.0
+node 29(Core[5][1]) spike times:
+node 48(Border[0][0]) spike times:
+node 49(Border[1][0]) spike times: 6.0 8.0
+node 50(Border[2][0]) spike times:
+node 51(Border[3][0]) spike times: 6.0
+node 52(Border[4][0]) spike times:
+node 53(Border[5][0]) spike times: 9.0

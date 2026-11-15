@@ -1,0 +1,31 @@
+FJ tmp_empty_network.txt
+AN 0 1 2 3 4 5 6 7 8 9 72
+AI 0 1 2 3 4 5 6 7
+AO 8 9
+
+AE 1 72
+SEP 1 72 Delay 14
+
+AE 2 8
+SEP 2 8 Delay 6
+
+AE 4 2
+SEP 4 2 Delay 11
+
+AE 5 9
+SEP 5 9 Delay 6
+
+AE 6 2
+SEP 6 2 Delay 4
+
+AE 7 9
+SEP 7 9 Delay 3
+
+AE 7 72
+SEP 7 72 Delay 11
+
+AE 72 9
+SEP 72 9 Delay 3
+
+SORT Q
+TJ tmp_network.txt

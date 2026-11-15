@@ -1,0 +1,1 @@
+RUN 0 is a no-op, then the start neuron still fires once at t=0.

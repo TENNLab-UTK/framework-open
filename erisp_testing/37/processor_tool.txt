@@ -1,0 +1,18 @@
+ML tmp_network.txt
+AS 17 0 1
+AS 19 0 1
+AS 28 0 1
+AS 30 0 1
+AS 31 0 1
+AS 32 0 1
+AS 33 0 1
+AS 34 0 1
+AS 35 0 1
+AS 36 0 1
+AS 37 0 1
+AS 47 0 1
+AS 52 0 1
+AS 56 0 1
+AS 62 0 1
+RUN 3
+OT

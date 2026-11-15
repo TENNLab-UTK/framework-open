@@ -1,0 +1,2 @@
+erisp::load_network() - is_ensemble is set, but the network has no Start_Node.
+load_network() failed

@@ -1,0 +1,1 @@
+val_to_temporal encoding network with a maximum value of 10 (from [PRG25]).

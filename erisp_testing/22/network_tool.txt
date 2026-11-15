@@ -1,0 +1,27 @@
+FJ tmp_empty_network.txt
+
+# Create neurons
+
+AN 0 1 2 3 4 
+AI 0 1 2
+AO 3 4
+SNP_ALL Threshold 1
+SNP 3 Leak 0
+SETNAME 0 Main
+SETNAME 1 On
+SETNAME 2 Off
+SETNAME 3 Out
+SETNAME 4 Bias
+
+# Create synapses
+
+AE 1 0 2 0 0 0 0 3  0 4  4 4 
+SEP_ALL Delay 1 
+SEP_ALL Weight 1
+SEP 2 0 Weight -1
+
+SEP 0 3 Weight 0.5
+
+# Store
+
+TJ tmp_network.txt
